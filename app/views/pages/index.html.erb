@@ -1,0 +1,78 @@
+<%= javascript_include_tag 'style' %>
+<!-- +++++++++++++++++++++++++++++++++++ -->
+<%= render 'partials/navbar' %>
+<%= render 'partials/slider' %>
+      
+  <div class="container row" style="margin-top: 90px;margin-bottom: 150px;">
+    <p class="sjdm center">San Jose del Monte National Trade School Web Portal</p>
+    <%= image_tag "page.png" , style:"width:100%" , class:"materialboxed" %>
+  </div>
+
+  <div class="parallax-container">
+    <div class="container white-text">
+      <div style="padding-top: 20px;">
+        <center><h3>Portal Description</h3></center>
+        <p style="text-align: justify;" class="history">
+         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+         quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+         consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+         cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+         proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+         quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+         consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+         cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+         proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+      </div>
+    </div>
+    <div class="parallax">
+      <%= image_tag "img1.jpg" ,style:"filter:blur(5px)"  %>
+    </div>
+  </div>
+
+  <div class="container row" style="margin-top: 40px;padding-bottom: 40px">
+    <div class="col l6 m6 s12">
+      <center><h3 class="black-text">Vision</h3></center>
+      <p style="text-align: justify;" class="black-text">
+        We dream of Filipinos who passionately loves their country and whose competencies and values enable them to realize their full potential and contribute meaningfully to building the nation.
+          We are a learner-centered public institution, the Department of Education continously imroves itself to better serve its stakesholders.</p>
+    </div>
+    <div class="col l6 m6 s12">
+      <center><h3 class="black-text">Mission</h3></center>
+      <p style="text-align: justify;" class="black-text">
+        To protect and promote the right of every Filipino to quality, equitable, culture-based, and complete education where:
+          Students learn in a child friendly, gender-sensitve, safe, and motivating environment
+          Teachers facilitate learning and constantly nurture every learner.
+          Administrator and staff, as stewards of the institution, ensure an enabling and supportive environment for effective learning to happen.
+          Family, community and other stakeholders are actively engaged and share responsibility for developing lifelong learners 
+        </p>
+    </div>
+  </div>
+
+<%= render 'partials/footer' %>
+
+
+<style type="text/css">
+  .parallax-container {
+      height: 300px;
+   }
+
+   .slides li img{
+    /*filter: blur(5px);*/
+    transition:.7s;
+   }
+
+   .slides li img:hover{
+     /*filter: blur(5px);*/
+     transform: scale(1.1);
+     cursor: pointer;
+   }
+
+   .sjdm {
+    font-size: 35px;
+   }
+</style>
+

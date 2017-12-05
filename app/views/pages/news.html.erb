@@ -1,0 +1,123 @@
+<%= javascript_include_tag 'style' %>
+<%= render 'partials/navbar' %>
+<%= render 'partials/slider' %>
+<!-- ============================================================= -->
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+      <p class="title">
+        <blockquote style="font-family:Rockwell;font-size: 50px">School News :</blockquote>
+      </p><hr>
+    </div>
+  </div>
+</div>
+
+<% if @news.empty? %>
+  <hr>
+  <center><h3>No News Posted yet</h3></center>
+  <hr>
+<% else %>
+  <% @news.each do |news| %>
+    <div class="container">
+      <div class="row">
+        <div class="col s12">
+           <p style="font-size: 25px;margin: 10px;font-family:Rockwell" class="title center">
+              Title: <%= news.title %>
+           </p>
+           <p style="font-size: 15px" class="center">Posted at <%= news.created_at.to_s(:long) %></p>
+           <p class="center"><%= truncate(news.body, length: 200) %></p>
+           <center>
+             <a class="btn btn-sm btn-flat deep-orange darken-4 hoverable white-text waves-light modal-trigger" href="#modalN<%= news.id %>">
+              Read More
+             </a>
+           </center>
+        </div>
+      </div>
+
+      <div id="modalN<%= news.id %>" class="modal modal-fixed-footer blue-grey lighten-4">
+        <div class="modal-content">
+          <p style="font-size: 30px;margin: 0px;font-family:Rockwell" class="title">
+            Title: <%= news.title %>
+           <p style="font-size: 15px">Posted at November 20, 2017</p><hr>
+         </p>
+          <p style="text-align: justify;" class="body"><%= news.body %></p>
+        </div>
+        <div class="modal-footer blue-grey lighten-4">
+          <a class="modal-action modal-close waves-effect waves-yellow btn-flat red">Close</a>
+        </div>
+      </div><!-- modal -->
+      <hr>
+    </div>  
+  <% end %>
+<% end %>
+
+
+
+
+  
+
+
+
+
+<center>
+  <%= will_paginate @news , renderer: MaterializePagination::Rails %>
+</center>
+    
+<%= render 'partials/footer' %>
+<!-- ============================================================= -->
+<style type="text/css">
+
+  blockquote {
+    border-left: 5px solid #4e2706;
+  }
+  
+  .news-content {
+    background-color: #e8e8e8;
+    padding: 10px 10px 10px 10px;
+    box-shadow: -1px 1px 4px grey;
+    margin: 10px 10px 10px 10px;
+    border-radius: 10px;  
+  }
+
+  .pagination li.active {
+    width: 30px;
+    background-color: #bf360c;
+    color: white;
+    padding-top: 5px;
+  }
+
+  .pagination li {
+    padding-top: 5px;
+    margin-left: 10px;
+  }
+
+  .parallax-container {
+      height: 400px;
+   }
+
+   .slides li img{
+    /*filter: blur(5px);*/
+    transition:.7s;
+   }
+
+   .slides li img:hover{
+     /*filter: blur(5px);*/
+     transform: scale(1.1);
+   }
+
+   .card-panel-ko {
+    padding: 0.5px 2px .5px 5px!important;
+   }
+
+   .other-date {
+    font-size: 12px!important;
+   }
+   .title {
+      font-size: 30px;
+    }
+
+    .date {
+      font-size: 30px;
+    }
+</style>
+

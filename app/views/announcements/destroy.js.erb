@@ -1,0 +1,5 @@
+$('#announcement<%= @announcement.id %>').fadeOut(600, function() {
+	$('#modal<%= @announcement.id %>').modal('close');
+	$(this).remove();
+	Materialize.toast('Announcement deleted !', 2000);
+});	

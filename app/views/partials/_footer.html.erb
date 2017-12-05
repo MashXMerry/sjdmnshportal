@@ -1,0 +1,43 @@
+<footer class="page-footer my-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col l12 s12" style="text-align: center;">
+        <%= image_tag "favicon.ico" , style:"width:50px;" %>
+        <h5 class="white-text center">San Jose del Monte</h5>
+        <h6 class="white-text center">National Trade School Student Portal</h6>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">
+    © San Jose del Monte National Trade School 2018
+    <% if administrator_signed_in? %>
+      <%= link_to destroy_administrator_session_path , method: :delete, class:"grey-text text-lighten-4 right" do %>
+        Logout <i class="fa fa-lock" aria-hidden="true"></i>
+      <% end %>
+    <% else %>
+      <%= link_to new_administrator_session_path , class:"grey-text text-lighten-4 right " do %>
+        <i class="fa fa-lock" aria-hidden="true"></i> Administration</a>
+      <% end %>
+    <% end %>
+    
+    </div>
+  </div>
+</footer>
+
+<style type="text/css">
+
+  footer {
+    margin-top: 100px;
+    position: absolute;
+    width: 100%;
+  }
+
+  .my-footer {
+    background-color: #640000 !important;;
+  }
+
+  .footer-copyright {
+    background-color: #150000 !important;
+  }
+</style>

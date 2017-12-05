@@ -1,0 +1,128 @@
+<div id="event<%= event.id %>">
+  <% if event.image_file_name.present? %>
+    <div class="row">
+      <div class="col s12">
+        <div class="card hoverable">
+          <div class="card-image">
+            <%= image_tag event.image.url , class:"materialboxed" %>
+            <a class="btn-floating halfway-fab waves-effect waves-light orange activator">
+              <i class="material-icons right">more_vert</i></a>
+          </div>
+          <div class="card-content">
+            <p class="title">Title: <%= event.title %></p>
+            <p>Posted at <%= event.created_at.to_s(:long) %></p>
+          </div>
+
+          <div class="fixed-action-btn horizontal hide-on-small-only" style="top: -80px;padding-right: 20px;">
+            <a class="btn-flat btn-small orange darken-4 white-text">
+              <i class="fa fa-cog fa-spin fa-3x fa-fw"></i> 
+            </a>
+            <ul>
+              <li>
+                <%= link_to edit_event_path(event) , class:"btn-floating yellow" do %>
+                  <i class="fa fa-pencil"></i>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to event_path(event) , class:"btn-floating red darken-1", remote: true ,method: :delete , data: { confirm: "Are you sure" } do %>
+                  <i class="fa fa-trash-o"></i>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">
+              <i class="material-icons right"><i class="material-icons right">close</i></i>
+              <p class="title">Title: <%= event.title %></p>
+              <hr>
+            </span>
+            <% if event.date.blank? %>
+              <!-- some codes here -->
+            <% else %>
+              <p class="date">Date: <%= event.date.to_s(:long) %></p>
+            <% end %>
+            <p class="body"><%= event.body %></p>
+            <p>Posted at <%= event.created_at.to_s(:long) %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal<%= event.id %>" class="modal">
+      <div class="modal-content">
+        <h3 class="center">Are you sure ?</h3>
+        <center>
+          <button class="btn btn-flat green modal-action modal-close">NO</button>
+          <%= link_to event_path(event) , class:"btn-flat red darken-1" , remote: true ,method: :delete do %>YES
+        <% end %>
+        </center>
+      </div>
+    </div>
+  <% else %>
+    <div class="row">
+      <div class="col s12">
+        <div class="card darken-1 hoverable">
+          <div class="card-content black-text">
+
+            <div class="fixed-action-btn horizontal hide-on-small-only">
+              <a class="btn-flat btn-small orange darken-4 white-text">
+                <i class="fa fa-cog fa-spin fa-3x fa-fw"></i> 
+              </a>
+              <ul>
+                <li>
+                  <%= link_to edit_event_path(event) , class:"btn-floating yellow" do %>
+                    <i class="fa fa-pencil"></i>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to event_path(event) , class:"btn-floating red darken-1", remote: true ,method: :delete , data: { confirm: "Are you sure" } do %>
+                    <i class="fa fa-trash-o"></i>
+                  <% end %>
+                </li>
+              </ul>
+            </div>
+
+            <% if event.date.blank? %>
+              <!-- some codes here -->
+            <% else %>
+              <p class="date">Date: <%= event.date.to_s(:long) %></p>
+            <% end %>
+              <p class="title">Title: <%= event.title  %></p><br>
+              <p class="body" style="text-align: justify;"><%= event.body %></p>
+              <div class="row hide-on-med-and-up" style="padding-top: 20px;">
+                  <%= link_to edit_event_path(event) , class:"btn btn-flat yellow col s6" do %>
+                    <i class="fa fa-pencil"></i>
+                  <% end %>
+                  <%= link_to event_path(event) , class:"btn btn-flat red col s6", remote: true ,method: :delete , data: { confirm: "Are you sure" } do %>
+                    <i class="fa fa-trash-o"></i>
+                  <% end %>
+              </div>
+          </div>
+          <div class="card-action">
+            <p>Posted at <%= event.created_at.to_s(:long) %></p>
+          </div>
+        </div>
+      </div>
+    </div><!-- row announcement no image -->
+  <% end %>
+</div><!-- event w/o image -->
+
+<style type="text/css">
+
+.fixed-action-btn {
+    float: right;
+    position: relative;
+    padding-top: 20px!important;
+    left: 21px!important;
+}
+
+.title {
+  font-size: 30px;
+}
+
+.date {
+  font-size: 30px;
+}
+
+</style>

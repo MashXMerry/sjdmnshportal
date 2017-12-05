@@ -1,0 +1,102 @@
+/*
+*= require material_icons
+*/
+@import "materialize";
+@import "font-awesome";
+
+body {
+  font-family:"Microsoft YaHei Light";
+  // background-image:url("home.png");
+  background-color: #e8e8e8;
+}
+
+.btn-file {
+	position:relative;
+	overflow: hidden;
+}
+
+.btn-file input[type=file] {
+	position:absolute;
+	top:0;
+	right:0;
+	min-width:100%;
+	min-height:100%;
+	font-size:100px;
+	text-align:right;
+	filter: alpha(opacity=0);
+	opacity:0;
+	outline:none;
+	background:white;
+	cursor:inherit;
+	display:block;
+}
+
+.carousel {
+	color:white!important;
+}
+
+
+/* ++++++++++++++++++ media quieries +++++++++++++++++++ */
+
+// Extra small devices (portrait phones, less than 576px)
+
+@media (max-width: 575px) { 
+ 	.slider {
+ 		height:340px!important;
+ 	}
+ 	.slides {
+ 		height:300px!important;
+ 	}
+ 	.parallax-container {
+    height: 670px!important;
+	}
+	.history {
+	  font-size:13px!important;
+	}
+	.title {
+		font-size:15px!important;
+	}
+	.date {
+		font-size:15px!important;
+	}
+	.body {
+		font-size:10px!important;
+	}
+	.sjdm {
+		font-size:15px!important;
+	}
+}
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) and (max-width: 767px) {  
+	.slides {
+		height:350px!important;
+	}
+	.slider {
+		height:390px!important;
+	}
+	.history {
+	  font-size:13px!important;
+	}
+	.title {
+		font-size:20px!important;
+	}
+	.date {
+		font-size:20px!important;
+	}
+	.body {
+		font-size:12px!important;
+	}
+	.sjdm {
+		font-size:20px!important;
+	}
+}
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) and (max-width: 991px) {  
+
+
+}
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) and (max-width: 1199px) {  }
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {  }

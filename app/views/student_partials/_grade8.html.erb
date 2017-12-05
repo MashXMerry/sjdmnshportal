@@ -1,0 +1,181 @@
+<li>
+  <div class="collapsible-header orange lighten-1">Grade 8 <span class="badge"><%= @students8.count %> registered students</span></div>
+  <div class="collapsible-body">
+    <ul class="collapsible">
+      <li>
+        <div class="collapsible-header">Section A</div>
+        <div class="collapsible-body">
+          <table class="striped">
+            <thead>
+              <tr>
+                <th>L R N</th>
+                <th>Lastname</th>
+                <th>Firstname</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Registered at</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @students8A.each do |studentA| %>
+              <tr>
+                <td><%= studentA.lrn %></td>
+                <td><%= link_to studentA.lastname , student_path(studentA.id) %></td>
+                <td><%= studentA.firstname %></td>
+                <td><%= studentA.email %></td>
+                <td><%= studentA.gender %></td>
+                <td><%= studentA.created_at.to_s(:short) %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </li>
+      <li>
+        <div class="collapsible-header">Section B</div>
+        <div class="collapsible-body">
+          <table class="striped">
+            <thead>
+              <tr>
+                <th>L R N</th>
+                <th>Lastname</th>
+                <th>Firstname</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Registered at</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @students8B.each do |studentB| %>
+              <tr>
+                <td><%= studentB.lrn %></td>
+                <td><%= studentB.lastname %></td>
+                <td><%= link_to studentB.firstname , student_path(studentB.id) %></td>
+                <td><%= studentB.email %></td>
+                <td><%= studentB.gender %></td>
+                <td><%= studentB.created_at.to_s(:short) %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </li>
+      <li>
+        <div class="collapsible-header">Section C</div>
+        <div class="collapsible-body">
+          <table class="striped">
+            <thead>
+              <tr>
+                <th>L R N</th>
+                <th>Lastname</th>
+                <th>Firstname</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Registered at</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @students8C.each do |studentC| %>
+              <tr>
+                <td><%= studentC.lrn %></td>
+                <td><%= studentC.lastname %></td>
+                <td><%= link_to studentC.firstname , student_path(studentC.id) %></td>
+                <td><%= studentC.email %></td>
+                <td><%= studentC.gender %></td>
+                <td><%= studentC.created_at.to_s(:short) %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </li>
+      <li>
+        <div class="collapsible-header">Section D</div>
+        <div class="collapsible-body">
+          <table>
+            <thead class="striped">
+              <tr>
+                <th>L R N</th>
+                <th>Lastname</th>
+                <th>Firstname</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Registered at</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @students8D.each do |studentD| %>
+              <tr>
+                <td><%= studentD.lrn %></td>
+                <td><%= studentD.lastname %></td>
+                <td><%= link_to studentD.firstname , student_path(studentD.id) %></td>
+                <td><%= studentD.email %></td>
+                <td><%= studentD.gender %></td>
+                <td><%= studentD.created_at.to_s(:short) %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </li>
+      <li>
+        <div class="collapsible-header">Section E</div>
+        <div class="collapsible-body">
+          <table class="striped">
+            <thead>
+              <tr>
+                <th>L R N</th>
+                <th>Lastname</th>
+                <th>Firstname</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Registered at</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @students8E.each do |studentE| %>
+              <tr>
+                <td><%= studentE.lrn %></td>
+                <td><%= studentE.lastname %></td>
+                <td><%= link_to studentE.firstname , student_path(studentE.id) %></td>
+                <td><%= studentE.email %></td>
+                <td><%= studentE.gender %></td>
+                <td><%= studentE.created_at.to_s(:short) %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </li>
+      <li>
+        <div class="collapsible-header">Section F</div>
+        <div class="collapsible-body">
+          <table class="striped">
+            <thead>
+              <tr>
+                <th>L R N</th>
+                <th>Lastname</th>
+                <th>Firstname</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Registered at</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @students8F.each do |studentF| %>
+              <tr>
+                <td><%= studentF.lrn %></td>
+                <td><%= studentF.lastname %></td>
+                <td><%= link_to studentF.firstname , student_path(studentF.id) %></td>
+                <td><%= studentF.email %></td>
+                <td><%= studentF.gender %></td>
+                <td><%= studentF.created_at.to_s(:short) %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </li>
+    </ul>
+  </div>
+</li>

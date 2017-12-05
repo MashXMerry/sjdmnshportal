@@ -1,0 +1,8 @@
+$('#modalNews').modal('close');
+$('#title').val('');
+$('#textarea1').val('');
+
+$('#news-datas').prepend('<%= j render @news %>');
+$('#news<%= @news.id %>').hide().fadeIn(500);
+$('#opt').hide();
+Materialize.toast('News created !', 2000);

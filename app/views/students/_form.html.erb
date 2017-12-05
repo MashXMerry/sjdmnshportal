@@ -1,0 +1,88 @@
+<%= form_with(model: student, local: true , remote: true) do |form| %>
+  <% if student.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(student.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+      <ul>
+      <% student.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="card white darken-1" style="margin-top: 50px">
+    <div class="card-content black-text">
+      <span class="card-title center"><b>Update student account  </b></span><br>
+        <div class="row">
+          <div class="input-field col s12 m4 l4">
+            <i class="material-icons prefix">face</i>
+            <label class="active">Firstname</label>
+            <%= form.text_field :firstname, id: :student_firstname %>
+          </div>
+
+          <div class="input-field col s12 m4 l4">
+            <i class="material-icons prefix">face</i>
+            <label class="active">Middlename</label>
+            <%= form.text_field :middlename, id: :student_middlename %>
+          </div>
+
+          <div class="input-field col s12 m4 l4">
+            <i class="material-icons prefix">face</i>
+            <label class="active">Lastname</label>
+            <%= form.text_field :lastname, id: :student_lastname %>
+          </div>
+
+          <div class="input-field col s12 m6 l12">
+            <i class="material-icons prefix">face</i>
+            <label class="active">LRN</label>
+            <%= form.text_field :lrn, id: :student_lrn, required: "required" %>
+          </div>
+
+          <div class="input-field col s12 m12 l12">
+            <i class="material-icons prefix">lock</i>
+            <label class="active">Password</label>
+            <%= form.text_field :password, id: :student_password , required: "required"%>
+          </div>
+
+          <div class="input-field col s12 m4 l4">
+            <%= form.select :section,
+            options_for_select([["Section", ""], "A" , "B" , "C" , "D" , "E" , "F"]) , id:"student_section", :required => true %>
+          </div>
+
+          <div class="input-field col s12 m4 l4">
+            <%= form.select :level , 
+            options_for_select([["Level", ""], "7" , "8" , "9" , "10" , "11" , "12"]) , id:"level", :required => true %>
+          </div>
+
+          <div class="input-field col s12 m4 l4">
+            <%= form.select :gender , options_for_select([["Gender", ""],"Male" , "Female"]) ,id:"gender" , :required => true %>
+          </div>
+
+          <div class="input-field col s12 m12 l12">
+            <i class="material-icons prefix">email</i>
+            <%= form.email_field :email , id:"email" , class: "active" %>
+            <label class=" active">Email (Leave it blank if don't have any)</label>
+          </div>
+        </div>      
+    </div>
+    <div class="card-action">
+      <%= form.submit "Update account" , id:"btn-update-student" , class:"btn green" , data: {
+        disable_with: "Saving changes.."
+      } %>
+      <a class="btn btn-reset" id="btn-reset">Reset password</a>
+    </div>
+  </div>
+
+<% end %>
+
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#btn-reset').on('click' , function() {
+        var Fname = $('#student_firstname').val();
+        var SFname = Fname.substring(0,4)
+        $('#student_password').val(SFname + $('#student_lrn').val());
+    });
+  });
+</script>

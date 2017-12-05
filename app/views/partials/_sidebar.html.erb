@@ -1,0 +1,131 @@
+<ul id="slide-out" class="side-nav fixed" style="position: fixed; ">
+  <li>
+    <div class="user-view">
+      <div class="background">
+        <%= image_tag "img1.jpg" , style:"width:100%" %>
+      </div>
+      <% if current_administrator.image_file_name.present? %>
+        <a><%= image_tag current_administrator.image.url(:medium) , class:"circle materialboxed" %></a>
+      <% else %>
+        <a href="#!user"><%= image_tag "avatar.jpg" , class:"circle materialboxed" %></a>
+      <% end %>
+      <a><span class="white-text name">
+        <%= current_administrator.firstname %> <%= current_administrator.lastname %></span></a>
+      <a><span class="white-text email"><%= current_administrator.email %></span></a>
+    </div>
+  </li>
+
+  <li class="link-bottom">
+    <%= link_to root_path , class:" waves-effect waves-orange" do %> Homepage
+      <i class="material-icons">home</i>
+    <% end %>
+  </li>
+
+  <li class="<%= 'my-active' if current_page?(admin_dashboard_path) %> link-bottom ">
+    <%= link_to admin_dashboard_path ,class:"waves-effect waves-orange" do %>
+      Dasboard <i class="material-icons <%= 'white-text' if current_page?(admin_dashboard_path) %>">dashboard</i>
+    <% end %>
+  </li>
+
+  <li class="<%= 'my-active' if current_page?(news_index_path) %> link-bottom">
+    <%= link_to news_index_path , class:" waves-effect waves-orange"  do %>News 
+      <i class="material-icons <%= 'white-text' if current_page?(news_index_path) %>">library_books</i>
+    <% end %>
+  </li>
+
+  <li class="<%= 'my-active' if current_page?(announcements_path) %> link-bottom">
+    <%= link_to announcements_path , class:" waves-effect waves-orange"  do %> Announcements 
+      <i class="material-icons <%= 'white-text' if current_page?(announcements_path) %>">announcement</i>
+    <% end %>   
+  </li> 
+
+  <li class="<%= 'my-active' if current_page?(events_path) %> link-bottom">
+    <%= link_to events_path , class:" waves-effect waves-orange"  do %> Events
+      <i class="material-icons <%= 'white-text' if current_page?(events_path) %>">live_tv</i>
+    <% end %> 
+  </li>
+
+  <ul class="collapsible collapsible-accordion">
+    <li class="bold"><a class="collapsible-header waves-effect waves-orange" style="padding-left: 30px">
+      <i class="material-icons">person</i>Account</a>
+      <div class="collapsible-body">
+        <ul>
+          <li>
+            <%= link_to admin_profile_path do %>Profile
+            <% end %>
+          </li>
+          <% if current_administrator.role == "admin" %>
+            <li>
+              <%= link_to admin_register_path do %>Register Account
+              <% end %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to admin_register_path do %>Registered Accounts
+              <% end %>
+            </li>
+          <% end %>
+          
+          <li><%= link_to "Logout" , destroy_administrator_session_path , method: :delete %></li>
+          <li><a href="helpers.html">Help</a></li>
+        </ul>
+      </div>
+    </li>
+    <li class="bold">
+      <a class="collapsible-header waves-effect waves-orange" style="padding-left: 30px">
+        <i class="material-icons">supervisor_account</i>Student
+      </a>
+      <div class="collapsible-body">
+        <ul>
+          <li>
+            <%= link_to students_path do %>Register Students
+            <% end %>
+          </li>
+          <li>
+            <%= link_to admin_student_list_path do %>Student List
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li class="bold"><a class="collapsible-header waves-effect waves-orange" style="padding-left: 30px">
+    <i class="material-icons">format_list_numbered</i>Grades</a>
+      <div class="collapsible-body">
+        <ul>
+          <li>
+            <%= link_to "Grade 7" , grade7_path %>
+          </li>
+          <li>
+            <%= link_to "Grade 8" , grade8_path %>
+          </li>
+          <li>
+            <%= link_to "Grade 9" , grade9_path %>
+          </li>
+          <li>
+            <%= link_to "Grade 10" , grade10_path %>
+          </li>
+          <li>
+            <%= link_to "Grade 11" , grade11_path %>
+          </li>
+          <li>
+            <%= link_to "Grade 12" , grade12_path %>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</ul>
+
+<style type="text/css">
+  .my-active {
+    background-color: #e65100!important;
+  }
+
+  .my-active a {
+    color:white!important;
+  }
+
+  .link-bottom {
+    transition: .3s;
+  }
+</style>

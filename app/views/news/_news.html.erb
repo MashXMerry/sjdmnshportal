@@ -1,0 +1,57 @@
+<div id="news<%= news.id %>" class="hoverable">	
+  <div class="card darken-1">
+    <div class="card-content black-text">
+      <div class="fixed-action-btn horizontal hide-on-small-only">
+        <a class="btn-flat btn-small orange white-text">
+          <i class="fa fa-cog fa-spin fa-3x fa-fw"></i> 
+        </a>
+        <ul>
+          <li>
+            <%= link_to edit_news_path(news) , class:"btn-floating yellow darken-1" do %>
+              <i class="fa fa-pencil"></i>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to news_path(news) , class:"btn-floating red darken-1", remote: true ,method: :delete , data: { confirm: "Are you sure" } do %>
+              <i class="fa fa-trash-o"></i>
+            <% end %>
+          </li>
+        </ul>
+      </div> 
+        <p class="title">Title: <%= news.title %></p><br>
+        <p class="body" style="text-align: justify;"><%= news.body %></p>
+        <div class="row hide-on-med-and-up" style="padding-top: 20px">
+          <%= link_to edit_news_path(news) , class:"btn btn-flat green col s6" do %>
+            <i class="fa fa-pencil"></i>
+          <% end %>
+          <%= link_to news_path(news) , class:"btn btn-flat red col s6", remote: true ,method: :delete , data: { confirm: "Are you sure" } do %>
+            <i class="fa fa-trash-o"></i>
+          <% end %>
+        </div>
+    </div>
+    <div class="card-action">
+      <a>Posted at <%= news.created_at.to_s(:short) %></a>
+    </div>
+  </div>
+</div><!-- Container news-w/o-image -->
+  
+
+     
+<style type="text/css">
+
+
+.fixed-action-btn {
+    float: right;
+    position: relative;
+    padding-top: 20px!important;
+    left: 30px!important;
+}
+.title {
+  font-size: 30px;
+}
+
+.date {
+  font-size: 30px;
+}
+
+</style>

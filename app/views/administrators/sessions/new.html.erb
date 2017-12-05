@@ -1,0 +1,45 @@
+<%= render 'partials/navbar' %>
+
+<div class="row" style="margin-top: 100px">
+  <div class="col s12 m8 l4 offset-l4 offset-m2">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="card white darken-1 hoverable">
+        <div class="card-content black-text">
+          <span class="card-title center" style="padding-bottom: 20px;"><h4>Login</h4></span>
+            <div class="input-field">
+              <i class="material-icons prefix">email</i>
+              <label for="email">Email</label>
+              <%= f.email_field :email, autofocus: true , id:"email" %>
+            </div>
+
+            <div class="input-field" style="padding-bottom: 10px">
+              <i class="material-icons prefix">lock</i>
+              <label for="password">Password</label>
+              <%= f.password_field :password, autocomplete: "off" , id:"password" %>
+            </div>
+
+            <% if devise_mapping.rememberable? -%>
+              <div class="field">
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+              </div>
+            <% end  %>
+        </div>
+        <div class="card-action right-align">
+          <%= f.submit "Log in" , class:"btn blue" do %>
+            <i class="material-icons prefix">create</i>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%= render 'partials/footer' %>
+
+<style type="text/css">
+  p.alert {
+    text-align: center!important;
+    color: red!important;
+  }
+</style>

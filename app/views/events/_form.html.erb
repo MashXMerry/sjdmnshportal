@@ -1,0 +1,70 @@
+<%= form_with(model: event, local: true) do |form| %>
+  <% if event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="card white hoverable">
+    <div class="card-content black-text">
+      <span class="card-title center"><b>Edit event</b></span><br>
+      <div class="row">  
+        <div class="input-field s12">
+          <i class="material-icons prefix">create</i>
+          <label for="event_title" class="active">Edit event title</label>
+          <%= form.text_field :title, id: :event_title %>
+        </div>
+        <div class="input-field s12">
+          <i class="material-icons prefix">create</i>
+          <label for="event_body" class="active">Edit event content</label>
+          <%= form.text_area :body, id: :event_body , class:"materialize-textarea" %>
+        </div>
+        <div class="input-field col s12 l6 m6">
+          <i class="material-icons prefix">create</i>
+          <label for="announcement_date" class="active">Edit announcement date</label>
+          <%= form.text_field :date, id: :announcement_date ,class:"datepicker" , type:"text" %>
+          <label></label>
+        </div>
+        <div class="file-field input-field col s12 l6 m6">
+          <div class="btn">
+            <span>Add/Edit Photo</span>
+            <%= form.file_field :image , id:"image" %>
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+          </div>
+        </div>
+        <div class="actions">
+          
+        </div>
+      </div>
+    </div>
+    <div class="card-action">
+      <%= form.submit "Update" , class:"btn btn-flat green", data: {
+          disable_with: "Updating.."
+        } %>
+        <%= link_to 'Back', events_path , class:"btn btn-flat blue right" %>
+    </div>
+  </div>
+
+      
+  
+<% end %>
+
+
+<script type="text/javascript">
+    $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15, // Creates a dropdown of 15 years to control year,
+    today: 'Today',
+    clear: 'Clear',
+    close: 'Ok',
+    closeOnSelect: false // Close upon selecting a date,
+  });
+</script>

@@ -1,0 +1,150 @@
+<%= javascript_include_tag 'style' %>
+
+<%= render 'partials/navbar' %>
+<%= render 'partials/slider' %>
+<!-- ============================================================= -->
+<div class="row">
+  <div class="col l6 m6 s12 offset-l3">
+    <h3 class="center">Annoucements</h3>
+    <hr>
+  </div>
+</div>
+
+<div class="row announcement-content">
+  <% if @announcements.empty? %>
+    <h3 class="center">NO ANNOUNCEMENTS POSTED YET</h3>
+  <% else %>
+    <% @announcements.each do |announcement| %>
+      <% if announcement.image_file_name.present? %>
+        <div class="col l4 m4 s12">
+          <div class="card blue-grey darken-1">
+            <%= image_tag "img1.jpg" , style:"width:100%;height:300px" , class:"materialboxed" %>
+            <div class="card-content white-text">
+              <span class="card-title"><p class="title"><%= announcement.title %></p></span><br>
+              Posted at <%= announcement.created_at.to_s(:long) %>
+              <hr>
+              <p style="text-align: justify;"><%= truncate(announcement.body, length:150) %></p>
+            </div>
+            <div class="card-action">
+              <a class="waves-effect waves-light btn modal-trigger" href="#modalA<%= announcement.id %>">Read more</a>
+            </div>
+          </div>
+        </div><!-- col l4 m4 s12 -->
+      <% else %>
+        <div class="col l4 m4 s12">
+          <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+              <span class="card-title"><p class="title"><%= announcement.title %></p></span><br>
+              Posted at <%= announcement.created_at.to_s(:long) %>
+              <hr>
+              <p style="text-align: justify;"><%= truncate(announcement.body, length:150) %></p>
+            </div>
+            <div class="card-action">
+              <a class="waves-effect waves-light btn modal-trigger" href="#modalA<%= announcement.id %>">Read more</a>
+            </div>
+          </div>
+        </div><!-- col l4 m4 s12 -->
+      <% end %>
+        
+      <div id="modalA<%= announcement.id %>" class="modal white-text">
+        <div class="modal-content blue-grey darken-1">
+          <% if announcement.date.blank? %>
+            <p class="title">
+              Title: <%= announcement.title %>
+            </p>
+          <% else %>
+            <p class="title">
+              Title: <%= announcement.title %><br>
+              When: <%= announcement.date.to_s(:long) %>
+            </p>
+          <% end %>
+          Posted at <%= announcement.created_at.to_s(:long) %>
+          <p class="body"><%= announcement.body %></p>
+        </div>
+        <div class="modal-footer blue-grey darken-1">
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat white-text">close</a>
+        </div>
+      </div><!-- modal -->
+    <% end %>
+  <% end %>
+</div>
+
+<center>
+  <%= will_paginate @announcements , renderer:MaterializePagination::Rails %>
+</center>
+<%= render 'partials/footer' %>
+
+
+
+<style type="text/css">
+
+  .announcement-content {
+    background-color: #e8e8e8;
+    padding: 10px 10px 10px 10px;
+    box-shadow: -1px 1px 4px grey;
+    margin: 10px 10px 10px 10px;
+    border-radius: 10px;  
+  }
+
+  .content-title {
+    font-size: 20px;
+    font-family: sans-serif;
+  }
+
+  .content {
+    background-color: #ffffff;
+    box-shadow: -1px 1px 7px #8c8c8c;
+    border-radius: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+  }
+
+  .pagination li.active {
+    width: 30px;
+    background-color: #bf360c;
+    color: white;
+    padding-top: 5px;
+  }
+
+  .pagination li {
+    padding-top: 5px;
+    margin-left: 10px;
+  }
+  .parallax-container {
+      height: 400px;
+   }
+
+  .slides li img{
+    /*filter: blur(5px);*/
+    transition:.7s;
+  }
+
+  .slides li img:hover{
+    /*filter: blur(5px);*/
+    transform: scale(1.1);
+  }
+
+ .title {
+    font-size: 30px;
+  }
+
+  .date {
+    font-size: 30px;
+  }
+
+  .card-panel-ko {
+    padding: 0.5px 2px .5px 5px!important;
+   }
+  .other-date {
+  font-size: 12px!important;
+ }
+</style>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.carousel').carousel();
+  });
+</script>

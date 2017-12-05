@@ -1,0 +1,112 @@
+<nav class="my-navbar">
+  	<div class="container">
+  		<div class="nav-wrapper">
+  		  <b><%= link_to "San Jose del Monte" , root_path ,class:"brand-logo hide-on-med-and-up" , style:"font-size:15px" %></b> 
+	      <%= link_to "Web Portal" , root_path , class:"brand-logo hide-on-small-only" %>
+	      <a href="#" data-activates="mobile-demo" class="button-collapse">
+	      	<i class="fa fa-bars" aria-hidden="true"></i>
+	      </a>
+	      <ul class="right hide-on-med-and-down">
+	      	<li class="waves-effect waves-orange">
+	      	  <%= link_to root_path do %> Home
+	      	    <i class="fa fa-home" aria-hidden="true"></i>
+	      	  <% end %>	
+	      	</li> 
+	        <li class="<%= 'active' if current_page?(news_page_path) %>waves-effect waves-orange">
+	          <%= link_to news_page_path do %> News
+	            <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+	          <% end %>
+	        </li> 
+	        <li class="waves-effect waves-orange">
+	          <%= link_to announcement_page_path do %> Announcements
+	            <i class="fa fa-bullhorn" aria-hidden="true"></i>
+	          <% end %>		
+	        </li> 
+	        <li class="waves-effect waves-orange">
+	          <%= link_to event_page_path  do %> Events
+	            <i class="fa fa-calendar" aria-hidden="true"></i>
+	          <% end %>	
+	        </li> 
+	        <li class="waves-effect waves-orange">
+	          <%= link_to about_page_path do %> About
+	            <i class="fa fa-university" aria-hidden="true"></i>
+	          <% end %>
+	        </li>
+	        <% if administrator_signed_in? %>
+	           <li>
+	             <%= link_to admin_dashboard_path do %>
+	               Admin panel <i class="fa fa-lock" aria-hidden="true"></i>
+	             <% end %>
+	           </li>
+	        <% else %>
+		        <!-- <li class="waves-effect waves-orange">
+		          <a> Sign in
+			        <i class="fa fa-lock" aria-hidden="true"></i>
+		          </a>
+		        </li> -->
+	        <% end %>
+	      </ul>
+	      <ul class="side-nav" id="mobile-demo">
+	      	<li>
+	      	  <div class="user-view">
+		        <div class="background">
+		          <%= image_tag "background.jpg" , style:"width:100%" %>
+		        </div>
+		        <a href="#!user"><%= image_tag "favicon.ico" , class:"circle" %></a>
+		        <a><span class="white-text name">San Jose del Monte National Trade School</span></a>
+		        <a><span class="white-text email">Student Portal</span></a>
+		      </div>
+			</li>
+	        <li>
+	      	  <%= link_to root_path , class:"waves-effect waves-orange" do %> Home
+	      	    <i class="material-icons">home</i>
+	      	  <% end %>	
+	      	</li> 
+	        <li>
+	          <%= link_to news_page_path, class:"waves-effect waves-orange" do %> News
+	            <i class="material-icons">library_books</i>
+	          <% end %>
+	        </li> 
+	        <li>
+	          <%= link_to announcement_page_path, class:"waves-effect waves-orange" do %> Announcements
+	            <i class="material-icons">announcement</i>
+	          <% end %>		
+	        </li> 
+	        <li>
+	          <%= link_to event_page_path , class:"waves-effect waves-orange" do %> Events
+	            <i class="material-icons">live_tv</i>
+	          <% end %>	
+	        </li> 
+	        <li>
+	          <%= link_to about_page_path , class:"waves-effect waves-orange" do %> About
+	            <i class="material-icons">help</i>
+	          <% end %>
+	        </li>
+	        <li>
+	          <% if administrator_signed_in? %>
+	            <%= link_to admin_dashboard_path, class:"waves-effect waves-orange" do %> Admin panel
+	              <i class="material-icons">person</i>
+	            <% end %>
+	          <% else %>
+	           <!--  <%= link_to root_path, class:"waves-effect waves-orange" do %> Sign in
+	              <i class="fa fa-university" aria-hidden="true"></i>
+	            <% end %> -->
+	          <% end %>
+	        </li>
+	      </ul>
+	    </div>
+  	</div> 
+</nav>
+
+
+<style type="text/css">
+	.my-navbar {
+		background-color: #640000 !important;/*
+	    position: absolute;
+	    top: 0%;*/
+	}	
+	nav ul a:hover {
+	    background-color: rgb(151, 0, 0);	
+	}
+</style>
+

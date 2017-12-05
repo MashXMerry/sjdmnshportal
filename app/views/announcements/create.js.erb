@@ -1,0 +1,9 @@
+$('#modalAA').modal('close');
+$('#title').val('');
+$('#body').val('');
+$('#image').val('');
+
+$('#announcement-content').prepend('<%= j render @announcement %>');
+$('#announcementt<%= @announcement.id %>').hide().fadeIn(500);
+$('#condition-cont').hide().fadeOut(500);
+Materialize.toast('Announcement created !', 2000);

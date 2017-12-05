@@ -1,0 +1,95 @@
+<%= javascript_include_tag 'style' %>
+<div class="row">
+  <nav class="orange darken-4" style="margin-bottom: 20px">
+    <div class="nav-wrapper">
+      <a href="#" data-activates="slide-out" class="button-collapse">
+        <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+      </a>
+      <ul class="right">
+        <li>
+          <a class="waves-effect waves-light btn modal-trigger amber hoverable" href="#modalAA" id="modalKo">
+            Create announcement
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav><!-- navbar -->
+
+  <div class="row">
+    <h4 class="col s12 m12 l9 right center">Announcements</h4>
+    <h5 class="col s12 m12 l9 right green-text"><%= notice %></h5> 
+    <div id="announcement-content" class="col s12 m12 l9 right"> 
+      <% if @announcements.empty? %>
+        <center id="condition-cont"><h3>No Announcement posted yet</h3></center>
+      <% else %>
+        <%= render @announcements %>
+      <% end %>
+    </div>
+  </div>
+      
+  <div class="row">
+    <div id="modalAA" class="modal">
+      <%= form_for(@announcement , remote: true , html: { multipart: true } ) do |f| %>
+        <div class="modal-content">
+          <center><h4>Create announcement</h4></center>
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">create</i>
+              <%= f.text_field :title , id:"title" , class:"validate" , required:"required" %>
+              <label for="title">Announcement title</label>
+            </div>
+            <div class="input-field col s12">
+              <i class="material-icons prefix">subject</i>
+              <%= f.text_area :body , id:"body" , class:"materialize-textarea validate" , required:"required" %>
+              <label for="body">Announcement content</label>
+            </div>
+            <div class="input-field col s12">
+              <i class="material-icons prefix">date_range</i>
+              <label for="announcement_date">Announcement due date</label>
+              <%= f.text_field :date, id: :announcement_date ,class:"datepicker" , type:"text" %>
+              <label></label>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <span class="btn btn-file left s12">
+            <i class="fa fa-camera" aria-hidden="true"></i> Add photo <%= f.file_field :image , id:"image" %>
+          </span>
+          <a class="modal-action modal-close waves-effect waves-blue btn-flat red s12">Close</a>
+          <%= f.submit "Create" , class:"btn btn-flat  green" , data: { disable_with: "Creating announcement" } %>
+        </div>
+      <% end %>  
+    </div>
+  </div><!-- row -->
+
+  <div class="col s12 ">
+      <%= render 'partials/sidebar' %>
+  </div><!-- col s12 -->
+
+</div>
+  
+<style type="text/css">
+  body {
+    background-color: #e8e8e8;
+  }
+  .modal.bottom-sheet {
+    max-height: 100%!important;
+  }
+
+  .modal .modal-footer {
+    height: 80px!important;
+  }
+
+</style>
+
+<script type="text/javascript">
+    $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15, // Creates a dropdown of 15 years to control year,
+    today: 'Today',
+    clear: 'Clear',
+    close: 'Ok',
+    closeOnSelect: false // Close upon selecting a date,
+  });
+</script>
+

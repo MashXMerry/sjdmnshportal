@@ -1,0 +1,87 @@
+<%= javascript_include_tag 'style' %>
+<div class="row">
+  <nav class="orange darken-4" style="margin-bottom: 20px">
+    <div class="nav-wrapper">
+      <a href="#" data-activates="slide-out" class="button-collapse">
+        <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+      </a>
+      <ul class="right">
+        <li>
+          <a class="waves-effect waves-light btn modal-trigger amber hoverable" href="#modalNews" id="modalKo">
+            Create news
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav><!-- navbar -->
+
+  <div class="row">
+    <h4 class="col s12 m12 l9 right center">News</h4>
+    <h5 class="col s12 m12 l9 right green-text"><%= notice %></h5> 
+    <div id="news-datas" class="col s12 m12 l9 right">
+      <% if @news.empty? %>
+        <center><h1 id="opt">No news posted yet</h1></center>
+      <% else %>
+        <%= render @news %>
+      <% end %>
+    </div>
+  </div><!-- row -->
+    
+  <div class="row">
+    <div id="modalNews" class="modal fixed-footer">
+      <div class="">
+        <%= form_for(@news1, remote: true ) do |f| %>
+          <div class="modal-content">
+            <center><h3>Create News</h3></center>
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">create</i>
+                <%= f.text_field :title , id:"title" , class:"validate", required:"required" %>
+                <label for="title">News title:</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="row">
+                <div class="input-field col s12">
+                  <i class="material-icons prefix">subject</i>
+                  <%= f.text_area :body , id:"textarea1" , class:"materialize-textarea" , required:"required" %>
+                  <label for="textarea1">News content:</label>
+                </div>
+              </div>
+            </div>
+          </div> 
+          
+          <div class="modal-footer">
+            <a class="modal-action modal-close waves-effect waves-green red btn-flat white-text">Cancel</a>
+            <%= f.submit "Create", class:"btn waves-effect waves-light green", data: {
+              disable_with: "Creating news..."
+            } %>
+          </div>
+        <% end %><!-- form-for -->
+      </div><!-- container -->
+    </div><!-- modal -->
+  </div><!-- row -->
+
+  <div class="col s12 ">
+      <%= render 'partials/sidebar' %>
+  </div><!-- col s12 -->
+
+</div>
+  
+
+<style type="text/css">
+  body {
+    background-color: #e8e8e8;
+  }
+
+  .modal.bottom-sheet {
+    max-height: 100%!important;
+  }
+
+  .modal .modal-footer {
+    height: 80px!important;
+  }
+
+</style>
+
+

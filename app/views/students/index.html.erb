@@ -1,0 +1,140 @@
+<%= javascript_include_tag 'style' %>
+<div class="row" style="background-color: #e8e8e8">
+  <div class="">
+    <nav class="orange darken-4">
+      <div class="nav-wrapper">
+        <a href="#" data-activates="slide-out" class="button-collapse">
+          <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+        </a>
+        <ul class="right">
+        <a class="brand-logo right" style="padding-right: 20px">Register student</a>
+      </ul>
+      </div>
+    </nav>
+    <!-- ++++++++++++++++++++ MODAL ++++++++++++++++++++++++ -->
+    <div class="row" style="padding-top: 50px">
+      <div class="col s12 m12 l9 right">
+        <%= form_for(@student , remote: true , html: { class:"student-form" } ) do |f| %>
+        <div class="card white hoverable">
+          <div class="card-content">
+            <span class="card-title center"><b>Register new student</b></span><br>
+              <div class="row">
+                <div class="col s12 m4 l4">
+                  <div class="input-field">
+                    <i class="material-icons prefix">face</i>
+                    <%= f.text_field :firstname , id:"firstname" , required: "required" %>
+                    <label>Firstname</label> 
+                  </div>
+                </div>
+                <div class="col s12 m4 l4">
+                  <div class="input-field">
+                    <i class="material-icons prefix">face</i>
+                    <%= f.text_field :middlename , id:"middlename" %>
+                    <label>Middlename</label> 
+                  </div>  
+                </div>
+                <div class="col s12 m4 l4">
+                  <div class="input-field">
+                    <i class="material-icons prefix">face</i>
+                    <%= f.text_field :lastname , id:"lastname" , required: "required" %>
+                    <label>Lastname</label> 
+                  </div>  
+                </div>
+                <div class="col s12">
+                  <div class="input-field">
+                    <i class="material-icons prefix">face</i>
+                    <%= f.text_field :lrn , id:"lrn" , required: "required" %>
+                    <label>L R N</label>
+                  </div>
+                </div>
+                <div class="col s12">
+                  <div class="input-field">
+                    <i class="material-icons prefix">email</i>
+                    <%= f.email_field :email , id:"email" %>
+                    <label>Email</label>
+                  </div>
+                </div>
+                <div class="col s12">
+                  <div class="input-field">
+                    <i class="material-icons prefix">lock</i>
+                    <%= f.password_field :password , disabled: true,placeholder:"Password" ,
+                    id:"password" %>
+                  </div>
+                </div>
+                <div class="col s12 m4 l4">
+                  <div class="input-field">
+                    <%= f.select :level , 
+                    options_for_select([["--LEVEL--"], "7" , "8" , "9" , "10" , "11" , "12"]) , id:"level" %>
+                  </div>  
+                </div>
+                <div class="col s12 m4 l4" id="level-field">
+                  <div class="input-field">
+                    <%= f.select :section,
+                    options_for_select(
+                    [["--SECTION--"], "ACACIA" , "AMBER" , "AMETHYST" , "AMOS" , "APITONG" , "APOLLO", "AQUAMARINE" ,"ATHENA","AVOCADO","AWIT","CAMACHILE","CAMIA","CARNATION","CATLEYA","CERRIDWEN","CHARITY","CRONICA","DAISY","DANIEL","DEMETER","DIAMOND","DUHAT","EMERALD","EXODUS","EZEKIEL","FAITH","FREEDOM","GARNET","GENESIS","GLADIOLA","GOODWILL","GUMAMELA","HERA","HERCULES","HERMES","HESPHAESTUS","HONESTY","HOPE","ILANG-ILANG","IPIL-IPIL","IRIS","ISAIAH","JADE","JEREMIAH","JOSHUA","JUSTICE","KAMAGONG","KAWIKAAN","LEVITICO","LIRIO","LOTUS","LOVE","MAHOGANY","MANGGA","MULAWIN","NARRA","OBEDIENCE","OPAL","PATIENCE","PEACE","PEARL","PERIDOT","POSEIDON","PRUDENCE","ROSE","RUBY","SAMPAGUITA","SAMPALOK","SAPPHIRE","SINCERITY","TALISAY","TOPAZ","UNITY","VENUS","YAKAL"]) , id:"section" %>
+                  </div>
+                </div>
+                <div class="col s12 m4 l4">
+                  <div class="input-field">
+                    <%= f.select :gender , options_for_select([["--GENDER--"],"Male" , "Female"]) ,id:"gender" %>
+                  </div>  
+                </div>
+              </div>
+          </div>
+          <div class="card-action">
+            <%= f.submit "Register student", id: 'btn-submit' , class:"btn green" , data: {
+              disable_with: "Adding student..."
+            } %>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col s12 ">
+    <%= render 'partials/sidebar' %>
+  </div>
+
+</div>
+
+
+<script type="text/javascript">
+  $(document).ready(function() {
+
+    $('#firstname').change(function() {
+      var Fname = $('#firstname').val();
+      var SFname = Fname.substring(0,4)
+      $('#password').val(SFname + $('#lrn').val());
+    });
+    $('#lrn').change(function() {
+      var Fname = $('#firstname').val();
+      var SFname = Fname.substring(0,4)
+      $('#password').val(SFname + $('#lrn').val());
+    });
+  });
+</script>
+
+<style type="text/css">
+  body {
+    background-color: #e8e8e8;
+  }
+  .modal.bottom-sheet {
+    max-height: 100%!important;
+  }
+
+  .modal .modal-footer {
+    height: 80px!important;
+  }
+
+  .collapsible-body {
+    padding: 3.5px!important;
+  }
+
+</style>
+
+
+
+
+

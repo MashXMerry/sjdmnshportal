@@ -1,0 +1,181 @@
+<li>
+  <div class="collapsible-header  orange lighten-4">Grade 11 <span class="badge"><%= @students11.count %> registered students</span></div>
+  <div class="collapsible-body">
+    <ul class="collapsible">
+      <li>
+        <div class="collapsible-header">Section A</div>
+        <div class="collapsible-body">
+          <table class="striped">
+            <thead>
+              <tr>
+                <th>L R N</th>
+                <th>Lastname</th>
+                <th>Firstname</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Registered at</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @students11A.each do |studentA| %>
+              <tr>
+                <td><%= studentA.lrn %></td>
+                <td><%= studentA.lastname %></td>
+                <td><%= studentA.firstname %></td>
+                <td><%= studentA.email %></td>
+                <td><%= studentA.gender %></td>
+                <td><%= studentA.created_at.to_s(:short) %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </li>
+      <li>
+        <div class="collapsible-header">Section B</div>
+        <div class="collapsible-body">
+          <table class="striped">
+            <thead>
+              <tr>
+                <th>L R N</th>
+                <th>Lastname</th>
+                <th>Firstname</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Registered at</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @students11B.each do |studentB| %>
+              <tr>
+                <td><%= studentB.lrn %></td>
+                <td><%= studentB.lastname %></td>
+                <td><%= studentB.firstname %></td>
+                <td><%= studentB.email %></td>
+                <td><%= studentB.gender %></td>
+                <td><%= studentB.created_at.to_s(:short) %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </li>
+      <li>
+        <div class="collapsible-header">Section C</div>
+        <div class="collapsible-body">
+          <table class="striped">
+            <thead>
+              <tr>
+                <th>L R N</th>
+                <th>Lastname</th>
+                <th>Firstname</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Registered at</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @students11C.each do |studentC| %>
+              <tr>
+                <td><%= studentC.lrn %></td>
+                <td><%= studentC.lastname %></td>
+                <td><%= studentC.firstname %></td>
+                <td><%= studentC.email %></td>
+                <td><%= studentC.gender %></td>
+                <td><%= studentC.created_at.to_s(:short) %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </li>
+      <li>
+        <div class="collapsible-header">Section D</div>
+        <div class="collapsible-body">
+          <table>
+            <thead class="striped">
+              <tr>
+                <th>L R N</th>
+                <th>Lastname</th>
+                <th>Firstname</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Registered at</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @students11D.each do |studentD| %>
+              <tr>
+                <td><%= studentD.lrn %></td>
+                <td><%= studentD.lastname %></td>
+                <td><%= studentD.firstname %></td>
+                <td><%= studentD.email %></td>
+                <td><%= studentD.gender %></td>
+                <td><%= studentD.created_at.to_s(:short) %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </li>
+      <li>
+        <div class="collapsible-header">Section E</div>
+        <div class="collapsible-body">
+          <table class="striped">
+            <thead>
+              <tr>
+                <th>L R N</th>
+                <th>Lastname</th>
+                <th>Firstname</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Registered at</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @students11E.each do |studentE| %>
+              <tr>
+                <td><%= studentE.lrn %></td>
+                <td><%= studentE.lastname %></td>
+                <td><%= studentE.firstname %></td>
+                <td><%= studentE.email %></td>
+                <td><%= studentE.gender %></td>
+                <td><%= studentE.created_at.to_s(:short) %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </li>
+      <li>
+        <div class="collapsible-header">Section F</div>
+        <div class="collapsible-body">
+          <table class="striped">
+            <thead>
+              <tr>
+                <th>L R N</th>
+                <th>Lastname</th>
+                <th>Firstname</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Registered at</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @students11F.each do |studentF| %>
+              <tr>
+                <td><%= studentF.lrn %></td>
+                <td><%= studentF.lastname %></td>
+                <td><%= studentF.firstname %></td>
+                <td><%= studentF.email %></td>
+                <td><%= studentF.gender %></td>
+                <td><%= studentF.created_at.to_s(:short) %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </li>
+    </ul>
+  </div>
+</li>

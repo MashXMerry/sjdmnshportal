@@ -1,0 +1,31 @@
+<div id="modal1" class="modal modal-fixed-footer">
+  <%= form_for [@student , @student.grades.build] do |f| %>
+    <div class="modal-content">
+      <h3 class="center">Add Grades</h3>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">create</i>
+          <%= f.select :subject , 
+            options_for_select([["--SUBJECT--"], "Filipino" , "English" , "Mathematics" , "Science" , "Araling Panlipunan" , "Strengthened Technical Vocational Education" ,"MAPEH","Edukasyon sa Pagpapakatao","Technical Drawing","Internet Computer Fundamentals", "Entrepeneurship","CAT"]) , id:"subject" %>
+        </div>
+
+        <div class="input-field col s12">
+          <i class="material-icons prefix">create</i>
+          <%= f.select :quarter , 
+            options_for_select([["--QUARTER--"], "1" , "2" , "3" , "4"]) , id:"quarter" %>
+        </div>
+
+        <div class="input-field col s12">
+          <i class="material-icons prefix">create</i>
+          <label>Grade</label>
+          <%= f.text_field :grade , required:true %>
+        </div>  
+      </div>
+      
+    </div>
+    <div class="modal-footer">
+      <a class="modal-action modal-close waves-effect waves-yellow btn-flat red white-text">close</a>
+      <%= f.submit "Submit grade" , class:"btn green waves-effect waves-blue btn-flat white-text" %>
+    </div>
+  <% end %>  
+</div>

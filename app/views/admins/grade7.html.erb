@@ -1,0 +1,627 @@
+<%= javascript_include_tag 'style' %>
+<div class="row" style="background-color: #e8e8e8">
+  <div class="">
+    <nav class="orange darken-4">
+      <div class="nav-wrapper">
+        <a class="brand-logo right" style="padding-right: 20px">Grade 7</a>
+        <a href="#" data-activates="slide-out" class="button-collapse">
+          <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+        </a>
+      </div>
+    </nav>
+
+    <div class="fixed-action-btn horizontal click-to-toggle hide-on-small-only" style="bottom: 550px!important;">
+      <a class="btn-floating btn-large orange waves-effect waves-light">
+        <i class="material-icons">menu</i>
+      </a>
+      <ul>
+        <li><a class="btn-floating amber darken-4" href="#narra">narra</a></li>
+        <li><a class="btn-floating amber darken-3" href="#accacia">accacia</a></li>
+        <li><a class="btn-floating amber darken-2" href="#mulawin">mulawin</a></li>
+        <li><a class="btn-floating amber darken-1" href="#apitong">apitong</a></li>
+        <li><a class="btn-floating amber darken-2" href="#yakal">yakal</a></li>
+        <li><a class="btn-floating amber darken-3" href="#mahogany">mahogany</a></li>
+        <li><a class="btn-floating amber darken-4" href="#talisay">talisay</a></li>
+        <li><a class="btn-floating amber darken-3" href="#ipilipil">ipilipil</a></li>
+        <li><a class="btn-floating amber darken-2" href="#camachile">camachile</a></li>
+        <li><a class="btn-floating amber darken-1" href="#duhat">duhat</a></li>
+        <li><a class="btn-floating amber darken-2" href="#kamagong">kamagong</a></li>
+        <li><a class="btn-floating amber darken-3" href="#sampalok">sampalok</a></li>
+        <li><a class="btn-floating amber darken-4" href="#mangga">mangga</a></li>
+        <li><a class="btn-floating amber darken-3" href="#avocado">avocado</a></li>
+      </ul>
+    </div>
+
+    <div class="col s12 m12 l9 right">
+      <div class="student-list">
+        <h4 class="center section scrollspy" id="narra">NARRA</h4>
+        <table class="responsive-table">
+          <thead>
+            <tr>
+                <th>LRN</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Registered at</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% if @students7A.empty? %>
+              <tr>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+              </tr>
+            <% else %>
+              <% @students7A.each do |student| %>
+                <tr>
+                  <td><%= student.lrn %></td>
+                  <td><%= link_to student.firstname, student_path(student.id) %></td>
+                  <td><%= student.lastname %></td>
+                  <td><%= student.email %></td>
+                  <td><%= student.gender %></td>
+                  <td><%= student.created_at.to_s(:short) %></td>
+                </tr>
+              <% end %> 
+            <% end %>   
+          </tbody>
+        </table>
+      </div>
+
+      <div class="student-list">
+        <h4 class="center section scrollspy" id="accacia">ACCACIA</h4>
+        <table class="responsive-table striped">
+          <thead>
+            <tr>
+                <th>LRN</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Registered at</th>
+            </tr>
+          </thead>
+
+          <% if @students7B.empty? %>
+              <tr>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+              </tr>
+            <% else %>
+              <% @students7B.each do |student| %>
+                <tr>
+                  <td><%= student.lrn %></td>
+                  <td><%= link_to student.firstname, student_path(student.id) %></td>
+                  <td><%= student.lastname %></td>
+                  <td><%= student.email %></td>
+                  <td><%= student.gender %></td>
+                  <td><%= student.created_at.to_s(:short) %></td>
+                </tr>
+              <% end %> 
+            <% end %> 
+        </table>
+      </div>
+
+      <div class="student-list">
+        <h4 class="center section scrollspy" id="mulawin">MULAWIN</h4>
+        <table class="responsive-table striped">
+          <thead>
+            <tr>
+                <th>LRN</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Registered at</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% if @students7C.empty? %>
+              <tr>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+              </tr>
+            <% else %>
+              <% @students7C.each do |student| %>
+                <tr>
+                  <td><%= student.lrn %></td>
+                  <td><%= link_to student.firstname, student_path(student.id) %></td>
+                  <td><%= student.lastname %></td>
+                  <td><%= student.email %></td>
+                  <td><%= student.gender %></td>
+                  <td><%= student.created_at.to_s(:short) %></td>
+                </tr>
+              <% end %> 
+            <% end %>  
+          </tbody>
+        </table>
+      </div>
+        
+      <div class="student-list">
+        <h4 class="center section scrollspy" id="apitong">APITONG</h4>
+        <table class="responsive-table striped">
+          <thead>
+            <tr>
+                <th>LRN</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Registered at</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% if @students7D.empty? %>
+              <tr>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+              </tr>
+            <% else %>
+              <% @students7D.each do |student| %>
+                <tr>
+                  <td><%= student.lrn %></td>
+                  <td><%= link_to student.firstname, student_path(student.id) %></td>
+                  <td><%= student.lastname %></td>
+                  <td><%= student.email %></td>
+                  <td><%= student.gender %></td>
+                  <td><%= student.created_at.to_s(:short) %></td>
+                </tr>
+              <% end %> 
+            <% end %> 
+          </tbody>
+        </table>
+      </div>
+      
+      <div class="student-list">
+        <h4 class="center section scrollspy" id="yakal">YAKAL</h4>
+        <table class="responsive-table striped">
+          <thead>
+            <tr>
+                <th>LRN</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Registered at</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% if @students7E.empty? %>
+              <tr>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+              </tr>
+            <% else %>
+              <% @students7E.each do |student| %>
+                <tr>
+                  <td><%= student.lrn %></td>
+                  <td><%= link_to student.firstname, student_path(student.id) %></td>
+                  <td><%= student.lastname %></td>
+                  <td><%= student.email %></td>
+                  <td><%= student.gender %></td>
+                  <td><%= student.created_at.to_s(:short) %></td>
+                </tr>
+              <% end %> 
+            <% end %> 
+          </tbody>
+        </table>
+      </div>
+
+      <div class="student-list">
+        <h4 class="center section scrollspy" id="mahogany">MAHOGANY</h4>
+        <table class="responsive-table striped">
+          <thead>
+            <tr>
+                <th>LRN</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Registered at</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% if @students7F.empty? %>
+              <tr>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+              </tr>
+            <% else %>
+              <% @students7F.each do |student| %>
+                <tr>
+                  <td><%= student.lrn %></td>
+                  <td><%= link_to student.firstname, student_path(student.id) %></td>
+                  <td><%= student.lastname %></td>
+                  <td><%= student.email %></td>
+                  <td><%= student.gender %></td>
+                  <td><%= student.created_at.to_s(:short) %></td>
+                </tr>
+              <% end %> 
+            <% end %>   
+          </tbody>
+        </table>
+      </div>
+
+      <div class="student-list">
+        <h4 class="center section scrollspy" id="talisay">TALISAY</h4>
+        <table class="responsive-table striped">
+          <thead>
+            <tr>
+                <th>LRN</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Registered at</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% if @students7G.empty? %>
+              <tr>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+              </tr>
+            <% else %>
+              <% @students7G.each do |student| %>
+                <tr>
+                  <td><%= student.lrn %></td>
+                  <td><%= link_to student.firstname, student_path(student.id) %></td>
+                  <td><%= student.lastname %></td>
+                  <td><%= student.email %></td>
+                  <td><%= student.gender %></td>
+                  <td><%= student.created_at.to_s(:short) %></td>
+                </tr>
+              <% end %> 
+            <% end %>   
+          </tbody>
+        </table>
+      </div>
+
+      <div class="student-list">
+        <h4 class="center section scrollspy" id="ipilipil">IPIL-IPIL</h4>
+        <table class="responsive-table striped">
+          <thead>
+            <tr>
+                <th>LRN</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Registered at</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% if @students7H.empty? %>
+              <tr>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+              </tr>
+            <% else %>
+              <% @students7H.each do |student| %>
+                <tr>
+                  <td><%= student.lrn %></td>
+                  <td><%= link_to student.firstname, student_path(student.id) %></td>
+                  <td><%= student.lastname %></td>
+                  <td><%= student.email %></td>
+                  <td><%= student.gender %></td>
+                  <td><%= student.created_at.to_s(:short) %></td>
+                </tr>
+              <% end %> 
+            <% end %>   
+          </tbody>
+        </table>
+      </div>
+
+      <div class="student-list">
+        <h4 class="center section scrollspy" id="camachile">CAMACHILE</h4>
+        <table class="responsive-table striped">
+          <thead>
+            <tr>
+                <th>LRN</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Registered at</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% if @students7I.empty? %>
+              <tr>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+              </tr>
+            <% else %>
+              <% @students7I.each do |student| %>
+                <tr>
+                  <td><%= student.lrn %></td>
+                  <td><%= link_to student.firstname, student_path(student.id) %></td>
+                  <td><%= student.lastname %></td>
+                  <td><%= student.email %></td>
+                  <td><%= student.gender %></td>
+                  <td><%= student.created_at.to_s(:short) %></td>
+                </tr>
+              <% end %> 
+            <% end %>   
+          </tbody>
+        </table>
+      </div>
+
+      <div class="student-list">
+        <h4 class="center section scrollspy" id="duhat">DUHAT</h4>
+        <table class="responsive-table striped">
+          <thead>
+            <tr>
+                <th>LRN</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Registered at</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% if @students7J.empty? %>
+              <tr>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+              </tr>
+            <% else %>
+              <% @students7J.each do |student| %>
+                <tr>
+                  <td><%= student.lrn %></td>
+                  <td><%= link_to student.firstname, student_path(student.id) %></td>
+                  <td><%= student.lastname %></td>
+                  <td><%= student.email %></td>
+                  <td><%= student.gender %></td>
+                  <td><%= student.created_at.to_s(:short) %></td>
+                </tr>
+              <% end %> 
+            <% end %>   
+          </tbody>
+        </table>
+      </div>
+
+      <div class="student-list">
+        <h4 class="center section scrollspy" id="kamagong">KAMAGONG</h4>
+        <table class="responsive-table striped">
+          <thead>
+            <tr>
+                <th>LRN</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Registered at</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% if @students7K.empty? %>
+              <tr>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+              </tr>
+            <% else %>
+              <% @students7K.each do |student| %>
+                <tr>
+                  <td><%= student.lrn %></td>
+                  <td><%= link_to student.firstname, student_path(student.id) %></td>
+                  <td><%= student.lastname %></td>
+                  <td><%= student.email %></td>
+                  <td><%= student.gender %></td>
+                  <td><%= student.created_at.to_s(:short) %></td>
+                </tr>
+              <% end %> 
+            <% end %>   
+          </tbody>
+        </table>
+      </div>
+
+      <div class="student-list">
+        <h4 class="center section scrollspy" id="sampalok">SAMPALOK</h4>
+        <table class="responsive-table striped">
+          <thead>
+            <tr>
+                <th>LRN</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Registered at</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% if @students7L.empty? %>
+              <tr>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+              </tr>
+            <% else %>
+              <% @students7L.each do |student| %>
+                <tr>
+                  <td><%= student.lrn %></td>
+                  <td><%= link_to student.firstname, student_path(student.id) %></td>
+                  <td><%= student.lastname %></td>
+                  <td><%= student.email %></td>
+                  <td><%= student.gender %></td>
+                  <td><%= student.created_at.to_s(:short) %></td>
+                </tr>
+              <% end %> 
+            <% end %>   
+          </tbody>
+        </table>
+      </div>
+
+      <div class="student-list">
+        <h4 class="center section scrollspy" id="mangga">MANGGA</h4>
+        <table class="responsive-table striped">
+          <thead>
+            <tr>
+                <th>LRN</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Registered at</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% if @students7M.empty? %>
+              <tr>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+              </tr>
+            <% else %>
+              <% @students7M.each do |student| %>
+                <tr>
+                  <td><%= student.lrn %></td>
+                  <td><%= link_to student.firstname, student_path(student.id) %></td>
+                  <td><%= student.lastname %></td>
+                  <td><%= student.email %></td>
+                  <td><%= student.gender %></td>
+                  <td><%= student.created_at.to_s(:short) %></td>
+                </tr>
+              <% end %> 
+            <% end %>   
+          </tbody>
+        </table>
+      </div>
+
+      <div class="student-list">
+        <h4 class="center section scrollspy" id="avocado">AVOCADO</h4>
+        <table class="responsive-table striped">
+          <thead>
+            <tr>
+                <th>LRN</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Registered at</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% if @students7N.empty? %>
+              <tr>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+                <td>No data yet</td>
+              </tr>
+            <% else %>
+              <% @students7N.each do |student| %>
+                <tr>
+                  <td><%= student.lrn %></td>
+                  <td><%= link_to student.firstname, student_path(student.id) %></td>
+                  <td><%= student.lastname %></td>
+                  <td><%= student.email %></td>
+                  <td><%= student.gender %></td>
+                  <td><%= student.created_at.to_s(:short) %></td>
+                </tr>
+              <% end %> 
+            <% end %>   
+          </tbody>
+        </table>
+      </div>
+    </div><!-- col s12 m12 l9 right -->
+
+
+
+  </div>
+
+  <div class="col s12 ">
+      <%= render 'partials/sidebar' %>
+  </div>
+</div>
+  
+<style type="text/css">
+  body {
+    background-color: #e8e8e8;
+  }
+  .modal.bottom-sheet {
+    max-height: 100%!important;
+  }
+
+  .modal .modal-footer {
+    height: 80px!important;
+  }
+
+  .collapsible-body {
+    padding: 3.5px!important;
+  }
+
+  .student-list {
+    border:1px solid #9e9e9e;
+    padding:20px;
+    border-radius: 20px;
+    margin-top: 20px;
+  }
+
+</style>
