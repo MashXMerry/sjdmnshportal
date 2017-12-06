@@ -34,20 +34,20 @@ class PagesController < ApplicationController
   end
 
   def news
-    @news = News.all.order('created_at DESC').paginate(page: params[:page] , per_page: 5)
+    @news = News.all.order('created_at DESC').paginate(page: params[:page] , per_page: 10)
     @events = Event.all.order('created_at DESC').limit(5)
     @announcements = Announcement.all.order('created_at DESC').limit(5)
   end
 
   def announcements
     @announcements1st = Announcement.last
-  	@announcements = Announcement.all.order('created_at DESC').paginate(page: params[:page] , per_page: 3)
+  	@announcements = Announcement.all.order('created_at DESC').paginate(page: params[:page] , per_page: 10)
     @events = Event.all.order('created_at DESC').limit(5)
     @news = News.all.order('created_at DESC').limit(5)
   end
 
   def events
-  	@events =Event.all.order('created_at DESC').paginate(page: params[:page] , per_page: 5)
+  	@events =Event.all.order('created_at DESC').paginate(page: params[:page] , per_page: 10)
     @announcements = Announcement.all.order('created_at DESC').limit(5)
     @news = News.all.order('created_at DESC').limit(5)
 
