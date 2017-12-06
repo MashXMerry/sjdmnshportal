@@ -26,7 +26,9 @@ Rails.application.routes.draw do
     resources :announcements
     resources :students do
       resources :grades
+    put '/update_grades' , to: 'grades#update' , as: 'update_grades'
     end
+
     # post '/create_grades' , to: 'grades#create_grades' , as: 'insert_grade'
     get '/dashboard' , to: 'admins#dashboard' , as: 'admin_dashboard'
     get '/grades' , to: 'admins#grades' , as: 'admin_school'

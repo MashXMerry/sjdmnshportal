@@ -29,7 +29,8 @@
               Grade <%=  @student.level %> | Section <%=  @student.section %>
             </blockquote>
             <%= link_to "Edit information", edit_student_path(@student) %> | 
-            <a class="modal-trigger" href="#modal1">Add Grades</a>
+            <a class="modal-trigger" href="#modal1">Add Grades</a> | 
+            Edit Grades
           </div>
         </div>
       </div>
@@ -49,7 +50,7 @@
             <div class="col s12 m4 l3">
               <div class="card-panel">
                 <span class="black-text">
-                  <b><%= sub.subject %></b> <b class="right blue-text"><%= sub.grade %>.00</b>
+                  <b><%= truncate(sub.subject , length: 20) %></b> <b class="right blue-text"><%= sub.grade %>.00</b>
                   <hr>
                   <a href="#modal1<%= sub.id %>" class="btn btn-flat red darken-1 hoverable waves-effect waves-yellow white-text modal-trigger">
                     Details
@@ -60,12 +61,11 @@
             <div id="modal1<%= sub.id %>" class="modal">
               <div class="modal-content">
                 <p class="title">
-                  <b><%= sub.subject %> | <%= sub.quarter %>st Grading</b>  
+                  <b><%= truncate(sub.subject , length: 20) %> | <%= sub.quarter %>st Grading</b>  
                   <b class="right"><%= sub.grade %>.00</b></p><hr>
                 <p>Recorded at <%= sub.created_at.to_s(:long) %></p>
               </div>
               <div class="modal-footer">
-                <button class="btn btn-flat green left waves-effect waves-blue btn-flat white-text">Edit</button>
                 <a class="modal-action modal-close waves-effect waves-yellow btn-flat red white-text">close</a>
               </div>
             </div>
@@ -82,7 +82,7 @@
             <div class="col s12 m4 l3">
               <div class="card-panel">
                 <span class="black-text">
-                  <b><%= sub.subject %></b> <b class="right blue-text"><%= sub.grade %>.00</b>
+                  <b><%= truncate(sub.subject , length: 20) %> <b class="right blue-text"><%= sub.grade %>.00</b>
                   <hr>
                   <a href="#modal1<%= sub.id %>" class="btn btn-flat red darken-1 hoverable waves-effect waves-yellow white-text modal-trigger">
                     Details
@@ -93,12 +93,12 @@
             <div id="modal1<%= sub.id %>" class="modal">
               <div class="modal-content">
                 <p class="title">
-                  <b><%= sub.subject %> | <%= sub.quarter %>nd Grading</b>  
+                  <b><%= truncate(sub.subject , length: 20) %> | <%= sub.quarter %>nd Grading</b>  
                   <b class="right"><%= sub.grade %>.00</b></p><hr>
                 <p>Recorded at <%= sub.created_at.to_s(:long) %></p>
               </div>
               <div class="modal-footer">
-                <button class="btn btn-flat green left waves-effect waves-blue btn-flat white-text">Edit</button>
+                <%= link_to "Edit" , edit_student_grade_path(@student) , class:"btn btn-flat green left waves-effect waves-blue btn-flat white-tex" %>
                 <a class="modal-action modal-close waves-effect waves-yellow btn-flat red white-text">close</a>
               </div>
             </div>
@@ -115,7 +115,7 @@
             <div class="col s12 m4 l3">
               <div class="card-panel">
                 <span class="black-text">
-                  <b><%= sub.subject %></b> <b class="right blue-text"><%= sub.grade %>.00</b>
+                  <b><%= truncate(sub.subject , length: 20) %></b> <b class="right blue-text"><%= sub.grade %>.00</b>
                   <hr>
                   <a href="#modal1<%= sub.id %>" class="btn btn-flat red darken-1 hoverable waves-effect waves-yellow white-text modal-trigger">
                     Details
@@ -126,12 +126,12 @@
             <div id="modal1<%= sub.id %>" class="modal">
               <div class="modal-content">
                 <p class="title">
-                  <b><%= sub.subject %> | <%= sub.quarter %>rd Grading</b>  
+                  <b><%= truncate(sub.subject , length: 20) %> | <%= sub.quarter %>rd Grading</b>  
                   <b class="right"><%= sub.grade %>.00</b></p><hr>
                 <p>Recorded at <%= sub.created_at.to_s(:long) %></p>
               </div>
               <div class="modal-footer">
-                <button class="btn btn-flat green left waves-effect waves-blue btn-flat white-text">Edit</button>
+                <%= link_to "Edit" , edit_student_grade_path(@student) , class:"btn btn-flat green left waves-effect waves-blue btn-flat white-tex" %>
                 <a class="modal-action modal-close waves-effect waves-yellow btn-flat red white-text">close</a>
               </div>
             </div>
@@ -148,7 +148,7 @@
             <div class="col s12 m4 l3">
               <div class="card-panel">
                 <span class="black-text">
-                  <b><%= sub.subject %></b> <b class="right blue-text"><%= sub.grade %>.00</b>
+                  <b><%= truncate(sub.subject , length: 20) %></b> <b class="right blue-text"><%= sub.grade %>.00</b>
                   <hr>
                   <a href="#modal1<%= sub.id %>" class="btn btn-flat red darken-1 hoverable waves-effect waves-yellow white-text modal-trigger">
                     Details
@@ -159,12 +159,12 @@
             <div id="modal1<%= sub.id %>" class="modal">
               <div class="modal-content">
                 <p class="title">
-                  <b><%= sub.subject %> | <%= sub.quarter %>th Grading</b>  
+                  <b><%= truncate(sub.subject , length: 20) %> | <%= sub.quarter %>th Grading</b>  
                   <b class="right"><%= sub.grade %>.00</b></p><hr>
                 <p>Recorded at <%= sub.created_at.to_s(:long) %></p>
               </div>
               <div class="modal-footer">
-                <button class="btn btn-flat green left waves-effect waves-blue btn-flat white-text">Edit</button>
+                <%= link_to "Edit" , edit_student_grade_path(@student) , class:"btn btn-flat green left waves-effect waves-blue btn-flat white-tex" %>
                 <a class="modal-action modal-close waves-effect waves-yellow btn-flat red white-text">close</a>
               </div>
             </div>

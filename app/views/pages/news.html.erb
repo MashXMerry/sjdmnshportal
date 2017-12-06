@@ -5,9 +5,9 @@
 <div class="header">
   <div class="row container">
     <div class="col s12 m6 l6">
-      <p style="font-family:Rockwell;font-size: 40px">School Announcements</p>
+      <p style="font-family:Rockwell;font-size: 40px" class="header-title">School News</p>
     </div>
-    <div class="col s12 m6 l6">
+    <div class="col s12 m6 l6 hide-on-small-only">
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -19,7 +19,7 @@
 
 <% if @news.empty? %>
   <hr>
-  <center><h3>No News Posted yet</h3></center>
+  <center><h3>No News posted yet</h3></center>
   <hr>
 <% else %>
   <% @news.each do |news| %>
@@ -47,7 +47,7 @@
          </p>
           <p style="text-align: justify;font-size: 20px;" class="body"><%= news.body %></p>
         </div>
-        <div class="modal-footer blue-grey lighten-4">
+        <div class="modal-footer">
           <a class="modal-action modal-close waves-effect waves-yellow btn-flat red white-text">Close</a>
         </div>
       </div><!-- modal -->
@@ -64,11 +64,16 @@
 <!-- ============================================================= -->
 <style type="text/css">
 
+  .modal-footer {
+    background-color: #640000 !important;
+  }
+
   .header {
     background-color: #cccccc;
-    margin-top: 100px;
+    margin-top: 50px;
     padding: 50px 10px 50px 10px;
     margin-bottom: 100px;
+    text-align: center;
   }
 
   blockquote {
