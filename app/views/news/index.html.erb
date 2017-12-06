@@ -26,41 +26,30 @@
       <% end %>
     </div>
   </div><!-- row -->
-    
-  <div class="row">
-    <div id="modalNews" class="modal fixed-footer">
-      <div class="">
-        <%= form_for(@news1, remote: true ) do |f| %>
-          <div class="modal-content">
-            <center><h3>Create News</h3></center>
-            <div class="row">
-              <div class="input-field col s12">
-                <i class="material-icons prefix">create</i>
-                <%= f.text_field :title , id:"title" , class:"validate", required:"required" %>
-                <label for="title">News title:</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="row">
-                <div class="input-field col s12">
-                  <i class="material-icons prefix">subject</i>
-                  <%= f.text_area :body , id:"textarea1" , class:"materialize-textarea" , required:"required" %>
-                  <label for="textarea1">News content:</label>
-                </div>
-              </div>
-            </div>
-          </div> 
-          
-          <div class="modal-footer">
-            <a class="modal-action modal-close waves-effect waves-green red btn-flat white-text">Cancel</a>
-            <%= f.submit "Create", class:"btn waves-effect waves-light green", data: {
-              disable_with: "Creating news..."
-            } %>
+
+  <div id="modalNews" class="modal modal-fixed-footer">
+    <%= form_for(@news1, remote: true ) do |f| %>
+      <div class="modal-content">
+        <center><h3>Create News</h3></center>
+          <div class="input-field col s12">
+            <i class="material-icons prefix">create</i>
+            <%= f.text_field :title , id:"title" , class:"validate", required:"required" %>
+            <label for="title">News title:</label>
           </div>
-        <% end %><!-- form-for -->
-      </div><!-- container -->
-    </div><!-- modal -->
-  </div><!-- row -->
+          <div class="input-field col s12">
+            <i class="material-icons prefix">subject</i>
+            <%= f.text_area :body , id:"textarea1" , class:"materialize-textarea" , required:"required" %>
+            <label for="textarea1">News content:</label>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <a class="modal-action modal-close waves-effect waves-yellow btn-flat red white-text">close</a>
+        <%= f.submit "Create", class:"btn waves-effect waves-light green", data: {
+          disable_with: "Creating news..."
+        } %>
+      </div>
+    <% end %>  
+  </div>
 
   <div class="col s12 ">
       <%= render 'partials/sidebar' %>
@@ -74,12 +63,28 @@
     background-color: #e8e8e8;
   }
 
-  .modal.bottom-sheet {
-    max-height: 100%!important;
+  @media (max-width: 575px) { 
+     .modal.open{
+        width: 100%;
+        max-height: 100%;
+        height: 100%;
+        top: 0 !important;
+      }
+      .modal-content {
+        height: calc(100% - 56px);
+      }
   }
-
-  .modal .modal-footer {
-    height: 80px!important;
+  /*// Small devices (landscape phones, 576px and up)*/
+  @media (min-width: 576px) and (max-width: 767px) {  
+     .modal.open{
+        width: 100%;
+        max-height: 100%;
+        height: 100%;
+        top: 0 !important;
+      }
+      .modal-content {
+        height: calc(100% - 56px);
+      }
   }
 
 </style>

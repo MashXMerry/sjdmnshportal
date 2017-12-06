@@ -11,10 +11,10 @@ class StudentsController < ApplicationController
   # GET /students/1.json
   def show
      @student = Student.find(params[:id])
-     @subjects1 = Grade.all.where(:quarter => 1 , :student_id => @student ).order('subject ASC')
-     @subjects2 = Grade.all.where(:quarter => 2 , :student_id => @student ).order('subject ASC')
-     @subjects3 = Grade.all.where(:quarter => 3 , :student_id => @student ).order('subject ASC')
-     @subjects4 = Grade.all.where(:quarter => 4 , :student_id => @student ).order('subject ASC')
+     @subjects1 = Grade.all.where(:quarter => 1 , :student_id => @student ).order('subject ASC').order('created_at ASC')
+     @subjects2 = Grade.all.where(:quarter => 2 , :student_id => @student ).order('subject ASC').order('created_at ASC')
+     @subjects3 = Grade.all.where(:quarter => 3 , :student_id => @student ).order('subject ASC').order('created_at ASC')
+     @subjects4 = Grade.all.where(:quarter => 4 , :student_id => @student ).order('subject ASC').order('created_at ASC')
   end
 
   # GET /students/new
