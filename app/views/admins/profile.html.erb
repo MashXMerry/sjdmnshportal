@@ -16,7 +16,11 @@
         <div class="card-panel lighten-5 z-depth-1">
           <div class="row">
             <div class="col s12 m2 l2">
-              <%= image_tag "avatar.jpg" , class:"circle materialboxed" , style:"width:100%" %>
+              <% if admin.image_file_name.present? %>
+                <%= image_tag admin.image.url , class:"circle materialboxed" , style:"width:100%;height:100%" %>
+              <% else %>
+                <%= image_tag "avatar.jpg" , class:"circle materialboxed" , style:"width:100%" %>
+              <% end %>
             </div>
             <div class="col s12 m10 l10">
               <% if admin.middlename.blank? %>

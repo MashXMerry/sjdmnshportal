@@ -35,6 +35,12 @@ class AdminsController < ApplicationController
     end
   end
 
+  def remove_account
+    @admin = Admin.find(params[:id])
+    @admin.destroy
+    redirect_to admin_profile_path
+  end
+
   def student_list
     @student7 = Student.all.where(level: 7)
     @student8 = Student.all.where(level: 8)

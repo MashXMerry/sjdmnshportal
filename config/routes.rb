@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     get 'student_list' , to: 'admins#student_list' , as: 'admin_student_list'
     get '/register_admin' , to: 'admins#registeradmin' , as: 'admin_register'
     post '/add_admin' , to: 'admins#addadministrator' , as: 'add_admin'
+    delete '/remove_account' , to: 'admins#remove_account' , as: 'remove_account'
 
     # sections
 
