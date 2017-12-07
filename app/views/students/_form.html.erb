@@ -45,9 +45,12 @@
             <%= form.text_field :password, id: :student_password , required: "required"%>
           </div>
 
-          <div class="input-field col s12 m4 l4">
-            <%= form.select :section,
-            options_for_select([["Section", ""], "A" , "B" , "C" , "D" , "E" , "F"]) , id:"student_section", :required => true %>
+          <div class="col s12 m4 l4" id="level-field">
+            <div class="input-field">
+              <%= form.select :section,
+              options_for_select(
+              [["--SECTION--"], "ACACIA" , "AMBER" , "AMETHYST" , "AMOS" , "APITONG" , "APOLLO", "AQUAMARINE" ,"ATHENA","AVOCADO","AWIT","CAMACHILE","CAMIA","CARNATION","CATLEYA","CERRIDWEN","CHARITY","CRONICA","DAISY","DANIEL","DEMETER","DIAMOND","DUHAT","EMERALD","EXODUS","EZEKIEL","FAITH","FREEDOM","GARNET","GENESIS","GLADIOLA","GOODWILL","GUMAMELA","HERA","HERCULES","HERMES","HESPHAESTUS","HONESTY","HOPE","ILANG-ILANG","IPIL-IPIL","IRIS","ISAIAH","JADE","JEREMIAH","JOSHUA","JUSTICE","KAMAGONG","KAWIKAAN","LEVITICO","LIRIO","LOTUS","LOVE","MAGNOLIA","MAHOGANY","MANGGA","MULAWIN","NARRA","OBEDIENCE","OPAL","PATIENCE","PEACE","PEARL","PERIDOT","POSEIDON","PRUDENCE","ROSE","RUBY","SAMPAGUITA","SAMPALOK","SAPPHIRE","SINCERITY","TALISAY","TOPAZ","UNITY","VENUS","YAKAL"]) , id:"section" %>
+            </div>
           </div>
 
           <div class="input-field col s12 m4 l4">
