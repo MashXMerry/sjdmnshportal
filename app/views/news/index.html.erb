@@ -28,17 +28,17 @@
   </div><!-- row -->
 
   <div id="modalNews" class="modal modal-fixed-footer">
-    <%= form_for(@news1, remote: true ) do |f| %>
+    <%= form_for(@news1, remote: true , id:'form1' ) do |f| %>
       <div class="modal-content">
         <center><h3>Create News</h3></center>
           <div class="input-field col s12">
             <i class="material-icons prefix">create</i>
-            <%= f.text_field :title , id:"title" , class:"validate", required:"required" %>
+            <%= f.text_field :title , id:"title" , class:"validate" %>
             <label for="title">News title:</label>
           </div>
           <div class="input-field col s12">
             <i class="material-icons prefix">subject</i>
-            <%= f.text_area :body , id:"textarea1" , class:"materialize-textarea" , required:"required" %>
+            <%= f.text_area :body , id:"textarea1" , class:"materialize-textarea" %>
             <label for="textarea1">News content:</label>
           </div>
       </div>

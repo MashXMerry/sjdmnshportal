@@ -1,135 +1,146 @@
 <%= javascript_include_tag 'style' %>
 <!-- +++++++++++++++++++++++++++++++++++ -->
-  <%= render 'partials/navbar' %>
-  <div class="slider">
-    <ul class="slides">
-      <li>
-        <%= image_tag "img1.jpg" %>
-        <div class="caption center-align">
-          <%= image_tag "favicon.ico" , class:"circle" , style:"width:150px" %>
-          <h3 class="light white-text text-lighten-3 hide-on-small-only" style="text-shadow: 1px 1px 1px #ffbf00;">San Jose del Monte</h3>
-          <h5 style="text-shadow: 1px 1px 1px #ffbf00;" class=" hide-on-small-only">National Trade School</h5>
+<%= render 'partials/navbar' %>
+<%= render 'partials/slider' %>
+ <!-- ================================== --> 
+  <div class="desc1-container">
+    <div class="container" style="text-align: center;">
+      <div class="row">
+        <div class="col s12 m6 l6">
+          <div class="card-panel">
+            <span class="black-text">
+            <%= image_tag "favicon.ico" , style:"width:20%;" %>
+            <p class="title center"  style="font-size: 25px;margin: 10px;font-family:Rockwell">San Jose del Monte National Trade Shool</p><hr>
+            <p class="body" style="text-align: justify;">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>  
+            </span>
+          </div>
         </div>
-      </li>
-      <li>
-        <%= image_tag "img2.jpg" %>
-        <div class="caption left-align">
-          <%= image_tag "favicon.ico" , class:"circle" , style:"width:150px" %>
-          <h3 class="light white-text text-lighten-3 hide-on-small-only" style="text-shadow: 1px 1px 1px #ffbf00;">San Jose del Monte</h3>
-          <h5 style="text-shadow: 1px 1px 1px #ffbf00;" class=" hide-on-small-only">National Trade School</h5>
+        <div class="col s12 m6 l6 hide-on-small-only">
+          <%= image_tag "img1.jpg" , style:"width:100%;border-radius:20px", class:"materialboxed" %>
         </div>
-      </li>
-      <li>
-        <%= image_tag "img3.jpg" %>
-        <div class="caption right-align">
-          <%= image_tag "favicon.ico" , class:"circle" , style:"width:150px" %>
-          <h3 class="light white-text text-lighten-3 hide-on-small-only" style="text-shadow: 1px 1px 1px #ffbf00;">San Jose del Monte</h3>
-          <h5 style="text-shadow: 1px 1px 1px #ffbf00;" class=" hide-on-small-only">National Trade School</h5>
-        </div>
-      </li>
-      <li>
-        <%= image_tag "img2.jpg" %>
-        <div class="caption center-align">
-          <%= image_tag "favicon.ico" , class:"circle" , style:"width:150px" %>
-          <h3 class="light white-text text-lighten-3 hide-on-small-only" style="text-shadow: 1px 1px 1px #ffbf00;">San Jose del Monte</h3>
-          <h5 style="text-shadow: 1px 1px 1px #ffbf00;" class=" hide-on-small-only">National Trade School</h5>
-        </div>
-      </li>
-    </ul>
+      </div>
+    </div>  
   </div>
+  
+  <div class="desc2-container">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m6 l6 hide-on-small-only">
+          <%= image_tag "img2.jpg" , style:"width:100%;border-radius:20px" , id:"image-test", class:"materialboxed"  %>
+        </div>
 
-  <div class="row" style="margin-top: 50px;">
-    <div class="col s12">
-      <h3 class="center">About web portal</h3>
-      <div class="container">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        <div class="col s12 m6 l6">
+          <div class="card-panel" style="background-color: #ccc">
+            <span class="black-text">
+              <p class="title center" style="font-size: 25px;margin: 10px;font-family:Rockwell">Vision</p><hr>
+              <p style="text-align: justify;" class="body">
+                We dream of Filipinos who passionately loves their country and whose competencies and values enable them to realize their full potential and contribute meaningfully to building the nation.
+                We are a learner-centered public institution, the Department of Education continously imroves itself to better serve its stakesholders.</p>  
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="parallax-container" style="margin-top: 100px;">
-    <div class="container white-text">
-      <div>
-        <center><h3>School History</h3></center>
-        <p style="text-align: justify-all;">
-          San Jose Del Monte National Trade School is a public secondary shool in San Jose Del Monte City, Bulacan. Esablished in the year 1977 and currently headed by <strong>Mr. Alex D. Angeles</strong><br>
-          San Jose Del Monte National Trade School was created by virtue of Republic Act No. 5666 on June 1976 but only on June 13, 1977 that classes were organized. The first school building used was the Holy Family Chapel at Area _ courtuesy of fr. Edward Alban Kelly, but later the school was transferred at its present site on January _, 1979 which has an area of 22,276 sq. meters located at Brgy. Fatima V. Area Sapang Palay, City of San Jose Del Monte, Bulacan donated by the National Housing Authorithy <br><br>
-          The school was established as a secondary vocational school under the Department of Education. It aims to develop skills training on different Treade areas as wel as excellence in Academic subjects to prepare themselves for the tertiary level. Among the trade areas offered in the four-year secondary curriculum are Furniture and Cabinet making, Electronics, Electricity, Refrigeration and Air-conditioning, Cosmetology, Food Tech., Dressmaking, Drafting, Automitive and Metal Trade Skills. <br><br>
-          SJDMNTS is fully commited to achieve totoal quality management and educational excellence and to attain its philosophy of education that shall develop citizens who believe in God, love of country and their fellowmen and face the challenge of developing the learners to prepare them to become responsible, productive self-reliant individuals.
-        </p>
+  <div class="desc1-container">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m6 l6">
+          <div class="card-panel">
+            <span class="black-text">
+              <p class="title center" style="font-size: 25px;margin: 10px;font-family:Rockwell">Mission</p><hr>
+              <p class="body" style="text-align: justify;">
+                To protect and promote the right of every Filipino to quality, equitable, culture-based, and complete education where:
+                Students learn in a child friendly, gender-sensitve, safe, and motivating environment
+                Teachers facilitate learning and constantly nurture every learner.
+                Administrator and staff, as stewards of the institution, ensure an enabling and supportive environment for effective learning to happen.
+                Family, community and other stakeholders are actively engaged and share responsibility for developing lifelong learners
+              </p> 
+            </span>
+          </div>
+        </div>
+        <div class="col s12 m6 l6 hide-on-small-only">
+          <%= image_tag "img3.jpg" , style:"width:100%;border-radius:20px" , id:"image-test", class:"materialboxed"  %>
+        </div>
       </div>
-    </div>
-    <div class="parallax">
-      <%= image_tag "img1.jpg" ,style:"filter:blur(5px)"  %>
     </div>
   </div>
 
-<div style="margin-top: 50px">
-  <center>
-    <div class="carousel">
-      <h4 class="black-text"><b>School activities</b></h4>
-      <a class="carousel-item"><%= image_tag "activities/img1.png" %></a>
-      <a class="carousel-item"><%= image_tag "activities/img7.png" %></a>
-      <a class="carousel-item"><%= image_tag "activities/img3.png" %></a>
-      <a class="carousel-item"><%= image_tag "activities/img4.png" %></a>
-      <a class="carousel-item"><%= image_tag "activities/img5.png" %></a>
-      <a class="carousel-item"><%= image_tag "activities/img6.png" %></a>
-    </div>
-  </center>
-  <p class="container">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-</div>
-
-  <div class="parallax-container" style="margin-top: 100px;height: 400px;">
-    <div class="row container" style="padding-top: 50px;">
-      <div class="col s12 m12 l6 white-text">
-        <h4 class="center"><b>Vision</b></h4>
-        <p>We dream of Filipinos who passionately loves their country and whose competencies and values enable them to realize their full potential and contribute meaningfully to building the nation.
-          We are a learner-centered public institution, the Department of Education continously imroves itself to better serve its stakesholders.
-        </p>
-      </div>
-      <div class="col s12 m12 l6 white-text">
-        <h4 class="center"><b>Mission</b></h4>
-        <p>
-        To protect and promote the right of every Filipino to quality, equitable, culture-based, and complete education where:
-          Students learn in a child friendly, gender-sensitve, safe, and motivating environment
-          Teachers facilitate learning and constantly nurture every learner.
-          Administrator and staff, as stewards of the institution, ensure an enabling and supportive environment for effective learning to happen.
-          Family, community and other stakeholders are actively engaged and share responsibility for developing lifelong learners 
-        </p>
-      </div>
-    </div>
-    <div class="parallax">
-      <%= image_tag "img2.jpg" ,style:"filter:blur(5px)"  %>
+  <div class="desc2-container">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m6 l6 hide-on-small-only  ">
+          <%= image_tag "img4.jpg" , style:"width:100%;border-radius:20px" , id:"image-test", class:"materialboxed"  %><br>
+          <%= image_tag "img3.jpg" , style:"width:100%;border-radius:20px" , id:"image-test", class:"materialboxed"  %>
+        </div>
+        <div class="col s12 m6 l6">
+          <div class="card-panel white">
+            <span class="black-text">
+            <p class="title center"  style="font-size: 25px;margin: 10px;font-family:Rockwell">School History</p><hr>
+              <p style="text-align: justify;" class="body">
+              San Jose Del Monte National Trade School is a public secondary shool in San Jose Del Monte City, Bulacan. Esablished in the year 1977 and currently headed by <strong>Mr. Alex D. Angeles</strong>
+              San Jose Del Monte National Trade School was created by virtue of Republic Act No. 5666 on June 1976 but only on June 13, 1977 that classes were organized. The first school building used was the Holy Family Chapel at Area _ courtuesy of fr. Edward Alban Kelly, but later the school was transferred at its present site on January _, 1979 which has an area of 22,276 sq. meters located at Brgy. Fatima V. Area Sapang Palay, City of San Jose Del Monte, Bulacan donated by the National Housing Authorithy <br><br>
+              The school was established as a secondary vocational school under the Department of Education. It aims to develop skills training on different Treade areas as wel as excellence in Academic subjects to prepare themselves for the tertiary level. Among the trade areas offered in the four-year secondary curriculum are Furniture and Cabinet making, Electronics, Electricity, Refrigeration and Air-conditioning, Cosmetology, Food Tech., Dressmaking, Drafting, Automitive and Metal Trade Skills. <br><br>
+              SJDMNTS is fully commited to achieve totoal quality management and educational excellence and to attain its philosophy of education that shall develop citizens who believe in God, love of country and their fellowmen and face the challenge of developing the learners to prepare them to become responsible, productive self-reliant individuals.
+            </p>  
+            </span>
+          </div>
+          
+        </div>
+      </div>  
     </div>
   </div>
 
-  <div class="container" style="margin-top: 50px">
-    <h4 class="center">Organizations</h4>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <div class="desc1-container">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m8 l7">
+          <%= image_tag "page.png"  , style:"width:100%;border-radius:20px" , class:"materialboxed" , id:"image-test" %>
+        </div>
+        <div class="col s12 m4 l5 hide-on-small-only">
+          <p class="title center" style="font-size: 25px;margin: 10px;font-family:Rockwell">About Web Portal</p><hr>
+          <p class="center" style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+          <dl class="list-desc">
+            <li>View all School News</li>
+            <li>View all School Announcements</li>
+            <li>View all upcoming and past School Events</li>
+            <li>Student grades</li>
+            <li>Mobile app</li>
+          </dl>
+        </div>
+      </div>
+    </div>  
   </div>
 
 <%= render 'partials/footer' %>
 
-
 <style type="text/css">
 
-  .carousel .carousel-item {
-    width:300px !important;
+  .desc1-container {
+    background-color: #cccccc;
+    margin-top: 20px;
+    padding: 15px 10px 15px 10px;
+  }
+  .desc2-container {
+    background-color: #e8e8e8;
+    margin-top: 20px;
+    padding: 15px 10px 15px 10px;
+  }
+
+  .header {
+    background-color: #cccccc;
+    margin-top: 50px;
+    padding: 50px 10px 50px 10px;
+    margin-bottom: 100px;
+    text-align: center;
   }
 
   .carousel-item img{
@@ -151,14 +162,3 @@
      cursor: pointer;
    }
 </style>
-
-
-<script type="text/javascript">
-  $(document).ready(function() {
-    $('.carousel').carousel({
-      fullWidth: false,
-      dist: -150,
-      indicators: true
-    });
-  });
-</script>
