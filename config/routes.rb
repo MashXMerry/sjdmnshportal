@@ -14,6 +14,11 @@ Rails.application.routes.draw do
   get '/students/students_json' , to: 'pages#students_json'
   get '/grades/grades_json' , to: 'pages#grades_json'
 
+  get '/quarter/first_quarter' , to: 'pages#first_quarter'
+  get '/quarter/second_quarter' , to: 'pages#second_quarter'
+  get '/quarter/third_quarter' , to: 'pages#third_quarter'
+  get '/quarter/fourth_quarter' , to: 'pages#fourth_quarter'
+
   get 'news' , to: 'pages#news' , as: 'news_page'
   get 'announcements' , to: 'pages#announcements' , as: 'announcement_page'
   get 'events' , to: 'pages#events' , as: 'event_page'

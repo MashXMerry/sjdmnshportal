@@ -33,6 +33,26 @@ class PagesController < ApplicationController
     render :json => { 'data' => data }
   end
 
+  def first_quarter
+  	data = Grade.where(:quarter => 1)
+  	render :json => { 'data' => data }
+  end
+
+  def second_quarter
+  	data = Grade.where(:quarter => 2)
+  	render :json => { 'data' => data }
+  end
+
+  def third_quarter
+  	data = Grade.where(:quarter => 3)
+  	render :json => { 'data' => data }
+  end
+
+  def fourth_quarter
+  	data = Grade.where(:quarter => 3)
+  	render :json => { 'data' => data }
+  end
+
   def news
     @news = News.all.order('created_at DESC').paginate(page: params[:page] , per_page: 5)
     @events = Event.all.order('created_at DESC').limit(5)
