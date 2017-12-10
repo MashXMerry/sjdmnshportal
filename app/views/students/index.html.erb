@@ -7,10 +7,12 @@
           <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
         </a>
         <ul class="right">
-        <a class="brand-logo right" style="padding-right: 20px">Register student</a>
+        <a class="btn btn-flat green white-text waves-effect waves-blue modal-trigger" style="margin-right: 5px" href="#modalsearch">
+        Search student</a>
       </ul>
       </div>
     </nav>
+
     <!-- ++++++++++++++++++++ MODAL ++++++++++++++++++++++++ -->
     <div class="row" style="padding-top: 50px">
       <div class="col s12 m12 l9 right">
@@ -64,19 +66,19 @@
                 <div class="col s12 m4 l4">
                   <div class="input-field">
                     <%= f.select :level , 
-                    options_for_select([["--LEVEL--"], "7" , "8" , "9" , "10" , "11" , "12"]) , id:"level" %>
+                    options_for_select([["Level"], "7" , "8" , "9" , "10" , "11" , "12"]) , id:"level" %>
                   </div>  
                 </div>
                 <div class="col s12 m4 l4" id="level-field">
                   <div class="input-field">
                     <%= f.select :section,
                     options_for_select(
-                    [["--SECTION--"], "ACACIA" , "AMBER" , "AMETHYST" , "AMOS" , "APITONG" , "APOLLO", "AQUAMARINE" ,"ATHENA","AVOCADO","AWIT","CAMACHILE","CAMIA","CARNATION","CATLEYA","CERRIDWEN","CHARITY","CRONICA","DAISY","DANIEL","DEMETER","DIAMOND","DUHAT","EMERALD","EXODUS","EZEKIEL","FAITH","FREEDOM","GARNET","GENESIS","GLADIOLA","GOODWILL","GUMAMELA","HERA","HERCULES","HERMES","HESPHAESTUS","HONESTY","HOPE","ILANG-ILANG","IPIL-IPIL","IRIS","ISAIAH","JADE","JEREMIAH","JOSHUA","JUSTICE","KAMAGONG","KAWIKAAN","LEVITICO","LIRIO","LOTUS","LOVE","MAGNOLIA","MAHOGANY","MANGGA","MULAWIN","NARRA","OBEDIENCE","OPAL","PATIENCE","PEACE","PEARL","PERIDOT","POSEIDON","PRUDENCE","ROSE","RUBY","SAMPAGUITA","SAMPALOK","SAPPHIRE","SINCERITY","TALISAY","TOPAZ","UNITY","VENUS","YAKAL"]) , id:"section" %>
+                    [["Section"], "ACACIA" , "AMBER" , "AMETHYST" , "AMOS" , "APITONG" , "APOLLO", "AQUAMARINE" ,"ATHENA","AVOCADO","AWIT","CAMACHILE","CAMIA","CARNATION","CATLEYA","CERRIDWEN","CHARITY","CRONICA","DAISY","DANIEL","DEMETER","DIAMOND","DUHAT","EMERALD","EXODUS","EZEKIEL","FAITH","FREEDOM","GARNET","GENESIS","GLADIOLA","GOODWILL","GUMAMELA","HERA","HERCULES","HERMES","HESPHAESTUS","HONESTY","HOPE","ILANG-ILANG","IPIL-IPIL","IRIS","ISAIAH","JADE","JEREMIAH","JOSHUA","JUSTICE","KAMAGONG","KAWIKAAN","LEVITICO","LIRIO","LOTUS","LOVE","MAGNOLIA","MAHOGANY","MANGGA","MULAWIN","NARRA","OBEDIENCE","OPAL","PATIENCE","PEACE","PEARL","PERIDOT","POSEIDON","PRUDENCE","ROSE","RUBY","SAMPAGUITA","SAMPALOK","SAPPHIRE","SINCERITY","TALISAY","TOPAZ","UNITY","VENUS","YAKAL"]) , id:"section" %>
                   </div>
                 </div>
                 <div class="col s12 m4 l4">
                   <div class="input-field">
-                    <%= f.select :gender , options_for_select([["--GENDER--"],"Male" , "Female"]) ,id:"gender" %>
+                    <%= f.select :gender , options_for_select([["Gender"],"Male" , "Female"]) ,id:"gender" %>
                   </div>  
                 </div>
               </div>

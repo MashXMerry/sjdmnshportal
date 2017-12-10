@@ -8,10 +8,9 @@
       <p style="font-family:Rockwell;font-size: 40px" class="header-title">School News</p>
     </div>
     <div class="col s12 m6 l6 hide-on-small-only">
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      <p style="font-size: 15px;margin: 10px;font-family:Rockwell;text-align: justify;" class="body">
+        <hr>
+        San Jose del Monte National Trade School Web Portal are able to post all news about the School happening.This will allow the students of the school to know the News about the school 
       </p>
     </div>
   </div>
@@ -32,7 +31,7 @@
            <p style="font-size: 15px" class="center">Posted at <%= news.created_at.to_s(:long) %></p>
            <p class="center"><%= truncate(news.body, length: 200) %></p>
            <center>
-             <a class="btn btn-sm btn-flat deep-orange darken-4 hoverable white-text waves-light modal-trigger" href="#modalN<%= news.id %>">
+             <a class="btn btn-sm btn-flat deep-orange darken-4 hoverable waves-effect white-text waves-orange modal-trigger" href="#modalN<%= news.id %>">
               Read More
              </a>
            </center>

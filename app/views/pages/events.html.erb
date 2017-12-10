@@ -10,10 +10,9 @@
       <p style="font-family:Rockwell;font-size: 40px">School Events</p>
     </div>
     <div class="col s12 m6 l6 hide-on-small-only">
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      <hr>
+      <p style="font-size: 15px;margin: 10px;font-family:Rockwell;text-align: justify;" class="body">
+        San Jose del Monte National Trade School Web Portal shows all events that happens inside then school, upcoming events can be also found here at the Web Portal.  
       </p>
     </div>
   </div>
@@ -33,8 +32,8 @@
             <% else %>
               <h4 class="hide-on-med-and-up"><%= event.date.to_s(:long) %></h4>
               <p class="hide-on-small-only" style="font-size: 40px;font-family:Rockwell">
-                <b><%= event.date.strftime('%b') %><br>
-                <%= event.date.strftime('%d') %></b>
+                <%= event.date.strftime('%b') %><br>
+                <%= event.date.strftime('%d') %>
               </p>
             <% end %>
           </div><!-- col l2 -->
@@ -47,7 +46,7 @@
            </p>
             <b style="font-size: 15px">Posted at <%= event.created_at.to_s(:long) %></b><hr>
             <p><%= truncate(event.body , length:100) %></p>
-            <a class="btn btn-flat deep-orange darken-4 hoverable white-text waves-light modal-trigger" href="#modalA<%= event.id %>">Read More</a>
+            <a class="btn btn-flat deep-orange darken-4 hoverable white-text waves-effect waves-orange modal-trigger" href="#modalA<%= event.id %>">Read More</a>
           </div><!-- col l5 -->
 
           <div id="modalA<%= event.id %>" class="modal modal-fixed-footer blue-grey lighten-4">
@@ -90,7 +89,7 @@
              <p style="font-size: 15px" class="center">Posted at <%= event.created_at.to_s(:long) %></p>
              <p class="center"><%= truncate(event.body , length:200) %></p>
              <center>
-               <a class="btn btn-sm btn-flat deep-orange darken-4 hoverable white-text waves-light modal-trigger" href="#modalA<%= event.id %>">
+               <a class="btn btn-sm btn-flat deep-orange darken-4 hoverable white-text waves-effect waves-orange modal-trigger" href="#modalA<%= event.id %>">
                 Read More
                </a>
              </center>

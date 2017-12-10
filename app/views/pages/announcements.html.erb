@@ -10,11 +10,10 @@
       <p style="font-family:Rockwell;font-size: 40px" class="header-title">School Announcements</p>
     </div>
     <div class="col s12 m6 l6 hide-on-small-only">
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      </p>
+      <hr>
+      <p style="font-size: 15px;margin: 10px;font-family:Rockwell;text-align: justify;" class="body">
+         San Jose del Monte National Trade School Web Portal posts all announcements for its student , all upcoming and past announcements can posted and visit on the portal.
+        </p>
     </div>
   </div>
 </div>
@@ -33,9 +32,9 @@
             <% else %>
               <h4 class="hide-on-med-and-up"><blockquote><%= announcement.date.to_s(:long) %></blockquote></h4>
               <p class="hide-on-small-only" style="font-size: 40px;font-family:Rockwell">
-                <b><%= announcement.date.strftime('%b') %><br>
-                <%= announcement.date.strftime('%d') %></b>
-                </p>
+                <%= announcement.date.strftime('%b') %><br>
+                <%= announcement.date.strftime('%d') %>
+              </p>
             <% end %>
           </div><!-- col l2 -->
           <div class="col l5 m12">
@@ -47,7 +46,7 @@
            </p>
             <b style="font-size: 15px">Posted at <%= announcement.created_at.to_s(:long) %></b><hr>
             <p><%= truncate(announcement.body , length:100) %></p>
-            <a class="btn btn-flat deep-orange darken-4 hoverable white-text waves-light modal-trigger center" href="#modalA<%= announcement.id %>">Read More</a>
+            <a class="btn btn-flat deep-orange darken-4 hoverable white-text waves-effect waves-orange modal-trigger center" href="#modalA<%= announcement.id %>">Read More</a>
           </div><!-- col l5 -->
 
           <div id="modalA<%= announcement.id %>" class="modal modal-fixed-footer blue-grey lighten-4">
@@ -90,7 +89,7 @@
              <p style="font-size: 15px" class="center">Posted at <%= announcement.created_at.to_s(:long) %></p>
              <p class="center"><%= truncate(announcement.body , length:200) %></p>
              <center>
-               <a class="btn btn-sm btn-flat deep-orange darken-4 hoverable white-text waves-light modal-trigger" href="#modalA<%= announcement.id %>">
+               <a class="btn btn-sm btn-flat deep-orange darken-4 hoverable white-text waves-effect waves-orange modal-trigger" href="#modalA<%= announcement.id %>">
                 Read More
                </a>
              </center>

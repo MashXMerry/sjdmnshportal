@@ -42,6 +42,7 @@ class AdminsController < ApplicationController
   end
 
   def student_list
+    @students = Student.where(["lrn LIKE?" , "%#{params[:search]}%"]).order('level ASC').order('lastname ASC')
     @student7 = Student.all.where(level: 7)
     @student8 = Student.all.where(level: 8)
     @student9 = Student.all.where(level: 9)

@@ -9,7 +9,7 @@ class GradesController < ApplicationController
 
 	def destroy
 	  @student = Student.find(params[:student_id])
-	  @grades = @student.grades.find(grade_params)
+	  @grade = @student.grades.find(grade_params)
 	  	if @grades.destoy
 	  	  redirect_to @student
 	  	else

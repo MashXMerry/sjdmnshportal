@@ -1,6 +1,5 @@
 <%= javascript_include_tag 'style' %>
 <div class="row" style="background-color: #e8e8e8">
-  <div class="">
     <nav class="orange darken-4">
       <div class="nav-wrapper">
         <a class="brand-logo right" style="padding-right: 20px">Student list</a>
@@ -10,95 +9,62 @@
       </div>
     </nav>
 
-    <div class="col s12 m12 l9 right student-list">
-      <h3></h3>
-      <div class="col s12 m4 l4 right">
-        <div class="card hoverable">
-          <div class="card-image">
-            <%= image_tag "img2.jpg" %>
-            <span class="card-title">Grade 7</span>
-          </div>
-          <div class="card-content">
-            <p><%= @student7.count %> student/s registered</p>
-          </div>
-          <div class="card-action">
-            <%= link_to "Grade 7",  grade7_path %>
-          </div>
+    <div class="row" style="margin-top: 50px;">
+      <div class="col s12 m12 l9 right">
+        <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Search student</a>
+        <div id="modal1" class="modal">
+          <%= form_tag admin_student_list_path , :method => 'get' do %>
+            <div class="modal-content">
+              <h4>Search student</h4>
+              <div class="input-field" style="padding-top: 10px">
+                <i class="material-icons prefix">create</i>
+                <label>Enter student LRN</label>
+                <%= text_field_tag :search , params[:search] %>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <%= submit_tag "Search" , class:"left btn btn-flat green waves-effect waves-blue white-text" %>
+              <a class="modal-action modal-close waves-effect waves-yellow btn-flat red white-text">close</a>
+            </div>
+          <% end %>  
         </div>
+        <hr>
+
+        <table class="striped responsive-table centered">
+          <thead>
+            <tr>
+              <th>*</th>
+              <th>LRN</th>
+              <th>Firstname</th>
+              <th>Middlename</th>
+              <th>Lastname</th>
+              <th>Email</th>
+              <th>Section</th>
+              <th>Level</th>
+              <th>Gender</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @students.each do |student| %>
+              <tr>
+                <td><%= link_to "Edit", edit_student_path(student.id) %></td>
+                <td><%= link_to student.lrn , student_path(student.id) %></td>
+                <td><%= link_to student.lastname , student_path(student.id) %></td>
+                <td><%= link_to  student.firstname , student_path(student.id) %></td>
+                <td><%= link_to  student.middlename , student_path(student.id) %></td>
+                <td><%= student.email %></td>
+                <td><%= student.section %></td>
+                <td><%= student.level %></td>
+                <td><%= student.gender %></td>
+              </tr>
+            <% end %> 
+          </tbody>
+        </table>
       </div>
-      <div class="col s12 m4 l4 right">
-        <div class="card hoverable">
-          <div class="card-image">
-            <%= image_tag "img2.jpg" %>
-            <span class="card-title">Grade 8</span>
-          </div>
-          <div class="card-content">
-            <p><%= @student8.count %> student/s registered</p>
-          </div>
-          <div class="card-action">
-            <%= link_to "Grade 8",  grade8_path %>
-          </div>
-        </div>
-      </div>
-      <div class="col s12 m4 l4 right">
-        <div class="card hoverable">
-          <div class="card-image">
-            <%= image_tag "img2.jpg" %>
-            <span class="card-title">Grade 9</span>
-          </div>
-          <div class="card-content">
-            <p><%= @student9.count %> student/s registered</p>
-          </div>
-          <div class="card-action">
-            <%= link_to "Grade 9",  grade9_path %>
-          </div>
-        </div>
-      </div>
-      <div class="col s12 m4 l4 right">
-        <div class="card hoverable">
-          <div class="card-image">
-            <%= image_tag "img2.jpg" %>
-            <span class="card-title">Grade 10</span>
-          </div>
-          <div class="card-content">
-            <p><%= @student10.count %> student/s registered</p>
-          </div>
-          <div class="card-action">
-            <%= link_to "Grade 10",  grade10_path %>
-          </div>
-        </div>
-      </div>
-      <div class="col s12 m4 l4 right">
-        <div class="card hoverable">
-          <div class="card-image">
-            <%= image_tag "img2.jpg" %>
-            <span class="card-title">Grade 11</span>
-          </div>
-          <div class="card-content">
-            <p><%= @student11.count %> student/s registered</p>
-          </div>
-          <div class="card-action">
-            <%= link_to "Grade 11",  grade11_path %>
-          </div>
-        </div>
-      </div>
-      <div class="col s12 m4 l4 right">
-        <div class="card hoverable">
-          <div class="card-image">
-            <%= image_tag "img2.jpg" %>
-            <span class="card-title">Grade 12</span>
-          </div>
-          <div class="card-content">
-            <p><%= @student12.count %> student/s registered</p>
-          </div>
-          <div class="card-action">
-            <%= link_to "Grade 12",  grade12_path %>
-          </div>
-        </div>
-      </div>
+    </div>
 
 
-  </div>
+
   <div class="col s12 ">
       <%= render 'partials/sidebar' %>
   </div>

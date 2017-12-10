@@ -16,22 +16,23 @@
   </nav><!-- navbar -->
 <!-- ===============Navbar============== -->
   <div class="row" style="padding-top: 20px">
-    <div class="col s12 m12 l9 right">
-      <div class="card-panel grey lighten-5 z-depth-1">
-        <div class="row valign-wrapper">
-          <div class="col m2 l2">
-            <%= image_tag "avatar.jpg" , class:"circle materialboxed hide-on-small-only" , style:"width:100%" %>
-          </div>
-          <div class="col s12 m10 l10">
-            <div class=""></div>
-            <h4><%= @student.firstname %> <%=  @student.lastname %></h4>
-            <blockquote><b>#<%=  @student.lrn %></b> | <%=  @student.email %> | 
-              Grade <%=  @student.level %> | Section <%=  @student.section %>
-            </blockquote>
-            <%= link_to "Remove Student" , student_path(@student) ,method: :delete , 
-            data: { confirm: "Are you sure ? student and all recorded grades will also deleted" }  %> |
-            <%= link_to "Edit information", edit_student_path(@student) %> | 
-            <a class="modal-trigger" href="#modal1">Add Grades</a>
+      <div class="col s12 m12 l9 right">
+        <div class="card-panel grey lighten-5 z-depth-1">
+          <div class="row valign-wrapper">
+            <div class="col m2 l2">
+              <%= image_tag "avatar.jpg" , class:"circle materialboxed hide-on-small-only" , style:"width:100%" %>
+            </div>
+            <div class="col s12 m10 l10">
+              <div class=""></div>
+              <h4><%= @student.firstname %> <%=  @student.lastname %></h4>
+              <blockquote><b>#<%=  @student.lrn %></b> | <%=  @student.email %> | 
+                Grade <%=  @student.level %> | Section <%=  @student.section %>
+              </blockquote>
+              <%= link_to "Remove Student" , student_path(@student) ,method: :delete , 
+              data: { confirm: "Are you sure ? student and all recorded grades will also deleted" }  %> |
+              <%= link_to "Edit information", edit_student_path(@student) %> | 
+              <a class="modal-trigger" href="#modal1">Add Grades</a>
+            </div>
           </div>
         </div>
       </div>

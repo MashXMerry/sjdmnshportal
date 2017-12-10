@@ -28,90 +28,147 @@
             <blockquote><b>#<%=  @student.lrn %></b> | <%=  @student.email %> | 
               Grade <%=  @student.level %> | Section <%=  @student.section %>
             </blockquote>
+            <%= link_to "Remove Student" , student_path(@student) ,method: :delete , 
+            data: { confirm: "Are you sure ? student and all recorded grades will also deleted" }  %> |
             <%= link_to "Edit information", edit_student_path(@student) %> | 
-            <a class="modal-trigger" href="#modal1">Edit Grades</a>
+            <a class="modal-trigger" href="#modal1">Add Grades</a>
           </div>
         </div>
       </div>
     </div><!-- row -->
   </div>
 
-  <!-- Modal Structure -->
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4>Edit Grades</h4>
-      <p>A bunch of text</p>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
-  </div>
-
+  <%= render 'grades/form' %>
 
   <div class="row">
-    <div class="col s12 m12 l9 right student-list">
-      <table class="highlight bordered responsive-table">
-        <thead>
-          <tr>
-            <th>QUARTER</th>
-            <th>English</th>
-            <th>Math</th>
-            <th>Filipino</th>
-            <th>Science</th>
-            <th>A.P</th>
-            <th>P.E</th>
-            <th>Values</th>
-            <th>AVERAGE</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr>
-            <td>1st</td>
-            <td>85</td>
-            <td>85</td>
-            <td>87</td>
-            <td>89</td>
-            <td>88</td>
-            <td>89</td>
-            <td>98</td>
-            <td>90.5</td>
-          </tr>
-          <tr>
-            <td>2nd</td>
-            <td>85</td>
-            <td>85</td>
-            <td>87</td>
-            <td>89</td>
-            <td>88</td>
-            <td>89</td>
-            <td>98</td>
-            <td>90.5</td>
-          </tr>
-          <tr>
-            <td>3rd</td>
-            <td>85</td>
-            <td>85</td>
-            <td>87</td>
-            <td>89</td>
-            <td>88</td>
-            <td>89</td>
-            <td>98</td>
-            <td>90.5</td>
-          </tr>
-          <tr>
-            <td>4th</td>
-            <td>85</td>
-            <td>85</td>
-            <td>87</td>
-            <td>89</td>
-            <td>88</td>
-            <td>89</td>
-            <td>98</td>
-            <td>90.5</td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="col s12 m12 l9 right">
+      <div class="row">
+        <div class="grade-header">1st Grading</div>
+        <% if @subjects1.empty? %>
+          <center><h3>No records yet</h3></center>
+        <% else %>
+          <% @subjects1.each do |sub| %>
+            <div class="col s12 m4 l3">
+              <div class="card-panel">
+                <span class="black-text">
+                  <b><%= truncate(sub.subject , length: 20) %></b> <b class="right blue-text"><%= sub.grade %>.00</b>
+                  <hr>
+                  <a href="#modal1<%= sub.id %>" class="btn btn-flat red darken-1 hoverable waves-effect waves-yellow white-text modal-trigger">
+                    Details
+                  </a>
+                </span>
+              </div>
+            </div>
+            <div id="modal1<%= sub.id %>" class="modal">
+              <div class="modal-content">
+                <p class="title">
+                  <b><%= truncate(sub.subject , length: 20) %> | <%= sub.quarter %>st Grading</b>  
+                  <b class="right"><%= sub.grade %>.00</b></p><hr>
+                <p>Recorded at <%= sub.created_at.to_s(:long) %></p>
+              </div>
+              <div class="modal-footer">
+                <a class="modal-action modal-close waves-effect waves-yellow btn-flat red white-text">close</a>
+              </div>
+            </div>
+          <% end %> <!-- @subjects.each -->
+        <% end %> 
+      </div>
+      <hr>
+      <div class="row">
+        <div class="grade-header">2nd Grading</div>
+        <% if @subjects2.empty? %>
+          <center><h3>No records yet</h3></center>
+        <% else %>
+          <% @subjects2.each do |sub| %>
+            <div class="col s12 m4 l3">
+              <div class="card-panel">
+                <span class="black-text">
+                  <b><%= truncate(sub.subject , length: 20) %> <b class="right blue-text"><%= sub.grade %>.00</b>
+                  <hr>
+                  <a href="#modal1<%= sub.id %>" class="btn btn-flat red darken-1 hoverable waves-effect waves-yellow white-text modal-trigger">
+                    Details
+                  </a>
+                </span>
+              </div>
+            </div>
+            <div id="modal1<%= sub.id %>" class="modal">
+              <div class="modal-content">
+                <p class="title">
+                  <b><%= sub.subject %> | <%= sub.quarter %>nd Grading</b>  
+                  <b class="right"><%= sub.grade %>.00</b></p><hr>
+                <p>Recorded at <%= sub.created_at.to_s(:long) %></p>
+              </div>
+              <div class="modal-footer">
+                <a class="modal-action modal-close waves-effect waves-yellow btn-flat red white-text">close</a>
+              </div>
+            </div>
+          <% end %> <!-- @subjects.each -->
+        <% end %> 
+      </div>
+      <hr>
+      <div class="row">
+        <div class="grade-header">3rd Grading</div>
+        <% if @subjects3.empty? %>
+          <center><h3>No records yet</h3></center>
+        <% else %>
+          <% @subjects3.each do |sub| %>
+            <div class="col s12 m4 l3">
+              <div class="card-panel">
+                <span class="black-text">
+                  <b><%= truncate(sub.subject , length: 20) %></b> <b class="right blue-text"><%= sub.grade %>.00</b>
+                  <hr>
+                  <a href="#modal1<%= sub.id %>" class="btn btn-flat red darken-1 hoverable waves-effect waves-yellow white-text modal-trigger">
+                    Details
+                  </a>
+                </span>
+              </div>
+            </div>
+            <div id="modal1<%= sub.id %>" class="modal">
+              <div class="modal-content">
+                <p class="title">
+                  <b><%= sub.subject %> | <%= sub.quarter %>rd Grading</b>  
+                  <b class="right"><%= sub.grade %>.00</b></p><hr>
+                <p>Recorded at <%= sub.created_at.to_s(:long) %></p>
+              </div>
+              <div class="modal-footer">
+                <a class="modal-action modal-close waves-effect waves-yellow btn-flat red white-text">close</a>
+              </div>
+            </div>
+          <% end %> <!-- @subjects.each -->
+        <% end %> 
+      </div>
+      <hr>
+      <div class="row">
+        <div class="grade-header">4th Grading</div>
+        <% if @subjects4.empty? %>
+          <center><h3>No records yet</h3></center>
+        <% else %>
+          <% @subjects4.each do |sub| %>
+            <div class="col s12 m4 l3">
+              <div class="card-panel">
+                <span class="black-text">
+                  <b><%= sub.subject %></b> <b class="right blue-text"><%= sub.grade %>.00</b>
+                  <hr>
+                  <a href="#modal1<%= sub.id %>" class="btn btn-flat red darken-1 hoverable waves-effect waves-yellow white-text modal-trigger">
+                    Details
+                  </a>
+                </span>
+              </div>
+            </div>
+            <div id="modal1<%= sub.id %>" class="modal">
+              <div class="modal-content">
+                <p class="title">
+                  <b><%= sub.subject %> | <%= sub.quarter %>th Grading</b>  
+                  <b class="right"><%= sub.grade %>.00</b></p><hr>
+                <p>Recorded at <%= sub.created_at.to_s(:long) %></p>
+              </div>
+              <div class="modal-footer">
+                <a class="modal-action modal-close waves-effect waves-yellow btn-flat red white-text">close</a>
+              </div>
+            </div>
+          <% end %> <!-- @subjects.each -->
+        <% end %>
+      </div>
     </div>
   </div>
 <!-- ============Side bar============== -->
@@ -120,20 +177,24 @@
   </div><!-- col s12 -->
 
 </div>
-  
 
 <style type="text/css">
-  
+
   body {
     background-color: #e8e8e8;
   }
 
-  .modal.bottom-sheet {
-    max-height: 100%!important;
+  .grade-header {
+    background-color: #9f4551;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    color: white;
+    font-size: 20px;
   }
 
-  .modal .modal-footer {
-    height: 80px!important;
+  .modal.bottom-sheet {
+    max-height: 100%!important;
   }
 
   .student-list {
@@ -142,6 +203,33 @@
     border-radius: 20px;
     margin-top: 20px;
   }
+  .title {
+      font-size: 30px;
+    }
+
+    @media (max-width: 575px) { 
+       .modal.open{
+          width: 100%;
+          max-height: 100%;
+          height: 100%;
+          top: 0 !important;
+        }
+        .modal-content {
+          height: calc(100% - 56px);
+        }
+    }
+  /*// Small devices (landscape phones, 576px and up)*/
+    @media (min-width: 576px) and (max-width: 767px) {  
+       .modal.open{
+          width: 100%;
+          max-height: 100%;
+          height: 100%;
+          top: 0 !important;
+        }
+        .modal-content {
+          height: calc(100% - 56px);
+        }
+    }
 </style>
 
 <script type="text/javascript">
