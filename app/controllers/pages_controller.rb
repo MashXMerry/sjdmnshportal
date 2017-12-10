@@ -48,6 +48,12 @@ class PagesController < ApplicationController
     render :json => { 'data' => student }
   end
 
+  def student_grade_json
+    student = Student.find(params[:id])
+    grades = Grade.where(:student_id => student)
+    render :json => { 'data' => grades }
+  end
+
   def third_quarter
   	data = Grade.where(:quarter => 3)
   	render :json => { 'data' => data }
