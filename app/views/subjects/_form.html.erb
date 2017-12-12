@@ -1,0 +1,32 @@
+<%= form_with(model: subject, local: true) do |form| %>
+  <% if subject.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(subject.errors.count, "error") %> prohibited this subject from being saved:</h2>
+
+      <ul>
+      <% subject.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :subject_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :yearlvl %>
+    <%= form.select :yearlvl , options_for_select([["Year"],"7" , "8" ,"9" ,"10" ,"11" ,"12"]) ,id:"year" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description, id: :subject_description %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

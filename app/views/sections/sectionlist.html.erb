@@ -1,0 +1,55 @@
+<%= javascript_include_tag 'style' %>
+<div class="row" style="background-color: #e8e8e8;">
+  <div class="">
+    <nav style="background-color: #640000">
+      <div class="nav-wrapper">
+        <a class="brand-logo right" style="padding-right: 20px">Section list</a>
+        <a href="#" data-activates="slide-out" class="button-collapse">
+          <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+        </a>
+      </div>
+    </nav>
+    
+    <div class="row">
+      <div class="col s12 m12 l9 right">
+        <ul class="collection with-header">
+          <li class="collection-header"><h4>Section list</h4></li>
+          <% @sections.each do |section| %>
+            <li class="collection-item" id="section<%= section.id %>">
+              <div><b><%= section.section %></b> | Grade <%= section.yearlvl %> |
+                <% if section.adviser.empty? %>
+                  <b class="red-text">No adviser assigned</b>
+                <% else %>
+                  Adviser: <%= section.adviser %>
+                <% end %> 
+                <%= link_to edit_section_path(section.id) , class:"secondary-content green-text" do %>
+                  <i class="material-icons">create</i>
+                <% end %>
+                <%= link_to section_path(section.id) , class:"secondary-content red-text" , method: :delete , remote: true , data: { confirm: 'Are you sure ?' } do %>
+                  <i class="material-icons">delete</i>
+                <% end %>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+  <div class="col s12 ">
+      <%= render 'partials/sidebar' %>
+  </div>
+</div>
+  
+
+
+
+<style type="text/css">
+  .title {
+  font-size: 30px;
+}
+
+.date {
+  font-size: 30px;
+}
+</style>

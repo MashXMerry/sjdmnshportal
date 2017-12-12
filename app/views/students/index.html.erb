@@ -3,23 +3,21 @@
   <div class="">
     <nav style="margin-bottom: 20px;background-color: #640000">
       <div class="nav-wrapper">
+        <a class="brand-logo right" style="padding-right: 20px">Add student</a>
         <a href="#" data-activates="slide-out" class="button-collapse">
           <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
         </a>
         <ul class="right">
-        <a class="btn btn-flat green white-text waves-effect waves-blue modal-trigger" style="margin-right: 5px" href="#modalsearch">
-        Search student</a>
       </ul>
       </div>
     </nav>
-
     <!-- ++++++++++++++++++++ MODAL ++++++++++++++++++++++++ -->
-    <div class="row" style="padding-top: 50px">
+    <div class="row" style="padding-top: 30px">
       <div class="col s12 m12 l9 right">
         <%= form_for(@student , remote: true , html: { class:"student-form" } ) do |f| %>
         <div class="card white hoverable">
           <div class="card-content">
-            <span class="card-title center"><b>Register new student</b></span><br>
+            <span class="card-title">Add Student</span>
               <div class="row">
                 <div class="col s12 m4 l4">
                   <div class="input-field">
@@ -63,20 +61,105 @@
                     id:"password" %>
                   </div>
                 </div>
-                <div class="col s12 m4 l4">
+                <div class="col s12 m10 l10" id="level-field">
                   <div class="input-field">
-                    <%= f.select :level , 
-                    options_for_select([["Level"], "7" , "8" , "9" , "10" , "11" , "12"]) , id:"level" %>
-                  </div>  
-                </div>
-                <div class="col s12 m4 l4" id="level-field">
-                  <div class="input-field">
-                    <%= f.select :section,
-                    options_for_select(
-                    [["Section"], "ACACIA" , "AMBER" , "AMETHYST" , "AMOS" , "APITONG" , "APOLLO", "AQUAMARINE" ,"ATHENA","AVOCADO","AWIT","CAMACHILE","CAMIA","CARNATION","CATLEYA","CERRIDWEN","CHARITY","CRONICA","DAISY","DANIEL","DEMETER","DIAMOND","DUHAT","EMERALD","EXODUS","EZEKIEL","FAITH","FREEDOM","GARNET","GENESIS","GLADIOLA","GOODWILL","GUMAMELA","HERA","HERCULES","HERMES","HESPHAESTUS","HONESTY","HOPE","ILANG-ILANG","IPIL-IPIL","IRIS","ISAIAH","JADE","JEREMIAH","JOSHUA","JUSTICE","KAMAGONG","KAWIKAAN","LEVITICO","LIRIO","LOTUS","LOVE","MAGNOLIA","MAHOGANY","MANGGA","MULAWIN","NARRA","OBEDIENCE","OPAL","PATIENCE","PEACE","PEARL","PERIDOT","POSEIDON","PRUDENCE","ROSE","RUBY","SAMPAGUITA","SAMPALOK","SAPPHIRE","SINCERITY","TALISAY","TOPAZ","UNITY","VENUS","YAKAL"]) , id:"section" %>
+                    <i class="material-icons prefix">create</i>
+                    <%= f.text_field :section , disabled: true ,id:'section-field', placeholder:"Section" %>
                   </div>
                 </div>
-                <div class="col s12 m4 l4">
+
+                <div class="col s12 m2 l2">
+                  <a class="waves-effect waves-light btn modal-trigger blue btn-large" href="#modal1">Section</a>
+                  <!-- Modal Structure -->
+                  <div id="modal1" class="modal modal-fixed-footer">
+                    <div class="modal-content">
+                      <h3>Choose section</h3>
+                      <ul class="collapsible" data-collapsible="accordion">
+                        <li>
+                          <div class="collapsible-header"><i class="material-icons">fiber_manual_record</i>
+                          Grade 7</div>
+                          <div class="collapsible-body">
+                            <div class="collection">
+                              <% @sections7.each do |section| %>
+                                <a class="collection-item modal-close black-text" id="btn-section<%= section.id %>">
+                                  <%= section.section %> | Grade <b class="red-text"><%= section.yearlvl %></b></a> 
+                              <% end %>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="collapsible-header"><i class="material-icons">fiber_manual_record</i>
+                          Grade 8</div>
+                          <div class="collapsible-body">
+                            <div class="collection">
+                              <% @sections8.each do |section| %>
+                                <a class="collection-item modal-close black-text" id="btn-section<%= section.id %>">
+                                  <%= section.section %> | Grade <b class="red-text"><%= section.yearlvl %></b></a> 
+                              <% end %>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="collapsible-header"><i class="material-icons">fiber_manual_record</i>
+                          Grade 9</div>
+                          <div class="collapsible-body">
+                            <div class="collection">
+                              <% @sections9.each do |section| %>
+                                <a class="collection-item modal-close black-text" id="btn-section<%= section.id %>">
+                                  <%= section.section %> | Grade <b class="red-text"><%= section.yearlvl %></b></a> 
+                              <% end %>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="collapsible-header"><i class="material-icons">fiber_manual_record</i>
+                          Grade 10</div>
+                          <div class="collapsible-body">
+                            <div class="collection">
+                              <% @sections10.each do |section| %>
+                                <a class="collection-item modal-close black-text" id="btn-section<%= section.id %>">
+                                  <%= section.section %> | Grade <b class="red-text"><%= section.yearlvl %></b></a> 
+                              <% end %>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="collapsible-header"><i class="material-icons">fiber_manual_record</i>
+                          Grade 11</div>
+                          <div class="collapsible-body">
+                            <div class="collection">
+                              <% @sections11.each do |section| %>
+                                <a class="collection-item modal-close black-text" id="btn-section<%= section.id %>">
+                                  <%= section.section %> | Grade <b class="red-text"><%= section.yearlvl %></b></a> 
+                              <% end %>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="collapsible-header"><i class="material-icons">fiber_manual_record</i>
+                          Grade 12</div>
+                          <div class="collapsible-body">
+                            <div class="collection">
+                              <% @sections12.each do |section| %>
+                                <a class="collection-item modal-close black-text" id="btn-section<%= section.id %>">
+                                  <%= section.section %> | Grade <b class="red-text"><%= section.yearlvl %></b></a> 
+                              <% end %>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div><!-- col s12 m2 l2 -->
+
+                <div class="col s12 m6 l6">
+                  <div class="input-field">
+                    <%= f.select :level , 
+                    options_for_select([["Year level"], "7" , "8" ,"9" ,"10" ,"11" ,"12"]) ,
+                     id:"level" %>
+                  </div>    
+                </div>
+                <div class="col s12 m6 l6">
                   <div class="input-field">
                     <%= f.select :gender , options_for_select([["Gender"],"Male" , "Female"]) ,id:"gender" %>
                   </div>  
@@ -104,6 +187,37 @@
 
 <script type="text/javascript">
   $(document).ready(function() {
+
+    <% @sections7.each do |section| %>
+      $('#btn-section<%= section.id %>').on('click' ,function(){
+        $('#section-field').val('<%= section.section %>');
+      });
+    <% end %>
+    <% @sections8.each do |section| %>
+      $('#btn-section<%= section.id %>').on('click' ,function(){
+        $('#section-field').val('<%= section.section %>');
+      });
+    <% end %>
+    <% @sections9.each do |section| %>
+      $('#btn-section<%= section.id %>').on('click' ,function(){
+        $('#section-field').val('<%= section.section %>');
+      });
+    <% end %>
+    <% @sections10.each do |section| %>
+      $('#btn-section<%= section.id %>').on('click' ,function(){
+        $('#section-field').val('<%= section.section %>');
+      });
+    <% end %>
+    <% @sections11.each do |section| %>
+      $('#btn-section<%= section.id %>').on('click' ,function(){
+        $('#section-field').val('<%= section.section %>');
+      });
+    <% end %>
+    <% @sections12.each do |section| %>
+      $('#btn-section<%= section.id %>').on('click' ,function(){
+        $('#section-field').val('<%= section.section %>');
+      });
+    <% end %>
 
     $('#firstname').change(function() {
       var Fname = $('#firstname').val();

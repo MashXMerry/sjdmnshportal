@@ -64,6 +64,11 @@ class PagesController < ApplicationController
   	render :json => { 'data' => data }
   end
 
+  def images
+    @announcement = Announcement.all
+    render :json => { 'data' => @announcement.title }  
+  end
+
   def news
     @news = News.all.order('created_at DESC').paginate(page: params[:page] , per_page: 5)
     @events = Event.all.order('created_at DESC').limit(5)

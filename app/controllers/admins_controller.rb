@@ -151,6 +151,10 @@ class AdminsController < ApplicationController
     @students12M = Student.all.where(section: "AMBER" , level: 12)
   end
 
+  def subjectlist
+    
+  end
+
   private
 
   def admin_params

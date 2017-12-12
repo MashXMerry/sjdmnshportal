@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   root 'pages#index'
 
   devise_for :administrators, controllers: {
@@ -13,6 +12,7 @@ Rails.application.routes.draw do
   get '/administrators/administrators_json' , to: 'pages#admins_json'
   get '/students/students_json' , to: 'pages#students_json'
   get '/grades/grades_json' , to: 'pages#grades_json'
+  get '/images/images_json' , to: 'pages#images'
 
   get 'student/student_json/:id' , to: 'pages#student_id_json'
   get 'student/student_grade_json/:id' , to: 'pages#student_grade_json'
@@ -32,6 +32,8 @@ Rails.application.routes.draw do
     resources :events
     resources :news
     resources :announcements
+    resources :sections
+    resources :subjects
     resources :students do
       resources :grades
     put '/update_grades' , to: 'grades#update' , as: 'update_grades'
@@ -39,6 +41,8 @@ Rails.application.routes.draw do
 
     # post '/create_grades' , to: 'grades#create_grades' , as: 'insert_grade'
     get '/dashboard' , to: 'admins#dashboard' , as: 'admin_dashboard'
+    get '/subject_list' , to: 'subjects#subjectlist' , as:'subjectlist'
+    get '/section_list' , to: 'sections#sectionlist' , as:'sectionlist'
     get '/grades' , to: 'admins#grades' , as: 'admin_school'
     get '/profile' , to: 'admins#profile' , as: 'admin_profile'
     get 'student_list' , to: 'admins#student_list' , as: 'admin_student_list'

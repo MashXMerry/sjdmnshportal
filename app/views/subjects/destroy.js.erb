@@ -1,0 +1,4 @@
+$('#subject<%= @subject.id %>').fadeOut(600, function() {
+	$(this).remove();
+	Materialize.toast('Subject deleted !', 2000);
+});	
