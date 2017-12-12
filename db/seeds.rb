@@ -9,4 +9,4 @@
 	# Administrator.delete_all
 	# Student.delete_all
 	Administrator.delete_all
-	Administrator.create(email: 'delossantos.mash@gmail.com', password: 'mvds.com', firstname: 'Mashiyyat' , middlename: 'Villasenor', lastname:'Delos Santos', role: 'admin')
+	Administrator.create(email: 'delossantos.mash@gmail.com', password: 'mvds.com', firstname: 'Mashiyyat' , middlename: 'Villasenor', lastname:'Delos Santos', role: 'registrar')
