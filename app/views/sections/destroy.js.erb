@@ -1,0 +1,4 @@
+$('#section<%= @section.id %>').fadeOut(600, function() {
+	$(this).remove();
+	Materialize.toast('Section deleted !', 2000);
+});	

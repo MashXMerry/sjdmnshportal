@@ -22,6 +22,13 @@ class AdminsController < ApplicationController
   def registeradmin
     @administrators = Administrator.new
     @admins = Administrator.all
+
+    @admins.each do |admin|
+      firstname = admin.firstname
+      lastname = admin.lastname
+      @section = Section.all.where("adviser LIKE ? ? ", firstname , lastname)
+    end
+
   end
 
   def addadministrator

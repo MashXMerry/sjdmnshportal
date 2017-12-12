@@ -30,8 +30,12 @@
               </blockquote>
               <%= link_to "Remove Student" , student_path(@student) ,method: :delete , 
               data: { confirm: "Are you sure ? student and all recorded grades will also deleted" }  %> |
-              <%= link_to "Edit information", edit_student_path(@student) %> | 
-              <a class="modal-trigger" href="#modal1">Add Grades</a>
+              <%= link_to "Edit information", edit_student_path(@student) %> 
+              <% if current_administrator.role == "faculty" %>
+               | <a class="modal-trigger" href="#modal1">Add Grades</a>
+              <% else %>
+                <!-- some codes here -->
+              <% end %>
             </div>
           </div>
         </div>

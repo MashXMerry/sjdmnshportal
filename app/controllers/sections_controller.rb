@@ -20,11 +20,17 @@ class SectionsController < ApplicationController
   end
 
   def sectionlist
-    @sections = Section.all.order('yearlvl ASC')
+    @section7 = Section.all.where(:yearlvl => 7).order('yearlvl ASC').order('section ASC')
+    @section8 = Section.all.where(:yearlvl => 8).order('yearlvl ASC').order('section ASC')
+    @section9 = Section.all.where(:yearlvl => 9).order('yearlvl ASC').order('section ASC')
+    @section10 = Section.all.where(:yearlvl => 10).order('yearlvl ASC').order('section ASC')
+    @section11 = Section.all.where(:yearlvl => 11).order('yearlvl ASC').order('section ASC')
+    @section12 = Section.all.where(:yearlvl => 12).order('yearlvl ASC').order('section ASC')
   end
 
   # GET /sections/1/edit
   def edit
+    @teacher = Administrator.all.where(:role => "faculty")
   end
 
   # POST /sections
@@ -50,7 +56,7 @@ class SectionsController < ApplicationController
   def update
     respond_to do |format|
       if @section.update(section_params)
-        format.html { redirect_to @section, notice: 'Section was successfully updated.' }
+        format.html { redirect_to sectionlist_path, notice: 'Section was successfully updated.' }
         format.json { render :show, status: :ok, location: @section }
       else
         format.html { render :edit }

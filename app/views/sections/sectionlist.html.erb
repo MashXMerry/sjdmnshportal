@@ -14,23 +14,146 @@
       <div class="col s12 m12 l9 right">
         <ul class="collection with-header">
           <li class="collection-header"><h4>Section list</h4></li>
-          <% @sections.each do |section| %>
-            <li class="collection-item" id="section<%= section.id %>">
-              <div><b><%= section.section %></b> | Grade <%= section.yearlvl %> |
-                <% if section.adviser.empty? %>
-                  <b class="red-text">No adviser assigned</b>
-                <% else %>
-                  Adviser: <%= section.adviser %>
-                <% end %> 
-                <%= link_to edit_section_path(section.id) , class:"secondary-content green-text" do %>
-                  <i class="material-icons">create</i>
-                <% end %>
-                <%= link_to section_path(section.id) , class:"secondary-content red-text" , method: :delete , remote: true , data: { confirm: 'Are you sure ?' } do %>
-                  <i class="material-icons">delete</i>
-                <% end %>
-              </div>
-            </li>
-          <% end %>
+            <ul class="collapsible" data-collapsible="accordion">
+              <li>
+                <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Grade 7</div>
+                <div class="collapsible-body">
+                  <ul class="collection">
+                    <% @section7.each do |section| %>
+                      <li class="collection-item">
+                        <%= section.section %></b> | Grade <%= section.yearlvl %> |
+                          <% if section.adviser.empty? %>
+                            <b class="red-text">No adviser assigned</b>
+                          <% else %>
+                            Adviser: <b class="green-text"><%= section.adviser %></b> 
+                          <% end %> 
+                          <%= link_to edit_section_path(section.id) , class:"secondary-content green-text" do %>
+                            <i class="material-icons">create</i>
+                          <% end %>
+                          <%= link_to section_path(section.id) , class:"secondary-content red-text" , method: :delete , remote: true , data: { confirm: 'Are you sure ?' } do %>
+                            <i class="material-icons">delete</i>
+                          <% end %>
+                      </li>
+                    <% end %>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Grade 8</div>
+                <div class="collapsible-body">
+                  <ul class="collection">
+                    <% @section8.each do |section| %>
+                      <li class="collection-item">
+                        <%= section.section %></b> | Grade <%= section.yearlvl %> |
+                          <% if section.adviser.empty? %>
+                            <b class="red-text">No adviser assigned</b>
+                          <% else %>
+                            Adviser: <%= section.adviser %>
+                          <% end %> 
+                          <%= link_to edit_section_path(section.id) , class:"secondary-content green-text" do %>
+                            <i class="material-icons">create</i>
+                          <% end %>
+                          <%= link_to section_path(section.id) , class:"secondary-content red-text" , method: :delete , remote: true , data: { confirm: 'Are you sure ?' } do %>
+                            <i class="material-icons">delete</i>
+                          <% end %>
+                      </li>
+                    <% end %>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Grade 9</div>
+                <div class="collapsible-body">
+                  <ul class="collection">
+                    <% @section9.each do |section| %>
+                      <li class="collection-item">
+                        <%= section.section %></b> | Grade <%= section.yearlvl %> |
+                          <% if section.adviser.empty? %>
+                            <b class="red-text">No adviser assigned</b>
+                          <% else %>
+                            Adviser: <%= section.adviser %>
+                          <% end %> 
+                          <%= link_to edit_section_path(section.id) , class:"secondary-content green-text" do %>
+                            <i class="material-icons">create</i>
+                          <% end %>
+                          <%= link_to section_path(section.id) , class:"secondary-content red-text" , method: :delete , remote: true , data: { confirm: 'Are you sure ?' } do %>
+                            <i class="material-icons">delete</i>
+                          <% end %>
+                      </li>
+                    <% end %>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Grade 10</div>
+                <div class="collapsible-body">
+                  <ul class="collection">
+                    <% @section10.each do |section| %>
+                      <li class="collection-item">
+                        <%= section.section %></b> | Grade <%= section.yearlvl %> |
+                          <% if section.adviser.empty? %>
+                            <b class="red-text">No adviser assigned</b>
+                          <% else %>
+                            Adviser: <%= section.adviser %>
+                          <% end %> 
+                          <%= link_to edit_section_path(section.id) , class:"secondary-content green-text" do %>
+                            <i class="material-icons">create</i>
+                          <% end %>
+                          <%= link_to section_path(section.id) , class:"secondary-content red-text" , method: :delete , remote: true , data: { confirm: 'Are you sure ?' } do %>
+                            <i class="material-icons">delete</i>
+                          <% end %>
+                      </li>
+                    <% end %>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Grade 11</div>
+                <div class="collapsible-body">
+                  <ul class="collection">
+                    <% @section11.each do |section| %>
+                      <li class="collection-item">
+                        <%= section.section %></b> | Grade <%= section.yearlvl %> |
+                          <% if section.adviser.empty? %>
+                            <b class="red-text">No adviser assigned</b>
+                          <% else %>
+                            Adviser: <%= section.adviser %>
+                          <% end %> 
+                          <%= link_to edit_section_path(section.id) , class:"secondary-content green-text" do %>
+                            <i class="material-icons">create</i>
+                          <% end %>
+                          <%= link_to section_path(section.id) , class:"secondary-content red-text" , method: :delete , remote: true , data: { confirm: 'Are you sure ?' } do %>
+                            <i class="material-icons">delete</i>
+                          <% end %>
+                      </li>
+                    <% end %>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Grade 12</div>
+                <div class="collapsible-body">
+                  <ul class="collection">
+                    <% @section12.each do |section| %>
+                      <li class="collection-item">
+                        <%= section.section %></b> | Grade <%= section.yearlvl %> |
+                          <% if section.adviser.empty? %>
+                            <b class="red-text">No adviser assigned</b>
+                          <% else %>
+                            Adviser: <%= section.adviser %>
+                          <% end %> 
+                          <%= link_to edit_section_path(section.id) , class:"secondary-content green-text" do %>
+                            <i class="material-icons">create</i>
+                          <% end %>
+                          <%= link_to section_path(section.id) , class:"secondary-content red-text" , method: :delete , remote: true , data: { confirm: 'Are you sure ?' } do %>
+                            <i class="material-icons">delete</i>
+                          <% end %>
+                      </li>
+                    <% end %>
+                  </ul>
+                </div>
+              </li>
+            </ul>
         </ul>
       </div>
     </div>

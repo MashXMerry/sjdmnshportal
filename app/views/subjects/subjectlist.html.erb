@@ -14,18 +14,182 @@
       <div class="col s12 m12 l9 right">
         <ul class="collection with-header">
           <li class="collection-header"><h4>Subject list</h4></li>
-          <% @subjects.each do |subject| %>
-            <li class="collection-item" id="subject<%= subject.id %>">
-              <div><b><%= subject.title %></b> | Grade <%= subject.yearlvl %> | <%= subject.description %>
-                <%= link_to edit_subject_path(subject.id) , class:"secondary-content green-text" do %>
-                  <i class="material-icons">create</i>
-                <% end %>
-                <%= link_to subject_path(subject.id) , class:"secondary-content red-text" , method: :delete , remote: true , data: { confirm: 'Are you sure ?' } do %>
-                  <i class="material-icons">delete</i>
-                <% end %>
-              </div>
-            </li>
-          <% end %>
+            <ul class="collapsible" data-collapsible="accordion">
+              <li>
+                <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Grade 7</div>
+                <div class="collapsible-body">
+                  <ul class="collection">
+                    <% @subject7.each do |subject| %>
+                    <li class="collection-item" id="subject<%= subject.id %>">
+                        <div><b>
+                          <% if subject.description.empty? %>
+                            <a class="tooltipped" data-position="top" data-delay="50" data-tooltip="No description">
+                              <i class="tiny material-icons black-text">info</i>
+                            </a> 
+                          <% else %>
+                            <a class="tooltipped" data-position="top" data-delay="50" data-tooltip="<%= subject.description %>">
+                              <i class="tiny material-icons black-text">info</i>
+                            </a> 
+                          <% end %> | 
+                          <%= subject.title %></b> | Grade <%= subject.yearlvl %>
+                          <%= link_to edit_subject_path(subject.id) , class:"secondary-content green-text" do %>
+                            <i class="material-icons">create</i>
+                          <% end %>
+                          <%= link_to subject_path(subject.id) , class:"secondary-content red-text" , method: :delete , remote: true , data: { confirm: 'Are you sure ?' } do %>
+                            <i class="material-icons">delete</i>
+                          <% end %>
+                        </div>
+                      </li>
+                    <% end %>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Grade 8</div>
+                <div class="collapsible-body">
+                  <ul class="collection">
+                    <% @subject8.each do |subject| %>
+                    <li class="collection-item" id="subject<%= subject.id %>">
+                        <div><b>
+                          <% if subject.description.empty? %>
+                            <a class="tooltipped" data-position="top" data-delay="50" data-tooltip="No description">
+                              <i class="tiny material-icons black-text">info</i>
+                            </a> 
+                          <% else %>
+                            <a class="tooltipped" data-position="top" data-delay="50" data-tooltip="<%= subject.description %>">
+                              <i class="tiny material-icons black-text">info</i>
+                            </a> 
+                          <% end %> | 
+                          <%= subject.title %></b> | Grade <%= subject.yearlvl %>
+                          <%= link_to edit_subject_path(subject.id) , class:"secondary-content green-text" do %>
+                            <i class="material-icons">create</i>
+                          <% end %>
+                          <%= link_to subject_path(subject.id) , class:"secondary-content red-text" , method: :delete , remote: true , data: { confirm: 'Are you sure ?' } do %>
+                            <i class="material-icons">delete</i>
+                          <% end %>
+                        </div>
+                      </li>
+                    <% end %>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Grade 9</div>
+                <div class="collapsible-body">
+                  <ul class="collection">
+                    <% @subject9.each do |subject| %>
+                    <li class="collection-item" id="subject<%= subject.id %>">
+                        <div><b>
+                          <% if subject.description.empty? %>
+                            <a class="tooltipped" data-position="top" data-delay="50" data-tooltip="No description">
+                              <i class="tiny material-icons black-text">info</i>
+                            </a> 
+                          <% else %>
+                            <a class="tooltipped" data-position="top" data-delay="50" data-tooltip="<%= subject.description %>">
+                              <i class="tiny material-icons black-text">info</i>
+                            </a> 
+                          <% end %> | 
+                          <%= subject.title %></b> | Grade <%= subject.yearlvl %>
+                          <%= link_to edit_subject_path(subject.id) , class:"secondary-content green-text" do %>
+                            <i class="material-icons">create</i>
+                          <% end %>
+                          <%= link_to subject_path(subject.id) , class:"secondary-content red-text" , method: :delete , remote: true , data: { confirm: 'Are you sure ?' } do %>
+                            <i class="material-icons">delete</i>
+                          <% end %>
+                        </div>
+                      </li>
+                    <% end %>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Grade 10</div>
+                <div class="collapsible-body">
+                  <ul class="collection">
+                    <% @subject10.each do |subject| %>
+                    <li class="collection-item" id="subject<%= subject.id %>">
+                        <div><b>
+                          <% if subject.description.empty? %>
+                            <a class="tooltipped" data-position="top" data-delay="50" data-tooltip="No description">
+                              <i class="tiny material-icons black-text">info</i>
+                            </a> 
+                          <% else %>
+                            <a class="tooltipped" data-position="top" data-delay="50" data-tooltip="<%= subject.description %>">
+                              <i class="tiny material-icons black-text">info</i>
+                            </a> 
+                          <% end %> | 
+                          <%= subject.title %></b> | Grade <%= subject.yearlvl %>
+                          <%= link_to edit_subject_path(subject.id) , class:"secondary-content green-text" do %>
+                            <i class="material-icons">create</i>
+                          <% end %>
+                          <%= link_to subject_path(subject.id) , class:"secondary-content red-text" , method: :delete , remote: true , data: { confirm: 'Are you sure ?' } do %>
+                            <i class="material-icons">delete</i>
+                          <% end %>
+                        </div>
+                      </li>
+                    <% end %>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Grade 11</div>
+                <div class="collapsible-body">
+                  <ul class="collection">
+                    <% @subject11.each do |subject| %>
+                    <li class="collection-item" id="subject<%= subject.id %>">
+                        <div><b>
+                          <% if subject.description.empty? %>
+                            <a class="tooltipped" data-position="top" data-delay="50" data-tooltip="No description">
+                              <i class="tiny material-icons black-text">info</i>
+                            </a> 
+                          <% else %>
+                            <a class="tooltipped" data-position="top" data-delay="50" data-tooltip="<%= subject.description %>">
+                              <i class="tiny material-icons black-text">info</i>
+                            </a> 
+                          <% end %> | 
+                          <%= subject.title %></b> | Grade <%= subject.yearlvl %>
+                          <%= link_to edit_subject_path(subject.id) , class:"secondary-content green-text" do %>
+                            <i class="material-icons">create</i>
+                          <% end %>
+                          <%= link_to subject_path(subject.id) , class:"secondary-content red-text" , method: :delete , remote: true , data: { confirm: 'Are you sure ?' } do %>
+                            <i class="material-icons">delete</i>
+                          <% end %>
+                        </div>
+                      </li>
+                    <% end %>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Grade 12</div>
+                <div class="collapsible-body">
+                  <ul class="collection">
+                    <% @subject12.each do |subject| %>
+                    <li class="collection-item" id="subject<%= subject.id %>">
+                        <div><b>
+                          <% if subject.description.empty? %>
+                            <a class="tooltipped" data-position="top" data-delay="50" data-tooltip="No description">
+                              <i class="tiny material-icons black-text">info</i>
+                            </a> 
+                          <% else %>
+                            <a class="tooltipped" data-position="top" data-delay="50" data-tooltip="<%= subject.description %>">
+                              <i class="tiny material-icons black-text">info</i>
+                            </a> 
+                          <% end %> | 
+                          <%= subject.title %></b> | Grade <%= subject.yearlvl %>
+                          <%= link_to edit_subject_path(subject.id) , class:"secondary-content green-text" do %>
+                            <i class="material-icons">create</i>
+                          <% end %>
+                          <%= link_to subject_path(subject.id) , class:"secondary-content red-text" , method: :delete , remote: true , data: { confirm: 'Are you sure ?' } do %>
+                            <i class="material-icons">delete</i>
+                          <% end %>
+                        </div>
+                      </li>
+                    <% end %>
+                  </ul>
+                </div>
+              </li>
+            </ul>
         </ul>
       </div>
     </div>
@@ -40,6 +204,11 @@
 
 
 <style type="text/css">
+
+  .tooltipped:hover {
+    cursor: pointer;
+  }
+  
   .title {
   font-size: 30px;
 }

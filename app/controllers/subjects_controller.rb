@@ -2,7 +2,12 @@ class SubjectsController < ApplicationController
   before_action :set_subject, only: [:show, :edit, :update, :destroy]
 
   def subjectlist
-    @subjects = Subject.all.order('yearlvl ASC')
+    @subject7 = Subject.all.where(:yearlvl => 7).order('yearlvl ASC')
+    @subject8 = Subject.all.where(:yearlvl => 8).order('yearlvl ASC')
+    @subject9 = Subject.all.where(:yearlvl => 9).order('yearlvl ASC')
+    @subject10 = Subject.all.where(:yearlvl => 10).order('yearlvl ASC')
+    @subject11 = Subject.all.where(:yearlvl => 11).order('yearlvl ASC')
+    @subject12 = Subject.all.where(:yearlvl => 12).order('yearlvl ASC')
   end
 
   # GET /subjects
