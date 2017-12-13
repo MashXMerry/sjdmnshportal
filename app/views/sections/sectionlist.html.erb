@@ -20,7 +20,7 @@
                 <div class="collapsible-body">
                   <ul class="collection">
                     <% @section7.each do |section| %>
-                      <li class="collection-item">
+                      <li class="collection-item" id="section<%= section.id %>">
                         <%= section.section %></b> | Grade <%= section.yearlvl %> |
                           <% if section.adviser.empty? %>
                             <b class="red-text">No adviser assigned</b>
@@ -43,7 +43,7 @@
                 <div class="collapsible-body">
                   <ul class="collection">
                     <% @section8.each do |section| %>
-                      <li class="collection-item">
+                      <li class="collection-item" id="section<% section.id %>">
                         <%= section.section %></b> | Grade <%= section.yearlvl %> |
                           <% if section.adviser.empty? %>
                             <b class="red-text">No adviser assigned</b>
