@@ -63,10 +63,10 @@
               </li>
               <li>
                 <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Grade 9</div>
-                <div class="collapsible-body" id="section<% section.id %>">
+                <div class="collapsible-body">
                   <ul class="collection">
                     <% @section9.each do |section| %>
-                      <li class="collection-item">
+                      <li class="collection-item" id="section<%= section.id %>">
                         <%= section.section %></b> | Grade <%= section.yearlvl %> |
                           <% if section.adviser.empty? %>
                             <b class="red-text">No adviser assigned</b>
@@ -89,7 +89,7 @@
                 <div class="collapsible-body">
                   <ul class="collection">
                     <% @section10.each do |section| %>
-                      <li class="collection-item" id="section<% section.id %>">
+                      <li class="collection-item" id="section<%= section.id %>">
                         <%= section.section %></b> | Grade <%= section.yearlvl %> |
                           <% if section.adviser.empty? %>
                             <b class="red-text">No adviser assigned</b>
@@ -112,7 +112,7 @@
                 <div class="collapsible-body">
                   <ul class="collection">
                     <% @section11.each do |section| %>
-                      <li class="collection-item" id="section<% section.id %>">
+                      <li class="collection-item" id="section<%= section.id %>">
                         <%= section.section %></b> | Grade <%= section.yearlvl %> |
                           <% if section.adviser.empty? %>
                             <b class="red-text">No adviser assigned</b>
@@ -135,7 +135,7 @@
                 <div class="collapsible-body">
                   <ul class="collection">
                     <% @section12.each do |section| %>
-                      <li class="collection-item" id="section<% section.id %>">
+                      <li class="collection-item" id="section<%= section.id %>">
                         <%= section.section %></b> | Grade <%= section.yearlvl %> |
                           <% if section.adviser.empty? %>
                             <b class="red-text">No adviser assigned</b>
