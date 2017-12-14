@@ -45,20 +45,102 @@
             <%= form.text_field :password, id: :student_password , required: "required"%>
           </div>
 
-          <div class="col s12 m4 l4" id="level-field">
+          <div class="col s12 m10 l10" id="level-field">
             <div class="input-field">
-              <%= form.select :section,
-              options_for_select(
-              [["Section"], "ACACIA" , "AMBER" , "AMETHYST" , "AMOS" , "APITONG" , "APOLLO", "AQUAMARINE" ,"ATHENA","AVOCADO","AWIT","CAMACHILE","CAMIA","CARNATION","CATLEYA","CERRIDWEN","CHARITY","CRONICA","DAISY","DANIEL","DEMETER","DIAMOND","DUHAT","EMERALD","EXODUS","EZEKIEL","FAITH","FREEDOM","GARNET","GENESIS","GLADIOLA","GOODWILL","GUMAMELA","HERA","HERCULES","HERMES","HESPHAESTUS","HONESTY","HOPE","ILANG-ILANG","IPIL-IPIL","IRIS","ISAIAH","JADE","JEREMIAH","JOSHUA","JUSTICE","KAMAGONG","KAWIKAAN","LEVITICO","LIRIO","LOTUS","LOVE","MAGNOLIA","MAHOGANY","MANGGA","MULAWIN","NARRA","OBEDIENCE","OPAL","PATIENCE","PEACE","PEARL","PERIDOT","POSEIDON","PRUDENCE","ROSE","RUBY","SAMPAGUITA","SAMPALOK","SAPPHIRE","SINCERITY","TALISAY","TOPAZ","UNITY","VENUS","YAKAL"]) , id:"section" %>
+              <i class="material-icons prefix">create</i>
+              <%= form.text_field :section ,id:'section-field', placeholder:"Section" %>
             </div>
           </div>
 
-          <div class="input-field col s12 m4 l4">
-            <%= form.select :level , 
-            options_for_select([["Level", ""], "7" , "8" , "9" , "10" , "11" , "12"]) , id:"level", :required => true %>
+          <div class="col s12 m2 l2">
+            <a class="waves-effect waves-light btn modal-trigger blue btn-large" href="#modal1">Section</a>
+            <!-- Modal Structure -->
+            <div id="modal1" class="modal modal-fixed-footer gray">
+              <div class="modal-content">
+                <h3>Choose section</h3>
+                <ul class="collapsible" data-collapsible="accordion">
+                  <li>
+                    <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>
+                    Grade 7</div>
+                    <div class="collapsible-body">
+                      <div class="collection">
+                        <% @sections7.each do |section| %>
+                          <a class="collection-item modal-close black-text" id="btn-section<%= section.id %>">
+                            <%= section.section %> | Grade <b class="red-text"><%= section.yearlvl %></b></a> 
+                        <% end %>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>
+                    Grade 8</div>
+                    <div class="collapsible-body">
+                      <div class="collection">
+                        <% @sections8.each do |section| %>
+                          <a class="collection-item modal-close black-text" id="btn-section<%= section.id %>">
+                            <%= section.section %> | Grade <b class="red-text"><%= section.yearlvl %></b></a> 
+                        <% end %>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>
+                    Grade 9</div>
+                    <div class="collapsible-body">
+                      <div class="collection">
+                        <% @sections9.each do |section| %>
+                          <a class="collection-item modal-close black-text" id="btn-section<%= section.id %>">
+                            <%= section.section %> | Grade <b class="red-text"><%= section.yearlvl %></b></a> 
+                        <% end %>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>
+                    Grade 10</div>
+                    <div class="collapsible-body">
+                      <div class="collection">
+                        <% @sections10.each do |section| %>
+                          <a class="collection-item modal-close black-text" id="btn-section<%= section.id %>">
+                            <%= section.section %> | Grade <b class="red-text"><%= section.yearlvl %></b></a> 
+                        <% end %>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>
+                    Grade 11</div>
+                    <div class="collapsible-body">
+                      <div class="collection">
+                        <% @sections11.each do |section| %>
+                          <a class="collection-item modal-close black-text" id="btn-section<%= section.id %>">
+                            <%= section.section %> | Grade <b class="red-text"><%= section.yearlvl %></b></a> 
+                        <% end %>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>
+                    Grade 12</div>
+                    <div class="collapsible-body">
+                      <div class="collection">
+                        <% @sections12.each do |section| %>
+                          <a class="collection-item modal-close black-text" id="btn-section<%= section.id %>">
+                            <%= section.section %> | Grade <b class="red-text"><%= section.yearlvl %></b></a> 
+                        <% end %>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div><!-- col s12 m2 l2 -->
+
+          <div class="input-field col s12 m6 l6">
+            <%= form.text_field :level , :required => true , id:"level" %>
           </div>
 
-          <div class="input-field col s12 m4 l4">
+          <div class="input-field col s12 m6 l6">
             <%= form.select :gender , options_for_select([["Gender", ""],"Male" , "Female"]) ,id:"gender" , :required => true %>
           </div>
 
@@ -82,6 +164,43 @@
 
 <script type="text/javascript">
   $(document).ready(function() {
+    <% @sections7.each do |section| %>
+      $('#btn-section<%= section.id %>').on('click' ,function(){
+        $('#section-field').val('<%= section.section %>');
+        $('#level').val(<%= section.yearlvl %>)
+      });
+    <% end %>
+    <% @sections8.each do |section| %>
+      $('#btn-section<%= section.id %>').on('click' ,function(){
+        $('#section-field').val('<%= section.section %>');
+        $('#level').val(<%= section.yearlvl %>)
+      });
+    <% end %>
+    <% @sections9.each do |section| %>
+      $('#btn-section<%= section.id %>').on('click' ,function(){
+        $('#section-field').val('<%= section.section %>');
+        $('#level').val(<%= section.yearlvl %>)
+      });
+    <% end %>
+    <% @sections10.each do |section| %>
+      $('#btn-section<%= section.id %>').on('click' ,function(){
+        $('#section-field').val('<%= section.section %>');
+        $('#level').val(<%= section.yearlvl %>)
+      });
+    <% end %>
+    <% @sections11.each do |section| %>
+      $('#btn-section<%= section.id %>').on('click' ,function(){
+        $('#section-field').val('<%= section.section %>');
+        $('#level').val(<%= section.yearlvl %>)
+      });
+    <% end %>
+    <% @sections12.each do |section| %>
+      $('#btn-section<%= section.id %>').on('click' ,function(){
+        $('#section-field').val('<%= section.section %>');
+        $('#level').val(<%= section.yearlvl %>)
+      });
+    <% end %>
+
     $('#btn-reset').on('click' , function() {
         var Fname = $('#student_firstname').val();
         var SFname = Fname.substring(0,4)

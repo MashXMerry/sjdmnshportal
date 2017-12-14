@@ -1,0 +1,65 @@
+<%= javascript_include_tag 'style' %>
+<div class="row" style="background-color: #e8e8e8;">
+  <div class="">
+    <nav style="background-color: #640000">
+      <div class="nav-wrapper">
+        <a class="brand-logo right" style="padding-right: 20px">My class</a>
+        <a href="#" data-activates="slide-out" class="button-collapse">
+          <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+        </a>
+      </div>
+    </nav>
+    
+    <div class="row">
+      <div class="col s12 m12 l9 right">
+      	<div style="margin-top: 30px">
+          <% if @section == 'null' %>
+            <h3>No section assigned yet</h3>
+          <% else %>
+            <% @sections.each do |section| %>
+              <h3><%= section.section %> - Grade <%= section.yearlvl %></h3><hr> 
+                <table class="highlight">
+                  <thead>
+                    <tr>
+                      <th>LRN</th>
+                      <th>Lastname</th>
+                      <th>Firstname</th>
+                      <th>Middlename</th>
+                      <th>Section</th>
+                      <th>Year level</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @students.each do |student| %>
+                      <tr>
+                        <td><%= link_to student.lrn , student_path(student.id) %></td>
+                        <td><%= link_to student.lastname, student_path(student.id) %></td>
+                        <td><%= student.firstname %></td>
+                        <td><%= student.middlename %></td>
+                        <td><%= student.section %></td>
+                        <td>Grade <%= student.level %></td>
+                      </tr>
+                    <% end %> <!-- @students.each -->
+                  </tbody>
+                </table>
+            <% end %> <!-- @sections.each -->
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="col s12 ">
+      <%= render 'partials/sidebar' %>
+  </div>
+</div>
+
+<style type="text/css">
+  .title {
+  font-size: 30px;
+}
+
+.date {
+  font-size: 30px;
+}
+</style>

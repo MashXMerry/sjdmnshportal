@@ -65,8 +65,14 @@ class PagesController < ApplicationController
   end
 
   def images
-    @announcement = Announcement.all
-    render :json => { 'data' => @announcement.title }  
+    @announcements = Announcement.all
+    @announcements.each do |announcement|
+      @image = announcement.image.url(:medium)
+      @title = announcement.title
+      @body = announcement.body
+      @date = announcement.date
+    end
+    render :json => { 'title' => @title , 'image' => @image , 'body' => @body , 'date' => @dates }
   end
 
   def news

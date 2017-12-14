@@ -83,6 +83,9 @@
               <p><%= admin.email %> <br>
                  Registered at <%= admin.created_at.to_s(:long) %>
               </p>
+              <% @section.each do |section| %>
+                <%= section.section %>
+              <% end %>
             </li>
           <% end %>
         </ul>

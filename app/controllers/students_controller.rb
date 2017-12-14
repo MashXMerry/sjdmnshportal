@@ -31,6 +31,12 @@ class StudentsController < ApplicationController
 
   # GET /students/1/edit
   def edit
+    @sections7 = Section.all.where(:yearlvl => 7)
+    @sections8 = Section.all.where(:yearlvl => 8)
+    @sections9 = Section.all.where(:yearlvl => 9)
+    @sections10 = Section.all.where(:yearlvl => 10)
+    @sections11 = Section.all.where(:yearlvl => 11)
+    @sections12 = Section.all.where(:yearlvl => 12)
   end
 
   # POST /students

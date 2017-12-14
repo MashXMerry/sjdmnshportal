@@ -73,7 +73,7 @@
                   <!-- Modal Structure -->
                   <div id="modal1" class="modal modal-fixed-footer gray">
                     <div class="modal-content">
-                      <h3>Choose section</h3>
+                      <h3 class="center">Choose section</h3>
                       <ul class="collapsible" data-collapsible="accordion">
                         <li>
                           <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>
@@ -149,6 +149,10 @@
                         </li>
                       </ul>
                     </div>
+                    <div class="modal-footer">
+                      <a class="modal-action modal-close waves-effect waves-green btn-flat red waves-effect waves-yellow white-text">
+                      close</a>
+                    </div>
                   </div>
                 </div><!-- col s12 m2 l2 -->
 
@@ -189,37 +193,37 @@
     <% @sections7.each do |section| %>
       $('#btn-section<%= section.id %>').on('click' ,function(){
         $('#section-field').val('<%= section.section %>');
-        $('#level').val(7)
+        $('#level').val(<%= section.yearlvl %>)
       });
     <% end %>
     <% @sections8.each do |section| %>
       $('#btn-section<%= section.id %>').on('click' ,function(){
         $('#section-field').val('<%= section.section %>');
-        $('#level').val(8)
+        $('#level').val(<%= section.yearlvl %>)
       });
     <% end %>
     <% @sections9.each do |section| %>
       $('#btn-section<%= section.id %>').on('click' ,function(){
         $('#section-field').val('<%= section.section %>');
-        $('#level').val(9)
+        $('#level').val(<%= section.yearlvl %>)
       });
     <% end %>
     <% @sections10.each do |section| %>
       $('#btn-section<%= section.id %>').on('click' ,function(){
         $('#section-field').val('<%= section.section %>');
-        $('#level').val(10)
+        $('#level').val(<%= section.yearlvl %>)
       });
     <% end %>
     <% @sections11.each do |section| %>
       $('#btn-section<%= section.id %>').on('click' ,function(){
         $('#section-field').val('<%= section.section %>');
-        $('#level').val(11)
+        $('#level').val(<%= section.yearlvl %>)
       });
     <% end %>
     <% @sections12.each do |section| %>
       $('#btn-section<%= section.id %>').on('click' ,function(){
         $('#section-field').val('<%= section.section %>');
-        $('#level').val(12)
+        $('#level').val(<%= section.yearlvl %>)
       });
     <% end %>
 

@@ -56,7 +56,7 @@ class SectionsController < ApplicationController
   def update
     respond_to do |format|
       if @section.update(section_params)
-        format.html { redirect_to sectionlist_path, notice: 'Section was successfully updated.' }
+        format.html { redirect_to sectionlist_path, notice: 'Section was successfully updated !.' }
         format.json { render :show, status: :ok, location: @section }
       else
         format.html { render :edit }
@@ -84,6 +84,6 @@ class SectionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def section_params
-      params.require(:section).permit(:section, :yearlvl, :adviser)
+      params.require(:section).permit(:section, :yearlvl, :adviser , :adviser_id)
     end
 end

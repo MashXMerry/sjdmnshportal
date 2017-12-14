@@ -11,6 +11,14 @@ class AdminsController < ApplicationController
     @announcements1 = Announcement.all
   end
 
+  def myclass
+    @sections = Section.all.where(:adviser_id => current_administrator.id)
+    # @students1 = Student.all.where(:section => @sections)
+    @sections.each do |section|
+      @students = Student.all.where(:section => section.section)
+    end
+  end
+
   def grades
   	
   end
@@ -22,13 +30,8 @@ class AdminsController < ApplicationController
   def registeradmin
     @administrators = Administrator.new
     @admins = Administrator.all
-
-    # @admins.each do |admin|
-    #   firstname = admin.firstname
-    #   lastname = admin.lastname
-    #   @section = Section.all.where("adviser LIKE ? ? ", firstname , lastname)
-    # end
-
+    @admin_id = Administrator.select(:id)
+    @section = Section.where(:adviser_id => @admin_id)
   end
 
   def addadministrator

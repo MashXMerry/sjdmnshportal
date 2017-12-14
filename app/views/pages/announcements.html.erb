@@ -30,17 +30,18 @@
           <div class="col l2">
             <% if announcement.date.blank? %>
             <% else %>
-              <h4 class="hide-on-med-and-up"><blockquote><%= announcement.date.to_s(:long) %></blockquote></h4>
+              <h4 class="hide-on-med-and-up">
+                <blockquote>Date: <%= announcement.date.to_s(:long) %></blockquote></h4>
               <p class="hide-on-small-only" style="font-size: 40px;font-family:Rockwell">
                 <%= announcement.date.strftime('%b') %><br>
                 <%= announcement.date.strftime('%d') %>
               </p>
             <% end %>
           </div><!-- col l2 -->
-          <div class="col l5 m12">
+          <div class="col l5 m12 s12">
             <%= image_tag announcement.image.url , style:"width:100%;height: 300px;" , class:"materialboxed" %>
           </div><!-- col l5 -->
-          <div class="col l5">
+          <div class="col l5 s12" style="text-align: center">
             <p style="font-size: 25px;margin: 10px;font-family:Rockwell" class="title">
              Title: <%= announcement.title %>
            </p>

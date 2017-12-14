@@ -40,6 +40,7 @@ Rails.application.routes.draw do
     end
 
     # post '/create_grades' , to: 'grades#create_grades' , as: 'insert_grade'
+    get '/myclass' , to: 'admins#myclass' , as: 'myclass'
     get '/dashboard' , to: 'admins#dashboard' , as: 'admin_dashboard'
     get '/subject_list' , to: 'subjects#subjectlist' , as:'subjectlist'
     get '/section_list' , to: 'sections#sectionlist' , as:'sectionlist'
