@@ -13,7 +13,7 @@ class AdminsController < ApplicationController
 
   def myclass
     @sections = Section.all.where(:adviser_id => current_administrator.id)
-    # @students1 = Student.all.where(:section => @sections)
+    @students1 = Student.all.where(:section => @sections)
     @sections.each do |section|
       @students = Student.all.where(:section => section.section)
     end
