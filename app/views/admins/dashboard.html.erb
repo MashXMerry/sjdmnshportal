@@ -10,155 +10,116 @@
       </div>
     </nav>
     
-  <div class="row" style="margin-top: 50px">
-    <h5 class="col s12 m12 l9 right center"><%= @news1.count %> News posted</h5>
-    <% if @news.empty? %>
-      <h6 class="col s12 m12 l9 right center">No news posted yet</h6>
-      <%= link_to "Create news", news_index_path , class:"col s12 m12 l9 right center btn green" %>
-    <% else %>
-      <% @news.each do |news| %>
-        <div class="col s12 m12 l9 right">
-          <div class="card darken-1 hoverable">
-            <div class="card-content black-text">
-              <p class="title">Title: <%= news.title %></p><br>
-              <p class="body" style="text-align: justify;"><%= news.body %></p>
+    <div class="col s12 m12 l9 right" style="margin-top: 40px;text-align: center">
+      <div class="row">
+        <div class="col s12 m4 l4">
+          <div class="card  blue accent-4">
+            <div class="card-content white-text">
+              <h4 class="white-text">News</h4><hr>
+              <p><%= @news.count %> news posted</p>
             </div>
             <div class="card-action">
-              <p>Posted at <%= news.created_at.to_s(:long) %></p>
+              <%= link_to "view all" ,  news_index_path , class:"btn light-blue waves-effect waves-green" %>
             </div>
           </div>
         </div>
-      <% end %>
-      <%= link_to "View all news", news_index_path , class:"col s12 m12 l9 right center btn orange" %>
-    <% end %>
-    
-  </div><!-- row -->
-
-  <div class="row">
-    <h5 class="col s12 m12 l9 right center"><%= @announcements1.count %> Announcements posted</h5>
-    <% if @announcements.empty? %>
-      <h6 class="col s12 m12 l9 right center">No announcement posted yet</h6>
-      <%= link_to "Create announcement", announcements_path , class:"col s12 m12 l9 right center btn green" %>
-    <% else %>
-      <% @announcements.each do |announcement| %>
-        <div class="col s12 m12 l9 right">
-          <div id="announcement<%= announcement.id %>">
-            <% if announcement.image_file_name.present? %>
-                <div class="row">
-                  <div class="col s12">
-                    <div class="card  hoverable">
-                      <div class="card-image">
-                        <%= image_tag announcement.image.url %>
-                        <span class="card-title"><%= announcement.title %></span>
-                        <a class="btn-floating halfway-fab waves-effect waves-light orange activator">
-                          <i class="material-icons">add</i></a>
-                      </div>
-                      <div class="card-content">
-                        <p class="title">Title: <%= announcement.title %></p><br>
-                          Posted <%= time_ago_in_words(announcement.created_at) %> ago
-                      </div>
-                      <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">
-                          <i class="material-icons right"><i class="fa fa-times-circle" aria-hidden="true"></i></i>
-                        </span>
-                        <% if announcement.date.blank? %>
-                          <!-- some codes here -->
-                        <% else %>
-                          <p class="date">When: <%= announcement.date.to_s(:long) %></p> 
-                        <% end %>
-                          <p class="title">Title: <%= announcement.title %></p>
-                          <p class="body" style="text-align: justify;"><%= announcement.body %></p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            <% else %>
-                <div class="row">
-                  <div class="col s12">
-                    <div class="card darken-1 hoverable">
-                      <div class="card-content black-text">
-                        <% if announcement.date.blank? %>
-                          <!-- some codes here -->
-                        <% else %>
-                          <p class="date">When: <%= announcement.date.to_s(:long) %></p> 
-                        <% end %>
-                          <p class="title">Title: <%= announcement.title %></p><br>
-                          <p class="body" style="text-align: justify;"><%= announcement.body %></p>
-                      </div>
-                      <div class="card-action">
-                        <p>Posted at <%= announcement.created_at.to_s(:long) %></p>
-                      </div>
-                    </div>
-                  </div>
-                </div><!-- row announcement no image -->
-            <% end %> 
-          </div><!-- Container news-w/o-image -->
+        <div class="col s12 m4 l4">
+          <div class="card  blue accent-4">
+            <div class="card-content white-text">
+              <h4 class="white-text">Announcement</h4><hr>
+              <p><%= @announcements.count %> announcement posted</p>
+            </div>
+            <div class="card-action">
+              <%= link_to "view all" ,  announcements_path , class:"btn light-blue waves-effect waves-green" %>
+            </div>
+          </div>
         </div>
-      <% end %>
-      <%= link_to "View all announcement", announcements_path , class:"col s12 m12 l9 right center btn orange" %>
-    <% end %>
-  </div><!-- row -->
-
-  <div class="row">
-    <h5 class="col s12 m12 l9 right center"><%= @events1.count %> Events posted</h5>
-    <% if @events.empty? %>
-      <h6 class="col s12 m12 l9 right center">No events posted yet</h6>
-      <%= link_to "Create event", events_path , class:"col s12 m12 l9 right center btn green" %>
-    <% else %>
-      <% @events.each do |event| %>
-        <div class="col s12 m12 l9 right">
-          <div id="event<%= event.id %>">
-            <% if event.image_file_name.present? %>
-                <div class="row">
-                  <div class="col s12">
-                    <div class="card hoverable">
-                      <div class="card-image">
-                        <%= image_tag event.image.url %>
-                        <a class="btn-floating halfway-fab waves-effect waves-light red activator">
-                          <i class="fa fa-eye" aria-hidden="true"></i></a>
-                      </div>
-                      <div class="card-content">
-                        <p class="title">Title: <%= event.title %></p><br>
-                        <p>Posted at <%= event.created_at.to_s(:long) %></p>
-                      </div>
-                      <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">
-                          <i class="material-icons right"><i class="fa fa-times-circle" aria-hidden="true"></i></i>
-                          <p class="title">Title: <%= event.title %></p>
-                          <hr>
-                        </span>
-                        <p class="body"><%= event.body %></p>
-                        <p>Posted at <%= event.created_at.to_s(:long) %></p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            <% else %>
-                <div class="row">
-                  <div class="col s12">
-                    <div class="card darken-1 hoverable">
-                      <div class="card-content black-text">
-                        <% if event.date.blank? %>
-                          <!-- some codes here -->
-                        <% else %>
-                          <p class="date">When: <%= event.date.to_s(:long) %></p>
-                        <% end %>
-                          <p class="title">Title: <%= event.title %></p><br>
-                          <p class="body"><%= event.body %></p>
-                      </div>
-                      <div class="card-action">
-                        <p>Posted at <%= event.created_at.to_s(:long) %></p>
-                      </div>
-                    </div>
-                  </div>
-                </div><!-- row announcement no image -->
-            <% end %> 
-          </div><!-- Container news-w/o-image -->
+        <div class="col s12 m4 l4">
+          <div class="card  blue accent-4">
+            <div class="card-content white-text">
+              <h4 class="white-text">Event</h4><hr>
+              <p><%= @events.count %> event posted</p>
+            </div>
+            <div class="card-action">
+              <%= link_to "view all" ,  events_path , class:"btn light-blue waves-effect waves-green" %>
+            </div>
+          </div>
         </div>
-      <% end %>
-      <%= link_to "View all events", events_path , class:"col s12 m12 l9 right center btn orange" %>
-    <% end %>
-  </div><!-- row -->
+      </div>
+      <div class="row">
+        <div class="col s12 m6 l6">
+          <div class="card green">
+            <div class="card-content white-text">
+              <h4 class="white-text">Student</h4><hr>
+              <p><%= @student.count %> registered student</p>
+            </div>
+            <div class="card-action">
+              <%= link_to "view all" ,  admin_student_list_path , class:"btn green darken-4 waves-effect waves-green" %>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m6 l6">
+          <div class="card deep-purple lighten-2">
+            <div class="card-content white-text">
+              <h4 class="white-text">Faculty</h4><hr>
+              <p><%= @administrators.count %> registered faculty members</p>
+            </div>
+            <div class="card-action">
+              <%= link_to "view all" ,  events_path , class:"btn deep-purple darken-2 darken-4 waves-effect waves-green" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s12" style="margin-top: 30px">
+          <div class="card-panel white">
+            <h4 class="black-text"><%= @sections.count %> class section</h4><hr>
+            <table class="centered highlight responsive-table bordered">
+              <thead>
+                <tr>
+                    <th>Year level</th>
+                    <th>Registered sections</th>
+                    <th>Registered students</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td>Grade 7</td>
+                  <td><%= @grade7.count %> sections</td>
+                  <td><%= @student7.count %> students</td>
+                </tr>
+                <tr>
+                  <td>Grade 8</td>
+                  <td><%= @grade8.count %> sections</td>
+                  <td><%= @student8.count %> students</td>
+                </tr>
+                <tr>
+                  <td>Grade 9</td>
+                  <td><%= @grade9.count %> sections</td>
+                  <td><%= @student9.count %> students</td>
+                </tr>
+                <tr>
+                  <td>Grade 10</td>
+                  <td><%= @grade10.count %> sections</td>
+                  <td><%= @student10.count %> students</td>
+                </tr>
+                <tr>
+                  <td>Grade 11</td>
+                  <td><%= @grade11.count %> sections</td>
+                  <td><%= @student11.count %> students</td>
+                </tr>
+                <tr>
+                  <td>Grade 12</td>
+                  <td><%= @grade12.count %> sections</td>
+                  <td><%= @student12.count %> students</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
   </div>
   <div class="col s12 ">

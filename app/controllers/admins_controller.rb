@@ -6,9 +6,26 @@ class AdminsController < ApplicationController
   	@events = Event.all.order('created_at DESC').limit(3)
   	@announcements = Announcement.all.order('created_at DESC').limit(3)
 
+    @administrators = Administrator.all
+    @sections = Section.all
+    @student = Student.all
     @news1 = News.all
     @events1 = Event.all
     @announcements1 = Announcement.all
+
+    @student7 = Student.all.where(:level => 7)
+    @student8 = Student.all.where(:level => 8)
+    @student9 = Student.all.where(:level => 9)
+    @student10 = Student.all.where(:level => 10)
+    @student11 = Student.all.where(:level => 11)
+    @student12 = Student.all.where(:level => 12)
+
+    @grade7 = Section.all.where(:yearlvl => 7)
+    @grade8 = Section.all.where(:yearlvl => 8)
+    @grade9 = Section.all.where(:yearlvl => 9)
+    @grade10 = Section.all.where(:yearlvl => 10)
+    @grade11 = Section.all.where(:yearlvl => 11)
+    @grade12 = Section.all.where(:yearlvl => 12)
   end
 
   def myclass

@@ -21,11 +21,15 @@
     <% end %>
   </li>
 
-  <li class="<%= 'my-active' if current_page?(admin_dashboard_path) %> link-bottom ">
-    <%= link_to admin_dashboard_path ,class:"waves-effect waves-orange" do %>
-      Dasboard <i class="material-icons <%= 'white-text' if current_page?(admin_dashboard_path) %>">dashboard</i>
-    <% end %>
-  </li>
+  <% if current_administrator.role == "registrar" %>
+    <li class="<%= 'my-active' if current_page?(admin_dashboard_path) %> link-bottom ">
+      <%= link_to admin_dashboard_path ,class:"waves-effect waves-orange" do %>
+        Dasboard <i class="material-icons <%= 'white-text' if current_page?(admin_dashboard_path) %>">dashboard</i>
+      <% end %>
+    </li>
+  <% else %>
+    <!-- faculty cannot access dashboard -->
+  <% end %>
 
   <li class="<%= 'my-active' if current_page?(news_index_path) %> link-bottom">
     <%= link_to news_index_path , class:" waves-effect waves-orange"  do %>News 

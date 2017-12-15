@@ -30,6 +30,11 @@ class SectionsController < ApplicationController
 
   # GET /sections/1/edit
   def edit
+    # @section = Section.all.where(:adviser_id => nil)
+    @sections = Section.all
+    @sections.each do |section|
+      @adviser_id = section.adviser_id.blank?
+    end  
     @teacher = Administrator.all.where(:role => "faculty")
   end
 

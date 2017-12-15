@@ -56,7 +56,8 @@
       </div>
     </div>
     <div class="card-action">
-      <%= form.submit class:"btn btn-flat waves-effect waves-blue green white-text" , data: { disable_with: "Updating section ..." } %>
+      <%= form.submit class:"btn btn-flat waves-effect waves-blue green white-text right" , data: { disable_with: "Updating section ..." } %>
+      <button class="btn red waves-effect waves-yellow" id="removeAdviser">Remove adivser</button>
     </div>
   </div>
 <% end %>
@@ -69,5 +70,11 @@
         $('#adviser_id').val(<%= teacher.id %>);
       });
     <% end %>
+
+    $('#removeAdviser').on('click' , function() {
+      $('#adviser').val('');
+      $('#adviser_id').val('');
+    });
+
   });
 </script>
