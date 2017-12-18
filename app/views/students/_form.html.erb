@@ -39,6 +39,12 @@
             <%= form.text_field :lrn, id: :student_lrn, required: "required" %>
           </div>
 
+          <div class="input-field col s12 m6 l12">
+            <i class="material-icons prefix">face</i>
+            <label class="active">Contact number</label>
+            <%= form.number_field :phone_number, id: 'phone_number' , required: "required" %>
+          </div>
+
           <div class="input-field col s12 m12 l12">
             <i class="material-icons prefix">lock</i>
             <label class="active">Password</label>

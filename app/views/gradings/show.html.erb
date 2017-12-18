@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Subject:</strong>
+  <%= @grading.subject %>
+</p>
+
+<p>
+  <strong>Yearlvl:</strong>
+  <%= @grading.yearlvl %>
+</p>
+
+<p>
+  <strong>Student:</strong>
+  <%= @grading.student_id %>
+</p>
+
+<p>
+  <strong>Subject:</strong>
+  <%= @grading.subject_id %>
+</p>
+
+<p>
+  <strong>Quarter:</strong>
+  <%= @grading.quarter %>
+</p>
+
+<p>
+  <strong>Grade:</strong>
+  <%= @grading.grade %>
+</p>
+
+<p>
+  <strong>Adviser:</strong>
+  <%= @grading.adviser_id %>
+</p>
+
+<%= link_to 'Edit', edit_grading_path(@grading) %> |
+<%= link_to 'Back', gradings_path %>

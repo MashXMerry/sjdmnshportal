@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  subject: MyString
+  yearlvl: 1
+  student_id: 1
+  subject_id: 1
+  quarter: 1
+  grade: 1
+  adviser_id: 1
+
+two:
+  subject: MyString
+  yearlvl: 1
+  student_id: 1
+  subject_id: 1
+  quarter: 1
+  grade: 1
+  adviser_id: 1

@@ -20,6 +20,7 @@ class SectionsController < ApplicationController
   end
 
   def sectionlist
+    @students = Student.all
     @section7 = Section.all.where(:yearlvl => 7).order('yearlvl ASC').order('section ASC')
     @section8 = Section.all.where(:yearlvl => 8).order('yearlvl ASC').order('section ASC')
     @section9 = Section.all.where(:yearlvl => 9).order('yearlvl ASC').order('section ASC')

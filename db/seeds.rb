@@ -8,6 +8,7 @@
 	# Administrator.create(email: 'delossantos.mash@gmail.com' , password: 'mvds.com' , firstname: 'Mashiyyat', lastname: 'Delos Santos')
 	# Administrator.delete_all
 	# Student.delete_all
+	Student.delete_all
 	Section.delete_all
 	Subject.delete_all
 	Administrator.delete_all

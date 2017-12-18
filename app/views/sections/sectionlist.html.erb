@@ -12,149 +12,36 @@
     
     <div class="row" style="margin-top: 50px;">
       <div class="col s12 m12 l9 right">
-        <ul class="collection with-header">
-            <b class="green-text"><%= notice %></b></li>
-            <ul class="collapsible" data-collapsible="accordion">
-              <li>
-                <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Grade 7</div>
-                <div class="collapsible-body">
-                  <ul class="collection">
-                    <% @section7.each do |section| %>
-                      <li class="collection-item" id="section<%= section.id %>">
-                        <b><%= section.section %></b> | Grade <%= section.yearlvl %> |
-                          <% if section.adviser.empty? %>
-                            <b class="red-text">No adviser assigned</b>
-                          <% else %>
-                            Adviser: <b class="green-text"><%= section.adviser %></b> 
-                          <% end %> 
-                          <%= link_to edit_section_path(section.id) , class:"secondary-content green-text" do %>
-                            <i class="material-icons">create</i>
-                          <% end %>
-                          <%= link_to section_path(section.id) , class:"secondary-content red-text" , method: :delete , remote: true , data: { confirm: 'Are you sure ?' } do %>
-                            <i class="material-icons">delete</i>
-                          <% end %>
-                      </li>
-                    <% end %>
-                  </ul>
-                </div>
-              </li>
-              <li>
-                <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Grade 8</div>
-                <div class="collapsible-body">
-                  <ul class="collection">
-                    <% @section8.each do |section| %>
-                      <li class="collection-item" id="section<%= section.id %>">
-                        <b><%= section.section %></b> | Grade <%= section.yearlvl %> |
-                          <% if section.adviser.empty? %>
-                            <b class="red-text">No adviser assigned</b>
-                          <% else %>
-                            Adviser: <b class="green-text"><%= section.adviser %></b> 
-                          <% end %> 
-                          <%= link_to edit_section_path(section.id) , class:"secondary-content green-text" do %>
-                            <i class="material-icons">create</i>
-                          <% end %>
-                          <%= link_to section_path(section.id) , class:"secondary-content red-text" , method: :delete , remote: true , data: { confirm: 'Are you sure ?' } do %>
-                            <i class="material-icons">delete</i>
-                          <% end %>
-                      </li>
-                    <% end %>
-                  </ul>
-                </div>
-              </li>
-              <li>
-                <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Grade 9</div>
-                <div class="collapsible-body">
-                  <ul class="collection">
-                    <% @section9.each do |section| %>
-                      <li class="collection-item" id="section<%= section.id %>">
-                        <b><%= section.section %></b> | Grade <%= section.yearlvl %> |
-                          <% if section.adviser.empty? %>
-                            <b class="red-text">No adviser assigned</b>
-                          <% else %>
-                            Adviser: <b class="green-text"><%= section.adviser %></b> 
-                          <% end %> 
-                          <%= link_to edit_section_path(section.id) , class:"secondary-content green-text" do %>
-                            <i class="material-icons">create</i>
-                          <% end %>
-                          <%= link_to section_path(section.id) , class:"secondary-content red-text" , method: :delete , remote: true , data: { confirm: 'Are you sure ?' } do %>
-                            <i class="material-icons">delete</i>
-                          <% end %>
-                      </li>
-                    <% end %>
-                  </ul>
-                </div>
-              </li>
-              <li>
-                <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Grade 10</div>
-                <div class="collapsible-body">
-                  <ul class="collection">
-                    <% @section10.each do |section| %>
-                      <li class="collection-item" id="section<%= section.id %>">
-                        <b><%= section.section %></b> | Grade <%= section.yearlvl %> |
-                          <% if section.adviser.empty? %>
-                            <b class="red-text">No adviser assigned</b>
-                          <% else %>
-                            Adviser: <b class="green-text"><%= section.adviser %></b> 
-                          <% end %> 
-                          <%= link_to edit_section_path(section.id) , class:"secondary-content green-text" do %>
-                            <i class="material-icons">create</i>
-                          <% end %>
-                          <%= link_to section_path(section.id) , class:"secondary-content red-text" , method: :delete , remote: true , data: { confirm: 'Are you sure ?' } do %>
-                            <i class="material-icons">delete</i>
-                          <% end %>
-                      </li>
-                    <% end %>
-                  </ul>
-                </div>
-              </li>
-              <li>
-                <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Grade 11</div>
-                <div class="collapsible-body">
-                  <ul class="collection">
-                    <% @section11.each do |section| %>
-                      <li class="collection-item" id="section<%= section.id %>">
-                        <b><%= section.section %></b> | Grade <%= section.yearlvl %> |
-                          <% if section.adviser.empty? %>
-                            <b class="red-text">No adviser assigned</b>
-                          <% else %>
-                            Adviser: <b class="green-text"><%= section.adviser %></b> 
-                          <% end %> 
-                          <%= link_to edit_section_path(section.id) , class:"secondary-content green-text" do %>
-                            <i class="material-icons">create</i>
-                          <% end %>
-                          <%= link_to section_path(section.id) , class:"secondary-content red-text" , method: :delete , remote: true , data: { confirm: 'Are you sure ?' } do %>
-                            <i class="material-icons">delete</i>
-                          <% end %>
-                      </li>
-                    <% end %>
-                  </ul>
-                </div>
-              </li>
-              <li>
-                <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>Grade 12</div>
-                <div class="collapsible-body">
-                  <ul class="collection">
-                    <% @section12.each do |section| %>
-                      <li class="collection-item" id="section<%= section.id %>">
-                        <b><%= section.section %></b> | Grade <%= section.yearlvl %> |
-                          <% if section.adviser.empty? %>
-                            <b class="red-text">No adviser assigned</b>
-                          <% else %>
-                            Adviser: <b class="green-text"><%= section.adviser %></b> 
-                          <% end %> 
-                          <%= link_to edit_section_path(section.id) , class:"secondary-content green-text" do %>
-                            <i class="material-icons">create</i>
-                          <% end %>
-                          <%= link_to section_path(section.id) , class:"secondary-content red-text" , method: :delete , remote: true , data: { confirm: 'Are you sure ?' } do %>
-                            <i class="material-icons">delete</i>
-                          <% end %>
-                      </li>
-                    <% end %>
-                  </ul>
-                </div>
-              </li>
+        <div class="row">
+          <div class="col s12">
+            <ul id="tabs-swipe-demo" class="tabs tabs-fixed-width">
+              <li class="tab col s3"><a href="#test1">Grade 7</a></li>
+              <li class="tab col s3"><a href="#test2">Grade 8</a></li>
+              <li class="tab col s3"><a href="#test3">Grade 9</a></li>
+              <li class="tab col s3"><a href="#test4">Grade 10</a></li>
+              <li class="tab col s3"><a href="#test5">Grade 11</a></li>
+              <li class="tab col s3"><a href="#test6">Grade 12</a></li>
             </ul>
-        </ul>
+          </div>
+          <div id="test1" class="col s12 tabs-ko">
+            <%= render 'section_partials/grade7' %>
+          </div>
+          <div id="test2" class="col s12 tabs-ko">
+            <%= render 'section_partials/grade8' %>
+          </div>
+          <div id="test3" class="col s12 tabs-ko">
+            <%= render 'section_partials/grade9' %>
+          </div>
+          <div id="test4" class="col s12 tabs-ko">
+            <%= render 'section_partials/grade10' %>
+          </div>
+          <div id="test5" class="col s12 tabs-ko">
+            <%= render 'section_partials/grade11' %>
+          </div>
+          <div id="test6" class="col s12 tabs-ko">
+            <%= render 'section_partials/grade12' %>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -165,12 +52,30 @@
 </div>
   
 
-
-
 <style type="text/css">
+
+  td {
+    background-color: #e3e3e3;
+    border-right: 1px solid #cbcbcb;
+    border-left: 1px solid #cbcbcb;  
+  }
+  
+  .tabs {
+    background-color: #640000;
+    border-radius: 10px 10px 0px 0px;
+  }
+  .tabs .tab a{
+    color: white!important;
+  }
+  .tabs-ko {
+    border: 1px solid gray;
+    margin-top: 10px;
+    border-radius: 10px 10px 0px 0px;
+  }
+
   .title {
   font-size: 30px;
-}
+  }
 
 .date {
   font-size: 30px;

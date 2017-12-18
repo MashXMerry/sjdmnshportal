@@ -1,0 +1,4 @@
+$('#row<%= @grade.id %>').fadeOut(600, function() {
+	$(this).remove();
+	Materialize.toast('Grade deleted !', 2000);
+});	

@@ -13,12 +13,13 @@
     <div class="row">
       <div class="col s12 m12 l9 right">
       	<div style="margin-top: 30px">
-          <% if @section == 'null' %>
-            <h3>No section assigned yet</h3>
+          <% if @sections.blank? %>
+            <h3 class="center">No section assigned yet</h3>
           <% else %>
             <% @sections.each do |section| %>
               <h3><%= section.section %> - Grade <%= section.yearlvl %></h3><hr> 
-                <table class="highlight">
+              <div class="tabs-ko">
+                <table class="highlight centered bordered">
                   <thead>
                     <tr>
                       <th>LRN</th>
@@ -27,6 +28,7 @@
                       <th>Middlename</th>
                       <th>Section</th>
                       <th>Year level</th>
+                      <th>Contact</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -35,13 +37,23 @@
                         <td><%= link_to student.lrn , student_path(student.id) %></td>
                         <td><%= link_to student.lastname, student_path(student.id) %></td>
                         <td><%= student.firstname %></td>
-                        <td><%= student.middlename %></td>
+                        <% if student.phone_number.blank? %>
+                          <td class="red-text">no middlename provided</td>
+                        <% else %>
+                          <td><%= student.middlename %></td>
+                        <% end %>
                         <td><%= student.section %></td>
                         <td>Grade <%= student.level %></td>
+                        <% if student.phone_number.blank? %>
+                          <td class="red-text">no contact provided</td>
+                        <% else %>
+                          <td><%= student.phone_number %></td>
+                        <% end %>
                       </tr>
                     <% end %> <!-- @students.each -->
                   </tbody>
                 </table>
+              </div>
             <% end %> <!-- @sections.each -->
           <% end %>
         </div>
@@ -55,6 +67,24 @@
 </div>
 
 <style type="text/css">
+  td {
+    background-color: #e3e3e3;
+    border-right: 1px solid #cbcbcb;
+    border-left: 1px solid #cbcbcb;  
+  }
+  .tabs {
+    background-color: #640000;
+    border-radius: 10px 10px 0px 0px;
+    color: white!important;
+  }
+
+  .tabs-ko {
+    padding: 5px 5px;
+    border: 1px solid gray;
+    margin-top: 10px;
+    border-radius: 10px 10px 0px 0px;
+  }
+
   .title {
   font-size: 30px;
 }

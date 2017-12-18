@@ -36,6 +36,19 @@ class AdminsController < ApplicationController
     end
   end
 
+  def mygrade
+    @grading = Grade.new
+    @sections = Section.all.where(:adviser_id => current_administrator.id)
+    @students1 = Student.all.where(:section => @sections)
+    @sections.each do |section|
+      @students = Student.all.where(:section => section.section)
+      @students.each do |student|
+        @subjects = Subject.all.where(:yearlvl => student.level)
+        @grading = Grading.new
+      end
+    end
+  end
+
   def grades
   	
   end
@@ -70,12 +83,16 @@ class AdminsController < ApplicationController
 
   def student_list
     @students = Student.where(["lrn LIKE?" , "%#{params[:search]}%"]).order('level ASC').order('lastname ASC')
-    @student7 = Student.all.where(level: 7)
+    @student7 = Student.all.where(level: 7).order('section ASC').order('gender ASC')
     @student8 = Student.all.where(level: 8)
     @student9 = Student.all.where(level: 9)
     @student10 = Student.all.where(level: 10)
     @student11 = Student.all.where(level: 11)
     @student12 = Student.all.where(level: 12)
+  end
+
+  def search_student
+    @students = Student.where(["lrn LIKE?" , "%#{params[:search]}%"]).order('level ASC').order('lastname ASC')
   end
 
   def grade7

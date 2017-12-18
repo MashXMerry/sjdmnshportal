@@ -1,0 +1,53 @@
+<table class="centered responsive-table highlight bordered">
+  <thead>
+    <tr>
+        <th>*</th>
+        <th>Section name</th>
+        <th>Year level</th>
+        <th>Adviser</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @section7.each do |section| %>
+      <tr id="section<%= section.id %>">
+        <td>
+          <%= link_to edit_section_path(section.id) , class:"green-text" do %>
+            <i class="material-icons">create</i>
+          <% end %>
+          <a class="modal-trigger" href="#modalg<%= section.id %>">
+            <i class="material-icons red-text">delete</i>
+          </a>
+        </td>
+        <td><%= section.section %></td>
+        <td>Grade <%= section.yearlvl %></td>
+        <% if section.adviser.blank? %>
+          <td class="red-text">No adviser assigned</td>
+        <% else %>
+          <td class="green-text"><%= section.adviser %></td>
+        <% end %>
+      </tr>
+      <!-- Modal Structure -->
+      <div id="modalg<%= section.id %>" class="modal my-modal">
+        <div class="modal-content" style="text-align: center">
+          <i class="material-icons large red-text">report</i>
+          <h5>Delete section <%= section.section %> ?</h5><hr>
+          <%= link_to "YES" , section_path(section.id) , 
+            class:"white-text btn red modal-action modal-close waves-effect waves-yellow" , 
+            method: :delete , 
+            remote: true %>
+            <button class="btn green white-text modal-action modal-close waves-effect waves-blue">
+            NO</button>
+        </div>
+      </div>
+
+    <% end %>
+  </tbody>
+</table>
+
+<style type="text/css">
+  .my-modal {
+    width: 30%!important;
+    background-color: #c2c2c2;
+  }
+</style>

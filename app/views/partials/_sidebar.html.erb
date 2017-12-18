@@ -113,45 +113,24 @@
       <!-- none registrar accounts can't add section -->
     <% end %>
 
-    
-    <% if current_administrator.role == "registrar" %>
-      <li class="bold"><a class="collapsible-header waves-effect waves-orange" style="padding-left: 30px">
-      <i class="material-icons">format_list_numbered</i>Grades</a>
-        <div class="collapsible-body">
-          <ul>
-            <li>
-              <%= link_to "Grade 7" , grade7_path %>
-            </li>
-            <li>
-              <%= link_to "Grade 8" , grade8_path %>
-            </li>
-            <li>
-              <%= link_to "Grade 9" , grade9_path %>
-            </li>
-            <li>
-              <%= link_to "Grade 10" , grade10_path %>
-            </li>
-            <li>
-              <%= link_to "Grade 11" , grade11_path %>
-            </li>
-            <li>
-              <%= link_to "Grade 12" , grade12_path %>
-            </li>
-          </ul>
-        </div>
-      </li>
-    <% else %>
-      <!-- non registrar can't edit student grades -->
-    <% end %>
-
     <% if current_administrator.role == "faculty" %>
       <li class="<%= 'my-active' if current_page?(myclass_path) %> link-bottom">
         <%= link_to myclass_path , class:" waves-effect waves-orange"  do %> My class 
-          <i class="material-icons <%= 'white-text' if current_page?(myclass_path) %>">announcement</i>
+          <i class="material-icons <%= 'white-text' if current_page?(myclass_path) %>">people_outline</i>
         <% end %>   
       </li> 
     <% else %>
       <!-- faculty will handle her own class -->
+    <% end %>
+
+    <% if current_administrator.role == "faculty" %>
+      <li class="<%= 'my-active' if current_page?(mygrades_path) %> link-bottom">
+        <%= link_to mygrades_path , class:" waves-effect waves-orange"  do %>Grades 
+          <i class="material-icons <%= 'white-text' if current_page?(mygrades_path) %>">format_list_numbered</i>
+        <% end %>   
+      </li>
+    <% else %>
+      <!-- registrar cannot handle adviser's grade list -->
     <% end %>
 
     <li class="bold"><a class="collapsible-header waves-effect waves-orange" style="padding-left: 30px">

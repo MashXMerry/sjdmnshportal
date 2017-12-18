@@ -1,6 +1,6 @@
 <%= javascript_include_tag 'style' %>
 <div class="row">
-  <nav class="orange darken-4" style="margin-bottom: 20px">
+  <nav style="background-color: #640000">
     <div class="nav-wrapper">
       <a href="#" data-activates="slide-out" class="button-collapse">
         <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
@@ -8,7 +8,7 @@
       <ul class="right">
         <li>
           <a class="brand-logo right">
-            Grades
+            <%= @student.firstname %>
           </a>
         </li>
       </ul>
@@ -25,26 +25,235 @@
             <div class="col s12 m10 l10">
               <div class=""></div>
               <h4><%= @student.firstname %> <%=  @student.lastname %></h4>
-              <blockquote><b>#<%=  @student.lrn %></b> | <%=  @student.email %> | 
+              <p>
+                <b>#<%=  @student.lrn %></b> | <%=  @student.email %> | 
                 Grade <%=  @student.level %> | Section <%=  @student.section %>
-              </blockquote>
+              </p>
               <% if current_administrator.role == "faculty" %>
                 <!-- faculty cannot edit student information -->
               <% else %>
                 <%= link_to "Remove Student" , student_path(@student) ,method: :delete , 
                 data: { confirm: "Are you sure ? student and all recorded grades will also deleted" }  %> |
                 <%= link_to "Edit information", edit_student_path(@student) %> 
-                 | <a class="modal-trigger" href="#modal1">Add Grades</a>
               <% end %>
               
             </div>
           </div>
         </div>
+
+        <div class="row">
+          <div class="col s12">
+            <ul class="tabs tabs-fixed-width">
+              <li class="tab col s3"><a href="#test1">1st Grading</a></li>
+              <li class="tab col s3"><a href="#test2">2nd Grading</a></li>
+              <li class="tab col s3"><a href="#test3">3rd Grading</a></li>
+              <li class="tab col s3"><a href="#test4">4th Grading</a></li>
+            </ul>
+          </div>
+          <div id="test1" class="col s12 tabs-ko">
+            <table class="responsive-table bordered centered">
+              <thead>
+                <tr>
+                    <th>*</th>
+                    <th>Grade</th>
+                    <th>Subject</th>
+                    <th>Recorded at</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <% if @grade1st.blank? %>
+                  <tr>
+                    <td>*</td>
+                    <td>No grades yet</td>
+                    <td>No grades yet</td>
+                    <td>No grades yet</td>
+                  </tr>
+                <% else %>
+                  <% @grade1st.each do |grade| %>
+                    <tr id="row<%= grade.id %>">
+                      <td>
+                        <%= link_to grading_path(grade.id) , 
+                            'data-position' => 'top',
+                            'data-delay' => '50',
+                            'data-tooltip' => 'Delete',
+                            class:'red-text tooltipped' ,
+                            method: :delete , 
+                            data: { confirm: "Are you sure?" } do %>
+                          <i class="material-icons">delete</i>
+                        <% end %>
+                        <%= link_to edit_grading_path(grade.id) ,
+                            'data-position' => 'top',
+                            'data-delay' => '50',
+                            'data-tooltip' => 'Edit',
+                            class:'green-text tooltipped' do %>
+                          <i class="material-icons">create</i>
+                        <% end %>   
+                      </td>
+                      <td><%= grade.grade %>.00</td>
+                      <td><%= grade.subject %></td>
+                      <td><%= grade.created_at.to_s(:long) %></td>
+                    </tr>
+                  <% end %>  
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+
+          <div id="test2" class="col s12 tabs-ko">
+            <table class="centered responsive-table bordered">
+              <thead>
+                <tr>
+                    <th>*</th>
+                    <th>Grade</th>
+                    <th>Subject</th>
+                    <th>Recorded at</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <% if @grade2nd.blank? %>
+                  <tr>
+                    <td>*</td>
+                    <td>No grades yet</td>
+                    <td>No grades yet</td>
+                    <td>No grades yet</td>
+                  </tr>
+                <% else %>
+                  <% @grade2nd.each do |grade| %>
+                    <tr>
+                      <td>
+                        <%= link_to grading_path(grade.id) , 
+                            'data-position' => 'top',
+                            'data-delay' => '50',
+                            'data-tooltip' => 'Delete',
+                            class:'red-text tooltipped' ,
+                            method: :delete , 
+                            data: { confirm: "Are you sure?" } do %>
+                          <i class="material-icons">delete</i>
+                        <% end %>
+                        <%= link_to edit_grading_path(grade.id) ,
+                            'data-position' => 'top',
+                            'data-delay' => '50',
+                            'data-tooltip' => 'Edit',
+                            class:'green-text tooltipped' do %>
+                          <i class="material-icons">create</i>
+                        <% end %>   
+                      </td>
+                      <td><%= grade.grade %></td>
+                      <td><%= grade.subject %></td>
+                      <td><%= grade.created_at.to_s(:long) %></td>
+                    </tr>
+                  <% end %>  
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+
+          <div id="test3" class="col s12 tabs-ko">
+            <table class="centered responsive-table bordered">
+              <thead>
+                <tr>
+                    <th>*</th>
+                    <th>Grade</th>
+                    <th>Subject</th>
+                    <th>Recorded at</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <% if @grade3rd.blank? %>
+                  <tr>
+                    <td>*</td>
+                    <td>No grades yet</td>
+                    <td>No grades yet</td>
+                    <td>No grades yet</td>
+                  </tr>
+                <% else %>
+                  <% @grade3rd.each do |grade| %>
+                    <tr>
+                      <td>
+                        <%= link_to grading_path(grade.id) , 
+                            'data-position' => 'top',
+                            'data-delay' => '50',
+                            'data-tooltip' => 'Delete',
+                            class:'red-text tooltipped' ,
+                            method: :delete , 
+                            data: { confirm: "Are you sure?" } do %>
+                          <i class="material-icons">delete</i>
+                        <% end %>
+                        <%= link_to edit_grading_path(grade.id) ,
+                            'data-position' => 'top',
+                            'data-delay' => '50',
+                            'data-tooltip' => 'Edit',
+                            class:'green-text tooltipped' do %>
+                          <i class="material-icons">create</i>
+                        <% end %>   
+                      </td>
+                      <td><%= grade.grade %></td>
+                      <td><%= grade.subject %></td>
+                      <td><%= grade.created_at.to_s(:long) %></td>
+                    </tr>
+                  <% end %>  
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+
+          <div id="test4" class="col s12 tabs-ko">
+            <table class="centered responsive-table bordered">
+              <thead>
+                <tr>
+                  <th>*</th>
+                  <th>Grade</th>
+                  <th>Subject</th>
+                  <th>Recorded at</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <% if @grade4th.blank? %>
+                  <tr>
+                    <td>*</td>
+                    <td>No grades yet</td>
+                    <td>No grades yet</td>
+                    <td>No grades yet</td>
+                  </tr>
+                <% else %>
+                  <% @grade4th.each do |grade| %>
+                    <tr>
+                      <td>
+                        <%= link_to grading_path(grade.id) , 
+                            'data-position' => 'top',
+                            'data-delay' => '50',
+                            'data-tooltip' => 'Delete',
+                            class:'red-text tooltipped' ,
+                            method: :delete , 
+                            data: { confirm: "Are you sure?" } do %>
+                          <i class="material-icons">delete</i>
+                        <% end %>
+                        <%= link_to edit_grading_path(grade.id) ,
+                            'data-position' => 'top',
+                            'data-delay' => '50',
+                            'data-tooltip' => 'Edit',
+                            class:'green-text tooltipped' do %>
+                          <i class="material-icons">create</i>
+                        <% end %>   
+                      </td>
+                      <td><%= grade.grade %></td>
+                      <td><%= grade.subject %></td>
+                      <td><%= grade.created_at.to_s(:long) %></td>
+                    </tr>
+                  <% end %>  
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
       </div>
     </div><!-- row -->
   </div>
-
-  <%= render 'grades/form' %>
 
 <!-- ============Side bar============== -->
   <div class="col s12 ">
@@ -57,6 +266,22 @@
 
   body {
     background-color: #e8e8e8;
+  }
+  td {
+    background-color: #e3e3e3;
+    border-right: 1px solid #cbcbcb;
+    border-left: 1px solid #cbcbcb;  
+  }
+  .tabs {
+    background-color: #640000;
+    border-radius: 10px 10px 0px 0px;
+    color: white!important;
+  }
+
+  .tabs-ko {
+    border: 1px solid gray;
+    margin-top: 10px;
+    border-radius: 10px 10px 0px 0px;
   }
 
   .grade-header {

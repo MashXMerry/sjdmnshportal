@@ -1,0 +1,65 @@
+<% if @sections.blank? %>
+  <table class="highlight centered">
+    <thead>
+      <tr>
+        <th>LRN</th>
+        <th>Lastname</th>
+        <th>Firstname</th>
+        <th>Middlename</th>
+        <th>Section</th>
+        <th>Year level</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-row">
+        <td> no section assigned </td>
+        <td> no section assigned </td>
+        <td> no section assigned </td>
+        <td> no section assigned </td>
+        <td> no section assigned </td>
+        <td> no section assigned </td>
+      </tr>
+    </tbody>
+  </table>
+<% else %>
+  <% @sections.each do |section| %>
+      <table class="highlight centered">
+        <thead>
+          <tr>
+            <th>LRN</th>
+            <th>Lastname</th>
+            <th>Firstname</th>
+            <th>Middlename</th>
+            <th>Section</th>
+            <th>Year level</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @students.each do |student| %>
+            <tr>
+              <td><%= link_to student.lrn , student_path(student.id) %></td>
+              <td><%= link_to student.lastname, student_path(student.id) %></td>
+              <td><%= student.firstname %></td>
+              <td><%= student.middlename %></td>
+              <td><%= student.section %></td>
+              <td>Grade <%= student.level %></td>
+            </tr>
+          <% end %> <!-- @students.each -->
+        </tbody>
+      </table>
+  <% end %> <!-- @sections.each -->
+<% end %>
+
+<style type="text/css">
+  .tabs .indicator {
+    background-color: orange!important;
+  }
+  .table-row {
+    transition: 1s; 
+  }
+  .table-row:hover {
+    background-color: #640000!important;
+    color:white;
+    cursor: pointer;
+  }
+</style>

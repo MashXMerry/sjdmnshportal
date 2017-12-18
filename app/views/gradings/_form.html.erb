@@ -1,0 +1,49 @@
+<%= form_with(model: grading, local: true) do |form| %>
+  <% if grading.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(grading.errors.count, "error") %> prohibited this grading from being saved:</h2>
+
+      <ul>
+      <% grading.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h3><%= @grading.subject  %></h3>  
+
+  <div class="field">
+    <%= form.hidden_field :subject, id: :grading_subject %>
+  </div>
+
+  <div class="field">
+    <%= form.hidden_field :yearlvl, id: :grading_yearlvl %>
+  </div>
+
+  <div class="field">
+    <%= form.hidden_field :student_id, id: :grading_student_id %>
+  </div>
+
+  <div class="field">
+    <%= form.hidden_field :subject_id, id: :grading_subject_id %>
+  </div>
+
+  <div class="field">
+    <%= form.hidden_field :quarter, id: :grading_quarter %>
+  </div>
+
+  <div class="input-field" style="margin-top: 50px">
+    <i class="material-icons prefix">create</i>
+    <%= form.label :grade , class:"active" %>
+    <%= form.number_field :grade, id: :grading_grade %>
+  </div>
+
+  <div class="field">
+    <%= form.hidden_field :adviser_id, id: :grading_adviser_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Save" , class:"btn green waves-effect waves-blue" , data: { disable_with: "Updating" } %>
+  </div>
+<% end %>

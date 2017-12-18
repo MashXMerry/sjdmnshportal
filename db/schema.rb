@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171213145054) do
+ActiveRecord::Schema.define(version: 20171218195026) do
 
   create_table "administrators", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "email", default: "", null: false
@@ -61,6 +61,18 @@ ActiveRecord::Schema.define(version: 20171213145054) do
     t.datetime "image_updated_at"
   end
 
+  create_table "friendly_id_slugs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "slug", null: false
+    t.integer "sluggable_id", null: false
+    t.string "sluggable_type", limit: 50
+    t.string "scope"
+    t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+    t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
+    t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+  end
+
   create_table "grades", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "subject"
     t.integer "grade"
@@ -69,6 +81,18 @@ ActiveRecord::Schema.define(version: 20171213145054) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["student_id"], name: "index_grades_on_student_id"
+  end
+
+  create_table "gradings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "subject"
+    t.integer "yearlvl"
+    t.integer "student_id"
+    t.integer "subject_id"
+    t.integer "quarter"
+    t.integer "grade"
+    t.integer "adviser_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "news", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -100,6 +124,9 @@ ActiveRecord::Schema.define(version: 20171213145054) do
     t.datetime "updated_at", null: false
     t.string "middlename"
     t.integer "year"
+    t.string "phone_number"
+    t.string "slug"
+    t.index ["slug"], name: "index_students_on_slug", unique: true
   end
 
   create_table "subjects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|

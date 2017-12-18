@@ -17,11 +17,11 @@ class StudentsController < ApplicationController
   # GET /students/1
   # GET /students/1.json
   def show
-     @student = Student.find(params[:id])
-     @subjects1 = Grade.all.where(:quarter => 1 , :student_id => @student ).order('subject ASC').order('created_at ASC')
-     @subjects2 = Grade.all.where(:quarter => 2 , :student_id => @student ).order('subject ASC').order('created_at ASC')
-     @subjects3 = Grade.all.where(:quarter => 3 , :student_id => @student ).order('subject ASC').order('created_at ASC')
-     @subjects4 = Grade.all.where(:quarter => 4 , :student_id => @student ).order('subject ASC').order('created_at ASC')
+    # @student = Student.friendly.find(params[:id])
+    @grade1st = Grading.where(:quarter => 1 , :student_id => @student.id)
+    @grade2nd = Grading.where(:quarter => 2 , :student_id => @student.id)
+    @grade3rd = Grading.where(:quarter => 3 , :student_id => @student.id)
+    @grade4th = Grading.where(:quarter => 4 , :student_id => @student.id)
   end
 
   # GET /students/new
@@ -88,11 +88,11 @@ class StudentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_student
-      @student = Student.find(params[:id])
+      @student = Student.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:firstname, :lastname, :password, :lrn, :section, :level, :gender, :email , :middlename)
+      params.require(:student).permit(:firstname, :lastname, :password, :lrn, :section, :level, :gender, :email , :middlename , :phone_number , :slug)
     end
 end

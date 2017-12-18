@@ -34,13 +34,15 @@ Rails.application.routes.draw do
     resources :announcements
     resources :sections
     resources :subjects
+    resources :gradings
     resources :students do
-      resources :grades
-    put '/update_grades' , to: 'grades#update' , as: 'update_grades'
+    # put '/update_grades' , to: 'grades#update' , as: 'update_grades'
     end
 
     # post '/create_grades' , to: 'grades#create_grades' , as: 'insert_grade'
+    get 'search/student' , to: 'admins#search_student' , as: 'search_student'
     get '/myclass' , to: 'admins#myclass' , as: 'myclass'
+    get '/grades' , to: 'admins#mygrade' , as: 'mygrades'
     get '/dashboard' , to: 'admins#dashboard' , as: 'admin_dashboard'
     get '/subject_list' , to: 'subjects#subjectlist' , as:'subjectlist'
     get '/section_list' , to: 'sections#sectionlist' , as:'sectionlist'
@@ -51,7 +53,7 @@ Rails.application.routes.draw do
     post '/add_admin' , to: 'admins#addadministrator' , as: 'add_admin'
     delete '/remove_account' , to: 'admins#remove_account' , as: 'remove_account'
 
-    # sections
+    # # sections
 
     get '/grade7' , to: 'admins#grade7' , as: 'grade7'
     get '/grade8' , to: 'admins#grade8' , as: 'grade8'

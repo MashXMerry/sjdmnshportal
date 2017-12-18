@@ -49,12 +49,19 @@
                 </div>
                 <div class="col s12">
                   <div class="input-field">
+                    <i class="material-icons prefix">create</i>
+                    <%= f.number_field :phone_number , id:"phone_number" %>
+                    <label>Contact number</label>
+                  </div>
+                </div>
+                <!-- <div class="col s12">
+                  <div class="input-field">
                     <i class="material-icons prefix">email</i>
                     <%= f.email_field :email , id:"email" %>
                     <label>Email</label>
                   </div>
                 </div>
-                <div class="col s12">
+ -->                <div class="col s12">
                   <div class="input-field">
                     <i class="material-icons prefix">lock</i>
                     <%= f.password_field :password , disabled: true,placeholder:"Password" ,

@@ -1,0 +1,119 @@
+<% if @sections.blank? %>
+  <table class="highlight centered bordered">
+    <thead>
+      <tr>
+        <th><i class="material-icons">plus</i></th>
+        <th>LRN</th>
+        <th>Lastname</th>
+        <th>Firstname</th>
+        <th>Middlename</th>
+        <th>Section</th>
+        <th>Year level</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-row">
+        <td> no section assigned </td>
+        <td> no section assigned </td>
+        <td> no section assigned </td>
+        <td> no section assigned </td>
+        <td> no section assigned </td>
+        <td> no section assigned </td>
+      </tr>
+    </tbody>
+  </table>
+<% else %>
+  <% @sections.each do |section| %>
+      <table class="highlight centered bordered responsive-table">
+        <thead>
+          <tr>
+            <th><i class="material-icons">add</i></th>
+            <th>LRN</th>
+            <th>Lastname</th>
+            <th>Firstname</th>
+            <th>Middlename</th>
+            <th>Section</th>
+            <th>Year level</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @students.each do |student| %>
+            <tr class="table-row">
+              <td>
+                <a href="#modal<%= student.id %>" class="tooltipped green-text modal-trigger" data-position="top" data-delay="50" data-tooltip="Add grade">
+                  <i class="material-icons">add</i>
+                </a>
+              </td>
+              <td><%= link_to student.lrn , student_path(student.id) %></td>
+              <td><%= link_to student.lastname, student_path(student.id) %></td>
+              <td><%= link_to student.firstname, student_path(student.id) %></td>
+              <td><%= link_to student.middlename, student_path(student.id) %></td>
+              <td><%= student.section %></td>
+              <td>Grade <%= student.level %></td>
+            </tr>
+
+            <div id="modal<%= student.id %>" class="modal modal-fixed-footer">
+              <div class="modal-content">
+                <h4><%= student.firstname + " " + student.lastname %> | 1st quarter</h4><hr>
+                <ul class="collection with-header">
+                  <% @subjects.each do |subject| %>
+                    <li class="collection-item">
+                      <div>
+                        <%= form_for(@grading , remote: true ) do |f| %>
+                          <div class="row">
+                            <div class="col s12 m3 l3 valign-wrapper input-field">
+                              <i class="tiny material-icons prefix">create</i>
+                              <label>Insert grade</label>
+                              <%= f.number_field :grade  , id:"grade-int#{subject.id}" %>
+                            </div>
+                            <div class="col s12 m9 l9" style="padding-top: 25px">
+                              <b>: <%= subject.title %></b> 
+                            </div>
+                          </div>
+                          <%= f.hidden_field :subject , value: subject.title %>
+                          <%= f.hidden_field :yearlvl , value: student.level %>
+                          <%= f.hidden_field :student_id , value: student.id %>
+                          <%= f.hidden_field :subject_id , value: subject.id %>
+                          <%= f.hidden_field :quarter , value: 1 %>
+                          <%= f.hidden_field :adviser_id , value: current_administrator.id %>
+                        <% end %>
+                      </div>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <a class="modal-action modal-close waves-effect waves-yellow btn-flat red white-text" id="btn-close">close</a>
+              </div>
+            </div>
+
+          <% end %> <!-- @students.each -->
+        </tbody>
+      </table>
+  <% end %> <!-- @sections.each -->
+<% end %>
+
+<style type="text/css">
+  .tabs .indicator {
+    background-color: orange!important;
+  }
+  td a{
+    color:black!important;
+  }
+  .modal.open{
+    width: 100%;
+    max-height: 100%;
+    height: 100%;
+    top: 0 !important;
+  }
+  .modal-content {
+    height: calc(100% - 56px);
+  }
+  .collection .collection-item {
+    padding: 0px 0px !important;
+  }
+  .row {
+    margin-bottom: 0px!important;
+  }
+</style>
+
