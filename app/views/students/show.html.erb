@@ -31,6 +31,8 @@
               </p>
               <% if current_administrator.role == "faculty" %>
                 <!-- faculty cannot edit student information -->
+                <!-- | <%= link_to "Reset Grades" , reset_grades_path(@student) , method: :delete , data: { confirm: "Are you sure ?" } %> -->
+                | <%= link_to "Edit information", edit_student_path(@student) %> 
               <% else %>
                 <%= link_to "Remove Student" , student_path(@student) ,method: :delete , 
                 data: { confirm: "Are you sure ? student and all recorded grades will also deleted" }  %> |
@@ -65,23 +67,17 @@
                 <% if @grade1st.blank? %>
                   <tr>
                     <td>*</td>
-                    <td>No grades yet</td>
-                    <td>No grades yet</td>
-                    <td>No grades yet</td>
+                    <td>No records yet</td>
+                    <td>No records yet</td>
+                    <td>No records yet</td>
                   </tr>
                 <% else %>
                   <% @grade1st.each do |grade| %>
                     <tr id="row<%= grade.id %>">
                       <td>
-                        <%= link_to grading_path(grade.id) , 
-                            'data-position' => 'top',
-                            'data-delay' => '50',
-                            'data-tooltip' => 'Delete',
-                            class:'red-text tooltipped' ,
-                            method: :delete , 
-                            data: { confirm: "Are you sure?" } do %>
-                          <i class="material-icons">delete</i>
-                        <% end %>
+                        <a class="modal-trigger" href="#modalG<%= grade.id %>">
+                          <i class="material-icons red-text">delete</i>
+                        </a>
                         <%= link_to edit_grading_path(grade.id) ,
                             'data-position' => 'top',
                             'data-delay' => '50',
@@ -90,10 +86,28 @@
                           <i class="material-icons">create</i>
                         <% end %>   
                       </td>
-                      <td><%= grade.grade %>.00</td>
+                      <td class="blue-text"><%= grade.grade %>.00</td>
                       <td><%= grade.subject %></td>
                       <td><%= grade.created_at.to_s(:long) %></td>
                     </tr>
+                  <!-- Modal Structure -->
+                    <div id="modalG<%= grade.id %>" class="modal my-modal">
+                      <div class="modal-content" style="text-align: center">
+                        <i class="material-icons large red-text">report</i>
+                        <h5>Delete grade in <%= grade.subject %>?</h5><hr>
+                        <%= link_to "YES" , grading_path(grade.id) ,
+                            id: "btn-delete-#{grade.id}" , 
+                            remote: true, 
+                            'data-position' => 'top',
+                            'data-delay' => '50',
+                            'data-tooltip' => 'Delete',
+                            class:'btn waves-effect waves-yellow red modal-close modal-action' ,
+                            method: :delete %>
+                        <button class="btn modal-close modal-action green waves-effect waves-blue">
+                          NO
+                        </button>
+                      </div>
+                    </div>
                   <% end %>  
                 <% end %>
               </tbody>
@@ -104,10 +118,10 @@
             <table class="centered responsive-table bordered">
               <thead>
                 <tr>
-                    <th>*</th>
-                    <th>Grade</th>
-                    <th>Subject</th>
-                    <th>Recorded at</th>
+                  <th>*</th>
+                  <th>Grade</th>
+                  <th>Subject</th>
+                  <th>Recorded at</th>
                 </tr>
               </thead>
 
@@ -115,23 +129,17 @@
                 <% if @grade2nd.blank? %>
                   <tr>
                     <td>*</td>
-                    <td>No grades yet</td>
-                    <td>No grades yet</td>
-                    <td>No grades yet</td>
+                    <td>No records yet</td>
+                    <td>No records yet</td>
+                    <td>No records yet</td>
                   </tr>
                 <% else %>
                   <% @grade2nd.each do |grade| %>
-                    <tr>
+                    <tr id="row<%= grade.id %>">
                       <td>
-                        <%= link_to grading_path(grade.id) , 
-                            'data-position' => 'top',
-                            'data-delay' => '50',
-                            'data-tooltip' => 'Delete',
-                            class:'red-text tooltipped' ,
-                            method: :delete , 
-                            data: { confirm: "Are you sure?" } do %>
-                          <i class="material-icons">delete</i>
-                        <% end %>
+                        <a class="modal-trigger" href="#modalG<%= grade.id %>">
+                          <i class="material-icons red-text">delete</i>
+                        </a>
                         <%= link_to edit_grading_path(grade.id) ,
                             'data-position' => 'top',
                             'data-delay' => '50',
@@ -140,11 +148,29 @@
                           <i class="material-icons">create</i>
                         <% end %>   
                       </td>
-                      <td><%= grade.grade %></td>
+                      <td class="blue-text"><%= grade.grade %>.00</td>
                       <td><%= grade.subject %></td>
                       <td><%= grade.created_at.to_s(:long) %></td>
                     </tr>
-                  <% end %>  
+                  <!-- Modal Structure -->
+                    <div id="modalG<%= grade.id %>" class="modal my-modal">
+                      <div class="modal-content" style="text-align: center">
+                        <i class="material-icons large red-text">report</i>
+                        <h5>Delete grade in <%= grade.subject %>?</h5><hr>
+                        <%= link_to "YES" , grading_path(grade.id) ,
+                            id: "btn-delete-#{grade.id}" , 
+                            remote: true, 
+                            'data-position' => 'top',
+                            'data-delay' => '50',
+                            'data-tooltip' => 'Delete',
+                            class:'btn waves-effect waves-yellow red modal-close modal-action' ,
+                            method: :delete %>
+                        <button class="btn modal-close modal-action green waves-effect waves-blue">
+                          NO
+                        </button>
+                      </div>
+                    </div>
+                  <% end %>   
                 <% end %>
               </tbody>
             </table>
@@ -165,23 +191,17 @@
                 <% if @grade3rd.blank? %>
                   <tr>
                     <td>*</td>
-                    <td>No grades yet</td>
-                    <td>No grades yet</td>
-                    <td>No grades yet</td>
+                    <td>No records yet</td>
+                    <td>No records yet</td>
+                    <td>No records yet</td>
                   </tr>
                 <% else %>
                   <% @grade3rd.each do |grade| %>
-                    <tr>
+                    <tr id="row<%= grade.id %>">
                       <td>
-                        <%= link_to grading_path(grade.id) , 
-                            'data-position' => 'top',
-                            'data-delay' => '50',
-                            'data-tooltip' => 'Delete',
-                            class:'red-text tooltipped' ,
-                            method: :delete , 
-                            data: { confirm: "Are you sure?" } do %>
-                          <i class="material-icons">delete</i>
-                        <% end %>
+                        <a class="modal-trigger" href="#modalG<%= grade.id %>">
+                          <i class="material-icons red-text">delete</i>
+                        </a>
                         <%= link_to edit_grading_path(grade.id) ,
                             'data-position' => 'top',
                             'data-delay' => '50',
@@ -190,11 +210,29 @@
                           <i class="material-icons">create</i>
                         <% end %>   
                       </td>
-                      <td><%= grade.grade %></td>
+                      <td class="blue-text"><%= grade.grade %>.00</td>
                       <td><%= grade.subject %></td>
                       <td><%= grade.created_at.to_s(:long) %></td>
                     </tr>
-                  <% end %>  
+                  <!-- Modal Structure -->
+                    <div id="modalG<%= grade.id %>" class="modal my-modal">
+                      <div class="modal-content" style="text-align: center">
+                        <i class="material-icons large red-text">report</i>
+                        <h5>Delete grade in <%= grade.subject %>?</h5><hr>
+                        <%= link_to "YES" , grading_path(grade.id) ,
+                            id: "btn-delete-#{grade.id}" , 
+                            remote: true, 
+                            'data-position' => 'top',
+                            'data-delay' => '50',
+                            'data-tooltip' => 'Delete',
+                            class:'btn waves-effect waves-yellow red modal-close modal-action' ,
+                            method: :delete %>
+                        <button class="btn modal-close modal-action green waves-effect waves-blue">
+                          NO
+                        </button>
+                      </div>
+                    </div>
+                  <% end %>   
                 <% end %>
               </tbody>
             </table>
@@ -215,23 +253,17 @@
                 <% if @grade4th.blank? %>
                   <tr>
                     <td>*</td>
-                    <td>No grades yet</td>
-                    <td>No grades yet</td>
-                    <td>No grades yet</td>
+                    <td>No records yet</td>
+                    <td>No records yet</td>
+                    <td>No records yet</td>
                   </tr>
                 <% else %>
                   <% @grade4th.each do |grade| %>
-                    <tr>
+                    <tr id="row<%= grade.id %>">
                       <td>
-                        <%= link_to grading_path(grade.id) , 
-                            'data-position' => 'top',
-                            'data-delay' => '50',
-                            'data-tooltip' => 'Delete',
-                            class:'red-text tooltipped' ,
-                            method: :delete , 
-                            data: { confirm: "Are you sure?" } do %>
-                          <i class="material-icons">delete</i>
-                        <% end %>
+                        <a class="modal-trigger" href="#modalG<%= grade.id %>">
+                          <i class="material-icons red-text">delete</i>
+                        </a>
                         <%= link_to edit_grading_path(grade.id) ,
                             'data-position' => 'top',
                             'data-delay' => '50',
@@ -240,24 +272,40 @@
                           <i class="material-icons">create</i>
                         <% end %>   
                       </td>
-                      <td><%= grade.grade %></td>
+                      <td class="blue-text"><%= grade.grade %>.00</td>
                       <td><%= grade.subject %></td>
                       <td><%= grade.created_at.to_s(:long) %></td>
                     </tr>
-                  <% end %>  
+                  <!-- Modal Structure -->
+                    <div id="modalG<%= grade.id %>" class="modal my-modal">
+                      <div class="modal-content" style="text-align: center">
+                        <i class="material-icons large red-text">report</i>
+                        <h5>Delete grade in <%= grade.subject %>?</h5><hr>
+                        <%= link_to "YES" , grading_path(grade.id) ,
+                            id: "btn-delete-#{grade.id}" , 
+                            remote: true, 
+                            'data-position' => 'top',
+                            'data-delay' => '50',
+                            'data-tooltip' => 'Delete',
+                            class:'btn waves-effect waves-yellow red modal-close modal-action' ,
+                            method: :delete %>
+                        <button class="btn modal-close modal-action green waves-effect waves-blue">
+                          NO
+                        </button>
+                      </div>
+                    </div>
+                  <% end %>   
                 <% end %>
               </tbody>
             </table>
           </div>
-        </div>
-        
       </div>
     </div><!-- row -->
   </div>
 
 <!-- ============Side bar============== -->
   <div class="col s12 ">
-      <%= render 'partials/sidebar' %>
+    <%= render 'partials/sidebar' %>
   </div><!-- col s12 -->
 
 </div>
@@ -266,6 +314,10 @@
 
   body {
     background-color: #e8e8e8;
+  }
+  .my-modal {
+    width: 30%!important;
+    background-color: #c2c2c2;
   }
   td {
     background-color: #e3e3e3;
@@ -281,6 +333,7 @@
   .tabs-ko {
     border: 1px solid gray;
     margin-top: 10px;
+    padding-bottom: 5px;
     border-radius: 10px 10px 0px 0px;
   }
 
@@ -333,6 +386,34 @@
 </style>
 
 <script type="text/javascript">
+  $(document).ready(function() {
+    <% @grade1st.each do |grade| %>
+      $('#btn-delete-<%= grade.id %>').on('click' , function() {
+        $('#row<%= grade.id %>').fadeOut(600);
+        Materialize.toast('Grade deleted !', 1000);
+      });
+    <% end %>
+    <% @grade2nd.each do |grade| %>
+      $('#btn-delete-<%= grade.id %>').on('click' , function() {
+        $('#row<%= grade.id %>').fadeOut(600);
+        Materialize.toast('Grade deleted !', 1000);
+      });
+    <% end %>
+    <% @grade3rd.each do |grade| %>
+      $('#btn-delete-<%= grade.id %>').on('click' , function() {
+        $('#row<%= grade.id %>').fadeOut(600);
+        Materialize.toast('Grade deleted !', 1000);
+      });
+    <% end %>
+    <% @grade4th.each do |grade| %>
+      $('#btn-delete-<%= grade.id %>').on('click' , function() {
+        $('#row<%= grade.id %>').fadeOut(600);
+        Materialize.toast('Grade deleted !', 1000);
+      });
+    <% end %>
+  });
+
+
     $('.datepicker').pickadate({
     selectMonths: true, // Creates a dropdown to control month
     selectYears: 15, // Creates a dropdown of 15 years to control year,

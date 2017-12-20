@@ -33,11 +33,19 @@
 	          <% end %>
 	        </li>
 	        <% if administrator_signed_in? %>
-	           <li>
-	             <%= link_to admin_dashboard_path do %>
-	               Admin panel <i class="fa fa-lock" aria-hidden="true"></i>
-	             <% end %>
-	           </li>
+	          <% if current_administrator.role == "faculty" %>
+		           <li>
+		             <%= link_to admin_profile_path do %>
+		               <%= current_administrator.firstname %> <i class="fa fa-lock" aria-hidden="true"></i>
+		             <% end %>
+		           </li>
+	          <% else %>
+		           <li>
+		             <%= link_to admin_dashboard_path do %>
+		               Admin panel <i class="fa fa-lock" aria-hidden="true"></i>
+		             <% end %>
+		           </li>
+	          <% end %>
 	        <% else %>
 		        <!-- <li class="waves-effect waves-orange">
 		          <a> Sign in
@@ -84,9 +92,19 @@
 	        </li>
 	        <li>
 	          <% if administrator_signed_in? %>
-	            <%= link_to admin_dashboard_path, class:"waves-effect waves-orange" do %> Admin panel
-	              <i class="material-icons">person</i>
-	            <% end %>
+	            <% if current_administrator.role == "faculty" %>
+		           <li>
+		             <%= link_to admin_profile_path do %>
+		               <%= current_administrator.firstname %> <i class="material-icons">person</i>
+		             <% end %>
+		           </li>
+	          <% else %>
+		           <li>
+		             <%= link_to admin_dashboard_path do %>
+		               Admin panel <i class="material-icons">person</i>
+		             <% end %>
+		           </li>
+	          <% end %>
 	          <% else %>
 	           <!--  <%= link_to root_path, class:"waves-effect waves-orange" do %> Sign in
 	              <i class="fa fa-university" aria-hidden="true"></i>

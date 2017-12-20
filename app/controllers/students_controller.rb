@@ -1,6 +1,5 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy]
-
   # GET /students
   # GET /students.json
   def index
@@ -17,11 +16,14 @@ class StudentsController < ApplicationController
   # GET /students/1
   # GET /students/1.json
   def show
-    # @student = Student.friendly.find(params[:id])
-    @grade1st = Grading.where(:quarter => 1 , :student_id => @student.id)
-    @grade2nd = Grading.where(:quarter => 2 , :student_id => @student.id)
-    @grade3rd = Grading.where(:quarter => 3 , :student_id => @student.id)
-    @grade4th = Grading.where(:quarter => 4 , :student_id => @student.id)
+    @grades = Grading.where(:student_id => @student_id).order('subject ASC')
+      @grades.each do |grade|
+        @grade1 = grade.grade
+      end  
+    @grade1st = Grading.where(:quarter => 1 , :student_id => @student.id).order('subject ASC')
+    @grade2nd = Grading.where(:quarter => 2 , :student_id => @student.id).order('subject ASC')
+    @grade3rd = Grading.where(:quarter => 3 , :student_id => @student.id).order('subject ASC')
+    @grade4th = Grading.where(:quarter => 4 , :student_id => @student.id).order('subject ASC')
   end
 
   # GET /students/new
@@ -74,6 +76,17 @@ class StudentsController < ApplicationController
     end
   end
 
+  def reset
+    # @student = Student.find(params[:id])
+    @grades = Grading.all.where(:student_id => @student)
+    @grades.destroy_all
+    redirect_to request.referrer
+    # respond_to do |format|
+    #   format.html { redirect_to request.referrer , notice: 'Grades successfully reset' }
+    #   format.js
+    # end  
+  end
+
   # DELETE /students/1
   # DELETE /students/1.json
   def destroy
@@ -88,7 +101,7 @@ class StudentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_student
-      @student = Student.friendly.find(params[:id])
+      @student = Student.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

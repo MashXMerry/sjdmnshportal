@@ -64,7 +64,7 @@
                             <div class="col s12 m3 l3 valign-wrapper input-field">
                               <i class="tiny material-icons prefix">create</i>
                               <label>Insert grade</label>
-                              <%= f.number_field :grade  , id:"grade-int#{subject.id}" %>
+                              <%= f.number_field :grade  , id:"grade-int#{subject.id}",max: 100 , min: 50 %>
                             </div>
                             <div class="col s12 m9 l9" style="padding-top: 25px">
                               <b>: <%= subject.title %></b> 
@@ -98,7 +98,7 @@
     background-color: orange!important;
   }
   td a{
-    color:black!important;
+    /*color:black!important;*/
   }
   .modal.open{
     width: 100%;

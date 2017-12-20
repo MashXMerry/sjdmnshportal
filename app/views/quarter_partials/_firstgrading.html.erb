@@ -44,7 +44,11 @@
                   <i class="material-icons">add</i>
                 </a>
               </td>
-              <td><%= link_to student.lrn , student_path(student.id) %></td>
+              <td><%= link_to student.lrn , student_path(student.id) , 
+                  class:"tooltipped",
+                  'data-position' => 'top',
+                  'data-delay' => '50',
+                  'data-tooltip' => "visit #{student.firstname}'s profile" %></td>
               <td><%= link_to student.lastname, student_path(student.id) %></td>
               <td><%= link_to student.firstname, student_path(student.id) %></td>
               <td><%= link_to student.middlename, student_path(student.id) %></td>
@@ -64,11 +68,11 @@
                             <div class="col s12 m3 l3 valign-wrapper input-field">
                               <i class="tiny material-icons prefix">create</i>
                               <label>Insert grade</label>
-                              <%= f.number_field :grade  , id:"grade-int#{subject.id}" %>
+                              <%= f.number_field :grade  , id:"grade-int#{subject.id}" ,max: 100 , min: 50 %>
                             </div>
                             <div class="col s12 m9 l9" style="padding-top: 25px">
                               <b>: <%= subject.title %></b> 
-                            </div>
+                            </div>  
                           </div>
                           <%= f.hidden_field :subject , value: subject.title %>
                           <%= f.hidden_field :yearlvl , value: student.level %>
@@ -98,7 +102,7 @@
     background-color: orange!important;
   }
   td a{
-    color:black!important;
+    /*color:black!important;*/
   }
   .modal.open{
     width: 100%;
