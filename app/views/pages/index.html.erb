@@ -3,98 +3,73 @@
 <%= render 'partials/navbar' %>
 <%= render 'partials/slider' %>
 
-  <div class="container desc-container">
-  	<p class="title center"  style="font-size: 30px;margin: 10px;font-family:Rockwell">
-  	San Jose del Monte National Trade School</p><hr>
-  	<p style="font-size: 20px;margin: 10px;font-family:Rockwell;text-align: justify;" class="body">
-      San Jose del Monte National Trade School is a public secondary school in San Jose del Monte City, Bulacan, Philippines. The head of the school is Mr. Alex D. Angeles</p>
+  <div class="container" style="margin-top: 20px">
+    <div class="row my-card">
+      <div class="col s12 m8 l8" style="margin-top: 50px">
+        <p class="title center"  style="font-size: 30px;margin: 10px;font-family:Rockwell">
+          San Jose del Monte National Trade School</p><hr>
+          <p style="font-size: 15px;margin: 10px;text-align: justify;" class="body">
+            San Jose del Monte National Trade School is a public secondary school in San Jose del Monte City, Bulacan, Philippines. The head of the school is Mr. Alex D. Angeles</p>
+      </div>
+      <div class="col s12 m4 l4" style="text-align: center">
+        <%= image_tag "favicon.ico" %>
+      </div>
+    </div>
   </div>
 
-	<div class="desc1-container">
-	  <div class="container">
-	    <div class="row">
-	      <div class="col s12 m12 l12" style="margin-top: 50px">
-	      	<%= image_tag "page.png"  , style:"width:100%" , class:"materialboxed" %>
-	      </div>
-	      <div class="col s12 m12 l12 hide-on-small-only">
-	      	<p class="title center" style="font-size: 25px;margin: 10px;font-family:Rockwell">About Web Portal</p><hr>
-	      	<p class="center" style="text-align: justify;">
+  <div class="desc1-container">
+    <div class="row container my-card">
+      <div class="col s12 m7 l7">
+        <p class="title center" style="font-size: 25px;margin: 10px;font-family:Rockwell">About Web Portal</p><hr>
+          <p class="center" style="text-align: justify;">
           As San Jose Del Monte National Trade School, strive to provide faster and convenient ways for students, faculty and staff to access necessary data, the SJDMNTS Web Portal was developed. The Web Portal contains the latest information regarding San Jose Del Monte National Trade School. (The History, Vision and Mission) The Web Portal also contains the information regarding the available k-12 programs for upcoming senior high students. The Web Portal also contains options for viewing the current school news, announcements and events.  
           </p>
-	      	<dl class="list-desc">
-	      	  <li>View all School News</li>
-	      	  <li>View all School Announcements</li>
-	      	  <li>View all upcoming and past School Events</li>
-	      	  <li>Student grades</li>
-	      	  <li>Mobile app</li>
-	      	</dl>
-	      </div>
-	    </div>
-	  </div>	
-	</div>
-  
-  <div class="desc2-container" style="text-align: center">
-    <%= image_tag "favicon.ico"  , style:"width:150px;" %>
-  	<div class="container row">
-  	  <div class="col s12 m4 l4">
-        <div class="card-panel whtie">
-          <span class="black-text">
-            <p class="title center" style="font-size: 25px;margin: 10px;font-family:Rockwell">News</p><hr>
-              <p style="font-size: 15px;margin: 10px;font-family:Rockwell;text-align: justify;" class="body">
-                San Jose del Monte National Trade School Web Portal are able to post all news about the School happening. 
-              </p>
-          </span>
-        </div>
-  	  </div>
-  	  <div class="col s12 m4 l4">
-        <div class="card-panel white">
-          <span class="black-text">
-            <p class="title center" style="font-size: 25px;margin: 10px;font-family:Rockwell">Announcements</p><hr>
-              <p  style="font-size: 15px;margin: 10px;font-family:Rockwell;text-align: justify;" class="body">
-               San Jose del Monte National Trade School Web Portal posts all announcements for its student , all upcoming and past announcements can posted and visit on the portal.
-              </p>
-          </span>
-        </div>  
-  	  </div>
-  	  <div class="col s12 m4 l4">
-        <div class="card-panel white">
-          <span class="black-text">
-            <p class="title center" style="font-size: 25px;margin: 10px;font-family:Rockwell">Events</p><hr>
-              <p style="font-size: 15px;margin: 10px;font-family:Rockwell;text-align: justify;" class="body">
-                San Jose del Monte National Trade School Web Portal shows all events that happens inside then school, upcoming events can be also found here at the Web Portal.  
-              </p>
-          </span>
-        </div>
-  	  </div>
-  	</div>
+          <ol class="list-desc">
+            <li>View all School News</li>
+            <li>View all School Announcements</li>
+            <li>View all upcoming and past School Events</li>
+            <li>Student grades</li>
+            <li>Mobile app</li>
+          </ol>
+      </div>
+      <div class="col s12 m5 l5" style="margin-top: 50px">
+        <%= image_tag "page.png" , style:"width:100%" , class:"materialboxed" %>
+      </div>
+    </div>
   </div>
 
-    <div class="desc3-container">
-	  <div class="container">
-	    <div class="row">
-	      <div class="col s12 m8 l7">
-	      	<%= image_tag "page.png"  , style:"width:100%" %>
-	      </div>
-	      <div class="col s12 m4 l5 hide-on-small-only">
-	      	<p class="title center" style="font-size: 25px;margin: 10px;font-family:Rockwell">Mobile App</p><hr>
-	      	<p class="center" style="text-align: justify;" class="body">
-          The Mobile App contains most of your student Record which includes your grades and this records are available for Viewing. You can also view the latest school news, announcements and events. Information about your School and Information about the available organizations in your school.  
-          </p>
-	      	<dl class="list-desc">
-	      	  <li>View all School News</li>
-	      	  <li>View all School Announcements</li>
-	      	  <li>View all upcoming and past School Events</li>
-	      	  <li>Student grades</li>
-	      	  <li>Student login</li>
-	      	</dl>
-	      </div>
-	    </div>
-	  </div>	
-	</div>
+  <div class="container" style="margin-top: 30px">
+    <div class="row my-card">
+      <div class="col s12 m4 l5 hide-on-small-only">
+        <p class="title center" style="font-size: 25px;margin: 10px;font-family:Rockwell">Mobile App</p><hr>
+        <p class="center" style="text-align: justify;" class="body">
+        The Mobile App contains most of your student Record which includes your grades and this records are available for Viewing. You can also view the latest school news, announcements and events. Information about your School and Information about the available organizations in your school.  
+        </p>
+        <dl class="list-desc">
+          <li>View all School News</li>
+          <li>View all School Announcements</li>
+          <li>View all upcoming and past School Events</li>
+          <li>Student grades</li>
+          <li>Student login</li>
+        </dl>
+      </div>
+      <div class="col s12 m8 l7">
+      	<%= image_tag "page.png"  , style:"width:100%" %>
+      </div>
+    </div>
+  </div>	
+
 
 <%= render 'partials/footer' %>
 
 <style type="text/css">
+
+  .my-card {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: -1px 1px 4px 0px #b7b7b7;
+    padding: 10px 10px 10px 10px;
+  }
 
   .list-desc li{
   	font-size: 15px;
