@@ -1,123 +1,263 @@
 <%= javascript_include_tag 'style' %>
-<!-- +++++++++++++++++++++++++++++++++++ -->
-<%= render 'partials/navbar' %>
-<%= render 'partials/slider' %>
 
-  <div class="container" style="margin-top: 20px">
-    <div class="row my-card">
-      <div class="col s12 m8 l8" style="margin-top: 50px">
-        <p class="title center"  style="font-size: 30px;margin: 10px;font-family:Rockwell">
-          San Jose del Monte National Trade School</p><hr>
-          <p style="font-size: 15px;margin: 10px;text-align: justify;" class="body">
-            San Jose del Monte National Trade School is a public secondary school in San Jose del Monte City, Bulacan, Philippines. The head of the school is Mr. Alex D. Angeles</p>
+<ul class="side-nav fixed">
+  <li style="padding-bottom: 25px">
+    <div class="user-view" style="height: 235px">
+      <div class="background">
+        <a href="#!user">
+          <%= image_tag "favicon.ico" , class:"circle logo-img" %></a>
       </div>
-      <div class="col s12 m4 l4" style="text-align: center">
-        <%= image_tag "favicon.ico" %>
+    </div>
+  </li>
+  <li class="my-links">
+    <%= link_to root_path , class:"waves-effect waves-red" do %>
+      Home<i class="material-icons blue-text">home</i>
+    <% end %>
+  </li>
+  <li class="my-links">
+    <%= link_to news_page_path , class:"waves-effect waves-red" do %>
+      News<i class="material-icons green-text">library_books</i>
+    <% end %>
+  </li>
+  <li class="my-links">
+    <%= link_to announcement_page_path , class:"waves-effect waves-red" do %>
+      Announcements<i class="material-icons yellow-text">announcement</i>
+    <% end %>
+  </li>
+  <li class="my-links">
+    <%= link_to event_page_path , class:"waves-effect waves-red" do %>
+      Events<i class="material-icons orange-text">event</i>
+    <% end %>
+  </li>
+  <li class="my-links">
+    <%= link_to about_page_path , class:"waves-effect waves-red" do %>
+      About<i class="material-icons blue-text">help</i>
+    <% end %>
+  </li>
+</ul> 
+
+
+<nav class="my-navbar">
+  <div class="nav-wrapper">
+    <a class="brand-logo right show-on-small hide-on-med-and-up">SJDMNTS</a>
+    <a class="brand-logo right hide-on-small-only">San Jose del Monte National Trade School</a>
+    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+    <ul class="side-nav" id="mobile-demo">
+      <li>
+        <div class="user-view" style="height: 240px;text-align: center;">
+          <div class="background">
+            <%= image_tag "favicon.ico" , class:"circle logo-img" , style:"width:60%;margin-top: 30px" %>
+          </div>
+        </div>
+      </li>
+      <li class="my-links">
+        <%= link_to root_path , class:"waves-effect waves-red" do %>
+          Home<i class="material-icons blue-text">home</i>
+        <% end %>
+      </li>
+      <li class="my-links">
+        <%= link_to news_page_path , class:"waves-effect waves-red" do %>
+          News<i class="material-icons green-text">library_books</i>
+        <% end %>
+      </li>
+      <li class="my-links">
+        <%= link_to announcement_page_path , class:"waves-effect waves-red" do %>
+          Announcements<i class="material-icons yellow-text">announcement</i>
+        <% end %>
+      </li>
+      <li class="my-links">
+        <%= link_to event_page_path , class:"waves-effect waves-red" do %>
+          Events<i class="material-icons orange-text">event</i>
+        <% end %>
+      </li>
+      <li class="my-links">
+        <%= link_to about_page_path , class:"waves-effect waves-red" do %>
+          About<i class="material-icons blue-text">help</i>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="row main">
+  <div class="col s12 m12 l9 offset-l3">
+
+    <div style="text-align: center" class="title">
+      <h3 class="title">San Jose del Monte National Trade School <br>Web Portal</h3>
+    </div>
+
+    <div class="slider">
+      <ul class="slides">
+        <li>
+          <%= image_tag "img1.jpg" , class:"img-sliders" %>
+          <div class="caption center-align">
+            <%= image_tag "favicon.ico" , style:"width:150px" %>
+            <h3>San Jose del Monte</h3>
+            <h5 class="light grey-text text-lighten-3">National Trade School</h5>
+          </div>
+        </li>
+        <li>
+          <%= image_tag "img2.jpg" , class:"img-sliders" %>
+          <div class="caption left-align">
+            <%= image_tag "favicon.ico" , style:"width:150px" %>
+            <h3>San Jose del Monte</h3>
+            <h5 class="light grey-text text-lighten-3">National Trade School</h5>
+          </div>
+        </li>
+        <li>
+          <%= image_tag "img3.jpg" , class:"img-sliders" %>
+          <div class="caption right-align">
+            <%= image_tag "favicon.ico" , style:"width:150px" %>
+            <h3>San Jose del Monte</h3>
+            <h5 class="light grey-text text-lighten-3">National Trade School</h5>
+          </div>
+        </li>
+        <li>
+          <%= image_tag "img2.jpg" , class:"img-sliders" %>
+          <div class="caption center-align">
+            <%= image_tag "favicon.ico" , style:"width:150px" %>
+            <h3>San Jose del Monte</h3>
+            <h5 class="light grey-text text-lighten-3">National Trade School</h5>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="row about-portal">
+      <div class="card-panel white" style="margin-top: 70px">
+        <div class="row">
+          <div class="col s12 m12 l6" style="margin-top: 30px">
+            <%= image_tag "page.png" , class:"materialboxed" , style:"width:100%" %>
+          </div>
+          <div class="col s12 m12 l6">
+            <span class="gray-text" style="text-align: justify;">
+              <h3 class="center">About Web Portal</h3><hr>
+              <p style="text-align: justify;" class="body">
+                As San Jose Del Monte National Trade School, strive to provide faster and convenient ways for students, faculty and staff to access necessary data, the SJDMNTS Web Portal was developed. The Web Portal contains the latest information regarding San Jose Del Monte National Trade School. (The History, Vision and Mission) The Web Portal also contains the information regarding the available k-12 programs for upcoming senior high students. The Web Portal also contains options for viewing the current school news, announcements and events.
+              </p>
+            </span>
+          </div> 
+        </div>
+      </div>
+    </div>
+
+    <div class="row about-portal" style="padding-top: 50px;padding-bottom: 50px">
+      <div class="card-panel white">
+        <div class="row">
+          <div class="col s12 m12 l6">
+            <%= image_tag "page.png" , class:"materialboxed" , style:"width:100%" %>
+          </div>
+          <div class="col hide-on-med-and-down l6" style="margin-top: 20px;text-align: justify;">
+            <span class="gray-text">
+              <h5>Mobile App</h5><hr>
+              <p class="body">
+                The Mobile App contains most of your student Record which includes your grades and this records are available for     Viewing. You can also view the latest school news, announcements and events. Information about your School and     Information about the available organizations in your School.
+              </p>
+            </span>
+          </div>  
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div><!-- row main -->
+
+<footer class="page-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m12 l9 offset-l3">
+        <div class="col l6 s12">
+          <h5 class="white-text">San Jose del Monte National Trade School</h5>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          San Jose del Monte National Trade School is a public secondary school in San Jose del Monte City, Bulacan, Philippines. The head of the school is Mr. Alex D. Angeles
+        </div>
       </div>
     </div>
   </div>
-
-  <div class="desc1-container">
-    <div class="row container my-card">
-      <div class="col s12 m7 l7">
-        <p class="title center" style="font-size: 25px;margin: 10px;font-family:Rockwell">About Web Portal</p><hr>
-          <p class="center" style="text-align: justify;">
-          As San Jose Del Monte National Trade School, strive to provide faster and convenient ways for students, faculty and staff to access necessary data, the SJDMNTS Web Portal was developed. The Web Portal contains the latest information regarding San Jose Del Monte National Trade School. (The History, Vision and Mission) The Web Portal also contains the information regarding the available k-12 programs for upcoming senior high students. The Web Portal also contains options for viewing the current school news, announcements and events.  
-          </p>
-          <ol class="list-desc">
-            <li>View all School News</li>
-            <li>View all School Announcements</li>
-            <li>View all upcoming and past School Events</li>
-            <li>Student grades</li>
-            <li>Mobile app</li>
-          </ol>
-      </div>
-      <div class="col s12 m5 l5" style="margin-top: 50px">
-        <%= image_tag "page.png" , style:"width:100%" , class:"materialboxed" %>
+  <div class="footer-copyright">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m12 l9 offset-l3">
+          © 2018 SDJMNTS Web Portal
+          <%= link_to new_administrator_session_path , class:"grey-text text-lighten-4 right " do %>
+            <i class="fa fa-lock" aria-hidden="true"></i> Administration</a>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
-
-  <div class="container" style="margin-top: 30px">
-    <div class="row my-card">
-      <div class="col s12 m4 l5 hide-on-small-only">
-        <p class="title center" style="font-size: 25px;margin: 10px;font-family:Rockwell">Mobile App</p><hr>
-        <p class="center" style="text-align: justify;" class="body">
-        The Mobile App contains most of your student Record which includes your grades and this records are available for Viewing. You can also view the latest school news, announcements and events. Information about your School and Information about the available organizations in your school.  
-        </p>
-        <dl class="list-desc">
-          <li>View all School News</li>
-          <li>View all School Announcements</li>
-          <li>View all upcoming and past School Events</li>
-          <li>Student grades</li>
-          <li>Student login</li>
-        </dl>
-      </div>
-      <div class="col s12 m8 l7">
-      	<%= image_tag "page.png"  , style:"width:100%" %>
-      </div>
-    </div>
-  </div>	
-
-
-<%= render 'partials/footer' %>
+</footer>
 
 <style type="text/css">
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+body {
+  background-color: #fcfcfc;
+  font-family: 'Quicksand', sans-serif;
+}
 
-  .my-card {
-    background-color: white;
-    border-radius: 5px;
-    box-shadow: -1px 1px 4px 0px #b7b7b7;
-    padding: 10px 10px 10px 10px;
-  }
+.about-portal {
+  margin-top: 50px;border-top: .5px solid #d0d0d0
+}
 
-  .list-desc li{
-  	font-size: 15px;
-  	font-family:Rockwell
-  }
-  
-  .desc1-container {
-  	background-color: #cccccc;
-    margin-top: 100px;
-    padding: 50px 10px 50px 10px;
-  }
+.main {
+  margin-top: 50px;
+  text-align: center , justify;
+}
+.brand-logo {
+}
 
-  .desc2-container {
-    margin-top: 20px;
-    margin-bottom: 50px;
-    padding: 10px 10px 10px 10px;
-  }
+.logo-img {
+  width: 70%!important;
+    height: 200px!important;
+    margin-top: 20px!important;
+    margin-left: 50px!important;
+}
 
-  .desc3-container {
-  	background-color: #cccccc;
-    margin-top: 100px;
-    padding: 20px 10px 20px 10px;
-  }
-  .parallax-container {
-      height: 300px;
-   }
+.title {
+  /*border-bottom: .5px solid #d0d0d0;*/
+  margin-bottom: 50px;
+}
 
-   footer {
-   	margin-top: 0px!important;
-   }
+.img-sliders {
+  filter:blur(2px);
+}
 
-   .slides li img{
-    /*filter: blur(5px);*/
-    transition:.7s;
-   }
+.side-nav {
+  background-color:#161616!important;
+}
 
-   .slides li img:hover{
-     /*filter: blur(5px);*/
-     transform: scale(1.1);
-     cursor: pointer;
-   }
+.my-links a {
+    border-left: 10px solid #161616;  
+    transition: .3s;
+}
+.my-links a:hover {
+  border-left: 10px solid #750000;  
+}
 
-   .sjdm {
-    font-size: 35px;
-   }
+.side-nav li a {
+  font-family: 'Zilla Slab', serif;
+  color: white;
+  font-size: 14px;
+    font-family: 'Padauk', sans-serif;
+  transition: .3s;
+}
+.side-nav li a:hover {
+  transition: .3s;
+  background-color: #424242;
+  color: white;
+}
 
-   .title {
-      font-size: 30px;
-    }
+.my-navbar {
+  background-color: #750000!important;
+}
+
+.page-footer {
+    background-color: #750000!important;
+    bottom: -16px;
+    position: relative;
+}
+.footer-copyright {
+  background-color: #160000!important ;
+}
 </style>
-
