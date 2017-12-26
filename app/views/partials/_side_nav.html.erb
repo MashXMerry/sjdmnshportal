@@ -1,0 +1,62 @@
+<ul class="side-nav fixed">
+  <li style="padding-bottom: 25px">
+    <div class="user-view" style="height: 235px">
+      <div class="background">
+        <a href="#!user">
+          <%= image_tag "favicon.ico" , class:"circle logo-img" %></a>
+      </div>
+    </div>
+  </li>
+  <li class="my-links">
+    <%= link_to root_path , class:"waves-effect waves-red" do %>
+      Home<i class="material-icons blue-text">home</i>
+    <% end %>
+  </li>
+  <li class="my-links">
+    <%= link_to news_page_path , class:"waves-effect waves-red" do %>
+      News<i class="material-icons green-text">library_books</i>
+    <% end %>
+  </li>
+  <li class="my-links">
+    <%= link_to announcement_page_path , class:"waves-effect waves-red" do %>
+      Announcements<i class="material-icons yellow-text">announcement</i>
+    <% end %>
+  </li>
+  <li class="my-links">
+    <%= link_to event_page_path , class:"waves-effect waves-red" do %>
+      Events<i class="material-icons orange-text">event</i>
+    <% end %>
+  </li>
+  <li class="my-links">
+    <%= link_to about_page_path , class:"waves-effect waves-red" do %>
+      About<i class="material-icons blue-text">help</i>
+    <% end %>
+  </li>
+  <% if administrator_signed_in? %>
+    <% if current_administrator.role == "faculty" %>
+       <li class="my-links">
+         <%= link_to admin_profile_path do %>
+           <%= current_administrator.firstname %> <i class="fa fa-lock" aria-hidden="true"></i>
+         <% end %>
+       </li>
+    <% else %>
+     <li class="my-links">
+       <%= link_to admin_dashboard_path do %>
+         Admin panel <i class="material-icons blue-text">dashboard</i>
+       <% end %>
+     </li>
+    <% end %>
+  <% else %>
+    <!-- +++++++++++++++++++++++++++++++++ -->
+  <% end %>
+
+  <% if administrator_signed_in? %>
+    <li class="my-links">
+      <%= link_to destroy_administrator_session_path , method: :delete, class:"waves-effect waves-red" do %>
+        Logout<i class="material-icons orange-text">lock_open</i>
+      <% end %>
+    </li>
+  <% else %>
+    
+  <% end %>
+</ul> 

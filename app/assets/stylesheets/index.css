@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+
+body {
+  background-color: #fcfcfc;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.input-field .prefix.acive {
+  color:red!important;
+}
+
+.about-portal {
+  margin-top: 50px;border-top: .5px solid #d0d0d0
+}
+
+.body {
+  font-style: 15px;
+}
+
+.modal.open{
+  width: 100%;
+  max-height: 100%;
+  height: 100%;
+  top: 0 !important;
+}
+.modal-content {
+  height: calc(100% - 56px);
+}
+
+.modal {
+    background-color: #0000008a;  
+}
+
+.modal-body {
+  background-color: white;
+}
+
+.main {
+  margin-top: 50px;
+  text-align: center , justify;
+}
+
+.btn-close {
+  margin-top: 20px;
+  margin-right: 20px;
+  transition: .5s ease-in-out;
+}
+
+.btn-close:hover {
+  transform: rotateZ(360deg);
+}
+
+.brand-logo {
+}
+
+.title {
+  font-size: 25px!important;
+}
+
+.slider-title {
+  text-shadow: 1px 1px 1px #ffd200;
+}
+
+.slider-title-2 {
+  text-shadow: 1px 1px 1px #ffd200;
+}
+
+.logo-img {
+  width: 70%!important;
+  height: 200px!important;
+  margin-top: 20px!important;
+  margin-left: 50px!important;
+}
+
+.title {
+  /*border-bottom: .5px solid #d0d0d0;*/
+  margin-bottom: 30px;
+}
+
+.img-sliders {
+  /*filter:blur(2px);*/
+}
+
+.side-nav {
+  background-color:#161616!important;
+}
+
+.my-links a {
+    border-left: 10px solid #161616;  
+    transition: .3s;
+}
+.my-links a:hover {
+  border-left: 10px solid #750000;  
+}
+
+.side-nav li a {
+  font-family: 'Zilla Slab', serif;
+  color: white;
+  font-size: 14px;
+    font-family: 'Padauk', sans-serif;
+  transition: .3s;
+}
+.side-nav li a:hover {
+  transition: .3s;
+  background-color: #424242;
+  color: white;
+}
+
+.my-navbar {
+  background-color:#750000!important;
+}
+
+.page-footer {
+    background-color: #750000!important;
+    bottom: -16px;
+    position: relative;
+}
+.footer-copyright {
+  background-color: #160000!important ;
+}
+
+.pagination li.active {
+  width: 30px;
+  background-color: #bf360c;
+  color: white;
+  padding-top: 5px;
+}
+
+.pagination li {
+  padding-top: 5px;
+  margin-left: 10px;
+}

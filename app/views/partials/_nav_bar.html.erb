@@ -1,0 +1,43 @@
+<%= stylesheet_link_tag 'index' %>
+
+<nav class="my-navbar">
+  <div class="nav-wrapper" style="text-align: center">
+    <a class="brand-logo right hide-on-med-and-up" style="font-size: 20px">SJDM National Trade School</a>
+    <a class="brand-logo right hide-on-small-only title">San Jose del Monte National Trade School Web Portal</a>
+    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+    <ul class="side-nav" id="mobile-demo">
+      <li>
+        <div class="user-view" style="height: 240px;text-align: center;">
+          <div class="background">
+            <%= image_tag "favicon.ico" , class:"circle logo-img" , style:"width:60%;margin-top: 30px" %>
+          </div>
+        </div>
+      </li>
+      <li class="my-links">
+        <%= link_to root_path , class:"waves-effect waves-red" do %>
+          Home<i class="material-icons blue-text">home</i>
+        <% end %>
+      </li>
+      <li class="my-links">
+        <%= link_to news_page_path , class:"waves-effect waves-red" do %>
+          News<i class="material-icons green-text">library_books</i>
+        <% end %>
+      </li>
+      <li class="my-links">
+        <%= link_to announcement_page_path , class:"waves-effect waves-red" do %>
+          Announcements<i class="material-icons yellow-text">announcement</i>
+        <% end %>
+      </li>
+      <li class="my-links">
+        <%= link_to event_page_path , class:"waves-effect waves-red" do %>
+          Events<i class="material-icons orange-text">event</i>
+        <% end %>
+      </li>
+      <li class="my-links">
+        <%= link_to destroy_administrator_session_path , method: :delete, class:"waves-effect waves-red" do %>
+          Logout<i class="material-icons orange-text">lock_open</i>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</nav>

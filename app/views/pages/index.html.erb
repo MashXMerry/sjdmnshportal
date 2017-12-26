@@ -1,128 +1,57 @@
 <%= javascript_include_tag 'style' %>
 
-<ul class="side-nav fixed">
-  <li style="padding-bottom: 25px">
-    <div class="user-view" style="height: 235px">
-      <div class="background">
-        <a href="#!user">
-          <%= image_tag "favicon.ico" , class:"circle logo-img" %></a>
-      </div>
-    </div>
-  </li>
-  <li class="my-links">
-    <%= link_to root_path , class:"waves-effect waves-red" do %>
-      Home<i class="material-icons blue-text">home</i>
-    <% end %>
-  </li>
-  <li class="my-links">
-    <%= link_to news_page_path , class:"waves-effect waves-red" do %>
-      News<i class="material-icons green-text">library_books</i>
-    <% end %>
-  </li>
-  <li class="my-links">
-    <%= link_to announcement_page_path , class:"waves-effect waves-red" do %>
-      Announcements<i class="material-icons yellow-text">announcement</i>
-    <% end %>
-  </li>
-  <li class="my-links">
-    <%= link_to event_page_path , class:"waves-effect waves-red" do %>
-      Events<i class="material-icons orange-text">event</i>
-    <% end %>
-  </li>
-  <li class="my-links">
-    <%= link_to about_page_path , class:"waves-effect waves-red" do %>
-      About<i class="material-icons blue-text">help</i>
-    <% end %>
-  </li>
-</ul> 
-
-
-<nav class="my-navbar">
-  <div class="nav-wrapper">
-    <a class="brand-logo right show-on-small hide-on-med-and-up">SJDMNTS</a>
-    <a class="brand-logo right hide-on-small-only">San Jose del Monte National Trade School</a>
-    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-    <ul class="side-nav" id="mobile-demo">
-      <li>
-        <div class="user-view" style="height: 240px;text-align: center;">
-          <div class="background">
-            <%= image_tag "favicon.ico" , class:"circle logo-img" , style:"width:60%;margin-top: 30px" %>
-          </div>
-        </div>
-      </li>
-      <li class="my-links">
-        <%= link_to root_path , class:"waves-effect waves-red" do %>
-          Home<i class="material-icons blue-text">home</i>
-        <% end %>
-      </li>
-      <li class="my-links">
-        <%= link_to news_page_path , class:"waves-effect waves-red" do %>
-          News<i class="material-icons green-text">library_books</i>
-        <% end %>
-      </li>
-      <li class="my-links">
-        <%= link_to announcement_page_path , class:"waves-effect waves-red" do %>
-          Announcements<i class="material-icons yellow-text">announcement</i>
-        <% end %>
-      </li>
-      <li class="my-links">
-        <%= link_to event_page_path , class:"waves-effect waves-red" do %>
-          Events<i class="material-icons orange-text">event</i>
-        <% end %>
-      </li>
-      <li class="my-links">
-        <%= link_to about_page_path , class:"waves-effect waves-red" do %>
-          About<i class="material-icons blue-text">help</i>
-        <% end %>
-      </li>
-    </ul>
-  </div>
-</nav>
+<%= render "partials/side_nav" %>
+<%= render "partials/nav_bar" %>
 
 <div class="row main">
   <div class="col s12 m12 l9 offset-l3">
-
-    <div style="text-align: center" class="title">
-      <h3 class="title">San Jose del Monte National Trade School <br>Web Portal</h3>
-    </div>
-
+    
     <div class="slider">
       <ul class="slides">
         <li>
           <%= image_tag "img1.jpg" , class:"img-sliders" %>
           <div class="caption center-align">
             <%= image_tag "favicon.ico" , style:"width:150px" %>
-            <h3>San Jose del Monte</h3>
-            <h5 class="light grey-text text-lighten-3">National Trade School</h5>
+            <h3 class="slider-title">San Jose del Monte</h3>
+            <h5 class="light grey-text text-lighten-3 slider-title-2">National Trade School</h5>
           </div>
         </li>
         <li>
           <%= image_tag "img2.jpg" , class:"img-sliders" %>
           <div class="caption left-align">
             <%= image_tag "favicon.ico" , style:"width:150px" %>
-            <h3>San Jose del Monte</h3>
-            <h5 class="light grey-text text-lighten-3">National Trade School</h5>
+            <h3 class="slider-title">San Jose del Monte</h3>
+            <h5 class="light grey-text text-lighten-3 slider-title-2">National Trade School</h5>
           </div>
         </li>
         <li>
           <%= image_tag "img3.jpg" , class:"img-sliders" %>
           <div class="caption right-align">
             <%= image_tag "favicon.ico" , style:"width:150px" %>
-            <h3>San Jose del Monte</h3>
-            <h5 class="light grey-text text-lighten-3">National Trade School</h5>
+            <h3 class="slider-title">San Jose del Monte</h3>
+            <h5 class="light grey-text text-lighten-3 slider-title-2">National Trade School</h5>
           </div>
         </li>
         <li>
           <%= image_tag "img2.jpg" , class:"img-sliders" %>
           <div class="caption center-align">
             <%= image_tag "favicon.ico" , style:"width:150px" %>
-            <h3>San Jose del Monte</h3>
-            <h5 class="light grey-text text-lighten-3">National Trade School</h5>
+            <h3 class="slider-title">San Jose del Monte</h3>
+            <h5 class="light grey-text text-lighten-3 slider-title-2">National Trade School</h5>
           </div>
         </li>
       </ul>
     </div>
 
+    <div class="card-panel white">
+      <center>
+        <h4>San Jose del Monte National Trade School Web Portal</h4><hr>
+        <p class="body">
+          San Jose del Monte National Trade School is a public secondary school in San Jose del Monte City, Bulacan, Philippines. The head of the school is Mr. Alex D. Angeles
+        </p>
+      </center>  
+    </div>
+    
     <div class="row about-portal">
       <div class="card-panel white" style="margin-top: 70px">
         <div class="row">
@@ -141,123 +70,75 @@
       </div>
     </div>
 
+    <div class="row about-portal" style="text-align: center;">
+      <div class="col s12 m12 l4" style="margin-top: 30px">
+        <i class="large material-icons green-text">library_books</i><br>
+        <h4>News</h4>
+        <p style="text-align: justify;" class="body">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+      </div>
+      <div class="col s12 m12 l4" style="margin-top: 30px">
+        <i class="large material-icons yellow-text">announcement</i><br>
+        <h4>Announcements</h4>
+        <p style="text-align: justify;" class="body">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+      </div>
+      <div class="col s12 m12 l4" style="margin-top: 30px">
+        <i class="large material-icons orange-text">event</i><br>
+        <h4>Events</h4>
+        <p style="text-align: justify;" class="body">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+      </div>
+    </div>
+
     <div class="row about-portal" style="padding-top: 50px;padding-bottom: 50px">
       <div class="card-panel white">
         <div class="row">
-          <div class="col s12 m12 l6">
-            <%= image_tag "page.png" , class:"materialboxed" , style:"width:100%" %>
+          <div class="col s12 m12 l4" style="align-items: center;">
+            <%= image_tag "mobile.png" , class:"materialboxed center" , style:"width:80%" %>
           </div>
-          <div class="col hide-on-med-and-down l6" style="margin-top: 20px;text-align: justify;">
+          <div class="col l8" style="margin-top: 50px;text-align: justify;">
             <span class="gray-text">
               <h5>Mobile App</h5><hr>
               <p class="body">
-                The Mobile App contains most of your student Record which includes your grades and this records are available for     Viewing. You can also view the latest school news, announcements and events. Information about your School and     Information about the available organizations in your School.
+                The Mobile App contains most of your student Record which includes your grades and this records are available for Viewing. You can also view the latest school news, announcements and events. Information about your School and Information about the available organizations in your School.
               </p>
             </span>
           </div>  
         </div>
       </div>
     </div>
-    
   </div>
 </div><!-- row main -->
 
-<footer class="page-footer">
-  <div class="container">
-    <div class="row">
-      <div class="col s12 m12 l9 offset-l3">
-        <div class="col l6 s12">
-          <h5 class="white-text">San Jose del Monte National Trade School</h5>
-        </div>
-        <div class="col l4 offset-l2 s12">
-          San Jose del Monte National Trade School is a public secondary school in San Jose del Monte City, Bulacan, Philippines. The head of the school is Mr. Alex D. Angeles
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="footer-copyright">
-    <div class="container">
-      <div class="row">
-        <div class="col s12 m12 l9 offset-l3">
-          © 2018 SDJMNTS Web Portal
-          <%= link_to new_administrator_session_path , class:"grey-text text-lighten-4 right " do %>
-            <i class="fa fa-lock" aria-hidden="true"></i> Administration</a>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
+<%= render "partials/footer_2" %>
 
 <style type="text/css">
-@import url('https://fonts.googleapis.com/css?family=Quicksand');
-body {
-  background-color: #fcfcfc;
-  font-family: 'Quicksand', sans-serif;
-}
 
-.about-portal {
-  margin-top: 50px;border-top: .5px solid #d0d0d0
-}
-
-.main {
-  margin-top: 50px;
-  text-align: center , justify;
-}
-.brand-logo {
-}
-
-.logo-img {
-  width: 70%!important;
-    height: 200px!important;
-    margin-top: 20px!important;
-    margin-left: 50px!important;
-}
-
-.title {
-  /*border-bottom: .5px solid #d0d0d0;*/
-  margin-bottom: 50px;
-}
-
-.img-sliders {
-  filter:blur(2px);
-}
-
-.side-nav {
-  background-color:#161616!important;
-}
-
-.my-links a {
-    border-left: 10px solid #161616;  
-    transition: .3s;
-}
-.my-links a:hover {
-  border-left: 10px solid #750000;  
-}
-
-.side-nav li a {
-  font-family: 'Zilla Slab', serif;
-  color: white;
-  font-size: 14px;
-    font-family: 'Padauk', sans-serif;
-  transition: .3s;
-}
-.side-nav li a:hover {
-  transition: .3s;
-  background-color: #424242;
-  color: white;
-}
-
-.my-navbar {
-  background-color: #750000!important;
-}
-
-.page-footer {
-    background-color: #750000!important;
-    bottom: -16px;
-    position: relative;
-}
-.footer-copyright {
-  background-color: #160000!important ;
-}
 </style>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.carousel').carousel({
+      indicators: true
+    });
+  });
+</script>
