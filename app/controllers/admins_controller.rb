@@ -13,12 +13,26 @@ class AdminsController < ApplicationController
     @events1 = Event.all
     @announcements1 = Announcement.all
 
-    @student7 = Student.all.where(:level => 7)
-    @student8 = Student.all.where(:level => 8)
-    @student9 = Student.all.where(:level => 9)
-    @student10 = Student.all.where(:level => 10)
-    @student11 = Student.all.where(:level => 11)
-    @student12 = Student.all.where(:level => 12)
+    @student7 = Student.all.where(:level => 7 , :status => "enrolled")
+    @student8 = Student.all.where(:level => 8 , :status => "enrolled")
+    @student9 = Student.all.where(:level => 9 , :status => "enrolled")
+    @student10 = Student.all.where(:level => 10 , :status => "enrolled")
+    @student11 = Student.all.where(:level => 11 , :status => "enrolled")
+    @student12 = Student.all.where(:level => 12 , :status => "enrolled")
+
+    @Ustudent7 = Student.all.where(:level => 7 , :status => "un-enrolled")
+    @Ustudent8 = Student.all.where(:level => 8 , :status => "un-enrolled")
+    @Ustudent9 = Student.all.where(:level => 9 , :status => "un-enrolled")
+    @Ustudent10 = Student.all.where(:level => 10 , :status => "un-enrolled")
+    @Ustudent11 = Student.all.where(:level => 11 , :status => "un-enrolled")
+    @Ustudent12 = Student.all.where(:level => 12 , :status => "un-enrolled")
+
+    @Dstudent7 = Student.all.where(:level => 7 , :status => "dropped")
+    @Dstudent8 = Student.all.where(:level => 8 , :status => "dropped")
+    @Dstudent9 = Student.all.where(:level => 9 , :status => "dropped")
+    @Dstudent10 = Student.all.where(:level => 10 , :status => "dropped")
+    @Dstudent11 = Student.all.where(:level => 11 , :status => "dropped")
+    @Dstudent12 = Student.all.where(:level => 12 , :status => "dropped")
 
     @grade7 = Section.all.where(:yearlvl => 7)
     @grade8 = Section.all.where(:yearlvl => 8)

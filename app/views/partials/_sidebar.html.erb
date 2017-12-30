@@ -16,14 +16,14 @@
   </li>
 
   <li class="link-bottom">
-    <%= link_to root_path , class:" waves-effect waves-orange" do %> Homepage
+    <%= link_to root_path , class:" waves-effect waves-red" do %> Homepage
       <i class="material-icons blue-text">home</i>
     <% end %>
   </li>
 
   <% if current_administrator.role == "registrar" %>
     <li class="<%= 'my-active' if current_page?(admin_dashboard_path) %> link-bottom ">
-      <%= link_to admin_dashboard_path ,class:"waves-effect waves-orange" do %>
+      <%= link_to admin_dashboard_path ,class:"waves-effect waves-red" do %>
         Dasboard <i class="material-icons <%= 'white-text' if current_page?(admin_dashboard_path) %> teal-text">dashboard</i>
       <% end %>
     </li>
@@ -32,19 +32,19 @@
   <% end %>
 
   <li class="<%= 'my-active' if current_page?(news_index_path) %> link-bottom">
-    <%= link_to news_index_path , class:" waves-effect waves-orange"  do %>News 
+    <%= link_to news_index_path , class:" waves-effect waves-red"  do %>News 
       <i class="material-icons <%= 'white-text' if current_page?(news_index_path) %> green-text">library_books</i>
     <% end %>
   </li>
 
   <li class="<%= 'my-active' if current_page?(announcements_path) %> link-bottom">
-    <%= link_to announcements_path , class:" waves-effect waves-orange"  do %> Announcements 
+    <%= link_to announcements_path , class:" waves-effect waves-red"  do %> Announcements 
       <i class="material-icons <%= 'white-text' if current_page?(announcements_path) %> yellow-text">announcement</i>
     <% end %>   
   </li> 
 
   <li class="<%= 'my-active' if current_page?(events_path) %> link-bottom">
-    <%= link_to events_path , class:" waves-effect waves-orange"  do %> Events
+    <%= link_to events_path , class:" waves-effect waves-red"  do %> Events
       <i class="material-icons <%= 'white-text' if current_page?(events_path) %> orange-text">live_tv</i>
     <% end %> 
   </li>
@@ -53,21 +53,21 @@
 
     <% if current_administrator.role == "registrar" %>
       <li class="bold">
-        <a class="collapsible-header waves-effect waves-orange" style="padding-left: 30px">
-          <i class="material-icons green-text">group_add</i>Student
+        <a class="collapsible-header waves-effect waves-red" style="padding-left: 30px">
+          <i class="material-icons indigo-text">group_add</i>Student
         </a>
         <div class="collapsible-body">
           <ul>
             <li>
-              <%= link_to students_path do %>Register students
+              <%= link_to students_path , class:"waves-effect waves-red" do %>Register students
               <% end %>
             </li>
             <li>
-              <%= link_to admin_student_list_path do %>Student list
+              <%= link_to admin_student_list_path , class:"waves-effect waves-red" do %>Student list
               <% end %>
             </li>
             <li>
-              <%= link_to "Unregistered/Dropped students" ,  unregistered_path %>
+              <%= link_to "Unregistered/Dropped students",  unregistered_path , class:"waves-effect waves-red"  %>
             </li>
           </ul>
         </div>
@@ -78,8 +78,8 @@
 
     <% if current_administrator.role == "registrar" %>
       <li class="bold">
-        <a class="collapsible-header waves-effect waves-orange" style="padding-left: 30px">
-          <i class="material-icons green-text">format_list_bulleted</i>Sections
+        <a class="collapsible-header waves-effect waves-red" style="padding-left: 30px">
+          <i class="material-icons amber-text">format_list_bulleted</i>Sections
         </a>
         <div class="collapsible-body">
           <ul>
@@ -99,8 +99,8 @@
     <% end %>
 
     <% if current_administrator.role == "registrar" %>
-      <li class="bold"><a class="collapsible-header waves-effect waves-orange" style="padding-left: 30px">
-        <i class="material-icons green-text">library_books</i>Subjects</a>
+      <li class="bold"><a class="collapsible-header waves-effect waves-red" style="padding-left: 30px">
+        <i class="material-icons brown-text">library_books</i>Subjects</a>
           <div class="collapsible-body">
             <ul>
               <li>
@@ -118,7 +118,7 @@
 
     <% if current_administrator.role == "faculty" %>
       <li class="<%= 'my-active' if current_page?(myclass_path) %> link-bottom">
-        <%= link_to myclass_path , class:" waves-effect waves-orange"  do %> My class 
+        <%= link_to myclass_path , class:" waves-effect waves-red"  do %> My class 
           <i class="material-icons <%= 'white-text' if current_page?(myclass_path) %> green-text">people_outline</i>
         <% end %>   
       </li> 
@@ -128,7 +128,7 @@
 
     <% if current_administrator.role == "faculty" %>
       <li class="<%= 'my-active' if current_page?(mygrades_path) %> link-bottom">
-        <%= link_to mygrades_path , class:" waves-effect waves-orange"  do %>Grades 
+        <%= link_to mygrades_path , class:" waves-effect waves-red"  do %>Grades 
           <i class="material-icons <%= 'white-text' if current_page?(mygrades_path) %> green-text">format_list_numbered</i>
         <% end %>   
       </li>
@@ -136,8 +136,8 @@
       <!-- registrar cannot handle adviser's grade list -->
     <% end %>
 
-    <li class="bold"><a class="collapsible-header waves-effect waves-orange" style="padding-left: 30px">
-      <i class="material-icons green-text">person</i>
+    <li class="bold"><a class="collapsible-header waves-effect waves-red" style="padding-left: 30px">
+      <i class="material-icons light-green-text">person</i>
         <% if current_administrator.role == "registrar" %>
           Account
         <% else %>
@@ -179,4 +179,22 @@
   .link-bottom {
     transition: .3s;
   }
+
+  .side-nav li a {
+    color: white!important;
+  }
+
+  .side-nav {
+    background-color:#161616!important;
+  }
+
+  .side-nav .collapsible-body li a, .side-nav.fixed .collapsible-body li a {
+    background-color: #262626!important;
+  }
+
+  .side-nav li a:hover {
+    color: white!important;
+    background-color: #262626!important;
+  }
+
 </style>

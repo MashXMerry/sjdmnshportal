@@ -24,7 +24,7 @@
             </div>
             <div class="col s12 m10 l10">
               <div class=""></div>
-              <h4><%= @student.firstname %> <%=  @student.lastname %></h4>
+              <h4><%= @student.firstname %> <%=  @student.lastname %></h4><%= notice %>
               <p>
                 <b>#<%=  @student.lrn %></b> | <%=  @student.email %> | 
                 Grade <%=  @student.level %> | Section <%=  @student.section %> | 
@@ -45,7 +45,17 @@
                 data: { confirm: "Are you sure ? student and all recorded grades will also deleted" }  %> |
                 <%= link_to "Edit information", edit_student_path(@student) %> 
               <% end %>
-              
+
+              <% if @student.status == "enrolled" %>
+                | <%= link_to "Un-enroll student" , unenroll_path , method: :patch %>
+                | <%= link_to "Drop student" , drop_path , method: :patch %>
+              <% elsif @student.status == "un-enrolled" %>
+                | <%= link_to "Enroll student" , enrollagain_path , method: :patch %>
+                | <%= link_to "Drop student" , drop_path , method: :patch %>
+              <% elsif @student.status == "dropped" %>
+                | <%= link_to "Enroll student" , enrollagain_path , method: :patch %>
+                | <%= link_to "Un-enroll student" , unenroll_path  , method: :patch %>
+              <% end %>
             </div>
           </div>
         </div>

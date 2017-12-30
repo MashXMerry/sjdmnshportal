@@ -56,6 +56,8 @@ Rails.application.routes.draw do
     delete '/reset/grades' , to: 'students#reset' , as: 'reset_grades'
     patch '/reset_enrollment' , to: 'students#update_status' , as: 'reset_status'
     patch '/enroll_again' , to: 'students#enrollagain' , as: 'enrollagain'
+    patch '/un_enroll' , to: 'students#unEnroll' , as: 'unenroll'
+    patch '/drop' , to: 'students#drop' , as:'drop'
     # # sections
     get '/grade7' , to: 'admins#grade7' , as: 'grade7'
     get '/grade8' , to: 'admins#grade8' , as: 'grade8'

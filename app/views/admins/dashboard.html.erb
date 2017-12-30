@@ -10,7 +10,7 @@
       </div>
     </nav>
     
-    <div class="col s12 m12 l9 right" style="margin-top: 40px;text-align: center">
+    <div class="col s12 m12 l9 right main-body" style="margin-top: 40px;text-align: center">
       <div class="row">
         <div class="col s12 m4 l4">
           <div class="card  blue accent-4">
@@ -46,6 +46,9 @@
           </div>
         </div>
       </div>
+
+      <hr>
+
       <div class="row">
         <div class="col s12 m6 l6">
           <div class="card green">
@@ -69,7 +72,7 @@
             </div>
           </div>
         </div>
-
+        <hr>
         <div class="col s12" style="margin-top: 30px">
           <div class="card-panel white">
             <h4 class="black-text"><%= @sections.count %> class section</h4><hr>
@@ -78,7 +81,9 @@
                 <tr>
                     <th>Year level</th>
                     <th>Registered sections</th>
-                    <th>Registered students</th>
+                    <th>Enrolled students</th>
+                    <th>Un-enrolled</th>
+                    <th>Dropped Students</th>
                 </tr>
               </thead>
 
@@ -86,32 +91,44 @@
                 <tr>
                   <td>Grade 7</td>
                   <td><%= @grade7.count %> sections</td>
-                  <td><%= @student7.count %> students</td>
+                  <td class="green-text"><%= @student7.count %> students</td>
+                  <td class="orange-text"><%= @Ustudent7.count %> students</td>
+                  <td class="red-text"><%= @Dstudent7.count %> students</td>
                 </tr>
                 <tr>
                   <td>Grade 8</td>
                   <td><%= @grade8.count %> sections</td>
-                  <td><%= @student8.count %> students</td>
+                  <td class="green-text"><%= @student8.count %> students</td>
+                  <td class="orange-text"><%= @Ustudent8.count %> students</td>
+                  <td class="red-text"><%= @Dstudent8.count %> students</td>
                 </tr>
                 <tr>
                   <td>Grade 9</td>
                   <td><%= @grade9.count %> sections</td>
-                  <td><%= @student9.count %> students</td>
+                  <td class="green-text"><%= @student9.count %> students</td>
+                  <td class="orange-text"><%= @Ustudent9.count %> students</td>
+                  <td class="red-text"><%= @Dstudent9.count %> students</td>
                 </tr>
                 <tr>
                   <td>Grade 10</td>
                   <td><%= @grade10.count %> sections</td>
-                  <td><%= @student10.count %> students</td>
+                  <td class="green-text"><%= @student10.count %> students</td>
+                  <td class="orange-text"><%= @Ustudent10.count %> students</td>
+                  <td class="red-text"><%= @Dstudent10.count %> students</td>
                 </tr>
                 <tr>
                   <td>Grade 11</td>
                   <td><%= @grade11.count %> sections</td>
-                  <td><%= @student11.count %> students</td>
+                  <td class="green-text"><%= @student11.count %> students</td>
+                  <td class="orange-text"><%= @Ustudent11.count %> students</td>
+                  <td class="red-text"><%= @Dstudent11.count %> students</td>
                 </tr>
                 <tr>
                   <td>Grade 12</td>
                   <td><%= @grade12.count %> sections</td>
-                  <td><%= @student12.count %> students</td>
+                  <td class="green-text"><%= @student12.count %> students</td>
+                  <td class="orange-text"><%= @Ustudent12.count %> students</td>
+                  <td class="red-text"><%= @Dstudent12.count %> students</td>
                 </tr>
               </tbody>
             </table>
@@ -126,16 +143,26 @@
       <%= render 'partials/sidebar' %>
   </div>
 </div>
-  
-
-
 
 <style type="text/css">
   .title {
-  font-size: 30px;
-}
+    font-size: 30px;
+  }
 
-.date {
-  font-size: 30px;
-}
+  .date {
+    font-size: 30px;
+  }
+
+  td {
+    background-color: white;
+    border-right: 1px solid #cbcbcb;
+    border-left: 1px solid #cbcbcb;  
+  }
+
+  .main-body {
+    border:1px solid gray;
+    margin: 5px 5px;
+    padding: 10px 10px;
+    border-radius: 5px;
+  }
 </style>

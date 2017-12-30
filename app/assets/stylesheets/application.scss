@@ -37,6 +37,11 @@ body {
 	color:#ffc107!important;
 }
 
+.side-nav .collapsible-body, .side-nav.fixed .collapsible-body {
+    border: 0;
+    background-color:#161616;
+}
+
 /* ++++++++++++++++++ media quieries +++++++++++++++++++ */
 
 // Extra small devices (portrait phones, less than 576px)

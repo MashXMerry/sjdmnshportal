@@ -15,7 +15,7 @@
     <div class="row" style="padding-top: 30px">
       <div class="col s12 m12 l9 right">
         <%= form_for(@student , remote: true , html: { class:"student-form" } ) do |f| %>
-        <div class="card white hoverable">
+        <div class="card white">
           <div class="card-content">
             <span class="card-title">Add Student</span>
               <div class="row">
@@ -49,19 +49,12 @@
                 </div>
                 <div class="col s12">
                   <div class="input-field">
-                    <i class="material-icons prefix">create</i>
+                    <i class="material-icons prefix">phone</i>
                     <%= f.number_field :phone_number , id:"phone_number" %>
                     <label>Contact number</label>
                   </div>
                 </div>
-                <!-- <div class="col s12">
-                  <div class="input-field">
-                    <i class="material-icons prefix">email</i>
-                    <%= f.email_field :email , id:"email" %>
-                    <label>Email</label>
-                  </div>
-                </div>
- -->                <div class="col s12">
+                <div class="col s12">
                   <div class="input-field">
                     <i class="material-icons prefix">lock</i>
                     <%= f.password_field :password , disabled: true,placeholder:"Password" ,
@@ -81,17 +74,16 @@
                   <div id="modal1" class="modal modal-fixed-footer gray">
                     <div class="modal-content">
                       <h3 class="center">Choose section</h3>
-                      <ul class="collapsible" data-collapsible="accordion">
+                      <ul class="collapsible popout" data-collapsible="accordion">
                         <li>
                           <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>
                           Grade 7</div>
                           <div class="collapsible-body">
-                            <div class="collection">
-                              <% @sections7.each do |section| %>
-                                <a class="collection-item modal-close black-text" id="btn-section<%= section.id %>">
-                                  <%= section.section %> | Grade <b class="red-text"><%= section.yearlvl %></b></a> 
-                              <% end %>
-                            </div>
+                            <% @sections7.each do |section| %>
+                              <button class="btn modal-close btn-large waves-effect waves-blue" style="margin-bottom: 5px" id="btn-section<%= section.id %>">
+                                  <%= section.section %>
+                                </button>
+                            <% end %>
                           </div>
                         </li>
                         <li>
@@ -100,8 +92,9 @@
                           <div class="collapsible-body">
                             <div class="collection">
                               <% @sections8.each do |section| %>
-                                <a class="collection-item modal-close black-text" id="btn-section<%= section.id %>">
-                                  <%= section.section %> | Grade <b class="red-text"><%= section.yearlvl %></b></a> 
+                                <button class="btn modal-close btn-large waves-effect waves-blue" style="margin-bottom: 5px" id="btn-section<%= section.id %>">
+                                  <%= section.section %>
+                                </button>
                               <% end %>
                             </div>
                           </div>
@@ -112,8 +105,9 @@
                           <div class="collapsible-body">
                             <div class="collection">
                               <% @sections9.each do |section| %>
-                                <a class="collection-item modal-close black-text" id="btn-section<%= section.id %>">
-                                  <%= section.section %> | Grade <b class="red-text"><%= section.yearlvl %></b></a> 
+                                <button class="btn modal-close btn-large waves-effect waves-blue" style="margin-bottom: 5px" id="btn-section<%= section.id %>">
+                                  <%= section.section %>
+                                </button>
                               <% end %>
                             </div>
                           </div>
@@ -124,8 +118,9 @@
                           <div class="collapsible-body">
                             <div class="collection">
                               <% @sections10.each do |section| %>
-                                <a class="collection-item modal-close black-text" id="btn-section<%= section.id %>">
-                                  <%= section.section %> | Grade <b class="red-text"><%= section.yearlvl %></b></a> 
+                                <button class="btn modal-close btn-large waves-effect waves-blue" style="margin-bottom: 5px" id="btn-section<%= section.id %>">
+                                  <%= section.section %>
+                                </button>
                               <% end %>
                             </div>
                           </div>
@@ -136,8 +131,9 @@
                           <div class="collapsible-body">
                             <div class="collection">
                               <% @sections11.each do |section| %>
-                                <a class="collection-item modal-close black-text" id="btn-section<%= section.id %>">
-                                  <%= section.section %> | Grade <b class="red-text"><%= section.yearlvl %></b></a> 
+                                <button class="btn modal-close btn-large waves-effect waves-blue" style="margin-bottom: 5px" id="btn-section<%= section.id %>">
+                                  <%= section.section %>
+                                </button>
                               <% end %>
                             </div>
                           </div>
@@ -148,8 +144,9 @@
                           <div class="collapsible-body">
                             <div class="collection">
                               <% @sections12.each do |section| %>
-                                <a class="collection-item modal-close black-text" id="btn-section<%= section.id %>">
-                                  <%= section.section %> | Grade <b class="red-text"><%= section.yearlvl %></b></a> 
+                                <button class="btn modal-close btn-large waves-effect waves-blue" style="margin-bottom: 5px" id="btn-section<%= section.id %>">
+                                  <%= section.section %>
+                                </button>
                               <% end %>
                             </div>
                           </div>

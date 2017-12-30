@@ -79,17 +79,50 @@ class StudentsController < ApplicationController
   def update_status
     respond_to do |format|
       if Student.update(:status => 'un-enrolled')
-        format.html { redirect_to admin_profile_path , notice: 'Enrolled Students reset' }  
+        format.html { redirect_to admin_profile_path , notice: 'Enrolled students reset' }  
       else
-        format.html { redirect_to admin_profile_path , notice: 'Failed to Reset enrollment' }
+        format.html { redirect_to admin_profile_path , notice: 'Failed to reset enrollment' }
       end
     end
   end
 
   def enrollagain
-    # @student = Student.find_by(params[:id])
-    # @student.status = 'enrolled'
-    # @student.save
+    @student = Student.find_by(params[:id])
+    @student.status = 'enrolled'
+    @student.save
+    respond_to do |format|
+      if @student.save
+        format.html { redirect_to @student , notice: "Student successfully enrolled" }
+      else
+        format.html { redirect_to @student , notice: "Student failed to enroll" }
+      end
+    end
+  end
+
+  def unEnroll
+    @student = Student.find_by(params[:id])
+    @student.status = 'un-enrolled'
+    @student.save
+    respond_to do |format|
+      if @student.save
+        format.html { redirect_to @student , notice: "Student successfully un-enrolled" }
+      else
+        format.html { redirect_to @student , notice: "Student failed to un-enroll" }
+      end
+    end
+  end
+  
+  def drop
+    @student = Student.find_by(params[:id])
+    @student.status = 'dropped'
+    @student.save
+    respond_to do |format|
+      if @student.save
+        format.html { redirect_to @student , notice: "Student successfully dropped" }
+      else
+        format.html { redirect_to @student , notice: "Student failed to drop" }
+      end
+    end
   end
 
   def reset
