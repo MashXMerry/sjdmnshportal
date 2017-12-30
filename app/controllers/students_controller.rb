@@ -76,6 +76,22 @@ class StudentsController < ApplicationController
     end
   end
 
+  def update_status
+    respond_to do |format|
+      if Student.update(:status => 'un-enrolled')
+        format.html { redirect_to admin_profile_path , notice: 'Enrolled Students reset' }  
+      else
+        format.html { redirect_to admin_profile_path , notice: 'Failed to Reset enrollment' }
+      end
+    end
+  end
+
+  def enrollagain
+    # @student = Student.find_by(params[:id])
+    # @student.status = 'enrolled'
+    # @student.save
+  end
+
   def reset
     # @student = Student.find(params[:id])
     @grades = Grading.all.where(:student_id => @student)
@@ -106,6 +122,6 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:firstname, :lastname, :password, :lrn, :section, :level, :gender, :email , :middlename , :phone_number , :slug)
+      params.require(:student).permit(:firstname, :lastname, :password, :lrn, :section, :level, :gender, :email , :middlename , :phone_number , :slug , :status)
     end
 end

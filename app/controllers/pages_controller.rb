@@ -45,7 +45,8 @@ class PagesController < ApplicationController
 
   def student_id_json
     student = Student.find(params[:id])
-    render :json => { 'data' => student }
+    grade = Grading.all.where(:student_id => student)
+    render :json => { 'data' => [student , grade] }
   end
 
   def student_grade_json

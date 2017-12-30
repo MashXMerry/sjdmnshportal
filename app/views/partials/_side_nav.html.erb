@@ -36,7 +36,7 @@
     <% if current_administrator.role == "faculty" %>
        <li class="my-links">
          <%= link_to admin_profile_path do %>
-           <%= current_administrator.firstname %> <i class="fa fa-lock" aria-hidden="true"></i>
+           <%= current_administrator.firstname %> <i class="material-icons white-text">person</i>
          <% end %>
        </li>
     <% else %>

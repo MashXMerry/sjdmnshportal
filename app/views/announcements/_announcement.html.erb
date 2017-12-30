@@ -1,133 +1,96 @@
 <div id="announcement<%= announcement.id %>">
-  <% if announcement.image_file_name.present? %>
-    <div class="row">
-      <div class="col s12">
-        <div class="card hoverable">
-          <div class="card-image">
-            <%= image_tag announcement.image.url , class:"materialboxed" %>
-            <a class="btn-floating halfway-fab waves-effect waves-light orange activator">
-              <i class="material-icons right">more_vert</i></a>
+  <div class="card white">
+    <div class="card-content">
+      <% if announcement.image.present? %>
+        <div class="row">
+          <div class="col s12 m6 l6">
+            <%= image_tag announcement.image.url , style:'width:100%' , class:"materialboxed" %>
           </div>
-          <div class="card-content">
-            <p class="title">Title: <%= announcement.title %></p>
-            <p>Posted at <%= announcement.created_at.to_s(:long) %></p>
-            <div class="row hide-on-med-and-up">
-              <hr>
-                <%= link_to edit_announcement_path(announcement) , class:"btn btn-flat yellow col s6" do %>
-                  <i class="fa fa-pencil"></i>
-                <% end %>
-                <%= link_to announcement_path(announcement) , class:"btn btn-flat red col s6", remote: true ,method: :delete , data: { confirm: "Are you sure" } do %>
-                  <i class="fa fa-trash-o"></i>
-                <% end %>
+          <div class="col s12 m6 l6">
+            <h3 class="title"><%= announcement.title %></h3>
+            <p class="date">Posted at <%= announcement.created_at.to_s(:long) %></p><hr>
+            <p class="body" style="text-align: justify;"><%= truncate(announcement.body, length: 200) %>
+              <a href="#modalA<%= announcement.id %>" class="modal-trigger">read more</a></p>
+
+            <div id="modalA<%= announcement.id %>" class="modal">
+              <div class="modal-content">
+                <div class="card">
+                  <div class="card-content">
+                    <div class="row">
+                      <div class="col s12 m6 l6">
+                        <%= image_tag announcement.image.url , style:'width:100%' , class:"materialboxed" %>
+                      </div>
+                      <div class="col s12 m6 l6">
+                        <h3 class="title"><%= announcement.title %></h3>
+                        <% if announcement.date.blank? %>
+                        <% else %>
+                          <h4 class="title">When: <%= announcement.date.to_s(:long) %></h4>
+                        <% end %>
+                        <p class="date">Posted at <%= announcement.created_at.to_s(:long) %></p><hr>
+                        <p class="body" style="text-align: justify;"><%= announcement.body %></p>
+                      </div>
+                    </div> 
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <a class="modal-action modal-close waves-effect waves-yellow red btn">close</a>
+              </div>
             </div>
           </div>
+        </div>
+      <% else %>
+        <div class="row">
+          <div class="col s12">
+            <h3 class="title"><%= announcement.title %></h3>
+            <p class="date">Posted at <%= announcement.created_at.to_s(:long) %></p><hr>
+            <p class="body"><%= truncate(announcement.body, length: 200) %>
+              <a href="#modalA<%= announcement.id %>" class="modal-trigger">read more</a></p>
 
-          <div class="fixed-action-btn horizontal hide-on-small-only" style="top: -80px;padding-right: 20px;">
-            <a class="btn-flat btn-small orange darken-4 white-text">
-              <i class="fa fa-cog fa-3x fa-fw"></i> 
-            </a>
-            <ul>
-              <li>
-                <%= link_to edit_announcement_path(announcement) , class:"btn-floating yellow" do %>
-                  <i class="fa fa-pencil"></i>
-                <% end %>
-              </li>
-              <li>
-                <%= link_to announcement_path(announcement) , class:"btn-floating red darken-1", remote: true ,method: :delete , data: { confirm: "Are you sure" } do %>
-                  <i class="fa fa-trash-o"></i>
-                <% end %>
-              </li>
-            </ul>
-          </div>
-
-          <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4">
-              <i class="material-icons right"><i class="material-icons right">close</i></i>
-              <p class="title">Title :<%= announcement.title %></p>
-              <hr>
-            </span>
-            <% if announcement.date.blank? %>
-              <!-- some codes here -->
-            <% else %>
-              <p class="date">Date: <%= announcement.date.to_s(:long) %></p>
-              <p class="body" style="text-align: justify;"><%= announcement.body %></p>
-              <p>Posted at <%= announcement.created_at.to_s(:long) %></p>
-              <div class="row hide-on-med-and-up" style="padding-top: 20px;">
-                <%= link_to edit_announcement_path(announcement) , class:"btn btn-flat yellow col s6" do %>
-                  <i class="fa fa-pencil"></i>
-                <% end %>
-                <%= link_to announcement_path(announcement) , class:"btn btn-flat red col s6", remote: true ,method: :delete , data: { confirm: "Are you sure" } do %>
-                  <i class="fa fa-trash-o"></i>
-                <% end %>
+              <div id="modalA<%= announcement.id %>" class="modal">
+                <div class="modal-content">
+                  <div class="card">
+                    <div class="card-content">
+                      <h3 class="title"><%= announcement.title %></h3>
+                      <% if announcement.date.blank? %>
+                      <% else %>
+                        <h4 class="title">When: <%= announcement.date.to_s(:long) %></h4>
+                      <% end %>
+                      <p class="date">Posted at <%= announcement.created_at.to_s(:long) %></p><hr>
+                      <p class="body" style="text-align: justify;"><%= announcement.body %></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <a class="modal-action modal-close waves-effect waves-yellow red btn">close</a>
+                </div>
               </div>
-            <% end %>
           </div>
         </div>
+      <% end %>
+    </div>
+    <div class="card-action">
+      <div class="options">
+        <%= link_to edit_announcement_path(announcement) , class:"btn waves-effect waves-blue green" do %>
+          <i class="material-icons">create</i>
+        <% end %>
+        <%= link_to announcement_path(announcement) , class:"btn waves-effect waves-yellow red" , method: :delete , data: { confirm: "Are you sure?" } , remote: true do %>
+          <i class="material-icons">delete</i>
+        <% end %>
       </div>
     </div>
-  <% else %>
-     <div class="row">
-      <div class="col s12">
-        <div class="card darken-1 hoverable">
-          <div class="card-content black-text">
+  </div>
+</div>
 
-            <div class="fixed-action-btn horizontal hide-on-small-only">
-              <a class="btn-flat btn-small orange darken-4 white-text">
-                <i class="fa fa-cog fa-3x fa-fw"></i> 
-              </a>
-              <ul>
-                <li>
-                  <%= link_to edit_announcement_path(announcement) , class:"btn-floating yellow" do %>
-                    <i class="fa fa-pencil"></i>
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to announcement_path(announcement) , class:"btn-floating red darken-1", remote: true ,method: :delete , data: { confirm: "Are you sure" } do %>
-                    <i class="fa fa-trash-o"></i>
-                  <% end %>
-                </li>
-              </ul>
-            </div>
-
-            <% if announcement.date.blank? %>
-              <!-- some codes here -->
-            <% else %>
-              <p class="date">Date: <%= announcement.date.to_s(:long) %></p>
-            <% end %>
-            <p class="title">Title: <%= announcement.title %></p>
-            <p class="body" style="padding-top: 10px;text-align: justify;"><%= announcement.body %></p>
-              <div class="row hide-on-med-and-up" style="padding-top: 20px;">
-                  <%= link_to edit_announcement_path(announcement) , class:"btn btn-flat yellow col s6" do %>
-                    <i class="fa fa-pencil"></i>
-                  <% end %>
-                  <%= link_to announcement_path(announcement) , class:"btn btn-flat red col s6", remote: true ,method: :delete , data: { confirm: "Are you sure" } do %>
-                    <i class="fa fa-trash-o"></i>
-                  <% end %>
-              </div>
-          </div>
-          <div class="card-action">
-            <p>Posted at <%= announcement.created_at.to_s(:long) %></p>
-          </div>
-        </div>
-      </div>
-    </div><!-- row announcement no image -->
-  <% end %>	
-    
-</div><!-- Container news-w/o-image -->
 
 <style type="text/css">
-
-.fixed-action-btn {
-    float: right;
-    position: relative;
-    padding-top: 20px!important;
-    left: 21px!important;
+.modal.open{
+  width: 100%;
+  max-height: 100%;
+  height: 100%;
+  top: 0 !important;
 }
-.title {
-  font-size: 30px;
-}
-
-.date {
-  font-size: 30px;
-}
+.modal-content {
+  height: calc(100% - 56px);
+}  
 </style>

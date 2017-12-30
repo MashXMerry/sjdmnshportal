@@ -48,14 +48,15 @@ Rails.application.routes.draw do
     get '/section_list' , to: 'sections#sectionlist' , as:'sectionlist'
     get '/grades' , to: 'admins#grades' , as: 'admin_school'
     get '/profile' , to: 'admins#profile' , as: 'admin_profile'
-    get 'student_list' , to: 'admins#student_list' , as: 'admin_student_list'
+    get '/enrolled-students' , to: 'admins#student_list' , as: 'admin_student_list'
+    get '/un-registered-students' , to: 'admins#unregistered' , as: 'unregistered'
     get '/register_admin' , to: 'admins#registeradmin' , as: 'admin_register'
     post '/add_admin' , to: 'admins#addadministrator' , as: 'add_admin'
     delete '/remove_account' , to: 'admins#remove_account' , as: 'remove_account'
     delete '/reset/grades' , to: 'students#reset' , as: 'reset_grades'
-
+    patch '/reset_enrollment' , to: 'students#update_status' , as: 'reset_status'
+    patch '/enroll_again' , to: 'students#enrollagain' , as: 'enrollagain'
     # # sections
-
     get '/grade7' , to: 'admins#grade7' , as: 'grade7'
     get '/grade8' , to: 'admins#grade8' , as: 'grade8'
     get '/grade9' , to: 'admins#grade9' , as: 'grade9'

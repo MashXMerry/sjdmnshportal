@@ -30,9 +30,9 @@ class AdminsController < ApplicationController
 
   def myclass
     @sections = Section.all.where(:adviser_id => current_administrator.id)
-    @students1 = Student.all.where(:section => @sections)
+    @students1 = Student.all.where(:section => @sections , :status => 'enrolled')
     @sections.each do |section|
-      @students = Student.all.where(:section => section.section).order('lastname , gender ASC')
+      @students = Student.all.where(:section => section.section , :status => 'enrolled').order('lastname , gender ASC')
     end
   end
 
@@ -55,6 +55,7 @@ class AdminsController < ApplicationController
 
   def profile
   	@admin = Administrator.where(id: current_administrator.id)
+    @section = Section.where(:adviser_id => current_administrator.id)
   end
 
   def registeradmin
@@ -82,12 +83,27 @@ class AdminsController < ApplicationController
   def student_list
     # @student = Student.friendly.find(params[:id])
     @students = Student.where(["lrn LIKE?" , "%#{params[:search]}%"]).order('level ASC').order('lastname ASC')
-    @student7 = Student.all.where(level: 7).order('section ASC').order('gender DESC')
-    @student8 = Student.all.where(level: 8).order('section ASC').order('gender DESC')
-    @student9 = Student.all.where(level: 9).order('section ASC').order('gender DESC')
-    @student10 = Student.all.where(level: 10).order('section ASC').order('gender DESC')
-    @student11 = Student.all.where(level: 11).order('section ASC').order('gender DESC')
-    @student12 = Student.all.where(level: 12).order('section ASC').order('gender DESC')
+    @student7 = Student.all.where(level: 7 , :status => "enrolled").order('section ASC').order('gender DESC')
+    @student8 = Student.all.where(level: 8 , :status => "enrolled").order('section ASC').order('gender DESC')
+    @student9 = Student.all.where(level: 9 , :status => "enrolled").order('section ASC').order('gender DESC')
+    @student10 = Student.all.where(level: 10 , :status => "enrolled").order('section ASC').order('gender DESC')
+    @student11 = Student.all.where(level: 11 , :status => "enrolled").order('section ASC').order('gender DESC')
+    @student12 = Student.all.where(level: 12 , :status => "enrolled").order('section ASC').order('gender DESC')
+  end
+
+  def unregistered
+    @students = Student.where(["lrn LIKE?" , "%#{params[:search]}%"]).order('level ASC').order('lastname ASC')
+    notenrolled = ["un-enrolled" , "dropped"]
+    @student7 = Student.all.where(level: 7 , :status => notenrolled).order('section ASC').order('gender DESC')
+    @student8 = Student.all.where(level: 8 , :status => notenrolled).order('section ASC').order('gender DESC')
+    @student9 = Student.all.where(level: 9 , :status => notenrolled).order('section ASC').order('gender DESC')
+    @student10 = Student.all.where(level: 10 , :status => notenrolled).order('section ASC').order('gender DESC')
+    @student11 = Student.all.where(level: 11 , :status => notenrolled).order('section ASC').order('gender DESC')
+    @student12 = Student.all.where(level: 12 , :status => notenrolled).order('section ASC').order('gender DESC')
+  end
+
+  def enrollstudent
+    
   end
 
   def search_student

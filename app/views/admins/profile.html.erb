@@ -12,6 +12,7 @@
      
   <div class="row" style="padding-top: 20px">
     <div class="col s12 m12 l9 right">
+      <center><h5 class="green-text"><%= notice %></h5></center>
       <% @admin.each do |admin| %>
         <div class="card-panel lighten-5 z-depth-1">
           <div class="row">
@@ -29,14 +30,24 @@
                     <%= admin.firstname + ' ' + admin.lastname %> (<%= admin.role %>)
                   </b><br>
                   <%= admin.email %> |
-                   <%= link_to "Account Settings" , edit_administrator_registration_path %> 
+                   <%= link_to "Account Settings" , edit_administrator_registration_path ,
+                   class:"btn green waves-effect waves-blue" %> 
                 </p>
               <% else %>
                 <p>
                   <b class="name"><%= admin.firstname + " " + admin.middlename + " " + admin.lastname %> (<%= admin.role %>)</b><br>
                   <%= admin.email %> 
                 </p>
-                <%= link_to "Account Settings" , edit_administrator_registration_path %>
+                <%= link_to "Account Settings" , edit_administrator_registration_path ,
+                class:"btn green waves-effect waves-blue" %> 
+                <% if current_administrator.role == "registrar" %>
+                   <%= link_to "Reset enrolled students" , reset_status_path , method: :patch ,
+                   class:"btn red waves-effect waves-yellow" %>
+                <% else %>
+                  <% @section.each do |section| %>
+                    | Grade <%= section.yearlvl %> - <%= section.section %>
+                  <% end %>
+                <% end %>
               <% end %>
             </div>
           </div>

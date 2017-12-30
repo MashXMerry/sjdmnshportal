@@ -34,10 +34,19 @@
         <% end %>
       </li>
       <li class="my-links">
-        <%= link_to destroy_administrator_session_path , method: :delete, class:"waves-effect waves-red" do %>
-          Logout<i class="material-icons orange-text">lock_open</i>
-        <% end %>
+        <a href="/about" class="waves-effect waves-red">
+          <i class="material-icons blue-text">help</i>About
+        </a>
       </li>
-    </ul>
+      <% if administrator_signed_in? %>
+        <li class="my-links">
+          <%= link_to destroy_administrator_session_path , method: :delete, class:"waves-effect waves-red" do %>
+            Logout<i class="material-icons orange-text">lock_open</i>
+          <% end %>
+        </li>
+      <% else %>
+        <!-- some codes here -->
+      <% end %>
+          </ul>
   </div>
 </nav>

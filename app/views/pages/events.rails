@@ -1,0 +1,194 @@
+<%= javascript_include_tag 'style' %>
+
+<%= render 'partials/navbar' %>
+<%= render 'partials/slider' %>
+<!-- ============================================================= -->
+
+<div class="header">
+  <div class="row container">
+    <div class="col s12 m6 l6">
+      <p style="font-family:Rockwell;font-size: 40px">School Events</p>
+    </div>
+    <div class="col s12 m6 l6 hide-on-small-only">
+      <hr>
+      <p style="font-size: 15px;margin: 10px;font-family:Rockwell;text-align: justify;" class="body">
+        San Jose del Monte National Trade School Web Portal shows all events that happens inside then school, upcoming events can be also found here at the Web Portal.  
+      </p>
+    </div>
+  </div>
+</div>
+
+<% if @events.empty? %>
+  <hr>
+    <center><h3>No News posted yet</h3></center>
+  <hr>
+<% else %>
+  <% @events.each do |event| %>
+    <% if event.image_file_name.present? %>
+      <div class="container">
+        <div class="row">
+          <div class="col l2">
+            <% if event.date.blank? %>
+            <% else %>
+              <h4 class="hide-on-med-and-up"><%= event.date.to_s(:long) %></h4>
+              <p class="hide-on-small-only" style="font-size: 40px;font-family:Rockwell">
+                <%= event.date.strftime('%b') %><br>
+                <%= event.date.strftime('%d') %>
+              </p>
+            <% end %>
+          </div><!-- col l2 -->
+          <div class="col l5 m12">
+            <%= image_tag event.image.url(:medium) , style:"width:100%;height: 300px;" , class:"materialboxed" %>
+          </div><!-- col l5 -->
+          <div class="col l5">
+            <p style="font-size: 25px;margin: 10px;font-family:Rockwell" class="title">
+             Title: <%= event.title %>
+           </p>
+            <b style="font-size: 15px">Posted at <%= event.created_at.to_s(:long) %></b><hr>
+            <p><%= truncate(event.body , length:100) %></p>
+            <a class="btn btn-flat deep-orange darken-4 hoverable white-text waves-effect waves-orange modal-trigger" href="#modalA<%= event.id %>">Read More</a>
+          </div><!-- col l5 -->
+
+          <div id="modalA<%= event.id %>" class="modal modal-fixed-footer blue-grey lighten-4">
+            <div class="modal-content">
+              <div class="row">
+                <div class="col s12 m6 l6">
+                  <%= image_tag event.image.url, style:"width:100%" , class:"materialboxed" %>
+                </div>
+                <div class="col s12 m6 l6">
+                  <p style="font-size: 30px;margin: 0px;font-family:Rockwell" class="title">
+                     <% if event.date.blank? %>
+                     <% else %>
+                       When: <%= event.date.to_s(:long) %><br>
+                     <% end %>
+                     Title: <%= event.title %>
+                     <p style="font-size: 15px">Posted at <%= event.created_at.to_s(:long) %></p><hr>
+                   </p> 
+                   <p style="text-align: justify;font-size: 20px" class="body"><%= event.body %></p> 
+                </div>
+              </div>          
+            </div>
+            <div class="modal-footer">
+              <a class="modal-action modal-close waves-effect waves-yellow btn-flat red white-text">Close</a>
+            </div>
+          </div><!-- modal -->
+        </div><!-- row -->
+        <hr>
+      </div><!-- container -->
+    <% else %>
+      <div class="container">
+        <div class="row">
+          <div class="col s12">
+             <p style="font-size: 25px;margin: 10px;font-family:Rockwell" class="title center">
+                <% if event.date.blank? %>
+                <% else %>
+                  When: <%= event.date.to_s(:long) %><br>
+                <% end %>
+               Title: <%= event.title %>
+             </p>
+             <p style="font-size: 15px" class="center">Posted at <%= event.created_at.to_s(:long) %></p>
+             <p class="center"><%= truncate(event.body , length:200) %></p>
+             <center>
+               <a class="btn btn-sm btn-flat deep-orange darken-4 hoverable white-text waves-effect waves-orange modal-trigger" href="#modalA<%= event.id %>">
+                Read More
+               </a>
+             </center>
+          </div>
+
+          <div id="modalA<%= event.id %>" class="modal modal-fixed-footer blue-grey lighten-4">
+            <div class="modal-content">
+              <p style="font-size: 30px;margin: 0px;font-family:Rockwell" class="title">
+               <% if event.date.blank? %>
+               <% else %>
+                 When: <%= event.date %><br>
+               <% end %>
+               Title: <%= event.title %>
+               <p style="font-size: 15px">Posted at <%= event.created_at.to_s(:long) %></p><hr>
+             </p>
+              <p style="text-align: justify;font-size: 20px" class="body"><%= event.body %></p>
+            </div>
+            <div class="modal-footer">
+              <a class="modal-action modal-close waves-effect waves-yellow btn-flat red white-text">Close</a>
+            </div>
+          </div><!-- modal -->
+        </div>
+      <hr>
+      </div>
+    <% end %><!-- if event.image_file_name.exist -->
+  <% end %><!-- @events.each -->
+<% end %><!-- if @events.empty -->
+
+
+
+<center>
+  <%= will_paginate @events , renderer: MaterializePagination::Rails %>
+</center>
+
+
+
+<%= render 'partials/footer' %>
+
+<style type="text/css">
+
+  .modal-footer {
+    background-color: #640000 !important;
+  }
+
+  .header {
+    background-color: #cccccc;
+    margin-top: 50px;
+    padding: 50px 10px 50px 10px;
+    margin-bottom: 100px;
+    text-align: center;
+  }
+
+  .modal.open{
+    width: 100%;
+    max-height: 100%;
+    height: 100%;
+    top: 0 !important;
+  }
+  .modal-content {
+    height: calc(100% - 56px);
+  }
+
+  blockquote {
+    border-left: 5px solid #4e2706;
+  }
+
+  .pagination li.active {
+    width: 30px;
+    background-color: #bf360c;
+    color: white;
+    padding-top: 5px;
+  }
+
+  .pagination li {
+    padding-top: 5px;
+    margin-left: 10px;
+  }
+  .parallax-container {
+      height: 400px;
+   }
+
+   .slides li img{
+    /*filter: blur(5px);*/
+    transition:.7s;
+   }
+
+   .slides li img:hover{
+     /*filter: blur(5px);*/
+     transform: scale(1.1);
+   }
+
+   .title {
+      font-size: 30px;
+    }
+
+    .date {
+      font-size: 30px;
+    }
+</style>
+
+<script type="text/javascript">
+</script>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171218195026) do
+ActiveRecord::Schema.define(version: 20171229053026) do
 
   create_table "administrators", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "email", default: "", null: false
@@ -126,6 +126,7 @@ ActiveRecord::Schema.define(version: 20171218195026) do
     t.integer "year"
     t.string "phone_number"
     t.string "slug"
+    t.string "status"
     t.index ["slug"], name: "index_students_on_slug", unique: true
   end
 

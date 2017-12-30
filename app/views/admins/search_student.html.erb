@@ -41,6 +41,7 @@
                 <th>Section</th>
                 <th>Gender</th>
                 <th>Contact</th>
+                <th>Status</th>
               </tr>
             </thead>
 
@@ -62,6 +63,13 @@
                     <% else %>
                       <td><%= student.phone_number %></td>
                     <% end %>
+                  <% if student.status == "enrolled" %>
+                    <td class="green-text"><%= student.status %></td>
+                  <% elsif student.status == "un-enrolled" %>
+                    <td class="orange-text"><%= student.status %></td>
+                  <% else %>
+                    <td class="red-text"><%= student.status %></td>
+                  <% end %>
                 </tr>
               <% end %>
             </tbody>

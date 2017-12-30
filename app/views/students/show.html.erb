@@ -27,7 +27,14 @@
               <h4><%= @student.firstname %> <%=  @student.lastname %></h4>
               <p>
                 <b>#<%=  @student.lrn %></b> | <%=  @student.email %> | 
-                Grade <%=  @student.level %> | Section <%=  @student.section %>
+                Grade <%=  @student.level %> | Section <%=  @student.section %> | 
+                <% if @student.status == "enrolled" %>
+                  <span class="green-text"><%= @student.status %></span> 
+                <% elsif @student.status == "un-enrolled" %>
+                  <span class="orange-text"><%= @student.status %></span> 
+                <% else %> 
+                  <span class="red-text"><%= @student.status %></span> 
+                <% end %>
               </p>
               <% if current_administrator.role == "faculty" %>
                 <!-- faculty cannot edit student information -->

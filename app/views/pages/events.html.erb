@@ -1,194 +1,105 @@
 <%= javascript_include_tag 'style' %>
 
-<%= render 'partials/navbar' %>
-<%= render 'partials/slider' %>
-<!-- ============================================================= -->
+<%= render "partials/side_nav" %>
+<%= render "partials/nav_bar" %>
 
-<div class="header">
-  <div class="row container">
-    <div class="col s12 m6 l6">
-      <p style="font-family:Rockwell;font-size: 40px">School Events</p>
-    </div>
-    <div class="col s12 m6 l6 hide-on-small-only">
-      <hr>
-      <p style="font-size: 15px;margin: 10px;font-family:Rockwell;text-align: justify;" class="body">
-        San Jose del Monte National Trade School Web Portal shows all events that happens inside then school, upcoming events can be also found here at the Web Portal.  
-      </p>
+<div class="navbar2" style="background-color:#160000!important">
+  <div class="row">
+    <div class="col s12 m12 l9 offset-l3 valign-wrapper" style="text-align: center;">
+      <span><i class="material-icons yellow-text" style="margin-right: 20px">event</i><br></span>
+      <h3 class="white-text title hide-on-med-and-down">School Events</h3>
+      <h5 class="hide-on-large-only white-text">School Events</h5>
     </div>
   </div>
 </div>
 
-<% if @events.empty? %>
-  <hr>
-    <center><h3>No News posted yet</h3></center>
-  <hr>
-<% else %>
-  <% @events.each do |event| %>
-    <% if event.image_file_name.present? %>
-      <div class="container">
-        <div class="row">
-          <div class="col l2">
-            <% if event.date.blank? %>
-            <% else %>
-              <h4 class="hide-on-med-and-up"><%= event.date.to_s(:long) %></h4>
-              <p class="hide-on-small-only" style="font-size: 40px;font-family:Rockwell">
-                <%= event.date.strftime('%b') %><br>
-                <%= event.date.strftime('%d') %>
-              </p>
-            <% end %>
-          </div><!-- col l2 -->
-          <div class="col l5 m12">
-            <%= image_tag event.image.url(:medium) , style:"width:100%;height: 300px;" , class:"materialboxed" %>
-          </div><!-- col l5 -->
-          <div class="col l5">
-            <p style="font-size: 25px;margin: 10px;font-family:Rockwell" class="title">
-             Title: <%= event.title %>
-           </p>
-            <b style="font-size: 15px">Posted at <%= event.created_at.to_s(:long) %></b><hr>
-            <p><%= truncate(event.body , length:100) %></p>
-            <a class="btn btn-flat deep-orange darken-4 hoverable white-text waves-effect waves-orange modal-trigger" href="#modalA<%= event.id %>">Read More</a>
-          </div><!-- col l5 -->
-
-          <div id="modalA<%= event.id %>" class="modal modal-fixed-footer blue-grey lighten-4">
-            <div class="modal-content">
-              <div class="row">
-                <div class="col s12 m6 l6">
-                  <%= image_tag event.image.url, style:"width:100%" , class:"materialboxed" %>
-                </div>
-                <div class="col s12 m6 l6">
-                  <p style="font-size: 30px;margin: 0px;font-family:Rockwell" class="title">
-                     <% if event.date.blank? %>
-                     <% else %>
-                       When: <%= event.date.to_s(:long) %><br>
-                     <% end %>
-                     Title: <%= event.title %>
-                     <p style="font-size: 15px">Posted at <%= event.created_at.to_s(:long) %></p><hr>
-                   </p> 
-                   <p style="text-align: justify;font-size: 20px" class="body"><%= event.body %></p> 
-                </div>
-              </div>          
-            </div>
-            <div class="modal-footer">
-              <a class="modal-action modal-close waves-effect waves-yellow btn-flat red white-text">Close</a>
-            </div>
-          </div><!-- modal -->
-        </div><!-- row -->
-        <hr>
-      </div><!-- container -->
+<div class="row main">
+  <div class="col s12 m12 l9 offset-l3">
+    <% if @events.empty? %>
+      <div style="padding-top: 100px;padding-bottom: 100px">
+        <center><h3>No events posted yet</h3></center>
+      </div> 
     <% else %>
-      <div class="container">
-        <div class="row">
-          <div class="col s12">
-             <p style="font-size: 25px;margin: 10px;font-family:Rockwell" class="title center">
-                <% if event.date.blank? %>
-                <% else %>
-                  When: <%= event.date.to_s(:long) %><br>
-                <% end %>
-               Title: <%= event.title %>
-             </p>
-             <p style="font-size: 15px" class="center">Posted at <%= event.created_at.to_s(:long) %></p>
-             <p class="center"><%= truncate(event.body , length:200) %></p>
-             <center>
-               <a class="btn btn-sm btn-flat deep-orange darken-4 hoverable white-text waves-effect waves-orange modal-trigger" href="#modalA<%= event.id %>">
-                Read More
-               </a>
-             </center>
+      <% @events.each do |announcement| %>
+        <% if announcement.image.present? %>
+          <div class="card-panel">
+            <%= image_tag announcement.image.url , style:"width:100%;margin-bottom:20px" , class:"materialboxed" %> 
+            <b><h3 class="title"><%= announcement.title %></h3></b>
+            | Posted at <%= announcement.created_at.to_s(:long) %>
+            <p class="body" style="text-align: justify;"><%= truncate(announcement.body , length:200) %></p>
+
+            <div class="card-action">
+              <a href="#modalA<%= announcement.id %>" class="btn green waves-effect waves-blue modal-trigger">Read more</a>
+            </div>
           </div>
-
-          <div id="modalA<%= event.id %>" class="modal modal-fixed-footer blue-grey lighten-4">
+          <div id="modalA<%= announcement.id %>" class="modal modal-fixed-footer">
             <div class="modal-content">
-              <p style="font-size: 30px;margin: 0px;font-family:Rockwell" class="title">
-               <% if event.date.blank? %>
-               <% else %>
-                 When: <%= event.date %><br>
-               <% end %>
-               Title: <%= event.title %>
-               <p style="font-size: 15px">Posted at <%= event.created_at.to_s(:long) %></p><hr>
-             </p>
-              <p style="text-align: justify;font-size: 20px" class="body"><%= event.body %></p>
+              <div class="card-panel">
+                <div class="row">
+                  <div class="col s12 m12 l7">
+                    <%= image_tag  announcement.image.url , style:"width:100%" , class:"materialboxed" %>
+                  </div>
+                  <div class="col s12 m12 l5 modal-body" style="margin-top: 20px">
+                    <h3 class="title"><%= announcement.title %><br>
+                      <% if announcement.date.blank? %>
+                        <!-- nodate here -->
+                      <% else %>
+                        When: <%= announcement.date.strftime('%b') + " " + announcement.date.strftime('%d') %>
+                      <% end %>
+                    </h3>
+                    | Posted at <%= announcement.created_at.to_s(:long) %><hr>
+                    <p class="body" style="text-align: justify;"><%= announcement.body %></p>  
+                  </div>
+                </div>  
+              </div>
             </div>
-            <div class="modal-footer">
-              <a class="modal-action modal-close waves-effect waves-yellow btn-flat red white-text">Close</a>
+              <a class="modal-action modal-close waves-effect waves-yellow btn-floating red lighten-1 right btn-close">
+                <i class="material-icons">close</i>
+              </a>
+          </div>
+        <% else %>
+          <div class="card-panel">
+            <b><h3 class="title"><%= announcement.title %></h3></b>
+            | Posted at <%= announcement.created_at.to_s(:long) %>
+            <p class="body" style="text-align: justify;"><%= truncate(announcement.body , length:200) %></p>
+
+            <div class="card-action">
+              <a href="#modalA<%= announcement.id %>" class="btn green waves-effect waves-blue modal-trigger">Read more</a>
             </div>
-          </div><!-- modal -->
-        </div>
-      <hr>
-      </div>
-    <% end %><!-- if event.image_file_name.exist -->
-  <% end %><!-- @events.each -->
-<% end %><!-- if @events.empty -->
+          </div>
+          <div id="modalA<%= announcement.id %>" class="modal modal-fixed-footer">
+            <div class="modal-content">
+              <div class="card-panel">
+                <div class="row">
+                  <div class="col s12 modal-body" style="margin-top: 20px">
+                    <h3 class="title"><%= announcement.title %><br>
+                      <% if announcement.date.blank? %>
+                        <!-- nodate here -->
+                      <% else %>
+                        When: <%= announcement.date.strftime('%b') + " " + announcement.date.strftime('%d') %>
+                      <% end %>
+                    </h3>
+                    | Posted at <%= announcement.created_at.to_s(:long) %><hr>
+                    <p class="body" style="text-align: justify;"><%= announcement.body %></p>  
+                  </div>
+                </div>  
+              </div>
+            </div>
+              <a class="modal-action modal-close waves-effect waves-yellow btn-floating red lighten-1 right btn-close">
+                <i class="material-icons">close</i>
+              </a>
+          </div>
+        <% end %><!-- if announcement.image.present? -->
+      <% end %><!-- @events.each -->
+    <% end %><!-- if announcement.empty -->
 
+    <div style="border-top: .5px solid #bababa;margin-top: 50px">
+      <center>
+        <%= will_paginate @events , renderer: MaterializePagination::Rails %>
+      </center>  
+    </div>
 
+  </div>
+</div>
 
-<center>
-  <%= will_paginate @events , renderer: MaterializePagination::Rails %>
-</center>
-
-
-
-<%= render 'partials/footer' %>
-
-<style type="text/css">
-
-  .modal-footer {
-    background-color: #640000 !important;
-  }
-
-  .header {
-    background-color: #cccccc;
-    margin-top: 50px;
-    padding: 50px 10px 50px 10px;
-    margin-bottom: 100px;
-    text-align: center;
-  }
-
-  .modal.open{
-    width: 100%;
-    max-height: 100%;
-    height: 100%;
-    top: 0 !important;
-  }
-  .modal-content {
-    height: calc(100% - 56px);
-  }
-
-  blockquote {
-    border-left: 5px solid #4e2706;
-  }
-
-  .pagination li.active {
-    width: 30px;
-    background-color: #bf360c;
-    color: white;
-    padding-top: 5px;
-  }
-
-  .pagination li {
-    padding-top: 5px;
-    margin-left: 10px;
-  }
-  .parallax-container {
-      height: 400px;
-   }
-
-   .slides li img{
-    /*filter: blur(5px);*/
-    transition:.7s;
-   }
-
-   .slides li img:hover{
-     /*filter: blur(5px);*/
-     transform: scale(1.1);
-   }
-
-   .title {
-      font-size: 30px;
-    }
-
-    .date {
-      font-size: 30px;
-    }
-</style>
-
-<script type="text/javascript">
-</script>
+<%= render "partials/footer_2" %>

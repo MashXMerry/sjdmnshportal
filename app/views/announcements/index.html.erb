@@ -48,11 +48,14 @@
           </div>
       </div>
       <div class="modal-footer">
+        <div class="progress" id="create-progress">
+          <div class="indeterminate"></div>
+        </div>
         <span class="btn btn-file left s12">
           <i class="fa fa-camera" aria-hidden="true"></i> Add photo <%= f.file_field :image , id:"image" %>
         </span>
         <a class="modal-action modal-close waves-effect waves-yellow btn-flat red white-text">close</a>
-        <%= f.submit "Create" , class:"btn btn-flat  green white-text" , data: { disable_with: "Creating announcement" } %>
+        <%= f.submit "Create" , class:"btn btn-flat  green white-text" , data: { disable_with: "Creating announcement" } , id: 'btn-create' %>
       </div>
     <% end %>
   </div>
@@ -94,13 +97,29 @@
 </style>
 
 <script type="text/javascript">
-    $('.datepicker').pickadate({
-    selectMonths: true, // Creates a dropdown to control month
-    selectYears: 15, // Creates a dropdown of 15 years to control year,
-    today: 'Today',
-    clear: 'Clear',
-    close: 'Ok',
-    closeOnSelect: false // Close upon selecting a date,
+  $(document).ready(function() {
+
+      $('#create-progress').hide();
+      var title = $('#title').val();
+      var body = $('#body').val();
+
+      $('#btn-create').on('click' , function() {
+        if(title == "" || body == "") {
+        } 
+        if(title != "" || body != "") {
+         $('#create-progress').show();
+       }
+      });
+
+      $('.datepicker').pickadate({
+      selectMonths: true, // Creates a dropdown to control month
+      selectYears: 15, // Creates a dropdown of 15 years to control year,
+      today: 'Today',
+      clear: 'Clear',
+      close: 'Ok',
+      closeOnSelect: false // Close upon selecting a date,
+    });
   });
+    
 </script>
 

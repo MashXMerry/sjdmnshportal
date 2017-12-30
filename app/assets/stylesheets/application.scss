@@ -3,10 +3,11 @@
 */
 @import "materialize";
 @import "font-awesome";
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
 
 
 body {
-  font-family:"Microsoft YaHei Light";
+  font-family: 'Quicksand', sans-serif;
   // background-image:url("home.png");
   background-color: #e8e8e8;
 }
