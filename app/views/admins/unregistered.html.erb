@@ -55,6 +55,7 @@
                   <th>Gender</th>
                   <th>Contact</th>
                   <th>Status</th>
+                  <th>+</th>
                 </tr>
               </thead>
 
@@ -70,10 +71,11 @@
                     <td>No data yet</td>
                     <td>No data yet</td>
                     <td>No data yet</td>
+                    <td>No data yet</td>
                   </tr>
                 <% else %>
                   <% @student7.each do |student| %>
-                    <tr>
+                    <tr id="status<%= student.id %>">
                       <td>
                         <%= link_to edit_student_path(student.id) do %>
                           <i class="material-icons green-text">create</i>
@@ -98,8 +100,18 @@
                         <td class="green-text"><%= student.status %></td>
                       <% elsif student.status == "un-enrolled" %>
                         <td class="orange-text"><%= student.status %></td>
+                        <td>
+                          <%= link_to enrollagain_path(student) , remote: true , method: :patch , id:"btn-enroll#{student.id}" do %>
+                            <i class="material-icons green-text">add</i>
+                          <% end %>    
+                        </td>
                       <% else %>
                         <td class="red-text"><%= student.status %></td>
+                        <td>
+                          <%= link_to enrollagain_path(student) , remote: true , method: :patch , id:"btn-enroll#{student.id}" do %>
+                            <i class="material-icons green-text">add</i>
+                          <% end %>    
+                        </td>
                       <% end %>
                     </tr>
                   <% end %>
@@ -112,6 +124,7 @@
             <table class="bordered highlight responsive-table centered">
               <thead>
                 <tr>
+                  <th>*</th>
                   <th>LRN</th>
                   <th>Lastname</th>
                   <th>Firstname</th>
@@ -120,6 +133,7 @@
                   <th>Gender</th>
                   <th>Contact</th>
                   <th>Status</th>
+                  <th>+</th>
                 </tr>
               </thead>
 
@@ -134,10 +148,17 @@
                     <td>No data yet</td>
                     <td>No data yet</td>
                     <td>No data yet</td>
+                    <td>No data yet</td>
+                    <td>No data yet</td>
                   </tr>
                 <% else %>
                   <% @student8.each do |student| %>
-                    <tr>
+                    <tr id="status<%= student.id %>">
+                      <td>
+                        <%= link_to edit_student_path(student.id) do %>
+                          <i class="material-icons green-text">create</i>
+                        <% end %>
+                      </td>
                       <td><%= student.lrn %></td>
                       <td><%= link_to student.lastname, student_path(student.id) %></td>
                       <td><%= link_to student.firstname, student_path(student.id) %></td>
@@ -157,8 +178,18 @@
                         <td class="green-text"><%= student.status %></td>
                       <% elsif student.status == "un-enrolled" %>
                         <td class="orange-text"><%= student.status %></td>
+                        <td>
+                          <%= link_to enrollagain_path(student) , remote: true , method: :patch , id:"btn-enroll#{student.id}" do %>
+                            <i class="material-icons green-text">add</i>
+                          <% end %>    
+                        </td>
                       <% else %>
                         <td class="red-text"><%= student.status %></td>
+                        <td>
+                          <%= link_to enrollagain_path(student) , remote: true , method: :patch , id:"btn-enroll#{student.id}" do %>
+                            <i class="material-icons green-text">add</i>
+                          <% end %>    
+                        </td>
                       <% end %>
                     </tr>
                   <% end %>
@@ -170,6 +201,7 @@
             <table class="bordered highlight responsive-table centered">
               <thead>
                 <tr>
+                  <th>*</th>
                   <th>LRN</th>
                   <th>Lastname</th>
                   <th>Firstname</th>
@@ -178,6 +210,7 @@
                   <th>Gender</th>
                   <th>Contact</th>
                   <th>Status</th>
+                  <th>+</th>
                 </tr>
               </thead>
 
@@ -192,10 +225,17 @@
                     <td>No data yet</td>
                     <td>No data yet</td>
                     <td>No data yet</td>
+                    <td>No data yet</td>
+                    <td>No data yet</td>
                   </tr>
                 <% else %>
                   <% @student9.each do |student| %>
-                    <tr>
+                    <tr id="status<%= student.id %>">
+                      <td>
+                        <%= link_to edit_student_path(student.id) do %>
+                          <i class="material-icons green-text">create</i>
+                        <% end %>
+                      </td>
                       <td><%= student.lrn %></td>
                       <td><%= link_to student.lastname, student_path(student.id) %></td>
                       <td><%= link_to student.firstname, student_path(student.id) %></td>
@@ -215,8 +255,18 @@
                         <td class="green-text"><%= student.status %></td>
                       <% elsif student.status == "un-enrolled" %>
                         <td class="orange-text"><%= student.status %></td>
+                        <td>
+                          <%= link_to enrollagain_path(student) , remote: true , method: :patch , id:"btn-enroll#{student.id}" do %>
+                            <i class="material-icons green-text">add</i>
+                          <% end %>    
+                        </td>
                       <% else %>
                         <td class="red-text"><%= student.status %></td>
+                        <td>
+                          <%= link_to enrollagain_path(student) , remote: true , method: :patch , id:"btn-enroll#{student.id}" do %>
+                            <i class="material-icons green-text">add</i>
+                          <% end %>    
+                        </td>
                       <% end %>
                     </tr>
                   <% end %>
@@ -228,6 +278,7 @@
             <table class="bordered highlight responsive-table centered">
               <thead>
                 <tr>
+                  <th>*</th>
                   <th>LRN</th>
                   <th>Lastname</th>
                   <th>Firstname</th>
@@ -236,6 +287,7 @@
                   <th>Gender</th>
                   <th>Contact</th>
                   <th>Status</th>
+                  <th>+</th>
                 </tr>
               </thead>
 
@@ -250,10 +302,17 @@
                     <td>No data yet</td>
                     <td>No data yet</td>
                     <td>No data yet</td>
+                    <td>No data yet</td>
+                    <td>No data yet</td>
                   </tr>
                 <% else %>
                   <% @student10.each do |student| %>
-                    <tr>
+                    <tr id="status<%= student.id %>">
+                      <td>
+                        <%= link_to edit_student_path(student.id) do %>
+                          <i class="material-icons green-text">create</i>
+                        <% end %>
+                      </td>
                       <td><%= student.lrn %></td>
                       <td><%= link_to student.lastname, student_path(student.id) %></td>
                       <td><%= link_to student.firstname, student_path(student.id) %></td>
@@ -273,8 +332,18 @@
                         <td class="green-text"><%= student.status %></td>
                       <% elsif student.status == "un-enrolled" %>
                         <td class="orange-text"><%= student.status %></td>
+                        <td>
+                          <%= link_to enrollagain_path(student) , remote: true , method: :patch , id:"btn-enroll#{student.id}" do %>
+                            <i class="material-icons green-text">add</i>
+                          <% end %>    
+                        </td>
                       <% else %>
                         <td class="red-text"><%= student.status %></td>
+                        <td>
+                          <%= link_to enrollagain_path(student) , remote: true , method: :patch , id:"btn-enroll#{student.id}" do %>
+                            <i class="material-icons green-text">add</i>
+                          <% end %>    
+                        </td>
                       <% end %>
                     </tr>
                   <% end %>
@@ -286,6 +355,7 @@
             <table class="bordered highlight responsive-table centered">
               <thead>
                 <tr>
+                  <th>*</th>
                   <th>LRN</th>
                   <th>Lastname</th>
                   <th>Firstname</th>
@@ -294,6 +364,7 @@
                   <th>Gender</th>
                   <th>Contact</th>
                   <th>Status</th>
+                  <th>+</th>
                 </tr>
               </thead>
 
@@ -308,10 +379,17 @@
                     <td>No data yet</td>
                     <td>No data yet</td>
                     <td>No data yet</td>
+                    <td>No data yet</td>
+                    <td>No data yet</td>
                   </tr>
                 <% else %>
                   <% @student11.each do |student| %>
-                    <tr>
+                    <tr id="status<%= student.id %>">
+                      <td>
+                        <%= link_to edit_student_path(student.id) do %>
+                          <i class="material-icons green-text">create</i>
+                        <% end %>
+                      </td>
                       <td><%= student.lrn %></td>
                       <td><%= link_to student.lastname, student_path(student.id) %></td>
                       <td><%= link_to student.firstname, student_path(student.id) %></td>
@@ -331,8 +409,18 @@
                         <td class="green-text"><%= student.status %></td>
                       <% elsif student.status == "un-enrolled" %>
                         <td class="orange-text"><%= student.status %></td>
+                        <td>
+                          <%= link_to enrollagain_path(student) , remote: true , method: :patch , id:"btn-enroll#{student.id}" do %>
+                            <i class="material-icons green-text">add</i>
+                          <% end %>    
+                        </td>
                       <% else %>
                         <td class="red-text"><%= student.status %></td>
+                        <td>
+                          <%= link_to enrollagain_path(student) , remote: true , method: :patch , id:"btn-enroll#{student.id}" do %>
+                            <i class="material-icons green-text">add</i>
+                          <% end %>    
+                        </td>
                       <% end %>
                     </tr>
                   <% end %>
@@ -344,6 +432,7 @@
             <table class="bordered highlight responsive-table centered">
               <thead>
                 <tr>
+                  <th>*</th>
                   <th>LRN</th>
                   <th>Lastname</th>
                   <th>Firstname</th>
@@ -352,6 +441,7 @@
                   <th>Gender</th>
                   <th>Contact</th>
                   <th>Status</th>
+                  <th>+</th>
                 </tr>
               </thead>
 
@@ -366,10 +456,17 @@
                     <td>No data yet</td>
                     <td>No data yet</td>
                     <td>No data yet</td>
+                    <td>No data yet</td>
+                    <td>No data yet</td>
                   </tr>
                 <% else %>
                   <% @student12.each do |student| %>
-                    <tr>
+                    <tr id="status<%= student.id %>">
+                      <td>
+                        <%= link_to edit_student_path(student.id) do %>
+                          <i class="material-icons green-text">create</i>
+                        <% end %>
+                      </td>
                       <td><%= student.lrn %></td>
                       <td><%= link_to student.lastname, student_path(student.id) %></td>
                       <td><%= link_to student.firstname, student_path(student.id) %></td>
@@ -389,8 +486,18 @@
                         <td class="green-text"><%= student.status %></td>
                       <% elsif student.status == "un-enrolled" %>
                         <td class="orange-text"><%= student.status %></td>
+                        <td>
+                          <%= link_to enrollagain_path(student) , remote: true , method: :patch , id:"btn-enroll#{student.id}" do %>
+                            <i class="material-icons green-text">add</i>
+                          <% end %>    
+                        </td>
                       <% else %>
                         <td class="red-text"><%= student.status %></td>
+                        <td>
+                          <%= link_to enrollagain_path(student) , remote: true , method: :patch , id:"btn-enroll#{student.id}" do %>
+                            <i class="material-icons green-text">add</i>
+                          <% end %>    
+                        </td>
                       <% end %>
                     </tr>
                   <% end %>
@@ -442,3 +549,13 @@
     padding: 3.5px!important;
   }
 </style>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    <% @students.each do |student| %>
+      $('#btn-enroll<%= student.id %>').on('click' , function() {
+        $('#status<%= student.id %>').fadeOut(600);
+      });
+    <% end %>
+  });
+</script>

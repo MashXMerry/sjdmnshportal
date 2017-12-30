@@ -34,6 +34,7 @@
           <table class="bordered highlight centered responsive-table">
             <thead>
               <tr>
+                <th>*</th>
                 <th>LRN</th>
                 <th>Lastname</th>
                 <th>Firstname</th>
@@ -48,6 +49,11 @@
             <tbody>
               <% @students.each do |student| %>
                 <tr>
+                  <td>
+                    <%= link_to edit_student_path(student.id) do %>
+                      <i class="material-icons green-text">create</i>
+                    <% end %>  
+                  </td>
                   <td><%= student.lrn %></td>
                   <td><%= link_to student.lastname, student_path(student.id) %></td>
                   <td><%= link_to student.firstname, student_path(student.id) %></td>

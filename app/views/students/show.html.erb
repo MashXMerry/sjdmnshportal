@@ -24,7 +24,7 @@
             </div>
             <div class="col s12 m10 l10">
               <div class=""></div>
-              <h4><%= @student.firstname %> <%=  @student.lastname %></h4><%= notice %>
+              <h4><%= @student.firstname %> <%=  @student.lastname %></h4>
               <p>
                 <b>#<%=  @student.lrn %></b> | <%=  @student.email %> | 
                 Grade <%=  @student.level %> | Section <%=  @student.section %> | 
@@ -47,14 +47,14 @@
               <% end %>
 
               <% if @student.status == "enrolled" %>
-                | <%= link_to "Un-enroll student" , unenroll_path , method: :patch %>
-                | <%= link_to "Drop student" , drop_path , method: :patch %>
+                | <%= link_to "Un-enroll student" , unenroll_path(@student) , method: :patch %>
+                | <%= link_to "Drop student" , drop_path(@student) , method: :patch %>
               <% elsif @student.status == "un-enrolled" %>
-                | <%= link_to "Enroll student" , enrollagain_path , method: :patch %>
-                | <%= link_to "Drop student" , drop_path , method: :patch %>
+                | <%= link_to "Enroll student" , enrollagain_path(@student) , method: :patch %>
+                | <%= link_to "Drop student" , drop_path(@student) , method: :patch %>
               <% elsif @student.status == "dropped" %>
-                | <%= link_to "Enroll student" , enrollagain_path , method: :patch %>
-                | <%= link_to "Un-enroll student" , unenroll_path  , method: :patch %>
+                | <%= link_to "Enroll student" , enrollagain_path(@student) , method: :patch %>
+                | <%= link_to "Un-enroll student" , unenroll_path(@student)  , method: :patch %>
               <% end %>
             </div>
           </div>

@@ -77,8 +77,9 @@ class StudentsController < ApplicationController
   end
 
   def update_status
+    @student = Student.all.where(:status => 'enrolled')
     respond_to do |format|
-      if Student.update(:status => 'un-enrolled')
+      if @student.update(:status => 'un-enrolled')
         format.html { redirect_to admin_profile_path , notice: 'Enrolled students reset' }  
       else
         format.html { redirect_to admin_profile_path , notice: 'Failed to reset enrollment' }
@@ -87,33 +88,37 @@ class StudentsController < ApplicationController
   end
 
   def enrollagain
-    @student = Student.find_by(params[:id])
-    @student.status = 'enrolled'
+    @student = Student.find(params[:id])
+    @student.update(:status => 'enrolled')
     @student.save
     respond_to do |format|
       if @student.save
         format.html { redirect_to @student , notice: "Student successfully enrolled" }
+        format.js
       else
         format.html { redirect_to @student , notice: "Student failed to enroll" }
+        format.js
       end
     end
   end
 
   def unEnroll
-    @student = Student.find_by(params[:id])
+    @student = Student.find(params[:id])
     @student.status = 'un-enrolled'
     @student.save
     respond_to do |format|
       if @student.save
         format.html { redirect_to @student , notice: "Student successfully un-enrolled" }
+        format.js
       else
         format.html { redirect_to @student , notice: "Student failed to un-enroll" }
+        format.js
       end
     end
   end
   
   def drop
-    @student = Student.find_by(params[:id])
+    @student = Student.find(params[:id])
     @student.status = 'dropped'
     @student.save
     respond_to do |format|
