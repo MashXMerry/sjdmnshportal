@@ -55,10 +55,22 @@ class AdminsController < ApplicationController
     @sections = Section.all.where(:adviser_id => current_administrator.id)
     @students1 = Student.all.where(:section => @sections)
     @sections.each do |section|
-      @students = Student.all.where(:section => section.section)
+      @students = Student.all.where(:section => section.section , :status => 'enrolled')
       @students.each do |student|
         @subjects = Subject.all.where(:yearlvl => student.level)
         @grading = Grading.new
+      end
+    end
+  end
+
+  def delete_account
+    @admin = Administrator.find(params[:id])
+    @admin.destroy
+    respond_to do |format|
+      if @admin.destroy
+        format.html { redirect_to admin_register_path , notice: "User account succesfully removed" }
+      else
+        format.html { redirect_to admin_register_path , notice: "User account failed to remove" }
       end
     end
   end

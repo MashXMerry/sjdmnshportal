@@ -39,9 +39,22 @@
         </a>
       </li>
       <% if administrator_signed_in? %>
+        <% if current_administrator.role == "registrar" %>
+          <li class="my-links">
+            <%= link_to destroy_administrator_session_path , method: :delete, class:"waves-effect waves-red" do %>
+              Logout<i class="material-icons orange-text">lock_open</i>
+            <% end %>
+          </li> 
+        <% else %>
+          <li class="my-links">
+            <%= link_to admin_profile_path , class:"waves-effect waves-red" do %>
+              <%= current_administrator.firstname %><i class="material-icons green-text">person</i>
+            <% end %>
+          </li>
+        <% end %>
         <li class="my-links">
-          <%= link_to destroy_administrator_session_path , method: :delete, class:"waves-effect waves-red" do %>
-            Logout<i class="material-icons orange-text">lock_open</i>
+          <%= link_to admin_dashboard_path , class:"waves-effect waves-red" do %>
+            Dashboard<i class="material-icons teal-text">dashboard</i>
           <% end %>
         </li>
       <% else %>

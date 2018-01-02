@@ -15,7 +15,6 @@
         <div class="col s12 m12 l9 right">
           <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Register new account</a>
           <hr>
-          <%= notice %>
         </div>
       </div>
 
@@ -70,7 +69,7 @@
 
     <div class="row">
       <div class="col s12 m12 l9 right">
-      <h4 class="green-text">Registered Accounts </h4><hr>
+      <h4 class="green-text">Registered Accounts </h4><p class="green-text" style="font-size: 20px"><%= notice %></p><hr>
         <ul class="collection">
           <% @admins.each do |admin| %>
             <li class="collection-item avatar">
@@ -83,6 +82,17 @@
               <p><%= admin.email %> <br>
                  Registered at <%= admin.created_at.to_s(:long) %>
               </p>
+              <% if admin.id == current_administrator.id %>
+              <% else %>
+                <%= link_to delete_account_path(admin) , class:"secondary-content tooltipped" ,
+                 method: :delete,
+                 'data-position' => 'top',
+                 'data-delay' => '50',
+                 'data-tooltip' => 'Remove account',
+                 data: { confirm: "Remove #{admin.firstname + " " + admin.lastname + "'s account"}" } do %>
+                  <i class="material-icons red-text">delete</i>
+                <% end %>  
+              <% end %>
             </li>
           <% end %>
         </ul>
@@ -104,29 +114,15 @@
   .name {
     font-size: 30px;
   }
-  @media (max-width: 575px) { 
-     .modal.open{
-        width: 100%;
-        max-height: 100%;
-        height: 100%;
-        top: 0 !important;
-      }
-      .modal-content {
-        height: calc(100% - 56px);
-      }
-  }
-  /*// Small devices (landscape phones, 576px and up)*/
-  @media (min-width: 576px) and (max-width: 767px) {  
-     .modal.open{
-        width: 100%;
-        max-height: 100%;
-        height: 100%;
-        top: 0 !important;
-      }
-      .modal-content {
-        height: calc(100% - 56px);
-      }
-  }
+  .modal.open{
+      width: 100%;
+      max-height: 100%;
+      height: 100%;
+      top: 0 !important;
+    }
+    .modal-content {
+      height: calc(100% - 56px);
+    }
 </style>
   
 

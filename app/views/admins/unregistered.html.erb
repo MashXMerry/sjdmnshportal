@@ -77,7 +77,11 @@
                   <% @student7.each do |student| %>
                     <tr id="status<%= student.id %>">
                       <td>
-                        <%= link_to edit_student_path(student.id) do %>
+                        <%= link_to edit_student_path(student.id),
+                        class:'tooltipped',
+                        'data-position' => 'top' ,
+                        'data-delay' => '50' ,
+                        'data-tooltip' => 'Edit information' do %>
                           <i class="material-icons green-text">create</i>
                         <% end %>
                       </td>
@@ -101,16 +105,30 @@
                       <% elsif student.status == "un-enrolled" %>
                         <td class="orange-text"><%= student.status %></td>
                         <td>
-                          <%= link_to enrollagain_path(student) , remote: true , method: :patch , id:"btn-enroll#{student.id}" do %>
+                          <%= link_to enrollagain_path(student) , 
+                          remote: true , 
+                          method: :patch , 
+                          id:"btn-enroll#{student.id}" ,
+                          class:"tooltipped" ,
+                          'data-position' => 'top' ,
+                          'data-delay' => '50',
+                          'data-tooltip' => 'Enroll student' do %>
                             <i class="material-icons green-text">add</i>
                           <% end %>    
                         </td>
                       <% else %>
                         <td class="red-text"><%= student.status %></td>
                         <td>
-                          <%= link_to enrollagain_path(student) , remote: true , method: :patch , id:"btn-enroll#{student.id}" do %>
+                          <%= link_to enrollagain_path(student) , 
+                          remote: true , 
+                          method: :patch , 
+                          id:"btn-enroll#{student.id}" ,
+                          class:"tooltipped" ,
+                          'data-position' => 'top' ,
+                          'data-delay' => '50',
+                          'data-tooltip' => 'Enroll student' do %>
                             <i class="material-icons green-text">add</i>
-                          <% end %>    
+                          <% end %>   
                         </td>
                       <% end %>
                     </tr>
@@ -155,7 +173,11 @@
                   <% @student8.each do |student| %>
                     <tr id="status<%= student.id %>">
                       <td>
-                        <%= link_to edit_student_path(student.id) do %>
+                        <%= link_to edit_student_path(student.id),
+                        class:'tooltipped',
+                        'data-position' => 'top' ,
+                        'data-delay' => '50' ,
+                        'data-tooltip' => 'Edit information' do %>
                           <i class="material-icons green-text">create</i>
                         <% end %>
                       </td>
@@ -179,14 +201,28 @@
                       <% elsif student.status == "un-enrolled" %>
                         <td class="orange-text"><%= student.status %></td>
                         <td>
-                          <%= link_to enrollagain_path(student) , remote: true , method: :patch , id:"btn-enroll#{student.id}" do %>
+                          <%= link_to enrollagain_path(student) , 
+                          remote: true , 
+                          method: :patch , 
+                          id:"btn-enroll#{student.id}" ,
+                          class:"tooltipped" ,
+                          'data-position' => 'top' ,
+                          'data-delay' => '50',
+                          'data-tooltip' => 'Enroll student' do %>
                             <i class="material-icons green-text">add</i>
                           <% end %>    
                         </td>
                       <% else %>
                         <td class="red-text"><%= student.status %></td>
                         <td>
-                          <%= link_to enrollagain_path(student) , remote: true , method: :patch , id:"btn-enroll#{student.id}" do %>
+                          <%= link_to enrollagain_path(student) , 
+                          remote: true , 
+                          method: :patch , 
+                          id:"btn-enroll#{student.id}" ,
+                          class:"tooltipped" ,
+                          'data-position' => 'top' ,
+                          'data-delay' => '50',
+                          'data-tooltip' => 'Enroll student' do %>
                             <i class="material-icons green-text">add</i>
                           <% end %>    
                         </td>
@@ -232,7 +268,11 @@
                   <% @student9.each do |student| %>
                     <tr id="status<%= student.id %>">
                       <td>
-                        <%= link_to edit_student_path(student.id) do %>
+                        <%= link_to edit_student_path(student.id),
+                        class:'tooltipped',
+                        'data-position' => 'top' ,
+                        'data-delay' => '50' ,
+                        'data-tooltip' => 'Edit information' do %>
                           <i class="material-icons green-text">create</i>
                         <% end %>
                       </td>
@@ -256,14 +296,28 @@
                       <% elsif student.status == "un-enrolled" %>
                         <td class="orange-text"><%= student.status %></td>
                         <td>
-                          <%= link_to enrollagain_path(student) , remote: true , method: :patch , id:"btn-enroll#{student.id}" do %>
+                          <%= link_to enrollagain_path(student) , 
+                          remote: true , 
+                          method: :patch , 
+                          id:"btn-enroll#{student.id}" ,
+                          class:"tooltipped" ,
+                          'data-position' => 'top' ,
+                          'data-delay' => '50',
+                          'data-tooltip' => 'Enroll student' do %>
                             <i class="material-icons green-text">add</i>
-                          <% end %>    
+                          <% end %>   
                         </td>
                       <% else %>
                         <td class="red-text"><%= student.status %></td>
                         <td>
-                          <%= link_to enrollagain_path(student) , remote: true , method: :patch , id:"btn-enroll#{student.id}" do %>
+                          <%= link_to enrollagain_path(student) , 
+                          remote: true , 
+                          method: :patch , 
+                          id:"btn-enroll#{student.id}" ,
+                          class:"tooltipped" ,
+                          'data-position' => 'top' ,
+                          'data-delay' => '50',
+                          'data-tooltip' => 'Enroll student' do %>
                             <i class="material-icons green-text">add</i>
                           <% end %>    
                         </td>
@@ -309,7 +363,11 @@
                   <% @student10.each do |student| %>
                     <tr id="status<%= student.id %>">
                       <td>
-                        <%= link_to edit_student_path(student.id) do %>
+                        <%= link_to edit_student_path(student.id),
+                        class:'tooltipped',
+                        'data-position' => 'top' ,
+                        'data-delay' => '50' ,
+                        'data-tooltip' => 'Edit information' do %>
                           <i class="material-icons green-text">create</i>
                         <% end %>
                       </td>
@@ -333,14 +391,28 @@
                       <% elsif student.status == "un-enrolled" %>
                         <td class="orange-text"><%= student.status %></td>
                         <td>
-                          <%= link_to enrollagain_path(student) , remote: true , method: :patch , id:"btn-enroll#{student.id}" do %>
+                          <%= link_to enrollagain_path(student) , 
+                          remote: true , 
+                          method: :patch , 
+                          id:"btn-enroll#{student.id}" ,
+                          class:"tooltipped" ,
+                          'data-position' => 'top' ,
+                          'data-delay' => '50',
+                          'data-tooltip' => 'Enroll student' do %>
                             <i class="material-icons green-text">add</i>
-                          <% end %>    
+                          <% end %>   
                         </td>
                       <% else %>
                         <td class="red-text"><%= student.status %></td>
                         <td>
-                          <%= link_to enrollagain_path(student) , remote: true , method: :patch , id:"btn-enroll#{student.id}" do %>
+                          <%= link_to enrollagain_path(student) , 
+                          remote: true , 
+                          method: :patch , 
+                          id:"btn-enroll#{student.id}" ,
+                          class:"tooltipped" ,
+                          'data-position' => 'top' ,
+                          'data-delay' => '50',
+                          'data-tooltip' => 'Enroll student' do %>
                             <i class="material-icons green-text">add</i>
                           <% end %>    
                         </td>
@@ -386,7 +458,11 @@
                   <% @student11.each do |student| %>
                     <tr id="status<%= student.id %>">
                       <td>
-                        <%= link_to edit_student_path(student.id) do %>
+                        <%= link_to edit_student_path(student.id),
+                        class:'tooltipped',
+                        'data-position' => 'top' ,
+                        'data-delay' => '50' ,
+                        'data-tooltip' => 'Edit information' do %>
                           <i class="material-icons green-text">create</i>
                         <% end %>
                       </td>
@@ -410,14 +486,28 @@
                       <% elsif student.status == "un-enrolled" %>
                         <td class="orange-text"><%= student.status %></td>
                         <td>
-                          <%= link_to enrollagain_path(student) , remote: true , method: :patch , id:"btn-enroll#{student.id}" do %>
+                          <%= link_to enrollagain_path(student) , 
+                          remote: true , 
+                          method: :patch , 
+                          id:"btn-enroll#{student.id}" ,
+                          class:"tooltipped" ,
+                          'data-position' => 'top' ,
+                          'data-delay' => '50',
+                          'data-tooltip' => 'Enroll student' do %>
                             <i class="material-icons green-text">add</i>
                           <% end %>    
                         </td>
                       <% else %>
                         <td class="red-text"><%= student.status %></td>
                         <td>
-                          <%= link_to enrollagain_path(student) , remote: true , method: :patch , id:"btn-enroll#{student.id}" do %>
+                          <%= link_to enrollagain_path(student) , 
+                          remote: true , 
+                          method: :patch , 
+                          id:"btn-enroll#{student.id}" ,
+                          class:"tooltipped" ,
+                          'data-position' => 'top' ,
+                          'data-delay' => '50',
+                          'data-tooltip' => 'Enroll student' do %>
                             <i class="material-icons green-text">add</i>
                           <% end %>    
                         </td>
@@ -463,7 +553,11 @@
                   <% @student12.each do |student| %>
                     <tr id="status<%= student.id %>">
                       <td>
-                        <%= link_to edit_student_path(student.id) do %>
+                        <%= link_to edit_student_path(student.id),
+                        class:'tooltipped',
+                        'data-position' => 'top' ,
+                        'data-delay' => '50' ,
+                        'data-tooltip' => 'Edit information' do %>
                           <i class="material-icons green-text">create</i>
                         <% end %>
                       </td>
@@ -487,14 +581,28 @@
                       <% elsif student.status == "un-enrolled" %>
                         <td class="orange-text"><%= student.status %></td>
                         <td>
-                          <%= link_to enrollagain_path(student) , remote: true , method: :patch , id:"btn-enroll#{student.id}" do %>
+                          <%= link_to enrollagain_path(student) , 
+                          remote: true , 
+                          method: :patch , 
+                          id:"btn-enroll#{student.id}" ,
+                          class:"tooltipped" ,
+                          'data-position' => 'top' ,
+                          'data-delay' => '50',
+                          'data-tooltip' => 'Enroll student' do %>
                             <i class="material-icons green-text">add</i>
                           <% end %>    
                         </td>
                       <% else %>
                         <td class="red-text"><%= student.status %></td>
                         <td>
-                          <%= link_to enrollagain_path(student) , remote: true , method: :patch , id:"btn-enroll#{student.id}" do %>
+                          <%= link_to enrollagain_path(student) , 
+                          remote: true , 
+                          method: :patch , 
+                          id:"btn-enroll#{student.id}" ,
+                          class:"tooltipped" ,
+                          'data-position' => 'top' ,
+                          'data-delay' => '50',
+                          'data-tooltip' => 'Enroll student' do %>
                             <i class="material-icons green-text">add</i>
                           <% end %>    
                         </td>

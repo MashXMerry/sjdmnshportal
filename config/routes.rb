@@ -58,6 +58,7 @@ Rails.application.routes.draw do
     patch '/enroll_again/:id' , to: 'students#enrollagain' , as: 'enrollagain'
     patch '/un_enroll/:id' , to: 'students#unEnroll' , as: 'unenroll'
     patch '/drop/:id' , to: 'students#drop' , as:'drop'
+    delete '/delete_account/:id' , to: 'admins#delete_account' , as: 'delete_account'
     # # sections
     get '/grade7' , to: 'admins#grade7' , as: 'grade7'
     get '/grade8' , to: 'admins#grade8' , as: 'grade8'
