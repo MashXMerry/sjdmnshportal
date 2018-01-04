@@ -11,22 +11,27 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :subject_title %>
+  <div class="card-panel">
+    <div class="card-content">
+      <h3>Edit subject</h3><br>
+      <div class="row">
+        <div class="input-field col l6 m6 s12">
+          <label class="active">Subject title:</label>
+          <%= form.text_field :title, id: :subject_title , required: 'required' %>
+        </div>
+        <div class="input-field col l6 m6 s12">
+          <label class="active">Subject title:</label>
+          <%= form.number_field :yearlvl , max: 12 , min: 7 ,id:"year" , placeholder:'Year level' %>
+        </div>
+        <div class="input-field col s12">
+          <label class="active">Subject description:</label>
+          <%= form.text_field :description, id: :subject_description %>
+        </div>
+      </div>  
+    </div>
+    <div class="card-action">
+      <%= form.submit class:"btn green waves-effect waves-blue" , data: { disable_with: "Updating subject .." } %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :yearlvl %>
-    <%= form.select :yearlvl , options_for_select([["Year"],"7" , "8" ,"9" ,"10" ,"11" ,"12"]) ,id:"year" %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description, id: :subject_description %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>

@@ -1,7 +1,7 @@
 <%= javascript_include_tag 'style' %>
 <div class="row" style="background-color: #e8e8e8">
   <div class="">
-    <nav class="orange darken-4">
+    <nav style="margin-bottom: 20px;background-color: #640000">
       <div class="nav-wrapper">
         <a class="brand-logo right" style="padding-right: 20px">Account settings</a>
         <a href="#" data-activates="slide-out" class="button-collapse">
@@ -10,63 +10,67 @@
       </div>
     </nav>
     
+
     <div class="row">
       <div class="col s12 m12 l9 right">
-        <h4>Edit profile</h4>
-        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-          <div class="row">
-            <%= devise_error_messages! %>
-            <div class="col l4 m4 s12">
-              <%= f.label :firstname %><br />
-              <%= f.text_field :firstname, autofocus: true %>
-            </div>
+        <div class="card">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+            <div class="card-content">
+              <h4>Edit profile</h4>
+              <div class="row">
+                <%= devise_error_messages! %>
+                <div class="col l4 m4 s12">
+                  <%= f.label :firstname %><br />
+                  <%= f.text_field :firstname, autofocus: true %>
+                </div>
 
-            <div class="col l4 m4 s12">
-              <%= f.label :middlename %><br />
-              <%= f.text_field :middlename, autofocus: true %>
-            </div>
+                <div class="col l4 m4 s12">
+                  <%= f.label :middlename %><br />
+                  <%= f.text_field :middlename, autofocus: true %>
+                </div>
 
-            <div class="col l4 m4 s12">
-              <%= f.label :lastname %><br />
-              <%= f.text_field :lastname, autofocus: true %>
-            </div>
+                <div class="col l4 m4 s12">
+                  <%= f.label :lastname %><br />
+                  <%= f.text_field :lastname, autofocus: true %>
+                </div>
 
-            <div class="col s12">
-              <%= f.label :email %><br />
-              <%= f.email_field :email, autofocus: true %>
-            </div>
+                <div class="col s12">
+                  <%= f.label :email %><br />
+                  <%= f.email_field :email, autofocus: true %>
+                </div>
 
-            <div class="file-field input-field col s12">
-              <div class="btn">
-                <span>Add/Edit profile image</span>
-                <%= f.file_field :image , id:"image" %>
-              </div>
-              <div class="file-path-wrapper s12 m12">
-                <input class="file-path validate" type="text">
-              </div>
-            </div>
+                <div class="file-field input-field col s12">
+                  <div class="btn">
+                    <span>Add/Edit profile image</span>
+                    <%= f.file_field :image , id:"image" %>
+                  </div>
+                  <div class="file-path-wrapper s12 m12">
+                    <input class="file-path validate" type="text">
+                  </div>
+                </div>
 
-            <div class="col s12">
-              <label for="#password">Password (Leave it blank if you don't want to change)</label>
-              <%= f.password_field :password, autofocus: true , id:"password" %>
-            </div>
+                <div class="col s12">
+                  <label for="#password">Password (Leave it blank if you don't want to change)</label>
+                  <%= f.password_field :password, autofocus: true , id:"password" %>
+                </div>
 
-            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-              <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-            <% end %>
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+              <% end %>
 
-            <div class="field">
-              <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-              <%= f.password_field :current_password, autocomplete: "off" %>
-            </div>
-
-            <div class="actions">
-              <%= f.submit "Update" , type: :submit , class:"btn green" , data: {
-                disable_with: "Updating"
+              <div class="field">
+                <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+                <%= f.password_field :current_password, autocomplete: "off" %>
+              </div>  
+            </div><!-- row --> 
+          </div>
+          <div class="card-action">
+            <%= f.submit "Update" , type: :submit , class:"btn green" , data: {
+                disable_with: "Updating account .."
               } %>
-            </div>
-          </div><!-- row -->
+          </div>
         <% end %>
+        </div>
       </div>
     </div><!-- row -->
   </div>

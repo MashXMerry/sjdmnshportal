@@ -84,11 +84,11 @@
         <div class="collapsible-body">
           <ul>
             <li>
-              <%= link_to sections_path do %>Add section
+              <%= link_to sections_path ,class:"waves-effect waves-red" do %>Add section
               <% end %>
             </li>
             <li>
-              <%= link_to sectionlist_path do %>Section list
+              <%= link_to sectionlist_path , class:"waves-effect waves-red" do %>Section list
               <% end %>
             </li>
           </ul>
@@ -104,10 +104,10 @@
           <div class="collapsible-body">
             <ul>
               <li>
-                <%= link_to "Add subject" , subjects_path %>
+                <%= link_to "Add subject" , subjects_path , class:"waves-effect waves-red"  %>
               </li>
               <li>
-                <%= link_to "Subject list" , subjectlist_path %>
+                <%= link_to "Subject list" , subjectlist_path  , class:"waves-effect waves-red" %>
               </li>
             </ul>
           </div>
@@ -147,19 +147,19 @@
       <div class="collapsible-body">
         <ul>
           <li>
-            <%= link_to admin_profile_path do %>My profile
+            <%= link_to admin_profile_path, class:" waves-effect waves-red" do %>My profile
             <% end %>
           </li>
           <% if current_administrator.role == "registrar" %>
             <li>
-              <%= link_to admin_register_path do %>Register account
+              <%= link_to admin_register_path, class:" waves-effect waves-red" do %>Register account
               <% end %>
             </li>
           <% else %>
             <!-- non registrar accounts cant add other accounts -->
           <% end %>
           
-          <li><%= link_to "Logout" , destroy_administrator_session_path , method: :delete %></li>
+          <li><%= link_to "Logout" , destroy_administrator_session_path, class:" waves-effect waves-red" , method: :delete %></li>
         </ul>
       </div>
     </li>

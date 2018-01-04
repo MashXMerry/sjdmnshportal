@@ -42,7 +42,7 @@
                 class:"btn green waves-effect waves-blue" %> 
                 <% if current_administrator.role == "registrar" %>
                    <%= link_to "Reset enrolled students" , reset_status_path , method: :patch ,
-                   class:"btn red waves-effect waves-yellow" %>
+                   class:"btn red waves-effect waves-yellow" , data: { confirm: "Reseting the enrolled students will put them into un-enrolled list. Do you want to continue?" } %>
                 <% else %>
                   <% @section.each do |section| %>
                     | Grade <%= section.yearlvl %> - <%= section.section %>
