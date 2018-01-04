@@ -100,19 +100,22 @@
 
 <script type="text/javascript">
   $(document).ready(function() {
-    <% @subjects.each do |subject| %>
+    <% if @subjects.blank? %>
+    /*some codes here*/
+    <% else %>
+      <% @subjects.each do |subject| %>
+        $("#grade-int<%= subject.id %>").on('keyup', function (e) {
+          var input<%= subject.id %> = $('#grade-int<%= subject.id %>').val();
+            if (e.keyCode == 13) {
+              if (input<%= subject.id %> == "" || input<%= subject.id %> > 100 || input<%= subject.id %> < 50) {
 
-      $("#grade-int<%= subject.id %>").on('keyup', function (e) {
-        var input<%= subject.id %> = $('#grade-int<%= subject.id %>').val();
-          if (e.keyCode == 13) {
-            if (input<%= subject.id %> == "" || input<%= subject.id %> > 100 || input<%= subject.id %> < 50) {
-
+              }
+              else {
+                $('#subject-row-<%= subject.id %>').fadeOut(500);
+              }
             }
-            else {
-              $('#subject-row-<%= subject.id %>').fadeOut(500);
-            }
-          }
-      });
+        });
+      <% end %>
     <% end %>
   });
 </script>
