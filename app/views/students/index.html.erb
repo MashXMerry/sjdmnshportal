@@ -43,14 +43,14 @@
                 <div class="col s12">
                   <div class="input-field">
                     <i class="material-icons prefix">face</i>
-                    <%= f.text_field :lrn , id:"lrn" , required: "required" %>
+                    <%= f.text_field :lrn , id:"lrn" , required: "required" , 'maxLength' => '11' %>
                     <label>L R N</label>
                   </div>
                 </div>
                 <div class="col s12">
                   <div class="input-field">
                     <i class="material-icons prefix">phone</i>
-                    <%= f.number_field :phone_number , id:"phone_number" %>
+                    <%= f.number_field :phone_number , id:"phone_number", min: '9999999999' , max: '9999999999' %>
                     <label>Contact number</label>
                   </div>
                 </div>
@@ -64,7 +64,7 @@
                 <div class="col s12 m10 l10" id="level-field">
                   <div class="input-field">
                     <i class="material-icons prefix">create</i>
-                    <%= f.text_field :section , disabled: true ,id:'section-field', placeholder:"Section" %>
+                    <%= f.text_field :section , disabled: true ,id:'section-field', placeholder:"Section" , required: 'required' %>
                   </div>
                 </div>
 
@@ -168,7 +168,7 @@
                 </div>
                 <div class="col s12 m6 l6">
                   <div class="input-field">
-                    <%= f.select :gender , options_for_select([["Gender"],"Male" , "Female"]) ,id:"gender" %>
+                    <%= f.select :gender , options_for_select([["Gender"],"Male" , "Female"]) ,id:"gender" , :required => true %>
                   </div>  
                 </div>
                 <%= f.text_field :status , type: 'hidden' , value: 'enrolled' %>
