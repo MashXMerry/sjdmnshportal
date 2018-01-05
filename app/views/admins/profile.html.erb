@@ -27,16 +27,18 @@
               <% if admin.middlename.blank? %>
                 <p>
                   <b class="name">
-                    <%= admin.firstname + ' ' + admin.lastname %> (<%= admin.role %>)
+                    <%= admin.firstname + ' ' + admin.lastname %>
                   </b><br>
                   <b>Email:</b> <%= admin.email %> <br> <b>Username:</b> <%= admin.username %> |
+                  <b>Registered as: </b><%= admin.role %>
                    <%= link_to "Account Settings" , edit_administrator_registration_path ,
                    class:"btn green waves-effect waves-blue" %> 
                 </p>
               <% else %>  
                 <p>
-                  <b class="name"><%= admin.firstname + " " + admin.middlename + " " + admin.lastname %> (<%= admin.role %>)</b><br>
+                  <b class="name"><%= admin.firstname + " " + admin.middlename + " " + admin.lastname %></b><br>
                   <b>Email:</b> <%= admin.email %> <br> <b>Username:</b> <%= admin.username %><br>
+                  <b>Registered as: </b><%= admin.role %><br>
                   <% @section.each do |section| %>
                     <b>Senction handle: </b>Grade <%= section.yearlvl %> - <%= section.section %>
                   <% end %>
