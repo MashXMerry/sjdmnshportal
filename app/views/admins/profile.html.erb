@@ -29,14 +29,17 @@
                   <b class="name">
                     <%= admin.firstname + ' ' + admin.lastname %> (<%= admin.role %>)
                   </b><br>
-                  <%= admin.email %> |
+                  <b>Email:</b> <%= admin.email %> <br> <b>Username:</b> <%= admin.username %> |
                    <%= link_to "Account Settings" , edit_administrator_registration_path ,
                    class:"btn green waves-effect waves-blue" %> 
                 </p>
-              <% else %>
+              <% else %>  
                 <p>
                   <b class="name"><%= admin.firstname + " " + admin.middlename + " " + admin.lastname %> (<%= admin.role %>)</b><br>
-                  <%= admin.email %> 
+                  <b>Email:</b> <%= admin.email %> <br> <b>Username:</b> <%= admin.username %><br>
+                  <% @section.each do |section| %>
+                    <b>Senction handle: </b>Grade <%= section.yearlvl %> - <%= section.section %>
+                  <% end %>
                 </p>
                 <%= link_to "Account Settings" , edit_administrator_registration_path ,
                 class:"btn green waves-effect waves-blue" %> 
@@ -44,9 +47,7 @@
                    <%= link_to "Reset enrolled students" , reset_status_path , method: :patch ,
                    class:"btn red waves-effect waves-yellow" , data: { confirm: "Reseting the enrolled students will put them into un-enrolled list. Do you want to continue?" } %>
                 <% else %>
-                  <% @section.each do |section| %>
-                    | Grade <%= section.yearlvl %> - <%= section.section %>
-                  <% end %>
+
                 <% end %>
               <% end %>
             </div>
