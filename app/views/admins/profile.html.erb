@@ -30,7 +30,10 @@
                     <%= admin.firstname + ' ' + admin.lastname %>
                   </b><br>
                   <b>Email:</b> <%= admin.email %> <br> <b>Username:</b> <%= admin.username %> |
-                  <b>Registered as: </b><%= admin.role %>
+                  <b>Registered as: </b><%= admin.role %><br>
+                  <% @section.each do |section| %>
+                    <b>Senction handle: </b>Grade <%= section.yearlvl %> - <%= section.section %>
+                  <% end %>
                    <%= link_to "Account Settings" , edit_administrator_registration_path ,
                    class:"btn green waves-effect waves-blue" %> 
                 </p>
