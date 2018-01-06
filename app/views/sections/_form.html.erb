@@ -33,6 +33,9 @@
           <label class="active">Section adviser</label>
           <%= form.text_field :adviser, id: 'adviser', placeholder:"Adviser" %>
         </div>
+
+        <input type="hidden" name="adviser-id" id="adviser-id">
+
         <div class="input-field col s12 m2 l2">
           <a class="waves-effect waves-light btn modal-trigger btn-large blue" href="#modal1">Adviser</a>
           <!-- Modal Structure -->
@@ -40,10 +43,16 @@
             <div class="modal-content">
               <h4>Choose adviser</h4>
               <ul class="collection with-header">
-                <% @teacher.each do |teacher| %>
+                <% if @teacher.blank? %>
                   <li class="collection-item modal-close">
-                    <a id="btn-teacher<%= teacher.id %>"><%= teacher.firstname + " " + teacher.lastname %></a>
+                    <a>No available adviser to assign</a>
                   </li>
+                <% else %>
+                  <% @teacher.each do |teacher| %>
+                    <li class="collection-item modal-close">
+                      <a id="btn-teacher<%= teacher.id %>"><%= teacher.firstname + " " + teacher.lastname %></a>  
+                    </li>
+                  <% end %>
                 <% end %>
               </ul>
               
@@ -56,7 +65,8 @@
       </div>
     </div>
     <div class="card-action">
-      <%= form.submit class:"btn btn-flat waves-effect waves-blue green white-text right" , data: { disable_with: "Updating section ..." } %>
+      <button class="btn green waves-effect waves-blue" id="btn-update" type="submit">Save section</button>
+     <!--  <%= form.submit class:"btn btn-flat waves-effect waves-blue green white-text right" , data: { disable_with: "Updating section ..." } , id:"btn-update-1" %> -->
       <button class="btn red waves-effect waves-yellow" id="removeAdviser" type="button">Remove adivser</button>
     </div>
   </div>
@@ -64,16 +74,32 @@
 
 <script>
   $(document).ready(function() {
+
     <% @teacher.each do |teacher| %>
       $('#btn-teacher<%= teacher.id %>').on('click' ,function(){
         $('#adviser').val('<%= teacher.firstname %>' + " " + '<%= teacher.lastname %>' );
         $('#adviser_id').val(<%= teacher.id %>);
+        $('#adviser-id').val(<%= teacher.id %>);
       });
     <% end %>
 
     $('#removeAdviser').on('click' , function() {
       $('#adviser').val('');
       $('#adviser_id').val('');
+      $('#adviser-id').val('');
+    });   
+
+  });
+
+  $(document).ready(function() {
+
+    $('#btn-update').on('click' , function() {
+      var adviserId = $('#adviser-id').val();
+      $.ajax({
+        url:'http://localhost:3000/admin/section/set_adviser/' + adviserId ,
+        type:'PATCH',
+        data: { available: "not-available" }
+      });
     });
 
   });

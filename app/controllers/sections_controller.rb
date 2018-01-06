@@ -36,7 +36,7 @@ class SectionsController < ApplicationController
     @sections.each do |section|
       @adviser_id = section.adviser_id.blank?
     end  
-    @teacher = Administrator.all.where(:role => "faculty")
+    @teacher = Administrator.all.where(:role => "faculty" , :available => 'available')
   end
 
   # POST /sections

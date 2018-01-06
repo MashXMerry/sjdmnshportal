@@ -136,6 +136,17 @@ class AdminsController < ApplicationController
     @students = Student.where(["lrn LIKE?" , "%#{params[:search]}%"]).order('level ASC').order('lastname ASC')
   end
 
+  def setAvailable
+    @adviser = Administrator.find(params[:id])
+    @adviser.update(:available => 'not-available')
+    @adviser.save
+    # respond_to do |format|
+    #   if @adviser.save
+    #     format.html { notice: 'Adviser succesfully assigned' }
+    #   end
+    # end
+  end
+
   def grade7
   end
 
@@ -161,7 +172,7 @@ class AdminsController < ApplicationController
   private
 
   def admin_params
-  	params.require(:administrator).permit(:firstname, :lastname , :email , :password , :middlename , :role , :username)
+  	params.require(:administrator).permit(:firstname, :lastname , :email , :password , :middlename , :role , :username , :available)
   end
 
 end

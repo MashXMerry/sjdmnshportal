@@ -60,6 +60,7 @@
                   <label for="password">Password</label>
                   <%= f.password_field :password , required: 'required'%>
                 </div>
+                <%= f.text_field :available , value: 'available' , type: 'hidden' %>
               </div>
             </div>
           <div class="modal-footer">
