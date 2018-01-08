@@ -40,7 +40,8 @@ Rails.application.routes.draw do
     end
 
     # post '/create_grades' , to: 'grades#create_grades' , as: 'insert_grade'
-    get 'search/student' , to: 'admins#search_student' , as: 'search_student'
+    get '/admin/admin-profile/:id' , to: 'admins#adminAcount' , as: 'admin_account'
+    get '/search/student' , to: 'admins#search_student' , as: 'search_student'
     get '/myclass' , to: 'admins#myclass' , as: 'myclass'
     get '/grades' , to: 'admins#mygrade' , as: 'mygrades'
     get '/dashboard' , to: 'admins#dashboard' , as: 'admin_dashboard'
@@ -60,6 +61,8 @@ Rails.application.routes.draw do
     patch '/drop/:id' , to: 'students#drop' , as:'drop'
     delete '/delete_account/:id' , to: 'admins#delete_account' , as: 'delete_account'
     patch '/section/set_adviser/:id' , to: 'admins#setAvailable' , as: 'set_available_adivser'
+    patch '/section/set_adviser/not-available/:id' , to: 'admins#setNotAvailable' , as: 'set-not-available_adivser'
+    patch '/section/reset' , to: 'admins#resetSectionAdviser' , as: 'reset_section'
     # # sections
     get '/grade7' , to: 'admins#grade7' , as: 'grade7'
     get '/grade8' , to: 'admins#grade8' , as: 'grade8'

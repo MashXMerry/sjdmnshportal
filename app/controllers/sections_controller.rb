@@ -36,7 +36,7 @@ class SectionsController < ApplicationController
     @sections.each do |section|
       @adviser_id = section.adviser_id.blank?
     end  
-    @teacher = Administrator.all.where(:role => "faculty" , :available => 'available')
+    @teacher = Administrator.all.where(:role => "faculty" , :available => 'available').order('lastname DESC')
   end
 
   # POST /sections
@@ -62,7 +62,7 @@ class SectionsController < ApplicationController
   def update
     respond_to do |format|
       if @section.update(section_params)
-        format.html { redirect_to sectionlist_path, notice: 'Section was successfully updated !.' }
+        format.html { redirect_to sectionlist_path, notice: "Section successfully updated." }
         format.json { render :show, status: :ok, location: @section }
       else
         format.html { render :edit }

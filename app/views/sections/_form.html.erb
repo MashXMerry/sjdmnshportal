@@ -11,8 +11,8 @@
     </div>
   <% end %>
 
-  <div class="card white">
-    <div class="card-content black-text">
+  <div class="card white" id="edit-card">
+    <div class="card-content black-text" id="card-edit">
       <span class="card-title">Edit section</span>
       <div class="row" style="margin-top: 20px">
         <div class="input-field col s12">
@@ -50,7 +50,7 @@
                 <% else %>
                   <% @teacher.each do |teacher| %>
                     <li class="collection-item modal-close">
-                      <a id="btn-teacher<%= teacher.id %>"><%= teacher.firstname + " " + teacher.lastname %></a>  
+                      <a class="white-text btn green waves-effect waves-white" id="btn-teacher<%= teacher.id %>"><%= teacher.lastname + ", " + teacher.firstname %></a> - (<%= teacher.available %>)
                     </li>
                   <% end %>
                 <% end %>
@@ -64,16 +64,27 @@
         </div>
       </div>
     </div>
-    <div class="card-action">
+    <div class="card-action" id="card-edit-buttons">
       <button class="btn green waves-effect waves-blue" id="btn-update" type="submit">Save section</button>
      <!--  <%= form.submit class:"btn btn-flat waves-effect waves-blue green white-text right" , data: { disable_with: "Updating section ..." } , id:"btn-update-1" %> -->
-      <button class="btn red waves-effect waves-yellow" id="removeAdviser" type="button">Remove adivser</button>
+      <button class="btn red waves-effect waves-yellow" id="removeAdviser" type="submit">
+      Remove adivser</button>
+      <div class="progress" id="loader">
+        <div class="indeterminate"></div>
+      </div>
     </div>
   </div>
+
+  <div>
+    <center id="loading-screen"></center>    
+  </div>
+    
 <% end %>
 
 <script>
   $(document).ready(function() {
+
+    $('#loader').hide();
 
     <% @teacher.each do |teacher| %>
       $('#btn-teacher<%= teacher.id %>').on('click' ,function(){
@@ -83,17 +94,34 @@
       });
     <% end %>
 
-    $('#removeAdviser').on('click' , function() {
-      $('#adviser').val('');
-      $('#adviser_id').val('');
-      $('#adviser-id').val('');
-    });   
+      $('#removeAdviser').on('click' , function() {
+        $('#adviser').val('');
+        $('#adviser_id').val('');
+        $('#adviser-id').val('');
+        $('#loader').slideDown();
+        $('#btn-update').hide().slideUp(600);
+        $('#removeAdviser').hide().slideUp(600);
+      });
+  
 
   });
 
   $(document).ready(function() {
 
+    var adviserId = $('#adviser_id').val();
+
+    $('#removeAdviser').on('click' , function() {
+      $.ajax({
+        url:'http://localhost:3000/admin/section/set_adviser/not-available/' + adviserId ,
+        type:'PATCH',
+        data: { available: "available" }
+      });  
+    });
+
     $('#btn-update').on('click' , function() {
+      $('#loader').slideDown();
+      $('#btn-update').hide().slideUp(600);
+      $('#removeAdviser').hide().slideUp(600);
       var adviserId = $('#adviser-id').val();
       $.ajax({
         url:'http://localhost:3000/admin/section/set_adviser/' + adviserId ,
@@ -104,3 +132,15 @@
 
   });
 </script>
+
+<style type="text/css">
+  
+  #loading-screen {
+    align-items: center;
+  }
+
+  #loading {
+    font-size: 200px;
+    margin-top: 150px;
+  }
+</style>

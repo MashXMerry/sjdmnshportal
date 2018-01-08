@@ -52,11 +52,23 @@
 
   <% if administrator_signed_in? %>
     <li class="my-links">
-      <%= link_to destroy_administrator_session_path , method: :delete, class:"waves-effect waves-red" do %>
+      <%= link_to destroy_administrator_session_path , method: :delete, class:"waves-effect waves-red" , id:"btn-logout" do %>
         Logout<i class="material-icons orange-text">lock_open</i>
       <% end %>
     </li>
+    <div class="progress red lighten-1" id="progress">
+      <div class="indeterminate red accent-4"></div>
+    </div>
   <% else %>
     
   <% end %>
 </ul> 
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#progress').hide();
+    $('#btn-logout').on('click' , function() {
+      $('#progress').fadeIn();
+    });
+  });
+</script>

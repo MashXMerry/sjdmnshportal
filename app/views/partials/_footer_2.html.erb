@@ -2,12 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col s12 m12 l9 offset-l3">
-        <div class="col l6 s12">
-          <h5 class="white-text">San Jose del Monte National Trade School</h5>
-        </div>
-        <div class="col l4 offset-l2 s12">
-          
-        </div>
+        <h5 class="white-text">San Jose del Monte National Trade School</h5>
       </div>
     </div>
   </div>
@@ -17,7 +12,6 @@
         <div class="col s12 m12 l9 offset-l3">
           © 2018 San Jose del Monte National Trade School Web Portal
           <% if administrator_signed_in? %>
-            <!-- ++++++++++++++++++++++++++++++ -->
           <% else %>
             <%= link_to new_administrator_session_path , class:"grey-text text-lighten-4 right " do %>
               <i class="fa fa-lock" aria-hidden="true"></i> Administration</a>

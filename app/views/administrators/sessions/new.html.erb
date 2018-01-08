@@ -8,19 +8,19 @@
     <div class="row" style="margin-top: 50px">
       <div class="col s12 m8 l6 offset-l3 offset-m2">
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <div class="card white darken-1 hoverable">
+          <div class="card white darken-1">
             <div class="card-content black-text">
               <span class="card-title center" style="padding-bottom: 20px;"><h4>Login</h4></span>
                 <div class="input-field">
                   <i class="material-icons prefix">email</i>
                   <label for="email">Username</label>
-                  <%= f.text_field :username, autofocus: true , id:"email" %>
+                  <%= f.text_field :username, autofocus: true , id:"email" , required: true %>
                 </div>
 
                 <div class="input-field" style="padding-bottom: 10px">
                   <i class="material-icons prefix">lock</i>
                   <label for="password">Password</label>
-                  <%= f.password_field :password, autocomplete: "off" , id:"password" %>
+                  <%= f.password_field :password, autocomplete: "off" , id:"password" , required: true %>
                 </div>
 
                 <% if devise_mapping.rememberable? -%>
@@ -30,8 +30,11 @@
                   </div>
                 <% end  %>
             </div>
+              <div class="progress green lighten-2" id="progress">
+                <div class="indeterminate green darken-4"></div>
+              </div>
             <div class="card-action right-align">
-              <%= f.submit "Log in" , class:"btn blue" do %>
+              <%= f.submit "Log in" , class:"btn blue" , id:"btn-login" , data: { disable_with: "Loging in .." } do %>
                 <i class="material-icons prefix">create</i>
               <% end %>
             </div>
@@ -54,3 +57,18 @@
   color:red!important;
 }
 </style>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#progress').hide();
+    $('#btn-login').on('click' , function() {
+      var email = $('#email').val();
+      var password = $('#password').val();
+      if (email == "" || password == "") {
+
+      }else {
+        $('#progress').slideDown();
+      }
+    });
+  });
+</script>

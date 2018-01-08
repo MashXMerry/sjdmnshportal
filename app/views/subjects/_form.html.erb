@@ -30,8 +30,20 @@
       </div>  
     </div>
     <div class="card-action">
-      <%= form.submit class:"btn green waves-effect waves-blue" , data: { disable_with: "Updating subject .." } %>
+      <div class="progress" id="progress">
+        <div class="indeterminate"></div>
+      </div>
+      <%= form.submit class:"btn green waves-effect waves-blue" , data: { disable_with: "Updating subject .." } , id: "btn-update" %>
     </div>
   </div>
 
 <% end %>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#progress').hide();
+    $('#btn-update').on('click', function() {
+      $('#progress').slideDown();
+    });
+  });
+</script>

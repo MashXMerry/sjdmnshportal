@@ -79,6 +79,11 @@ class AdminsController < ApplicationController
   	
   end
 
+  def adminAcount
+    @admin = Administrator.find(params[:id])
+    @section = Section.where(:adviser_id => @admin.id)
+  end
+
   def profile
   	@admin = Administrator.where(id: current_administrator.id)
     @section = Section.where(:adviser_id => current_administrator.id)
@@ -86,7 +91,7 @@ class AdminsController < ApplicationController
 
   def registeradmin
     @administrators = Administrator.new
-    @admins = Administrator.all
+    @admins = Administrator.all.order('lastname ASC')
   end
 
   def addadministrator
@@ -140,34 +145,27 @@ class AdminsController < ApplicationController
     @adviser = Administrator.find(params[:id])
     @adviser.update(:available => 'not-available')
     @adviser.save
-    # respond_to do |format|
-    #   if @adviser.save
-    #     format.html { notice: 'Adviser succesfully assigned' }
-    #   end
-    # end
   end
 
-  def grade7
+  def setNotAvailable
+    @adviser = Administrator.find(params[:id])
+    @adviser.update(:available => 'available')
+    @adviser.save 
   end
 
-  def grade8
+  def resetSectionAdviser
+    @admin = Administrator.all.where(:role => "faculty")
+    @admin.update(:available => "available")
+    @section = Section.all
+    respond_to do |format|
+      if @section.update(:adviser => "" , :adviser_id => "")
+        format.html { redirect_to admin_profile_path , notice: "Section advisers reset succesfully" }
+      else
+        format.html { redirect_to admin_profile_path , notice: "Reset failed" }
+      end  
+    end
   end
 
-  def grade9
-  end
-
-  def grade10
-  end
-
-  def grade11 
-  end
-
-  def grade12
-  end
-
-  def subjectlist
-    
-  end
 
   private
 

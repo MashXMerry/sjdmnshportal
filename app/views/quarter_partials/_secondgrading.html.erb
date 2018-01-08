@@ -72,6 +72,9 @@
                               <%= f.number_field :grade  , id:"grade-int#{subject.id}",max: 100 , min: 50  ,required: 'required' %>
                             </div>
                             <div class="col s12 m9 l9" style="padding-top: 25px">
+                              <button class="btn green waves-effect waves-light">
+                                <i class="material-icons white-text">send</i>
+                              </button>
                               <b>: <%= subject.title %></b> 
                             </div>
                           </div>
@@ -99,25 +102,25 @@
 <% end %>
 
 <script type="text/javascript">
-  $(document).ready(function() {
-    <% if @subjects.blank? %>
-    /*some codes here*/
-    <% else %>
-      <% @subjects.each do |subject| %>
-        $("#grade-int<%= subject.id %>").on('keyup', function (e) {
-          var input<%= subject.id %> = $('#grade-int<%= subject.id %>').val();
-            if (e.keyCode == 13) {
-              if (input<%= subject.id %> == "" || input<%= subject.id %> > 100 || input<%= subject.id %> < 50) {
+  // $(document).ready(function() {
+  //   <% if @subjects.blank? %>
+  //   /*some codes here*/
+  //   <% else %>
+  //     <% @subjects.each do |subject| %>
+  //       $("#grade-int<%= subject.id %>").on('keyup', function (e) {
+  //         var input<%= subject.id %> = $('#grade-int<%= subject.id %>').val();
+  //           if (e.keyCode == 13) {
+  //             if (input<%= subject.id %> == "" || input<%= subject.id %> > 100 || input<%= subject.id %> < 50) {
 
-              }
-              else {
-                $('#subject-row-<%= subject.id %>').fadeOut(500);
-              }
-            }
-        });
-      <% end %>
-    <% end %>
-  });
+  //             }
+  //             else {
+  //               $('#subject-row-<%= subject.id %>').fadeOut(500);
+  //             }
+  //           }
+  //       });
+  //     <% end %>
+  //   <% end %>
+  // });
 </script>
 
 <style type="text/css">

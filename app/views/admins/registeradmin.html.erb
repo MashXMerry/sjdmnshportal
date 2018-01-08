@@ -13,8 +13,9 @@
     <% if current_administrator.role == "registrar" %>
       <div class="row" style="margin-top: 50px">
         <div class="col s12 m12 l9 right">
-          <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Register new account</a>
-          <hr>
+          <center>
+            <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Register new account</a>
+          </center>
         </div>
       </div>
 
@@ -75,22 +76,52 @@
 
     <div class="row">
       <div class="col s12 m12 l9 right">
-      <h4 class="green-text">Registered Accounts </h4><p class="green-text" style="font-size: 20px"><%= notice %></p><hr>
+      <p class="green-text" style="font-size: 20px"><%= notice %></p><hr>
       <% if @administrators.errors.any? %>
         <h3><%= pluralize(@administrators.errors.count, "Error") %></h3>
+        <ul>
+          <% @administrators.errors.message.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
       <% end %>
-        <ul class="collection">
+        <ul class="collection with-header">
+          <li class="collection-header">
+            <center>
+              <h4>Registered accounts <i class="material-icons">person</i></h4>
+            </center>
+          </li>
           <% @admins.each do |admin| %>
             <li class="collection-item avatar">
               <% if admin.image_file_name.present? %>
-                <%= image_tag admin.image.url(:medium) , class:"circle materialboxed" %>
+                <%= image_tag admin.image.url(:thumb) , class:"circle" %>
               <% else %>
-                <%= image_tag "avatar.jpg" , class:"circle materialboxed" %>
+                <%= image_tag "avatar.jpg" , class:"circle" %>
               <% end %>
-              <span class="title"><b><%= admin.firstname + " " + admin.lastname %> (<%= admin.role %>)</b></span>
-              <p><%= admin.email %> <br>
+              <span class="title">
+                <b>
+                  <% if admin.id == current_administrator.id %>
+                    <%= link_to admin.lastname + ", " + admin.firstname , admin_profile_path %> (<%= admin.role %>)
+                  <% else %>
+                    <%= link_to admin.lastname + ", " + admin.firstname , admin_account_path(admin.id) %> (<%= admin.role %>)
+                  <% end %>
+                </b> 
+              </span>
+              <br>
+              <p><b>Username :</b><%= admin.username %></p>
+                <% if admin.role == "faculty" %>
+                    <% if admin.available == "not-available" %>
+                      <b>Advisory availability: <span class="red-text"><%= admin.available %> for advisory class</span></b> 
+                    <% else %>
+                      <b>Advisory availability: <span class="green-text"><%= admin.available %> for advisory class</span></b>  
+                    <% end %>
+                <% else %>
+                  
+                <% end %>
+              <p><b>Email: </b> <%= admin.email %> <br>
                  Registered at <%= admin.created_at.to_s(:long) %>
-              </p>
+              </p>  
+
               <% if admin.id == current_administrator.id %>
               <% else %>
                 <%= link_to delete_account_path(admin) , class:"secondary-content tooltipped" ,
@@ -115,23 +146,19 @@
 </div>
 
 <style type="text/css">
-  
-  .modal-footer {
-    background-color: #640000 !important;
-  }
 
   .name {
     font-size: 30px;
   }
   .modal.open{
-      width: 100%;
-      max-height: 100%;
-      height: 100%;
-      top: 0 !important;
-    }
-    .modal-content {
-      height: calc(100% - 56px);
-    }
+    width: 100%;
+    max-height: 100%;
+    height: 100%;
+    top: 0 !important;
+  }
+  .modal-content {
+    height: calc(100% - 56px);
+  }
 </style>
   
 
