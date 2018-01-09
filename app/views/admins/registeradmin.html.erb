@@ -13,9 +13,8 @@
     <% if current_administrator.role == "registrar" %>
       <div class="row" style="margin-top: 50px">
         <div class="col s12 m12 l9 right">
-          <center>
-            <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Register new account</a>
-          </center>
+          <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Register new account</a>
+          <hr>
         </div>
       </div>
 
@@ -24,17 +23,17 @@
           <h4><center>Register new account</center></h4>
             <%= form_for :administrator , url:add_admin_path do |f| %>
               <div class="row">
-                <div class="col s12 l4 m12 input-field">
+                <div class="col s12 l4 m4 input-field">
                   <i class="material-icons prefix">face</i>
                   <label for="firtname">Firstname</label>
                   <%= f.text_field :firstname , required: 'required' %>
                 </div>
-                <div class="col s12 l4 m12 input-field">
+                <div class="col s12 l4 m4 input-field">
                   <i class="material-icons prefix">face</i>
                   <label for="firtname">Middlename</label>
                   <%= f.text_field :middlename, required: 'required' %>
                 </div>
-                <div class="col s12 l4 m12 input-field">
+                <div class="col s12 l4 m4 input-field">
                   <i class="material-icons prefix">face</i>
                   <label for="lastname">Lastname</label>
                   <%= f.text_field :lastname, required: 'required' %>
@@ -53,8 +52,7 @@
                   <div class="input-field">
                   <i class="material-icons prefix">lock</i>
                     <%= f.select :role , 
-                    options_for_select([["-" , "none"], "registrar" , "faculty"]) , id:"level" %>
-                  <label>Choose role</label>
+                    options_for_select([["--ROLE--"], "registrar" , "faculty"]) , id:"level" %>
                   </div>  
                 </div>
                 <div class="col s12 input-field">
@@ -62,17 +60,12 @@
                   <label for="password">Password</label>
                   <%= f.password_field :password , required: 'required'%>
                 </div>
-                <div class="col s12 input-field">
-                  <i class="material-icons prefix">lock</i>
-                  <label for="password">Confirm password</label>
-                  <%= f.password_field :password_confirmation ,autocomplete: 'off' , required: 'required'%>
-                </div>
                 <%= f.text_field :available , value: 'available' , type: 'hidden' %>
               </div>
             </div>
           <div class="modal-footer">
             <a class="modal-action modal-close waves-effect waves-red btn-flat red white-text">Cancel</a>
-            <%= f.submit "Register" , class:"btn green waves-effect waves-light" %> 
+            <%= f.submit "Register" , class:"btn green" %> 
           </div>
         <% end %>
       </div>
@@ -82,9 +75,8 @@
 
     <div class="row">
       <div class="col s12 m12 l9 right">
-      <center>
-        <p class="green-text" style="font-size: 20px"><%= notice %></p>
-      </center><hr>
+      <h4 class="green-text">Registered Accounts </h4>
+      <p class="green-text" style="font-size: 20px"><%= notice %></p><hr>
       <% if @administrators.errors.any? %>
         <h3><%= pluralize(@administrators.errors.count, "Error") %></h3>
         <ul>
@@ -93,28 +85,15 @@
           <% end %>
         </ul>
       <% end %>
-        <ul class="collection with-header">
-          <li class="collection-header">
-            <center>
-              <h4>Registered accounts <i class="material-icons">person</i></h4>
-            </center>
-          </li>
+        <ul class="collection">
           <% @admins.each do |admin| %>
             <li class="collection-item avatar">
               <% if admin.image_file_name.present? %>
-                <%= image_tag admin.image.url(:thumb) , class:"circle" %>
+                <%= image_tag admin.image.url(:medium) , class:"circle materialboxed" %>
               <% else %>
-                <%= image_tag "avatar.jpg" , class:"circle" %>
+                <%= image_tag "avatar.jpg" , class:"circle materialboxed" %>
               <% end %>
-              <span class="title">
-                <b>
-                  <% if admin.id == current_administrator.id %>
-                    <%= link_to admin.lastname + ", " + admin.firstname , admin_profile_path %> (<%= admin.role %>)
-                  <% else %>
-                    <%= link_to admin.lastname + ", " + admin.firstname , admin_account_path(admin.id) %> (<%= admin.role %>)
-                  <% end %>
-                </b> 
-              </span>
+              <span class="title"><b><%= admin.firstname + " " + admin.lastname %> (<%= admin.role %>)</b></span>
               <br>
               <p><b>Username :</b><%= admin.username %></p>
                 <% if admin.role == "faculty" %>
@@ -124,7 +103,7 @@
                       <b>Advisory availability: <span class="green-text"><%= admin.available %> for advisory class</span></b>  
                     <% end %>
                 <% else %>
-                  
+
                 <% end %>
               <p><b>Email: </b> <%= admin.email %> <br>
                  Registered at <%= admin.created_at.to_s(:long) %>
@@ -150,7 +129,7 @@
 </div>
 
 <div class="col s12 ">
-  <%= render 'partials/sidebar' %>
+    <%= render 'partials/sidebar' %>
 </div>
 
 <style type="text/css">
