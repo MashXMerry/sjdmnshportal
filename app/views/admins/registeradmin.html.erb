@@ -98,7 +98,11 @@
               <% else %>
                 <%= image_tag "avatar.jpg" , class:"circle materialboxed" %>
               <% end %>
-              <span class="title"><b><%= admin.firstname + " " + admin.lastname %> (<%= admin.role %>)</b></span>
+              <% if admin.middlename.blank? %>
+                <b><%= link_to admin.firstname + " " + admin.lastname , admin_account_path(admin.id) %> (<%= admin.role %>)</b>
+              <% else %>
+                <b><%= link_to admin.firstname + " " + admin.middlename+ " " + admin.lastname , admin_account_path(admin.id) %> (<%= admin.role %>)</b>
+              <% end %>
               <br>
               <p><b>Username :</b><%= admin.username %></p>
                 <% if admin.role == "faculty" %>

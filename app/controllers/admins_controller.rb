@@ -82,6 +82,11 @@ class AdminsController < ApplicationController
   def adminAcount
     @admin = Administrator.find(params[:id])
     @section = Section.where(:adviser_id => @admin.id)
+    @section.each do |section|
+      @studentSection = section.section
+    end
+    @studentsF = Student.all.where(:section => @studentSection , :gender => 'female').order('firstname ASC')
+    @studentsM = Student.all.where(:section => @studentSection , :gender => 'male').order('firstname ASC')
   end
 
   def profile
