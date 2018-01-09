@@ -23,29 +23,6 @@
                   <label>Section name</label>
                   <%= f.text_field :section ,id:'section' %>
                 </div>
-                <div class="input-field col s12 m10 l10">
-                  <i class="material-icons prefix">create</i>
-                  <%= f.text_field :adviser ,id:'adviser' , disabled:true , placeholder:"Section adviser" %>
-                  <%= f.text_field :adviser_id , id:'adviser_id' , type:'hidden' %>
-                </div>
-                <div class="col s12 m2 l2">
-                  <a class="waves-effect waves-light btn modal-trigger btn btn-large blue" href="#modal1">Adviser</a>
-                  <!-- Modal Structure -->
-                  <div id="modal1" class="modal">
-                    <div class="modal-content">
-                      <h4>Choose adviser</h4>
-                      <div class="collection">
-                        <% @teacher.each do |teacher| %>
-                          <a class="collection-item modal-close" id="btn-teacher<%= teacher.id %>">
-                            <%= teacher.firstname + " " + teacher.lastname %></a>
-                        <% end %>
-                      </div>
-                    </div>
-                    <div class="modal-footer">
-                      <a class="modal-action modal-close waves-yellow btn-flat red white-text">close</a>
-                    </div>
-                  </div>
-                </div>
                 <div class="input-field col s12">
                   <i class="material-icons prefix">create</i>
                   <%= f.number_field :yearlvl , max: 12 , min: 7 ,id:"year" , placeholder:'Grade level' %>
