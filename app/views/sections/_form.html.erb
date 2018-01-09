@@ -112,7 +112,7 @@
 
     $('#removeAdviser').on('click' , function() {
       $.ajax({
-        url:'http://localhost:3000/admin/section/set_adviser/not-available/' + adviserId ,
+        url:'https://sjdmntdwebportal.herokuapp.com/admin/section/set_adviser/not-available/' + adviserId ,
         type:'PATCH',
         data: { available: "available" }
       });  
@@ -124,7 +124,7 @@
       $('#removeAdviser').hide().slideUp(600);
       var adviserId = $('#adviser-id').val();
       $.ajax({
-        url:'http://localhost:3000/admin/section/set_adviser/' + adviserId ,
+        url:'https://sjdmntdwebportal.herokuapp.com/admin/section/set_adviser/' + adviserId ,
         type:'PATCH',
         data: { available: "not-available" }
       });
