@@ -1,0 +1,69 @@
+<div class="to-be-printed">
+	<center>
+		<%= image_tag "favicon.ico" , style:"width:10%" %>
+		<h5>San Jose del Monte National Trade School</h5>
+		<h5>Web Portal</h5>
+	</center>
+	<hr>
+	<center>
+		<h4><%= @student.lastname + ", " + @student.firstname %></h4>
+		<h5>Grade <%= @student.level %> - <%= @student.section %></h5>
+	</center>
+
+	<div class="table-grades">
+		<table class="centered bordered">
+			<thead>
+				<tr>
+					<th>Subject</th>
+					<th>Grade</th>
+					<th>Quarter</th>
+					<th>Recorded at</th>
+					<th>Updated at</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @grades.each do |grade| %>
+					<tr>
+						<td><%= grade.subject %></td>
+						<td><%= grade.grade %>.00</td>
+						<td><%= grade.quarter %>st Quarter</td>
+						<td><%= grade.created_at.to_s(:short) %></td>
+						<td><%= grade.updated_at.to_s(:short) %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>	
+	</div>	
+</div>
+
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		window.print();
+	});
+</script>
+
+<style type="text/css">
+	td {
+		border-left: .1px solid #c7c7c7;
+		border-right: .1px solid #c7c7c7;
+	}
+	.table-grades {
+		padding: 20px 20px;
+	}
+
+	 @media print {
+      .to-be-printed {
+        background-color: white;
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        margin: 0;
+        padding: 15px;
+        font-size: 14px;
+        line-height: 18px;
+      }
+    }
+
+</style>

@@ -24,17 +24,17 @@
           <h4><center>Register new account</center></h4>
             <%= form_for :administrator , url:add_admin_path do |f| %>
               <div class="row">
-                <div class="col s12 l4 m12 input-field">
+                <div class="col s12 l4 m4 input-field">
                   <i class="material-icons prefix">face</i>
                   <label for="firtname">Firstname</label>
                   <%= f.text_field :firstname , required: 'required' %>
                 </div>
-                <div class="col s12 l4 m12 input-field">
+                <div class="col s12 l4 m4 input-field">
                   <i class="material-icons prefix">face</i>
                   <label for="firtname">Middlename</label>
                   <%= f.text_field :middlename, required: 'required' %>
                 </div>
-                <div class="col s12 l4 m12 input-field">
+                <div class="col s12 l4 m4 input-field">
                   <i class="material-icons prefix">face</i>
                   <label for="lastname">Lastname</label>
                   <%= f.text_field :lastname, required: 'required' %>
@@ -53,8 +53,7 @@
                   <div class="input-field">
                   <i class="material-icons prefix">lock</i>
                     <%= f.select :role , 
-                    options_for_select([["-" , "none"], "registrar" , "faculty"]) , id:"level" %>
-                  <label>Choose role</label>
+                    options_for_select([["--ROLE--"], "registrar" , "faculty"]) , id:"level" %>
                   </div>  
                 </div>
                 <div class="col s12 input-field">
@@ -72,7 +71,7 @@
             </div>
           <div class="modal-footer">
             <a class="modal-action modal-close waves-effect waves-red btn-flat red white-text">Cancel</a>
-            <%= f.submit "Register" , class:"btn green waves-effect waves-light" %> 
+            <%= f.submit "Register" , class:"btn green" %> 
           </div>
         <% end %>
       </div>
@@ -82,9 +81,7 @@
 
     <div class="row">
       <div class="col s12 m12 l9 right">
-      <center>
-        <p class="green-text" style="font-size: 20px"><%= notice %></p>
-      </center><hr>
+      <p class="green-text" style="font-size: 20px"><%= notice %></p><hr>
       <% if @administrators.errors.any? %>
         <h3><%= pluralize(@administrators.errors.count, "Error") %></h3>
         <ul>
@@ -146,7 +143,7 @@
         </ul>
       </div>
     </div>
-  </div><!-- row -->
+	</div><!-- row -->
 </div>
 
 <div class="col s12 ">

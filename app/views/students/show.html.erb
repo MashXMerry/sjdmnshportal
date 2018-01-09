@@ -70,7 +70,7 @@
             </ul>
           </div>
           <div id="test1" class="col s12 tabs-ko">
-            <table class="responsive-table bordered centered">
+            <table class="responsive-table bordered centered to-be-printed">
               <thead>
                 <tr>
                     <th>*</th>
@@ -125,7 +125,17 @@
                         </button>
                       </div>
                     </div>
-                  <% end %>  
+                  <% end %> 
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <%= link_to print_first_grading_path(@student.id) , class:"btn green waves-effect waves-blue" do %>
+                        <i class="material-icons">print</i>
+                      <% end %>
+                    </td>
+                    <td></td>
+                  </tr> 
                 <% end %>
               </tbody>
             </table>
@@ -188,6 +198,16 @@
                       </div>
                     </div>
                   <% end %>   
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <%= link_to print_second_grading_path(@student.id) , class:"btn green waves-effect waves-blue" do %>
+                        <i class="material-icons">print</i>
+                      <% end %>
+                    </td>
+                    <td></td>
+                  </tr>
                 <% end %>
               </tbody>
             </table>
@@ -250,6 +270,16 @@
                       </div>
                     </div>
                   <% end %>   
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <%= link_to print_third_grading_path(@student.id) , class:"btn green waves-effect waves-blue" do %>
+                        <i class="material-icons">print</i>
+                      <% end %>
+                    </td>
+                    <td></td>
+                  </tr>
                 <% end %>
               </tbody>
             </table>
@@ -311,7 +341,17 @@
                         </button>
                       </div>
                     </div>
-                  <% end %>   
+                  <% end %> 
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <%= link_to print_fourth_grading_path(@student.id) , class:"btn green waves-effect waves-blue" do %>
+                        <i class="material-icons">print</i>
+                      <% end %>
+                    </td>
+                    <td></td>
+                  </tr>  
                 <% end %>
               </tbody>
             </table>

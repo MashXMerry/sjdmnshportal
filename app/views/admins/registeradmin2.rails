@@ -1,4 +1,5 @@
 <%= javascript_include_tag 'style' %>
+
 <div class="row" style="background-color: #e8e8e8">
   <div class="">
     <nav style="margin-bottom: 20px;background-color: #640000">
@@ -22,59 +23,53 @@
       <div id="modal1" class="modal modal-fixed-footer">
         <div class="modal-content">
           <h4><center>Register new account</center></h4>
-            <%= form_for :administrator , url:add_admin_path do |f| %>
               <div class="row">
-                <div class="col s12 l4 m12 input-field">
-                  <i class="material-icons prefix">face</i>
-                  <label for="firtname">Firstname</label>
-                  <%= f.text_field :firstname , required: 'required' %>
-                </div>
-                <div class="col s12 l4 m12 input-field">
-                  <i class="material-icons prefix">face</i>
-                  <label for="firtname">Middlename</label>
-                  <%= f.text_field :middlename, required: 'required' %>
-                </div>
-                <div class="col s12 l4 m12 input-field">
-                  <i class="material-icons prefix">face</i>
-                  <label for="lastname">Lastname</label>
-                  <%= f.text_field :lastname, required: 'required' %>
-                </div>
-                <div class="col s12 input-field">
+                <div class="input-field col s12 m8 l10 offset-l1 offset-m2">
                   <i class="material-icons prefix">create</i>
-                  <label for="username">Username</label>
-                  <%= f.text_field :username , required: 'required' %>
+                  <label for="#firstname">Firstname</label>
+                  <input type="text" id="firstname">
                 </div>
-                <div class="col s12 input-field">
-                  <i class="material-icons prefix">email</i>
-                  <label for="email">Email</label>
-                  <%= f.email_field :email, required: 'required' %>
+                <div class="input-field col s12 m8 l10 offset-l1 offset-m2">
+                  <i class="material-icons prefix">create</i>
+                  <label for="#middlename">Middlename</label>
+                  <input type="text" id="middlename">
                 </div>
-                <div class="col s12 ">
-                  <div class="input-field">
-                  <i class="material-icons prefix">lock</i>
-                    <%= f.select :role , 
-                    options_for_select([["-" , "none"], "registrar" , "faculty"]) , id:"level" %>
+                <div class="input-field col s12 m8 l10 offset-l1 offset-m2">
+                  <i class="material-icons prefix">create</i>
+                  <label for="#lastname">Lastname</label>
+                  <input type="text" id="lastname">
+                </div>
+                <div class="input-field col s12 m8 l10 offset-l1 offset-m2">
+                  <i class="material-icons prefix">create</i>
+                  <label for="#username">Username</label>
+                  <input type="text" id="username">
+                </div>
+                <div class="input-field col s12 m8 l10 offset-l1 offset-m2">
+                  <i class="material-icons prefix">person</i>
+                  <select class="icons" id="role">
+                    <option value="none" disabled selected> - </option>
+                    <option value="registrar" data-icon="/assets/avatar-fc15e2d91ad61563f4154daead92089a7d116758a4e7f879ec5d483eaa3fac03.jpg" class="circle">Registrar</option>
+                    <option value="faculty" data-icon="/assets/avatar-fc15e2d91ad61563f4154daead92089a7d116758a4e7f879ec5d483eaa3fac03.jpg" class="circle">Faculty</option>
+                  </select>
                   <label>Choose role</label>
-                  </div>  
                 </div>
-                <div class="col s12 input-field">
+                <input type="hidden" id="available" value="available">
+                <div class="input-field col s12 m8 l10 offset-l1 offset-m2">
                   <i class="material-icons prefix">lock</i>
-                  <label for="password">Password</label>
-                  <%= f.password_field :password , required: 'required'%>
+                  <label for="#pasword">Password</label>
+                  <input type="password" id="password">
                 </div>
-                <div class="col s12 input-field">
+                <div class="input-field col s12 m8 l10 offset-l1 offset-m2">
                   <i class="material-icons prefix">lock</i>
-                  <label for="password">Confirm password</label>
-                  <%= f.password_field :password_confirmation ,autocomplete: 'off' , required: 'required'%>
+                  <label for="#confirm-password">Confirm password</label>
+                  <input type="password" id="confirm-password">
                 </div>
-                <%= f.text_field :available , value: 'available' , type: 'hidden' %>
               </div>
             </div>
           <div class="modal-footer">
             <a class="modal-action modal-close waves-effect waves-red btn-flat red white-text">Cancel</a>
-            <%= f.submit "Register" , class:"btn green waves-effect waves-light" %> 
+            <button class="btn green waves-effect waves-light" id="btn-register">Register admin</button> 
           </div>
-        <% end %>
       </div>
     <% else %>
       <!-- some codes here -->
@@ -82,9 +77,7 @@
 
     <div class="row">
       <div class="col s12 m12 l9 right">
-      <center>
-        <p class="green-text" style="font-size: 20px"><%= notice %></p>
-      </center><hr>
+      <p class="green-text" style="font-size: 20px"><%= notice %></p><hr>
       <% if @administrators.errors.any? %>
         <h3><%= pluralize(@administrators.errors.count, "Error") %></h3>
         <ul>
@@ -146,7 +139,7 @@
         </ul>
       </div>
     </div>
-  </div><!-- row -->
+	</div><!-- row -->
 </div>
 
 <div class="col s12 ">
@@ -158,16 +151,60 @@
   .name {
     font-size: 30px;
   }
-  .modal.open{
+
+  @media (max-width: 575px) { 
+    .modal.open{
     width: 100%;
     max-height: 100%;
     height: 100%;
     top: 0 !important;
   }
-  .modal-content {
-    height: calc(100% - 56px);
+    .modal-content {
+      height: calc(100% - 56px);
+    }
+  }
+
+  @media (min-width: 576px) and (max-width: 767px) {  
+    .modal.open{
+      width: 100%;
+      max-height: 100%;
+      height: 100%;
+      top: 0 !important;
+    }
+    .modal-content {
+      height: calc(100% - 56px);
+    }
   }
 </style>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#btn-register').on('click' , function() {
+      var firstname = $('#firstname').val();
+      var middlename = $('#middlename').val();
+      var lastname = $('#lastname').val();
+      var username = $('#username').val();
+      var role = $('#role').val();
+      var available = $('#available').val();
+      var password = $('#password').val();
+      var confirmPassword = $('#confirm-password').val();
+      // alert(firstname + middlename + lastname + role + available + password + confirmPassword);
+      $.ajax({
+        url:'http://localhost:3000/admin/add_admin',
+        type: 'post'
+        // data: {
+        //   firstname: firstname,
+        //   lastname: lastname,
+        //   password: password,
+        //   middlename: middlename,
+        //   role: role,
+        //   username: username,
+        //   available: available
+        // }
+      });
+    });
+  });
+</script>
   
 
 

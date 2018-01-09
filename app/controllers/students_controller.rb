@@ -26,6 +26,26 @@ class StudentsController < ApplicationController
     @grade4th = Grading.where(:quarter => 4 , :student_id => @student.id).order('subject ASC')
   end
 
+  def gradePrint1st
+    @student = Student.find(params[:id])
+    @grades = Grading.where(:student_id => @student.id , :quarter => 1)
+  end
+
+  def gradePrint2nd
+    @student = Student.find(params[:id])
+    @grades = Grading.where(:student_id => @student.id , :quarter => 2)
+  end
+
+  def gradePrint3rd
+    @student = Student.find(params[:id])
+    @grades = Grading.where(:student_id => @student.id , :quarter => 3)
+  end
+
+  def gradePrint4th
+    @student = Student.find(params[:id])
+    @grades = Grading.where(:student_id => @student.id , :quarter => 4)
+  end
+
   # GET /students/new
   def new
     @student = Student.new
