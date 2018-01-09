@@ -58,7 +58,12 @@
                 <div class="col s12 input-field">
                   <i class="material-icons prefix">lock</i>
                   <label for="password">Password</label>
-                  <%= f.password_field :password , required: 'required'%>
+                  <%= f.password_field :password , required: 'required' , autofocus: true %>
+                </div>
+                <div class="col s12 input-field">
+                  <i class="material-icons prefix">lock</i>
+                  <label for="password">Confirm password</label>
+                  <%= f.password_field :password_confirmation , required: 'required' , autofocus: true %>
                 </div>
                 <%= f.text_field :available , value: 'available' , type: 'hidden' %>
               </div>
