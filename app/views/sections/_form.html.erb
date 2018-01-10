@@ -37,7 +37,13 @@
         <input type="hidden" name="adviser-id" id="adviser-id">
 
         <div class="input-field col s12 m2 l2">
-          <a class="waves-effect waves-light btn modal-trigger btn-large blue" href="#modal1">Adviser</a>
+          <% if section.adviser_id.blank? %>
+            <a class="waves-effect waves-light btn modal-trigger btn-large blue" href="#modal1">Adviser</a>
+          <% else %>
+            <button class="btn red waves-effect waves-yellow btn-large" id="removeAdviser" type="submit">
+              Remove adviser
+            </button>
+          <% end %>
           <!-- Modal Structure -->
           <div id="modal1" class="modal modal-fixed-footer">
             <div class="modal-content">
@@ -67,8 +73,12 @@
     <div class="card-action" id="card-edit-buttons">
       <button class="btn green waves-effect waves-blue" id="btn-update" type="submit">Save section</button>
      <!--  <%= form.submit class:"btn btn-flat waves-effect waves-blue green white-text right" , data: { disable_with: "Updating section ..." } , id:"btn-update-1" %> -->
-      <button class="btn red waves-effect waves-yellow" id="removeAdviser" type="submit">
-      Remove adivser</button>
+      <% if section.adviser_id.blank? %>
+        <button class="btn red waves-effect waves-yellow" id="removeAdviser" type="submit">
+        Remove adivser</button>
+      <% else %>
+      
+      <% end %>
       <div class="progress" id="loader">
         <div class="indeterminate"></div>
       </div>
