@@ -39,6 +39,20 @@ class GradingsController < ApplicationController
     end
   end
 
+  def postGrade
+    @grading = Grading.create(
+      :grade => params[:grade],
+      :subject => params[:subject],
+      :yearlvl => params[:yearlvl],
+      :student_id => params[:student_id],
+      :quarter => params[:quarter],
+      :adviser_id => params[:adviser_id],
+      :subject_id => params[:subject_id]
+      )
+    @grading.save
+    redirect_to mygrades_path
+  end
+
   # PATCH/PUT /gradings/1
   # PATCH/PUT /gradings/1.json
   def update

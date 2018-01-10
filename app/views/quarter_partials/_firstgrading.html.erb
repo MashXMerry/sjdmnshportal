@@ -69,25 +69,23 @@
                     <li class="collection-item">
                       <div>
                         <%= form_for(@grading , remote: true ) do |f| %>
-                          <div class="row" id="subject-row-<%= subject.id %>">
+                          <div class="row" id="subject-1st-row-<%= subject.id %>-<%= student.id %>">
                             <div class="col s12 m3 l3 valign-wrapper input-field">
                               <i class="tiny material-icons prefix">create</i>
                               <label>Insert grade</label>
-                              <%= f.number_field :grade  , id:"grade-int#{subject.id}" ,max: 100 , min: 50 , required:"required" %>
+                              <%= f.number_field :grade  , id:"grade-int-#{subject.id}-#{student.id}-1st" ,
+                              max: 100 , min: 50 , required:"required" %>
                             </div>
                             <div class="col s12 m9 l9" style="padding-top: 25px">
-                              <button class="btn green waves-effect waves-light">
-                                <i class="material-icons white-text">send</i>
-                              </button>
                               <b>: <%= subject.title %></b> 
                             </div>  
                           </div>
-                          <%= f.hidden_field :subject , value: subject.title %>
-                          <%= f.hidden_field :yearlvl , value: student.level %>
-                          <%= f.hidden_field :student_id , value: student.id %>
-                          <%= f.hidden_field :subject_id , value: subject.id %>
-                          <%= f.hidden_field :quarter , value: 1 %>
-                          <%= f.hidden_field :adviser_id , value: current_administrator.id %>
+                          <%= f.hidden_field :subject , value: subject.title , id:'subject' %>
+                          <%= f.hidden_field :yearlvl , value: student.level ,id:'yearlvl' %>
+                          <%= f.hidden_field :student_id , value: student.id, id:'student_id' %>
+                          <%= f.hidden_field :subject_id , value: subject.id , id: 'subject_id' %>
+                          <%= f.hidden_field :quarter , value: 1 , id:'quarter' %>
+                          <%= f.hidden_field :adviser_id , value: current_administrator.id , id:'admin_id' %>
                         <% end %>
                       </div>
                     </li>
@@ -95,6 +93,7 @@
                 </ul>
               </div>
               <div class="modal-footer">
+                <button class="btn green waves-effect waves-light" id="save-grade">Save</button>
                 <a class="modal-action modal-close waves-effect waves-yellow btn-flat red white-text" id="btn-close">close</a>
               </div>
             </div>
@@ -105,27 +104,26 @@
   <% end %> <!-- @sections.each -->
 <% end %>
 
-
 <script type="text/javascript">
-  // $(document).ready(function() {
-  //   <% if @subjects.blank? %>
-  //   /*some codes here*/
-  //   <% else %>
-  //     <% @subjects.each do |subject| %>
-  //       $("#grade-int<%= subject.id %>").on('keyup', function (e) {
-  //         var input<%= subject.id %> = $('#grade-int<%= subject.id %>').val();
-  //           if (e.keyCode == 13) {
-  //             if (input<%= subject.id %> == "" || input<%= subject.id %> > 100 || input<%= subject.id %> < 50) {
+  $(document).ready(function() {
+    <% @students.each do |student| %>
+      <% @subjects.each do |subject| %>
+        $('#grade-int-<%= subject.id %>-<%= student.id %>-1st').on('keypress', function(e){
+          if (e.keyCode == 13) {
+            if ($('#grade-int-<%= subject.id %>-<%= student.id %>-1st').val() > 100) {
+              Materialize.toast("Grade must me less than or equal 100" ,2000 , 'rounded');
+            }else if($('#grade-int-<%= subject.id %>-<%= student.id %>-1st').val() < 50) {
+              Materialize.toast("Grade must me greater than or eqal 50" ,2000 , 'rounded');
+            }else if($('#grade-int-<%= subject.id %>-<%= student.id %>-1st').val() == "") {
 
-  //             }
-  //             else {
-  //               $('#subject-row-<%= subject.id %>').fadeOut(500);
-  //             }
-  //           }
-  //       });
-  //     <% end %>
-  //   <% end %>
-  // });
+            }else{
+              $('#grade-int-<%= subject.id %>-<%= student.id %>-1st').prop("disabled" ,true);
+            }
+          }
+        });
+      <% end %>
+    <% end %>
+  });
 </script>
 
 <style type="text/css">

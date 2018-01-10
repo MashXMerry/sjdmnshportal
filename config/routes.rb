@@ -63,8 +63,8 @@ Rails.application.routes.draw do
     patch '/section/set_adviser/:id' , to: 'admins#setAvailable' , as: 'set_available_adivser'
     patch '/section/set_adviser/not-available/:id' , to: 'admins#setNotAvailable' , as: 'set-not-available_adivser'
     patch '/section/reset' , to: 'admins#resetSectionAdviser' , as: 'reset_section'
-
-
+    post '/admin/post-grades' , to: 'gradings#postGrade' , as: 'post-grade'
+    
     get 'print/1st-grading/:id' , to: 'students#gradePrint1st' , as: 'print_first_grading'
     get 'print/2nd-grading/:id' , to: 'students#gradePrint2nd' , as: 'print_second_grading'
     get 'print/3rd-grading/:id' , to: 'students#gradePrint3rd' , as: 'print_third_grading'

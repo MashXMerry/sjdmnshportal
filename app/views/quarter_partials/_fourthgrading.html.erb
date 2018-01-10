@@ -69,10 +69,7 @@
                             <div class="col s12 m3 l3 valign-wrapper input-field">
                               <i class="tiny material-icons prefix">create</i>
                               <label>Insert grade</label>
-                              <%= f.number_field :grade  , id:"grade-int#{subject.id}",max: 100 , min: 50 ,required:"required" %>
-                              <button class="btn-add-grade btn green waves-effect waves-blue" id="btn-add-<%= subject.id %>">
-                                <i class="material-icons">send</i>
-                              </button>
+                              <%= f.number_field :grade  , id:"grade-int-#{subject.id}-#{student.id}-4th",max: 100 , min: 50 ,required:"required" %>
                             </div>
                             <div class="col s12 m9 l9" style="padding-top: 25px">
                               <b>: <%= subject.title %></b> 
@@ -102,25 +99,25 @@
 <% end %>
 
 <script type="text/javascript">
-  // $(document).ready(function() {
-  //   <% if @subjects.blank? %>
-  //   /*some codes here*/
-  //   <% else %>
-  //     <% @subjects.each do |subject| %>
-  //       $("#grade-int<%= subject.id %>").on('keyup', function (e) {
-  //         var input<%= subject.id %> = $('#grade-int<%= subject.id %>').val();
-  //           if (e.keyCode == 13) {
-  //             if (input<%= subject.id %> == "" || input<%= subject.id %> > 100 || input<%= subject.id %> < 50) {
+  $(document).ready(function() {
+    <% @students.each do |student| %>
+      <% @subjects.each do |subject| %>
+        $('#grade-int-<%= subject.id %>-<%= student.id %>-4th').on('keypress', function(e){
+          if (e.keyCode == 13) {
+            if ($('#grade-int-<%= subject.id %>-<%= student.id %>-4th').val() > 100) {
+              Materialize.toast("Grade must me less than or equal 100" ,2000 , 'rounded');
+            }else if($('#grade-int-<%= subject.id %>-<%= student.id %>-4th').val() < 50) {
+              Materialize.toast("Grade must me greater than or eqal 50" ,2000 , 'rounded');
+            }else if($('#grade-int-<%= subject.id %>-<%= student.id %>-4th').val() == "") {
 
-  //             }
-  //             else {
-  //               $('#subject-row-<%= subject.id %>').fadeOut(500);
-  //             }
-  //           }
-  //       });
-  //     <% end %>
-  //   <% end %>
-  // });
+            }else{
+              $('#grade-int-<%= subject.id %>-<%= student.id %>-4th').prop("disabled" ,true);
+            }
+          }
+        });
+      <% end %>
+    <% end %>
+  });
 </script>
 
 <style type="text/css">
