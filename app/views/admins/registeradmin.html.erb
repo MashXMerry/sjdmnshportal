@@ -13,7 +13,9 @@
     <% if current_administrator.role == "registrar" %>
       <div class="row" style="margin-top: 50px">
         <div class="col s12 m12 l9 right">
-          <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Register new account</a>
+          <center>
+            <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Register new account</a>
+          </center>
           <hr>
         </div>
       </div>
@@ -26,7 +28,7 @@
                 <div class="col s12 l4 m4 input-field">
                   <i class="material-icons prefix">face</i>
                   <label for="firtname">Firstname</label>
-                  <%= f.text_field :firstname , required: 'required' %>
+                  <%= f.text_field :firstname , required: 'required' , autofocus: true %>
                 </div>
                 <div class="col s12 l4 m4 input-field">
                   <i class="material-icons prefix">face</i>
@@ -46,24 +48,24 @@
                 <div class="col s12 input-field">
                   <i class="material-icons prefix">email</i>
                   <label for="email">Email</label>
-                  <%= f.email_field :email, required: 'required' %>
+                  <%= f.email_field :email %>
                 </div>
                 <div class="col s12 ">
                   <div class="input-field">
                   <i class="material-icons prefix">lock</i>
                     <%= f.select :role , 
-                    options_for_select([["--ROLE--"], "registrar" , "faculty"]) , id:"level" %>
+                    options_for_select([["-" , 'none'], "registrar" , "faculty"]) , id:"level" %>
                   </div>  
                 </div>
                 <div class="col s12 input-field">
                   <i class="material-icons prefix">lock</i>
                   <label for="password">Password</label>
-                  <%= f.password_field :password , required: 'required' , autofocus: true %>
+                  <%= f.password_field :password , required: 'required' %>
                 </div>
                 <div class="col s12 input-field">
                   <i class="material-icons prefix">lock</i>
                   <label for="password">Confirm password</label>
-                  <%= f.password_field :password_confirmation , required: 'required' , autofocus: true %>
+                  <%= f.password_field :password_confirmation , required: 'required' %>
                 </div>
                 <%= f.text_field :available , value: 'available' , type: 'hidden' %>
               </div>
@@ -80,7 +82,6 @@
 
     <div class="row">
       <div class="col s12 m12 l9 right">
-      <h4 class="green-text">Registered Accounts </h4>
       <p class="green-text" style="font-size: 20px"><%= notice %></p><hr>
       <% if @administrators.errors.any? %>
         <h3><%= pluralize(@administrators.errors.count, "Error") %></h3>
@@ -90,7 +91,10 @@
           <% end %>
         </ul>
       <% end %>
-        <ul class="collection">
+        <ul class="collection with-header">
+          <li class="collection-header">
+            <center><h4>Registered accounts</h4></center>
+          </li>
           <% @admins.each do |admin| %>
             <li class="collection-item avatar">
               <% if admin.image_file_name.present? %>

@@ -83,8 +83,8 @@ class AdminsController < ApplicationController
     @admin = Administrator.find(params[:id])
     @section = Section.where(:adviser_id => @admin.id)
     @section.each do |section| 
-      @studentsF = Student.all.where(:section => section.section , :gender => 'female').order('firstname ASC')
-      @studentsM = Student.all.where(:section => section.section , :gender => 'male').order('firstname ASC')
+      @studentsF = Student.all.where(:section => section.section , :gender => 'female', :status => 'enrolled').order('firstname ASC')
+      @studentsM = Student.all.where(:section => section.section , :gender => 'male', :status => 'enrolled').order('firstname ASC')
     end
   end
 

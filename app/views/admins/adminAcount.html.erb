@@ -37,41 +37,6 @@
         </div>
       </div>
 
-      <div>
-        <% if @section.empty? %>
-          <center><h3 class="red-text">No section handle</h3></center>
-        <% else %>
-          <% @section.each do |section| %>
-            <div class="card-panel">
-              <ul class="collection">
-                <div class="row">
-                  <div class="col s12 m6 l6">
-                    <h4 class="center">Male</h4>
-                    <% @studentsM.each do |student| %>
-                      <li class="collection-item avatar">
-                        <%= image_tag "avatar.jpg" , class: 'circle' %>
-                        <span class="title"><%= link_to student.firstname + " " + student.lastname , student_path(student.id)  %></span>
-                        <p><b>#<%= student.lrn %> | <%= student.status %> | <%= student.section %> | <%= student.gender %></b></p>
-                      </li>
-                    <% end %>  
-                  </div>
-                  <div class="col s12 m6 l6">
-                    <h4 class="center">Female</h4>
-                    <% @studentsF.each do |student| %>
-                      <li class="collection-item avatar">
-                        <%= image_tag "avatar.jpg" , class: 'circle' %>
-                        <span class="title"><%= link_to student.firstname + " " + student.lastname , student_path(student.id)  %></span>
-                        <p><b>#<%= student.lrn %> | <%= student.status %> | <%= student.section %> | <%= student.gender %></b></p>
-                      </li>
-                    <% end %>
-                  </div>
-                </div>
-              </ul>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
-
     </div>
 
   </div>

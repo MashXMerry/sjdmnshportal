@@ -164,16 +164,30 @@
               </div>
               <div class="col s12 m8 l8">
                 <% if admin.middlename.blank? %>
-                  <p class="fullname"><%= admin.firstname + " " + admin.lastname %></p>
+                  <p class="fullname"><%= admin.firstname + " " + admin.lastname %>
+                    <%= link_to edit_administrator_registration_path , 
+                      class: 'tooltipped green-text' ,
+                      'data-delay' => '50' ,
+                      'data-tooltip' => 'Edit account' , 
+                      'data-position' => 'top' do %>
+                      <i class="material-icons">create</i>
+                    <% end %>
+                  </p>
                 <% else %>
-                  <p class="fullname"><%= admin.firstname + " " + admin.middlename + " " + admin.lastname %></p>
+                  <p class="fullname"><%= admin.firstname + " " + admin.middlename + " " + admin.lastname %> 
+                    <%= link_to edit_administrator_registration_path , 
+                      class: 'tooltipped green-text' ,
+                      'data-delay' => '50' ,
+                      'data-tooltip' => 'Edit account' , 
+                      'data-position' => 'top' do %>
+                      <i class="material-icons">create</i>
+                    <% end %>
                 <% end %>
                 <ul>
                   <li><b>Username: </b><%= admin.username %></li>
                   <li><b>Email: </b><%= admin.email %></li>
                   <li><b>Registered as: </b><%= admin.role %></li>
                   <li><b>Advisory availability: </b><%= admin.available %> for advisory class</li>
-                  <li><b><%= link_to "Account settings" , edit_administrator_registration_path %></b></li>
                   <li>
                     <% @section.each do |section| %>
                       <b>Senction handle: </b>Grade <%= section.yearlvl %> - <%= section.section %>
