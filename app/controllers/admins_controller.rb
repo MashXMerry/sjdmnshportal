@@ -75,6 +75,18 @@ class AdminsController < ApplicationController
     end
   end
 
+  def removeProfile
+    @admin = current_administrator
+    @admin.update(:image_file_name => "")
+    respond_to do |format|
+      if @admin.save
+        format.html { redirect_to admin_profile_path , notice: "Profile image removed" }
+      else
+        format.html { respond_to admin_profile_path , notice: "Failed to remove photo" }
+      end
+    end
+  end
+
   def grades
   	
   end

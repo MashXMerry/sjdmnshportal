@@ -1,13 +1,13 @@
 <div class="to-be-printed">
 	<center>
 		<%= image_tag "favicon.ico" , style:"width:10%" %>
-		<h5>San Jose del Monte National Trade School</h5>
-		<h5>Web Portal</h5>
+		<h6>San Jose del Monte National Trade School</h6>
+		<h6>Web Portal</h6>
 	</center>
-	<hr>
+	<br>
 	<center>
-		<h4><%= @student.lastname + ", " + @student.firstname %></h4>
-		<h5>Grade <%= @student.level %> - <%= @student.section %></h5>
+		<h5><i><%= @student.firstname %> <%= @student.middlename %> <%= @student.lastname %></i><br></h5>
+		<h6>2nd Grading | #<%= @student.lrn %></h6>	
 	</center>
 
 	<div class="table-grades">
@@ -16,24 +16,21 @@
 				<tr>
 					<th>Subject</th>
 					<th>Grade</th>
-					<th>Quarter</th>
-					<th>Recorded at</th>
-					<th>Updated at</th>
 				</tr>
 			</thead>
 			<tbody>
 				<% @grades.each do |grade| %>
 					<tr>
 						<td><%= grade.subject %></td>
-						<td><%= grade.grade %>.00</td>
-						<td><%= grade.quarter %>st Quarter</td>
-						<td><%= grade.created_at.to_s(:short) %></td>
-						<td><%= grade.updated_at.to_s(:short) %></td>
+						<td class="green-text"><%= grade.grade %>.00</td>
 					</tr>
 				<% end %>
 			</tbody>
 		</table>	
-	</div>	
+	</div>
+	<center>
+		<p>Recorded by: <%= current_administrator.firstname + " " + current_administrator.lastname %></p>
+	</center>	
 </div>
 
 
@@ -51,19 +48,5 @@
 	.table-grades {
 		padding: 20px 20px;
 	}
-
-	 @media print {
-      .to-be-printed {
-        background-color: white;
-        height: 100%;
-        width: 100%;
-        position: fixed;
-        top: 0;
-        margin: 0;
-        padding: 15px;
-        font-size: 14px;
-        line-height: 18px;
-      }
-    }
 
 </style>

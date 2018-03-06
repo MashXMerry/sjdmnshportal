@@ -19,7 +19,32 @@
             <div class="row">
               <div class="col s12 m2 l2">
                 <% if admin.image_file_name.present? %>
-                  <%= image_tag admin.image.url , class:"circle materialboxed" , style:"width:100%;height:100%" %>
+                  <%= image_tag admin.image.url , class:"circle materialboxed" , style:"width:100%;height:100%" %><hr>
+                  <center><a href="#removePhoto" class="modal-trigger">Remove photo</a></center>
+
+                  <div id="removePhoto" class="modal">
+
+                    <div class="modal-content" id="modal-change">
+                      <center>
+                        <h4>Are you sure?</h4>
+                        <%= link_to "YES" , removeProfileImage_path , method: :patch , class:"btn waves-effect waves-light green" , id:"removePhotoButton" %>
+                        <button class="btn red waves-effect waves-light modal-close">NO</button>
+                      </center>
+                    </div>
+                    <div class="progress" id="removePhotoLoader">
+                      <div class="indeterminate"></div>
+                    </div>
+                  </div>
+
+                  <script>
+                    $(document).ready(function() {
+                      $('#removePhotoLoader').hide();
+                      $('#removePhotoButton').on('click' , function() {
+                        $('#removePhotoLoader').slideDown(500);
+                      });
+                    });
+                  </script>
+
                 <% else %>
                   <%= image_tag "avatar.jpg" , class:"circle materialboxed" , style:"width:100%" %>
                 <% end %>

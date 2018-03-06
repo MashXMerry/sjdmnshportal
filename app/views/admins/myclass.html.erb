@@ -14,12 +14,38 @@
       <div class="col s12 m12 l9 right">
       	<div style="margin-top: 30px">
           <% if @sections.blank? %>
-            <h3 class="center">No section assigned yet</h3>
+            <h3>No class assigned</h3>
+            <div class="tabs-ko">
+              <table class="highlight centered bordered responsive-table">
+                <thead>
+                  <tr>
+                    <th>LRN</th>
+                    <th>Lastname</th>
+                    <th>Firstname</th>
+                    <th>Middlename</th>
+                    <th>Section</th>
+                    <th>Year Level</th>
+                    <th>Contact</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>No class assigned</td>
+                    <td>No class assigned</td>
+                    <td>No class assigned</td>
+                    <td>No class assigned</td>
+                    <td>No class assigned</td>
+                    <td>No class assigned</td>
+                    <td>No class assigned</td>
+                  </tr>
+                </tbody>
+              </table>  
+            </div>
           <% else %>
             <% @sections.each do |section| %>
               <h3><%= section.section %> - Grade <%= section.yearlvl %></h3><hr> 
               <div class="tabs-ko">
-                <table class="highlight centered bordered">
+                <table class="highlight centered bordered responsive-table">
                   <thead>
                     <tr>
                       <th>LRN</th>
@@ -83,6 +109,10 @@
     border: 1px solid gray;
     margin-top: 10px;
     border-radius: 10px 10px 0px 0px;
+  }
+
+  td {
+    background-color: white;
   }
 
   .title {

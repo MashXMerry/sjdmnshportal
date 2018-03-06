@@ -60,6 +60,7 @@ Rails.application.routes.draw do
     patch '/un_enroll/:id' , to: 'students#unEnroll' , as: 'unenroll'
     patch '/drop/:id' , to: 'students#drop' , as:'drop'
     delete '/delete_account/:id' , to: 'admins#delete_account' , as: 'delete_account'
+    patch '/admin/remove_profile_image' , to: 'admins#removeProfile' , as: 'removeProfileImage'
     patch '/section/set_adviser/:id' , to: 'admins#setAvailable' , as: 'set_available_adivser'
     patch '/section/set_adviser/not-available/:id' , to: 'admins#setNotAvailable' , as: 'set-not-available_adivser'
     patch '/section/reset' , to: 'admins#resetSectionAdviser' , as: 'reset_section'

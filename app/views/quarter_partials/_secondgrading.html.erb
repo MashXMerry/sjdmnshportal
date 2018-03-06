@@ -101,21 +101,27 @@
 
 <script type="text/javascript">
   $(document).ready(function() {
-    <% @students.each do |student| %>
-      <% @subjects.each do |subject| %>
-        $('#grade-int-<%= subject.id %>-<%= student.id %>-2nd').on('keypress', function(e){
-          if (e.keyCode == 13) {
-            if ($('#grade-int-<%= subject.id %>-<%= student.id %>-2nd').val() > 100) {
-              Materialize.toast("Grade must me less than or equal 100" ,2000 , 'rounded');
-            }else if($('#grade-int-<%= subject.id %>-<%= student.id %>-2nd').val() < 50) {
-              Materialize.toast("Grade must me greater than or eqal 50" ,2000 , 'rounded');
-            }else if($('#grade-int-<%= subject.id %>-<%= student.id %>-2nd').val() == "") {
+    <% if @students.blank? %>
+      /*some codes here*/
+    <% else %>
+      <% @students.each do |student| %>
+        <% @subjects.each do |subject| %>
+          $('#grade-int-<%= subject.id %>-<%= student.id %>-2nd').on('keypress', function(e){
+            if (e.keyCode == 13) {
+              if ($('#grade-int-<%= subject.id %>-<%= student.id %>-2nd').val() > 100) {
+                Materialize.toast("Grade must me less than or equal 100" ,2000 , 'rounded');
+                $('#grade-int-<%= subject.id %>-<%= student.id %>-2nd').val("");
+              }else if($('#grade-int-<%= subject.id %>-<%= student.id %>-2nd').val() < 50) {
+                Materialize.toast("Grade must me greater than or eqal 50" ,2000 , 'rounded');
+                $('#grade-int-<%= subject.id %>-<%= student.id %>-2nd').val("");
+              }else if($('#grade-int-<%= subject.id %>-<%= student.id %>-2nd').val() == "") {
 
-            }else{
-              $('#grade-int-<%= subject.id %>-<%= student.id %>-2nd').prop("disabled" ,true);
+              }else{
+                $('#grade-int-<%= subject.id %>-<%= student.id %>-2nd').prop("disabled" ,true);
+              }
             }
-          }
-        });
+          });
+        <% end %>
       <% end %>
     <% end %>
   });

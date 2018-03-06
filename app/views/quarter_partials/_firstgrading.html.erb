@@ -68,7 +68,7 @@
                   <% @subjects.each do |subject| %>
                     <li class="collection-item">
                       <div>
-                        <%= form_for(@grading , remote: true ) do |f| %>
+                        <%= form_for(@grading , remote: true) do |f| %>
                           <div class="row" id="subject-1st-row-<%= subject.id %>-<%= student.id %>">
                             <div class="col s12 m3 l3 valign-wrapper input-field">
                               <i class="tiny material-icons prefix">create</i>
@@ -105,23 +105,38 @@
 
 <script type="text/javascript">
   $(document).ready(function() {
-    <% @students.each do |student| %>
-      <% @subjects.each do |subject| %>
-        $('#grade-int-<%= subject.id %>-<%= student.id %>-1st').on('keypress', function(e){
-          if (e.keyCode == 13) {
-            if ($('#grade-int-<%= subject.id %>-<%= student.id %>-1st').val() > 100) {
-              Materialize.toast("Grade must me less than or equal 100" ,2000 , 'rounded');
-            }else if($('#grade-int-<%= subject.id %>-<%= student.id %>-1st').val() < 50) {
-              Materialize.toast("Grade must me greater than or eqal 50" ,2000 , 'rounded');
-            }else if($('#grade-int-<%= subject.id %>-<%= student.id %>-1st').val() == "") {
+    <% if @students.blank? %>
+      /*some codes here*/
+    <% else %>
+      <% @students.each do |student| %>
+        <% @subjects.each do |subject| %>
+          $('#grade-int-<%= subject.id %>-<%= student.id %>-1st').on('keypress', function(e){
+            if (e.keyCode == 13) {
+              if ($('#grade-int-<%= subject.id %>-<%= student.id %>-1st').val() > 100) {
+                Materialize.toast("Grade must me less than or equal 100" ,1000 , 'rounded');
+                $('#grade-int-<%= subject.id %>-<%= student.id %>-1st').val("");
+              }else if($('#grade-int-<%= subject.id %>-<%= student.id %>-1st').val() < 50) {
+                Materialize.toast("Grade must me greater than or eqal 50" ,1000 , 'rounded');
+                $('#grade-int-<%= subject.id %>-<%= student.id %>-1st').val("");
+              }else if($('#grade-int-<%= subject.id %>-<%= student.id %>-1st').val() == null) {
 
-            }else{
-              $('#grade-int-<%= subject.id %>-<%= student.id %>-1st').prop("disabled" ,true);
+              }else{
+                $('#grade-int-<%= subject.id %>-<%= student.id %>-1st').prop("disabled" ,true);
+              }
             }
-          }
+          });
+        <% end %>
+      <% end %>
+
+      <% @students.each do |student| %>
+        $('#btn-submit-<%= student.id %>-1st').on('click' , function() {
+          <% @subjects.each do |subject| %>
+            $('#grade-int-<%= subject.id %>-<%= student.id %>-1st').prop("disabled" ,true);
+          <% end %>
         });
       <% end %>
     <% end %>
+    
   });
 </script>
 

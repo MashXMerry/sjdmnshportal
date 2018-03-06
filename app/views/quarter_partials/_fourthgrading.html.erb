@@ -100,22 +100,28 @@
 
 <script type="text/javascript">
   $(document).ready(function() {
-    <% @students.each do |student| %>
-      <% @subjects.each do |subject| %>
-        $('#grade-int-<%= subject.id %>-<%= student.id %>-4th').on('keypress', function(e){
-          if (e.keyCode == 13) {
-            if ($('#grade-int-<%= subject.id %>-<%= student.id %>-4th').val() > 100) {
-              Materialize.toast("Grade must me less than or equal 100" ,2000 , 'rounded');
-            }else if($('#grade-int-<%= subject.id %>-<%= student.id %>-4th').val() < 50) {
-              Materialize.toast("Grade must me greater than or eqal 50" ,2000 , 'rounded');
-            }else if($('#grade-int-<%= subject.id %>-<%= student.id %>-4th').val() == "") {
+    <% if @students.blank? %>
+      /*some codes here*/
+    <% else %>
+      <% @students.each do |student| %>
+        <% @subjects.each do |subject| %>
+          $('#grade-int-<%= subject.id %>-<%= student.id %>-4th').on('keypress', function(e){
+            if (e.keyCode == 13) {
+              if ($('#grade-int-<%= subject.id %>-<%= student.id %>-4th').val() > 100) {
+                Materialize.toast("Grade must me less than or equal 100" ,2000 , 'rounded');
+                $('#grade-int-<%= subject.id %>-<%= student.id %>-4th').val("");
+              }else if($('#grade-int-<%= subject.id %>-<%= student.id %>-4th').val() < 50) {
+                Materialize.toast("Grade must me greater than or eqal 50" ,2000 , 'rounded');
+                $('#grade-int-<%= subject.id %>-<%= student.id %>-4th').val("");
+              }else if($('#grade-int-<%= subject.id %>-<%= student.id %>-4th').val() == "") {
 
-            }else{
-              $('#grade-int-<%= subject.id %>-<%= student.id %>-4th').prop("disabled" ,true);
+              }else{
+                $('#grade-int-<%= subject.id %>-<%= student.id %>-4th').prop("disabled" ,true);
+              }
             }
-          }
-        });
-      <% end %>
+          });
+        <% end %>
+      <% end %>  
     <% end %>
   });
 </script>
