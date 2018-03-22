@@ -29,15 +29,7 @@ Rails.application.routes.draw do
   get 'about' , to: 'pages#about' , as: 'about_page'
 
   scope 'admin' do
-    resources :events
-    resources :news
-    resources :announcements
-    resources :sections
-    resources :subjects
-    resources :gradings
-    resources :students do
-    # put '/update_grades' , to: 'grades#update' , as: 'update_grades'
-    end
+    resources :events, :news, :announcements, :sections, :subjects, :gradings, :students
 
     # post '/create_grades' , to: 'grades#create_grades' , as: 'insert_grade'
     get '/admin/admin-profile/:id' , to: 'admins#adminAcount' , as: 'admin_account'
