@@ -16,13 +16,13 @@
       <div class="col s12 m12 l9 right">
         <%= form_for(@student , remote: true , html: { class:"student-form" } ) do |f| %>
         <div class="card white">
-          <div class="card-content">
+          <div class="card-content" id="form-student">
             <span class="card-title">Add Student</span>
               <div class="row">
                 <div class="col s12 m4 l4">
                   <div class="input-field">
                     <i class="material-icons prefix">face</i>
-                    <%= f.text_field :firstname , id:"firstname" , required: "required" , autofocus: true %>
+                    <%= f.text_field :firstname , id:"firstname" , autofocus: true %>
                     <label>Firstname</label> 
                   </div>
                 </div>
@@ -36,14 +36,14 @@
                 <div class="col s12 m4 l4">
                   <div class="input-field">
                     <i class="material-icons prefix">face</i>
-                    <%= f.text_field :lastname , id:"lastname" , required: "required" %>
+                    <%= f.text_field :lastname , id:"lastname" %>
                     <label>Lastname</label> 
                   </div>  
                 </div>
                 <div class="col s12">
                   <div class="input-field">
                     <i class="material-icons prefix">face</i>
-                    <%= f.text_field :lrn , id:"lrn" , required: "required" , 'maxLength' => '11' %>
+                    <%= f.text_field :lrn , id:"lrn" , 'maxLength' => '11' %>
                     <label>L R N</label>
                   </div>
                 </div>

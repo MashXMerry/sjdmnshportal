@@ -1,11 +1,19 @@
-$('#firstname').val('');
-$('#lastname').val('');
-$('#email').val('');
-$('#password').val('');
-$('#section-field').val('');
-$('#phone_number').val('');
-$('#middlename').val('');
-$('#lrn').val('');
-$('#level').val('');
+<% if @student.errors.any? %>
+	Materialize.Toast.removeAll();
+	<% @student.errors.full_messages.each do |message| %>
+		Materialize.toast("<%= message %>", 10000);
+	<% end %>
+<% else %>
+	$('#firstname').val('');
+	$('#lastname').val('');
+	$('#email').val('');
+	$('#password').val('');
+	$('#section-field').val('');
+	$('#phone_number').val('');
+	$('#middlename').val('');
+	$('#lrn').val('');
+	$('#level').val('');
+	Materialize.Toast.removeAll();
+	Materialize.toast('Student successfully registered !', 2000);
+<% end %>
 
-Materialize.toast('Student successfully registered !', 2000);

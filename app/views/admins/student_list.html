@@ -19,7 +19,7 @@
               <div class="input-field">
                 <i class="material-icons prefix">create</i>
                 <label class="active">Enter student LRN</label>
-                <%= text_field_tag :search , params[:search] %>
+                <%= text_field_tag :search , params[:search] , autofocus: :true %>
               </div>
             </div>
             <div class="modal-footer">
@@ -46,6 +46,7 @@
             <table class="bordered highlight responsive-table centered">
               <thead>
                 <tr>
+                  <th>Edit</th>
                   <th>LRN</th>
                   <th>Lastname</th>
                   <th>Firstname</th>
@@ -66,17 +67,25 @@
                     <td>No data yet</td>
                     <td>No data yet</td>
                     <td>No data yet</td>
+                    <td>No data yet</td>
                   </tr>
                 <% else %>
                   <% @student7.each do |student| %>
                     <tr>
-                      <td><%= student.lrn %></td>
-                      <td><%= link_to student.lastname, student_path(student.id) %></td>
-                      <td><%= link_to student.firstname, student_path(student.id) %></td>
+                      <td>
+                        <a target="_blank" href="/admin/students/<%= student.lrn %>/edit">
+                          <i class="material-icons green-text">create</i>
+                        </a>
+                      </td>
+                      <td>
+                        <a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.lrn %></a>
+                      </td>
+                      <td><a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.lastname %></a></td>
+                      <td><a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.firstname %></a></td>
                         <% if student.middlename.blank? %>
                           <td class="red-text">No middlename provided</td>
                         <% else %>
-                          <td><%= link_to student.middlename, student_path(student.id) %></td>
+                          <td><a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.middlename %></a></td>
                         <% end %>
                       <td><%= student.section %></td>
                       <td><%= student.gender %></td>
@@ -96,6 +105,7 @@
             <table class="bordered highlight responsive-table centered">
               <thead>
                 <tr>
+                  <th>Edit</th>
                   <th>LRN</th>
                   <th>Lastname</th>
                   <th>Firstname</th>
@@ -116,17 +126,25 @@
                     <td>No data yet</td>
                     <td>No data yet</td>
                     <td>No data yet</td>
+                    <td>No data yet</td>
                   </tr>
                 <% else %>
                   <% @student8.each do |student| %>
                     <tr>
-                      <td><%= student.lrn %></td>
-                      <td><%= link_to student.lastname, student_path(student.id) %></td>
-                      <td><%= link_to student.firstname, student_path(student.id) %></td>
+                      <td>
+                        <a target="_blank" href="/admin/students/<%= student.lrn %>/edit">
+                          <i class="material-icons green-text">create</i>
+                        </a>
+                      </td>
+                      <td>
+                        <a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.lrn %></a>
+                      </td>
+                      <td><a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.lastname %></a></td>
+                      <td><a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.firstname %></a></td>
                         <% if student.middlename.blank? %>
                           <td class="red-text">No middlename provided</td>
                         <% else %>
-                          <td><%= link_to student.middlename, student_path(student.id) %></td>
+                          <td><a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.middlename %></a></td>
                         <% end %>
                       <td><%= student.section %></td>
                       <td><%= student.gender %></td>
@@ -145,6 +163,7 @@
             <table class="bordered highlight responsive-table centered">
               <thead>
                 <tr>
+                  <th>Edit</th>
                   <th>LRN</th>
                   <th>Lastname</th>
                   <th>Firstname</th>
@@ -165,17 +184,25 @@
                     <td>No data yet</td>
                     <td>No data yet</td>
                     <td>No data yet</td>
+                    <td>No data yet</td>
                   </tr>
                 <% else %>
                   <% @student9.each do |student| %>
                     <tr>
-                      <td><%= student.lrn %></td>
-                      <td><%= link_to student.lastname, student_path(student.id) %></td>
-                      <td><%= link_to student.firstname, student_path(student.id) %></td>
+                      <td>
+                        <a target="_blank" href="/admin/students/<%= student.lrn %>/edit">
+                          <i class="material-icons green-text">create</i>
+                        </a>
+                      </td>
+                      <td>
+                        <a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.lrn %></a>
+                      </td>
+                      <td><a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.lastname %></a></td>
+                      <td><a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.firstname %></a></td>
                         <% if student.middlename.blank? %>
                           <td class="red-text">No middlename provided</td>
                         <% else %>
-                          <td><%= link_to student.middlename, student_path(student.id) %></td>
+                          <td><a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.middlename %></a></td>
                         <% end %>
                       <td><%= student.section %></td>
                       <td><%= student.gender %></td>
@@ -194,6 +221,7 @@
             <table class="bordered highlight responsive-table centered">
               <thead>
                 <tr>
+                  <th>Edit</th>
                   <th>LRN</th>
                   <th>Lastname</th>
                   <th>Firstname</th>
@@ -214,17 +242,25 @@
                     <td>No data yet</td>
                     <td>No data yet</td>
                     <td>No data yet</td>
+                    <td>No data yet</td>
                   </tr>
                 <% else %>
                   <% @student10.each do |student| %>
                     <tr>
-                      <td><%= student.lrn %></td>
-                      <td><%= link_to student.lastname, student_path(student.id) %></td>
-                      <td><%= link_to student.firstname, student_path(student.id) %></td>
+                      <td>
+                        <a target="_blank" href="/admin/students/<%= student.lrn %>/edit">
+                          <i class="material-icons green-text">create</i>
+                        </a>
+                      </td>
+                      <td>
+                        <a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.lrn %></a>
+                      </td>
+                      <td><a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.lastname %></a></td>
+                      <td><a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.firstname %></a></td>
                         <% if student.middlename.blank? %>
                           <td class="red-text">No middlename provided</td>
                         <% else %>
-                          <td><%= link_to student.middlename, student_path(student.id) %></td>
+                          <td><a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.middlename %></a></td>
                         <% end %>
                       <td><%= student.section %></td>
                       <td><%= student.gender %></td>
@@ -243,6 +279,7 @@
             <table class="bordered highlight responsive-table centered">
               <thead>
                 <tr>
+                  <th>Edit</th>
                   <th>LRN</th>
                   <th>Lastname</th>
                   <th>Firstname</th>
@@ -263,17 +300,25 @@
                     <td>No data yet</td>
                     <td>No data yet</td>
                     <td>No data yet</td>
+                    <td>No data yet</td>
                   </tr>
                 <% else %>
                   <% @student11.each do |student| %>
                     <tr>
-                      <td><%= student.lrn %></td>
-                      <td><%= link_to student.lastname, student_path(student.id) %></td>
-                      <td><%= link_to student.firstname, student_path(student.id) %></td>
+                      <td>
+                        <a target="_blank" href="/admin/students/<%= student.lrn %>/edit">
+                          <i class="material-icons green-text">create</i>
+                        </a>
+                      </td>
+                      <td>
+                        <a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.lrn %></a>
+                      </td>
+                      <td><a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.lastname %></a></td>
+                      <td><a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.firstname %></a></td>
                         <% if student.middlename.blank? %>
                           <td class="red-text">No middlename provided</td>
                         <% else %>
-                          <td><%= link_to student.middlename, student_path(student.id) %></td>
+                          <td><a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.middlename %></a></td>
                         <% end %>
                       <td><%= student.section %></td>
                       <td><%= student.gender %></td>
@@ -292,6 +337,7 @@
             <table class="bordered highlight responsive-table centered">
               <thead>
                 <tr>
+                  <th>Edit</th>
                   <th>LRN</th>
                   <th>Lastname</th>
                   <th>Firstname</th>
@@ -312,17 +358,25 @@
                     <td>No data yet</td>
                     <td>No data yet</td>
                     <td>No data yet</td>
+                    <td>No data yet</td>
                   </tr>
                 <% else %>
                   <% @student12.each do |student| %>
                     <tr>
-                      <td><%= student.lrn %></td>
-                      <td><%= link_to student.lastname, student_path(student.id) %></td>
-                      <td><%= link_to student.firstname, student_path(student.id) %></td>
+                      <td>
+                        <a target="_blank" href="/admin/students/<%= student.lrn %>/edit">
+                          <i class="material-icons green-text">create</i>
+                        </a>
+                      </td>
+                      <td>
+                        <a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.lrn %></a>
+                      </td>
+                      <td><a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.lastname %></a></td>
+                      <td><a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.firstname %></a></td>
                         <% if student.middlename.blank? %>
                           <td class="red-text">No middlename provided</td>
                         <% else %>
-                          <td><%= link_to student.middlename, student_path(student.id) %></td>
+                          <td><a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.middlename %></a></td>
                         <% end %>
                       <td><%= student.section %></td>
                       <td><%= student.gender %></td>

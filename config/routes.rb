@@ -6,8 +6,11 @@ Rails.application.routes.draw do
     registrations: 'administrators/registrations'
   }
   # json requests
+  get '/some' , to: 'pages#some'
+
   get '/news/news_json', to: 'pages#news_json'
   get '/announcements/announcements_json', to: 'pages#announcements_json'
+  get '/announcements/announcements_json/:id', to: 'pages#announcements_json_id'
   get  '/events/events_json', to: 'pages#events_json'
   get '/administrators/administrators_json' , to: 'pages#admins_json'
   get '/students/students_json' , to: 'pages#students_json'
@@ -42,6 +45,7 @@ Rails.application.routes.draw do
     get '/grades' , to: 'admins#grades' , as: 'admin_school'
     get '/profile' , to: 'admins#profile' , as: 'admin_profile'
     get '/enrolled-students' , to: 'admins#student_list' , as: 'admin_student_list'
+    get '/enrolled-students/:section' , to: 'admins#student_list_section' , as: 'student_list_section'
     get '/un-registered-students' , to: 'admins#unregistered' , as: 'unregistered'
     get '/register_admin' , to: 'admins#registeradmin' , as: 'admin_register'
     post '/add_admin' , to: 'admins#addadministrator' , as: 'add_admin'

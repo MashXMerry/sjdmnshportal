@@ -1,0 +1,28 @@
+<div id="data-here">
+	<img src="">
+</div>
+
+<script>
+	$(document).ready(function() {
+		$.ajax({
+			url: 'http://localhost:3000/announcements/announcements_json',
+			type: 'get'
+		}).done(function(response) {
+			for (var x in response) {
+				if (response[x].image_url_thumb == "/images/thumb/missing.png") {
+					$('#data-here').append(`
+							<h3>`+ response[x].title +`</h3>
+							<p>`+ response[x].body +`</p>
+					`);
+				} else {
+					$('#data-here').append(`
+							<h3>`+ response[x].title +`</h3>
+							<img src="`+ response[x].image_url_medium +`" class="circle">
+							<p>`+ response[x].body +`</p>
+					`);
+				}
+				
+			}
+		});
+	});
+</script>

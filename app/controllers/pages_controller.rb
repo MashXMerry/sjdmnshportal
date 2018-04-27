@@ -2,6 +2,10 @@ class PagesController < ApplicationController
   def index
   	
   end
+
+  def some
+    
+  end
   
   def news_json
     data = News.all.all.order('created_at DESC')
@@ -9,8 +13,13 @@ class PagesController < ApplicationController
   end
 
   def announcements_json
-    data = Announcement.all.order('created_at DESC')
-    render :json => { 'data'=>data }
+    @data = Announcement.all.order('created_at DESC') 
+    render :json => @data.to_json(:methods => [:image_url_large,:image_url_medium,:image_url_thumb])
+  end
+
+  def announcements_json_id
+    @data = Announcement.find_by(params[:id])
+    render :json => @data.to_json(:methods => [:image_url_large,:image_url_medium,:image_url_thumb])
   end
 
   def events_json
@@ -83,10 +92,7 @@ class PagesController < ApplicationController
   end
 
   def announcements
-    @announcements1st = Announcement.last
-  	@announcements = Announcement.all.order('created_at DESC').paginate(page: params[:page] , per_page: 5)
-    @events = Event.all.order('created_at DESC').limit(5)
-    @news = News.all.order('created_at DESC').limit(5)
+    @announcements = Announcement.all.order('created_at DESC').paginate(page: params[:page] , per_page: 5)
   end
 
   def events

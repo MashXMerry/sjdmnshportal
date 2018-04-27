@@ -3,6 +3,31 @@
 <%= render "partials/side_nav" %>
 <%= render "partials/nav_bar" %>
 
+<!-- <script>
+  function showData(id) {
+    $('#announcement-data').remove();
+    $('#announcement-modal').modal('open');
+    var announcement_id = id;
+    $.ajax({
+      type: 'get',
+      url: 'http://localhost:3000/announcements/announcements_json/' + announcement_id ,
+      success: function(response) {
+        $('#modal-data-content').append(`
+          <div class="card-panel" id='announcement-data'>
+            <div class="row">
+              <div class="col s12 modal-body" style="margin-top: 20px">
+                <h3 class="title">`+ response.title +`<br></h3>
+                | Posted at `+ response.created_at +`<hr>
+                <p class="body" style="text-align: justify;">`+ response.body +`</p>  
+              </div>
+            </div>  
+          </div>
+        `);
+      }
+    });
+  }
+</script> -->
+
 <div class="navbar2" style="background-color:#160000!important">
   <div class="row">
     <div class="col s12 m12 l9 offset-l3 valign-wrapper" style="text-align: center;">
@@ -11,6 +36,15 @@
       <h5 class="hide-on-large-only white-text">School Announcements</h5>
     </div>
   </div>
+</div>
+
+<div id="announcement-modal" class="modal modal-fixed-footer">
+  <div class="modal-content" id="modal-data-content">
+    
+  </div>
+    <a class="modal-action modal-close waves-effect waves-yellow btn-floating red lighten-1 right btn-close">
+      <i class="material-icons">close</i>
+    </a>
 </div>
 
 <div class="row main">
@@ -59,6 +93,7 @@
           </div>
         <% else %>
           <div class="card-panel">
+            <button class="btn waves-effect waves-yellow orange" onclick='showData(<%= announcement.id %>)'>View data</button>
             <b><h3 class="title"><%= announcement.title %></h3></b>
             | Posted at <%= announcement.created_at.to_s(:long) %>
             <p class="body" style="text-align: justify;"><%= truncate(announcement.body , length:200) %></p>

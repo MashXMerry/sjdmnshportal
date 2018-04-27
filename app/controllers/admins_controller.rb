@@ -2,44 +2,48 @@ class AdminsController < ApplicationController
   before_action :authenticate_administrator!
 
   def dashboard
-  	@news = News.all.order('created_at DESC').limit(3)
-  	@events = Event.all.order('created_at DESC').limit(3)
-  	@announcements = Announcement.all.order('created_at DESC').limit(3)
+    if current_administrator.role == "faculty"
+      redirect_to admin_profile_path
+    else
+      @news = News.all.order('created_at DESC').limit(3)
+      @events = Event.all.order('created_at DESC').limit(3)
+      @announcements = Announcement.all.order('created_at DESC').limit(3)
 
-    @administrators = Administrator.all
-    @sections = Section.all
-    @student = Student.all
-    @news1 = News.all
-    @events1 = Event.all
-    @announcements1 = Announcement.all
+      @administrators = Administrator.all
+      @sections = Section.all
+      @student = Student.all
+      @news1 = News.all
+      @events1 = Event.all
+      @announcements1 = Announcement.all
 
-    @student7 = Student.all.where(:level => 7 , :status => "enrolled")
-    @student8 = Student.all.where(:level => 8 , :status => "enrolled")
-    @student9 = Student.all.where(:level => 9 , :status => "enrolled")
-    @student10 = Student.all.where(:level => 10 , :status => "enrolled")
-    @student11 = Student.all.where(:level => 11 , :status => "enrolled")
-    @student12 = Student.all.where(:level => 12 , :status => "enrolled")
+      @student7 = Student.all.where(:level => 7 , :status => "enrolled")
+      @student8 = Student.all.where(:level => 8 , :status => "enrolled")
+      @student9 = Student.all.where(:level => 9 , :status => "enrolled")
+      @student10 = Student.all.where(:level => 10 , :status => "enrolled")
+      @student11 = Student.all.where(:level => 11 , :status => "enrolled")
+      @student12 = Student.all.where(:level => 12 , :status => "enrolled")
 
-    @Ustudent7 = Student.all.where(:level => 7 , :status => "un-enrolled")
-    @Ustudent8 = Student.all.where(:level => 8 , :status => "un-enrolled")
-    @Ustudent9 = Student.all.where(:level => 9 , :status => "un-enrolled")
-    @Ustudent10 = Student.all.where(:level => 10 , :status => "un-enrolled")
-    @Ustudent11 = Student.all.where(:level => 11 , :status => "un-enrolled")
-    @Ustudent12 = Student.all.where(:level => 12 , :status => "un-enrolled")
+      @Ustudent7 = Student.all.where(:level => 7 , :status => "un-enrolled")
+      @Ustudent8 = Student.all.where(:level => 8 , :status => "un-enrolled")
+      @Ustudent9 = Student.all.where(:level => 9 , :status => "un-enrolled")
+      @Ustudent10 = Student.all.where(:level => 10 , :status => "un-enrolled")
+      @Ustudent11 = Student.all.where(:level => 11 , :status => "un-enrolled")
+      @Ustudent12 = Student.all.where(:level => 12 , :status => "un-enrolled")
 
-    @Dstudent7 = Student.all.where(:level => 7 , :status => "dropped")
-    @Dstudent8 = Student.all.where(:level => 8 , :status => "dropped")
-    @Dstudent9 = Student.all.where(:level => 9 , :status => "dropped")
-    @Dstudent10 = Student.all.where(:level => 10 , :status => "dropped")
-    @Dstudent11 = Student.all.where(:level => 11 , :status => "dropped")
-    @Dstudent12 = Student.all.where(:level => 12 , :status => "dropped")
+      @Dstudent7 = Student.all.where(:level => 7 , :status => "dropped")
+      @Dstudent8 = Student.all.where(:level => 8 , :status => "dropped")
+      @Dstudent9 = Student.all.where(:level => 9 , :status => "dropped")
+      @Dstudent10 = Student.all.where(:level => 10 , :status => "dropped")
+      @Dstudent11 = Student.all.where(:level => 11 , :status => "dropped")
+      @Dstudent12 = Student.all.where(:level => 12 , :status => "dropped")
 
-    @grade7 = Section.all.where(:yearlvl => 7)
-    @grade8 = Section.all.where(:yearlvl => 8)
-    @grade9 = Section.all.where(:yearlvl => 9)
-    @grade10 = Section.all.where(:yearlvl => 10)
-    @grade11 = Section.all.where(:yearlvl => 11)
-    @grade12 = Section.all.where(:yearlvl => 12)
+      @grade7 = Section.all.where(:yearlvl => 7)
+      @grade8 = Section.all.where(:yearlvl => 8)
+      @grade9 = Section.all.where(:yearlvl => 9)
+      @grade10 = Section.all.where(:yearlvl => 10)
+      @grade11 = Section.all.where(:yearlvl => 11)
+      @grade12 = Section.all.where(:yearlvl => 12)
+    end
   end
 
   def myclass
@@ -129,13 +133,14 @@ class AdminsController < ApplicationController
 
   def student_list
     # @student = Student.friendly.find(params[:id])
-    @students = Student.where(["lrn LIKE?" , "%#{params[:search]}%"]).order('level ASC').order('lastname ASC')
-    @student7 = Student.all.where(level: 7 , :status => "enrolled").order('section ASC').order('gender DESC')
-    @student8 = Student.all.where(level: 8 , :status => "enrolled").order('section ASC').order('gender DESC')
-    @student9 = Student.all.where(level: 9 , :status => "enrolled").order('section ASC').order('gender DESC')
-    @student10 = Student.all.where(level: 10 , :status => "enrolled").order('section ASC').order('gender DESC')
-    @student11 = Student.all.where(level: 11 , :status => "enrolled").order('section ASC').order('gender DESC')
-    @student12 = Student.all.where(level: 12 , :status => "enrolled").order('section ASC').order('gender DESC')
+    @section7 = Section.where(:yearlvl => 7).order('section ASC')
+
+    # @students = Student.where(["lrn LIKE?" , "%#{params[:search]}%"]).order('level ASC').order('lastname ASC')
+    # @student8 = Student.all.where(level: 8 , :status => "enrolled").order('section ASC').order('gender DESC')
+    # @student9 = Student.all.where(level: 9 , :status => "enrolled").order('section ASC').order('gender DESC')
+    # @student10 = Student.all.where(level: 10 , :status => "enrolled").order('section ASC').order('gender DESC')
+    # @student11 = Student.all.where(level: 11 , :status => "enrolled").order('section ASC').order('gender DESC')
+    # @student12 = Student.all.where(level: 12 , :status => "enrolled").order('section ASC').order('gender DESC')
   end
 
   def unregistered
@@ -151,6 +156,11 @@ class AdminsController < ApplicationController
 
   def enrollstudent
     
+  end
+
+  def student_list_section
+    @section = params[:section]
+    @students = Student.all.where(:section => @section, :status => "enrolled").order('firstname ASC').paginate(page: params[:page] , per_page: 8)
   end
 
   def search_student

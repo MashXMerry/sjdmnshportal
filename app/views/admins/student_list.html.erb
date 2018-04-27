@@ -43,353 +43,44 @@
           </div>
 
           <div id="test1" class="col s12 tabs-ko">
-            <table class="bordered highlight responsive-table centered">
+            <table class="striped centered bordered">
               <thead>
                 <tr>
-                  <th>Edit</th>
-                  <th>LRN</th>
-                  <th>Lastname</th>
-                  <th>Firstname</th>
-                  <th>Middlename</th>
-                  <th>Section</th>
-                  <th>Gender</th>
-                  <th>Contact</th>
+                  <th>Sections</th>
+                  <th>Section Adviser</th>
+                  <th>View students</th>
                 </tr>
               </thead>
-
               <tbody>
-                <% if @student7.blank? %>
+                <% @section7.each do |section| %>
                   <tr>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
+                    <td><%= section.section %></td>
+                    <% if section.adviser.blank? %>
+                       <td><p class="red-text">No adviser assigned</p></td>
+                    <% else %>
+                      <td><%= section.adviser %></td>
+                    <% end %>  
+                    <td><%= link_to "View" ,student_list_section_path(section.section) , class: "btn green" %></td>
                   </tr>
-                <% else %>
-                  <% @student7.each do |student| %>
-                    <tr>
-                      <td>
-                        <a target="_blank" href="/admin/students/<%= student.lrn %>/edit">
-                          <i class="material-icons green-text">create</i>
-                        </a>
-                      </td>
-                      <td>
-                        <a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.lrn %></a>
-                      </td>
-                      <td><a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.lastname %></a></td>
-                      <td><a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.firstname %></a></td>
-                        <% if student.middlename.blank? %>
-                          <td class="red-text">No middlename provided</td>
-                        <% else %>
-                          <td><a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.middlename %></a></td>
-                        <% end %>
-                      <td><%= student.section %></td>
-                      <td><%= student.gender %></td>
-                        <% if student.phone_number.blank? %>
-                          <td class="red-text">No contact provided</td>
-                        <% else %>
-                          <td><%= student.phone_number %></td>
-                        <% end %>
-                    </tr>
-                  <% end %>
                 <% end %>
               </tbody>
             </table>
           </div>
           <!-- GRADE 7 -->
           <div id="test2" class="col s12 tabs-ko">
-            <table class="bordered highlight responsive-table centered">
-              <thead>
-                <tr>
-                  <th>Edit</th>
-                  <th>LRN</th>
-                  <th>Lastname</th>
-                  <th>Firstname</th>
-                  <th>Middlename</th>
-                  <th>Section</th>
-                  <th>Gender</th>
-                  <th>Contact</th>
-                </tr>
-              </thead>
 
-              <tbody>
-                <% if @student8.blank? %>
-                  <tr>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
-                  </tr>
-                <% else %>
-                  <% @student8.each do |student| %>
-                    <tr>
-                      <td>
-                        <a target="_blank" href="/admin/students/<%= student.lrn %>/edit">
-                          <i class="material-icons green-text">create</i>
-                        </a>
-                      </td>
-                      <td>
-                        <a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.lrn %></a>
-                      </td>
-                      <td><a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.lastname %></a></td>
-                      <td><a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.firstname %></a></td>
-                        <% if student.middlename.blank? %>
-                          <td class="red-text">No middlename provided</td>
-                        <% else %>
-                          <td><a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.middlename %></a></td>
-                        <% end %>
-                      <td><%= student.section %></td>
-                      <td><%= student.gender %></td>
-                        <% if student.phone_number.blank? %>
-                          <td class="red-text">No contact provided</td>
-                        <% else %>
-                          <td><%= student.phone_number %></td>
-                        <% end %>
-                    </tr>
-                  <% end %>
-                <% end %>
-              </tbody>
-            </table>
           </div>
           <div id="test3" class="col s12 tabs-ko">
-            <table class="bordered highlight responsive-table centered">
-              <thead>
-                <tr>
-                  <th>Edit</th>
-                  <th>LRN</th>
-                  <th>Lastname</th>
-                  <th>Firstname</th>
-                  <th>Middlename</th>
-                  <th>Section</th>
-                  <th>Gender</th>
-                  <th>Contact</th>
-                </tr>
-              </thead>
 
-              <tbody>
-                <% if @student9.blank? %>
-                  <tr>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
-                  </tr>
-                <% else %>
-                  <% @student9.each do |student| %>
-                    <tr>
-                      <td>
-                        <a target="_blank" href="/admin/students/<%= student.lrn %>/edit">
-                          <i class="material-icons green-text">create</i>
-                        </a>
-                      </td>
-                      <td>
-                        <a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.lrn %></a>
-                      </td>
-                      <td><a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.lastname %></a></td>
-                      <td><a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.firstname %></a></td>
-                        <% if student.middlename.blank? %>
-                          <td class="red-text">No middlename provided</td>
-                        <% else %>
-                          <td><a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.middlename %></a></td>
-                        <% end %>
-                      <td><%= student.section %></td>
-                      <td><%= student.gender %></td>
-                        <% if student.phone_number.blank? %>
-                          <td class="red-text">No contact provided</td>
-                        <% else %>
-                          <td><%= student.phone_number %></td>
-                        <% end %>
-                    </tr>
-                  <% end %>
-                <% end %>
-              </tbody>
-            </table>
           </div>
           <div id="test4" class="col s12 tabs-ko">
-            <table class="bordered highlight responsive-table centered">
-              <thead>
-                <tr>
-                  <th>Edit</th>
-                  <th>LRN</th>
-                  <th>Lastname</th>
-                  <th>Firstname</th>
-                  <th>Middlename</th>
-                  <th>Section</th>
-                  <th>Gender</th>
-                  <th>Contact</th>
-                </tr>
-              </thead>
 
-              <tbody>
-                <% if @student10.blank? %>
-                  <tr>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
-                  </tr>
-                <% else %>
-                  <% @student10.each do |student| %>
-                    <tr>
-                      <td>
-                        <a target="_blank" href="/admin/students/<%= student.lrn %>/edit">
-                          <i class="material-icons green-text">create</i>
-                        </a>
-                      </td>
-                      <td>
-                        <a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.lrn %></a>
-                      </td>
-                      <td><a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.lastname %></a></td>
-                      <td><a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.firstname %></a></td>
-                        <% if student.middlename.blank? %>
-                          <td class="red-text">No middlename provided</td>
-                        <% else %>
-                          <td><a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.middlename %></a></td>
-                        <% end %>
-                      <td><%= student.section %></td>
-                      <td><%= student.gender %></td>
-                        <% if student.phone_number.blank? %>
-                          <td class="red-text">No contact provided</td>
-                        <% else %>
-                          <td><%= student.phone_number %></td>
-                        <% end %>
-                    </tr>
-                  <% end %>
-                <% end %>
-              </tbody>
-            </table>
           </div>
           <div id="test5" class="col s12 tabs-ko">
-            <table class="bordered highlight responsive-table centered">
-              <thead>
-                <tr>
-                  <th>Edit</th>
-                  <th>LRN</th>
-                  <th>Lastname</th>
-                  <th>Firstname</th>
-                  <th>Middlename</th>
-                  <th>Section</th>
-                  <th>Gender</th>
-                  <th>Contact</th>
-                </tr>
-              </thead>
 
-              <tbody>
-                <% if @student11.blank? %>
-                  <tr>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
-                  </tr>
-                <% else %>
-                  <% @student11.each do |student| %>
-                    <tr>
-                      <td>
-                        <a target="_blank" href="/admin/students/<%= student.lrn %>/edit">
-                          <i class="material-icons green-text">create</i>
-                        </a>
-                      </td>
-                      <td>
-                        <a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.lrn %></a>
-                      </td>
-                      <td><a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.lastname %></a></td>
-                      <td><a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.firstname %></a></td>
-                        <% if student.middlename.blank? %>
-                          <td class="red-text">No middlename provided</td>
-                        <% else %>
-                          <td><a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.middlename %></a></td>
-                        <% end %>
-                      <td><%= student.section %></td>
-                      <td><%= student.gender %></td>
-                        <% if student.phone_number.blank? %>
-                          <td class="red-text">No contact provided</td>
-                        <% else %>
-                          <td><%= student.phone_number %></td>
-                        <% end %>
-                    </tr>
-                  <% end %>
-                <% end %>
-              </tbody>
-            </table>
           </div>
           <div id="test6" class="col s12 tabs-ko">
-            <table class="bordered highlight responsive-table centered">
-              <thead>
-                <tr>
-                  <th>Edit</th>
-                  <th>LRN</th>
-                  <th>Lastname</th>
-                  <th>Firstname</th>
-                  <th>Middlename</th>
-                  <th>Section</th>
-                  <th>Gender</th>
-                  <th>Contact</th>
-                </tr>
-              </thead>
 
-              <tbody>
-                <% if @student12.blank? %>
-                  <tr>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
-                    <td>No data yet</td>
-                  </tr>
-                <% else %>
-                  <% @student12.each do |student| %>
-                    <tr>
-                      <td>
-                        <a target="_blank" href="/admin/students/<%= student.lrn %>/edit">
-                          <i class="material-icons green-text">create</i>
-                        </a>
-                      </td>
-                      <td>
-                        <a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.lrn %></a>
-                      </td>
-                      <td><a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.lastname %></a></td>
-                      <td><a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.firstname %></a></td>
-                        <% if student.middlename.blank? %>
-                          <td class="red-text">No middlename provided</td>
-                        <% else %>
-                          <td><a target="_blank" href="/admin/students/<%= student.lrn %>"><%= student.middlename %></a></td>
-                        <% end %>
-                      <td><%= student.section %></td>
-                      <td><%= student.gender %></td>
-                        <% if student.phone_number.blank? %>
-                          <td class="red-text">No contact provided</td>
-                        <% else %>
-                          <td><%= student.phone_number %></td>
-                        <% end %>
-                    </tr>
-                  <% end %>
-                <% end %>
-              </tbody>
-            </table>
           </div>
         </div><!-- row -->
       </div>
