@@ -15,6 +15,36 @@
 
 <div class="row main">
   <div class="col s12 m12 l9 offset-l3">
+
+    <script>
+      function getSearchData(data) {
+        $('#student-data').remove();
+        $.ajax({
+          type: 'GET',
+          url: '/students/students_json/'+ data
+        }).done(function(response) {
+          for(var x in response) {
+            console.log(response);
+              if (response[x].lrn == undefined) {
+                $('#student-data').remove();
+              } else {
+                $('#student-data').remove();
+                $('#data-here').append(`
+                  <p id="student-data">
+                    <a target="_blank" href="/admin/students/`+ response[x].lrn +`">View student</a> - 
+                    `+ response[x].firstname + " " + response[x].lastname + "(" + response[x].lrn + ")" +  `
+                  </p>
+                `); 
+                $('#student-data').hide().fadeIn();
+              }
+          }
+        });
+      }
+    </script>
+    
+    <input type="text" name="" id="search-box" oninput="getSearchData($(this).val())">
+    <div id="data-here"></div>
+
     <% if @news.empty? %>
       <div style="padding-top: 100px;padding-bottom: 100px">
         <center><h3>No news posted yet</h3></center>

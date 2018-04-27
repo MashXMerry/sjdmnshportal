@@ -11,24 +11,46 @@
 
     <div class="row" style="margin-top: 50px;">
       <div class="col s12 m12 l9 right">
-        <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Search student</a>
-        <div id="modal1" class="modal">
-          <%= form_tag search_student_path , :method => 'get' do %>
-            <div class="modal-content">
-              <h4 style="padding-bottom: 50px">Search student</h4>
-              <div class="input-field">
-                <i class="material-icons prefix">create</i>
-                <label class="active">Enter student LRN</label>
-                <%= text_field_tag :search , params[:search] , autofocus: :true %>
+        <script>
+          function getSearchData(data) {
+            $('#preloader').remove();
+            $('#student-search').append(`
+              <div class="progress" id="preloader">
+                <div class="indeterminate"></div>
               </div>
-            </div>
-            <div class="modal-footer">
-              <%= submit_tag "Search" , class:"left btn btn-flat green waves-effect waves-blue white-text" %>
-              <a class="modal-action modal-close waves-effect waves-yellow btn-flat red white-text">close</a>
-            </div>
-          <% end %>  
+            `);
+            $('#student-data').remove();
+            $.ajax({
+              type: 'GET',
+              url: '/students/students_json/'+ data
+            }).done(function(response) {
+              $('#preloader').remove();
+              for(var x in response) {
+                  if (response[x].lrn == undefined) {
+                    $('#student-data').remove();
+                  } else {
+                    $('#student-data').remove();
+                    $('#student-search').append(`
+                      <li class="collection-item avatar" id="student-data">
+                        <%= image_tag "avatar.jpg" , class:"circle" %>
+                        <b><span class="title">`+ response[x].firstname + " " + response[x].lastname + `</span></b>
+                        <p> Section `+ response[x].section +` | Grade `+ response[x].level +` | Status: `+ response[x].status +`</p>
+                        <a target="_blank" href="/admin/students/`+ response[x].lrn +`" class="secondary-content"><i class="material-icons">send</i></a>
+                      </li>
+                    `); 
+                    $('#student-data').hide().fadeIn();
+                  }
+              }
+            });
+          }
+        </script>
+        <h4>Search student</h4>
+        <div class="input-field">
+          <label for="search-box">Enter Student LRN</label>
+          <input type="text" name="" id="search-box" oninput="getSearchData($(this).val())">
         </div>
-        <hr>
+  
+        <ul class="collection" id="student-search"></ul>
 
         <div class="row">
           <div class="col s12">
@@ -60,7 +82,11 @@
                     <% else %>
                       <td><%= section.adviser %></td>
                     <% end %>  
-                    <td><%= link_to "View" ,student_list_section_path(section.section) , class: "btn green" %></td>
+                    <td>
+                      <%= link_to student_list_section_path(section.section) , class: "btn green waves-effect waves-yellow" do %>
+                        <i class="material-icons">send</i>
+                      <% end %>
+                      </td>
                   </tr>
                 <% end %>
               </tbody>

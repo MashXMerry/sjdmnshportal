@@ -93,7 +93,6 @@
           </div>
         <% else %>
           <div class="card-panel">
-            <button class="btn waves-effect waves-yellow orange" onclick='showData(<%= announcement.id %>)'>View data</button>
             <b><h3 class="title"><%= announcement.title %></h3></b>
             | Posted at <%= announcement.created_at.to_s(:long) %>
             <p class="body" style="text-align: justify;"><%= truncate(announcement.body , length:200) %></p>

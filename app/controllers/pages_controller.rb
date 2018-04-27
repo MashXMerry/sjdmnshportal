@@ -37,6 +37,11 @@ class PagesController < ApplicationController
     render :json => { 'data' => data }
   end
 
+  def students_json_id
+    data = Student.all.where(["lrn LIKE?" , "%#{params[:lrn]}%"]).limit(5)
+    render :json => data
+  end
+
   def grades_json
     data = Grade.all
     render :json => { 'data' => data }

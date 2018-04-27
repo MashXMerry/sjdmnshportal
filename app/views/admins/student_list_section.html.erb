@@ -12,21 +12,30 @@
     
     <div class="col s12 m12 l9 right main-body center" style="margin-top: 40px">
     	<div class="row">
-    		<% @students.each do |student| %>
-	    		<div class="col l3 m4 s12">
-	    			<div class="card">
-	    				<div class="card-image">
-	              <%= image_tag "avatar.jpg" , style:"width:100%" %>
-	            </div>
-	            <div class="card-content">
-	              <p><%= student.firstname + " " + student.lastname %></p>
-	            </div>
-	            <div class="card-action">
-	              <a target="_blank" href='/admin/students/<%= student.lrn %>' class="green-text">View student</a>
-	            </div>
-	    			</div>
-	    		</div>
-	    	<% end %>	
+        <% if @students.exists? %>
+          <% @students.each do |student| %>
+            <div class="col l3 m4 s12">
+              <div class="card">
+                <div class="card-image">
+                  <%= image_tag "avatar.jpg" , style:"width:100%" %>
+                </div>
+                <div class="card-content">
+                  <p><%= student.firstname + " " + student.lastname %></p>
+                </div>
+                <div class="card-action">
+                  <a target="_blank" href='/admin/students/<%= student.lrn %>' class="green-text">View student</a>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+        <div style="margin-top: 50px;">
+          <center>
+            <%= image_tag "favicon.ico" , style: "width:10%" %>
+          </center>
+          <h3>No students yet</h3>
+        </div>
+        <% end %>	
     	</div>
 
       <div style="border-top: .5px solid #bababa;margin-top: 50px">

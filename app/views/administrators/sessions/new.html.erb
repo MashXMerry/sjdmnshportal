@@ -30,9 +30,7 @@
                   </div>
                 <% end  %>
             </div>
-              <div class="progress green lighten-2" id="progress">
-                <div class="indeterminate green darken-4"></div>
-              </div>
+            <div id="progress-here"></div>
             <div class="card-action right-align">
               <%= f.submit "Log in" , class:"btn blue" , id:"btn-login" , data: { disable_with: "Loging in .." } do %>
                 <i class="material-icons prefix">create</i>
@@ -67,6 +65,11 @@
       if (email == "" || password == "") {
 
       }else {
+        $('#progress-here').append(`
+          <div class="progress green lighten-2" id="progress">
+            <div class="indeterminate green darken-4"></div>
+          </div>
+        `);
         $('#progress').slideDown();
       }
     });
