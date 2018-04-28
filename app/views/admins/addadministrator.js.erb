@@ -1,0 +1,8 @@
+<% if @admin.errors.any? %>
+	Materialize.Toast.removeAll();	
+	<% @admin.errors.full_messages.each do |message| %>
+		Materialize.toast("<%= message %>", 10000);
+	<% end %>
+<% else %>
+	Materialize.toast("User added",1000);
+<% end %>

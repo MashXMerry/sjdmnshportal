@@ -119,8 +119,10 @@ class AdminsController < ApplicationController
     respond_to do |format|
       if @admin.save
         format.html { redirect_to admin_register_path, notice: 'Successfully registered.' }
+        format.js
       else
         format.html { redirect_to admin_register_path, notice: 'Register Failed' }
+        format.js
       end
     end
   end
@@ -132,15 +134,12 @@ class AdminsController < ApplicationController
   end
 
   def student_list
-    # @student = Student.friendly.find(params[:id])
     @section7 = Section.where(:yearlvl => 7).order('section ASC')
-
-    # @students = Student.where(["lrn LIKE?" , "%#{params[:search]}%"]).order('level ASC').order('lastname ASC')
-    # @student8 = Student.all.where(level: 8 , :status => "enrolled").order('section ASC').order('gender DESC')
-    # @student9 = Student.all.where(level: 9 , :status => "enrolled").order('section ASC').order('gender DESC')
-    # @student10 = Student.all.where(level: 10 , :status => "enrolled").order('section ASC').order('gender DESC')
-    # @student11 = Student.all.where(level: 11 , :status => "enrolled").order('section ASC').order('gender DESC')
-    # @student12 = Student.all.where(level: 12 , :status => "enrolled").order('section ASC').order('gender DESC')
+    @section8 = Section.where(:yearlvl => 8).order('section ASC')
+    @section9 = Section.where(:yearlvl => 9).order('section ASC')
+    @section10 = Section.where(:yearlvl => 10).order('section ASC')
+    @section11 = Section.where(:yearlvl => 11).order('section ASC')
+    @section12 = Section.where(:yearlvl => 12).order('section ASC')
   end
 
   def unregistered

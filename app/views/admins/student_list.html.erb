@@ -83,7 +83,7 @@
                       <td><%= section.adviser %></td>
                     <% end %>  
                     <td>
-                      <%= link_to student_list_section_path(section.section) , class: "btn green waves-effect waves-yellow" do %>
+                      <%= link_to student_list_section_path(section.section), class: "green-text" do %>
                         <i class="material-icons">send</i>
                       <% end %>
                       </td>
@@ -92,21 +92,145 @@
               </tbody>
             </table>
           </div>
-          <!-- GRADE 7 -->
           <div id="test2" class="col s12 tabs-ko">
-
+            <table class="striped centered bordered">
+              <thead>
+                <tr>
+                  <th>Sections</th>
+                  <th>Section Adviser</th>
+                  <th>View students</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @section8.each do |section| %>
+                  <tr>
+                    <td><%= section.section %></td>
+                    <% if section.adviser.blank? %>
+                       <td><p class="red-text">No adviser assigned</p></td>
+                    <% else %>
+                      <td><%= section.adviser %></td>
+                    <% end %>  
+                    <td>
+                      <%= link_to student_list_section_path(section.section) , class: "green-text" do %>
+                        <i class="material-icons">send</i>
+                      <% end %>
+                      </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
           </div>
           <div id="test3" class="col s12 tabs-ko">
-
+            <table class="striped centered bordered">
+              <thead>
+                <tr>
+                  <th>Sections</th>
+                  <th>Section Adviser</th>
+                  <th>View students</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @section9.each do |section| %>
+                  <tr>
+                    <td><%= section.section %></td>
+                    <% if section.adviser.blank? %>
+                       <td><p class="red-text">No adviser assigned</p></td>
+                    <% else %>
+                      <td><%= section.adviser %></td>
+                    <% end %>  
+                    <td>
+                      <%= link_to student_list_section_path(section.section) , class: "green-text" do %>
+                        <i class="material-icons">send</i>
+                      <% end %>
+                      </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
           </div>
           <div id="test4" class="col s12 tabs-ko">
-
+            <table class="striped centered bordered">
+              <thead>
+                <tr>
+                  <th>Sections</th>
+                  <th>Section Adviser</th>
+                  <th>View students</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @section10.each do |section| %>
+                  <tr>
+                    <td><%= section.section %></td>
+                    <% if section.adviser.blank? %>
+                       <td><p class="red-text">No adviser assigned</p></td>
+                    <% else %>
+                      <td><%= section.adviser %></td>
+                    <% end %>  
+                    <td>
+                      <%= link_to student_list_section_path(section.section) , class: "green-text" do %>
+                        <i class="material-icons">send</i>
+                      <% end %>
+                      </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
           </div>
           <div id="test5" class="col s12 tabs-ko">
-
+            <table class="striped centered bordered">
+              <thead>
+                <tr>
+                  <th>Sections</th>
+                  <th>Section Adviser</th>
+                  <th>View students</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @section11.each do |section| %>
+                  <tr>
+                    <td><%= section.section %></td>
+                    <% if section.adviser.blank? %>
+                       <td><p class="red-text">No adviser assigned</p></td>
+                    <% else %>
+                      <td><%= section.adviser %></td>
+                    <% end %>  
+                    <td>
+                      <%= link_to student_list_section_path(section.section) , class: "green-text" do %>
+                        <i class="material-icons">send</i>
+                      <% end %>
+                      </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
           </div>
           <div id="test6" class="col s12 tabs-ko">
-
+            <table class="striped centered bordered">
+              <thead>
+                <tr>
+                  <th>Sections</th>
+                  <th>Section Adviser</th>
+                  <th>View students</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @section12.each do |section| %>
+                  <tr>
+                    <td><%= section.section %></td>
+                    <% if section.adviser.blank? %>
+                       <td><p class="red-text">No adviser assigned</p></td>
+                    <% else %>
+                      <td><%= section.adviser %></td>
+                    <% end %>  
+                    <td>
+                      <%= link_to student_list_section_path(section.section) , class: "green-text" do %>
+                        <i class="material-icons">send</i>
+                      <% end %>
+                      </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
           </div>
         </div><!-- row -->
       </div>
