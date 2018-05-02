@@ -6,7 +6,6 @@ class Administrator < ApplicationRecord
 
   has_attached_file :image, styles: { medium: "300x300", thumb: "100x100" }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/   
-  validates :firstname , :lastname, :password , presence: true
   validates :username , uniqueness: true
   validates :email , uniqueness: true
 end

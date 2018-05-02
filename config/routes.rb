@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get  '/events/events_json', to: 'pages#events_json'
   get '/administrators/administrators_json' , to: 'pages#admins_json'
   get '/students/students_json' , to: 'pages#students_json'
-  get '/students/students_json/:lrn' , to: 'pages#students_json_id'
+  get '/students/students_json/:data' , to: 'pages#students_json_id'
   get '/grades/grades_json' , to: 'pages#grades_json'
   get '/images/images_json' , to: 'pages#images'
 
