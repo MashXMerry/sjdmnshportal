@@ -38,7 +38,7 @@ class PagesController < ApplicationController
   end
 
   def students_json_id
-    data = Student.all.where(["lrn LIKE ? OR firstname LIKE ?" , "%#{params[:data]}%", "%#{params[:data]}%"]).limit(5)
+    data = Student.all.where(["lrn LIKE ? OR firstname LIKE ? OR lastname LIKE ?" , "%#{params[:data]}%", "%#{params[:data]}%"] , "%#{params[:data]}%"]).limit(5)
     render :json => data
   end
 
