@@ -80,7 +80,7 @@
                           Grade 7</div>
                           <div class="collapsible-body">
                             <% @sections7.each do |section| %>
-                              <button type="button" class="btn modal-close btn-large waves-effect waves-blue" style="margin-bottom: 5px" id="btn-section<%= section.id %>">
+                              <button type="button" class="btn modal-close btn-large waves-effect waves-blue blue lighten-2" style="margin-bottom: 5px" id="btn-section<%= section.id %>" onclick="appendData('<%= section.section %>', 7)">
                                   <%= section.section %>
                                 </button>
                             <% end %>
@@ -92,7 +92,7 @@
                           <div class="collapsible-body">
                             <div class="collection">
                               <% @sections8.each do |section| %>
-                                <button type="button" class="btn modal-close btn-large waves-effect waves-blue" style="margin-bottom: 5px" id="btn-section<%= section.id %>">
+                                <button type="button" class="btn modal-close btn-large waves-effect waves-blue indigo lighten-2" style="margin-bottom: 5px" id="btn-section<%= section.id %>">
                                   <%= section.section %>
                                 </button>
                               <% end %>
@@ -105,7 +105,7 @@
                           <div class="collapsible-body">
                             <div class="collection">
                               <% @sections9.each do |section| %>
-                                <button type="button" class="btn modal-close btn-large waves-effect waves-blue" style="margin-bottom: 5px" id="btn-section<%= section.id %>">
+                                <button type="button" class="btn modal-close btn-large waves-effect waves-blue deep-purple lighten-2" style="margin-bottom: 5px" id="btn-section<%= section.id %>">
                                   <%= section.section %>
                                 </button>
                               <% end %>
@@ -118,7 +118,7 @@
                           <div class="collapsible-body">
                             <div class="collection">
                               <% @sections10.each do |section| %>
-                                <button class="btn modal-close btn-large waves-effect waves-blue" style="margin-bottom: 5px" id="btn-section<%= section.id %>">
+                                <button class="btn modal-close btn-large waves-effect waves-blue red lighten-2" style="margin-bottom: 5px" id="btn-section<%= section.id %>">
                                   <%= section.section %>
                                 </button>
                               <% end %>
@@ -131,7 +131,7 @@
                           <div class="collapsible-body">
                             <div class="collection">
                               <% @sections11.each do |section| %>
-                                <button type="button" class="btn modal-close btn-large waves-effect waves-blue" style="margin-bottom: 5px" id="btn-section<%= section.id %>">
+                                <button type="button" class="btn modal-close btn-large waves-effect waves-blue pink lighten-2" style="margin-bottom: 5px" id="btn-section<%= section.id %>">
                                   <%= section.section %>
                                 </button>
                               <% end %>
@@ -144,7 +144,7 @@
                           <div class="collapsible-body">
                             <div class="collection">
                               <% @sections12.each do |section| %>
-                                <button type="button" class="btn modal-close btn-large waves-effect waves-blue" style="margin-bottom: 5px" id="btn-section<%= section.id %>">
+                                <button type="button" class="btn modal-close btn-large waves-effect waves-blue purple lighten-2" style="margin-bottom: 5px" id="btn-section<%= section.id %>">
                                   <%= section.section %>
                                 </button>
                               <% end %>
@@ -168,7 +168,8 @@
                 </div>
                 <div class="col s12 m6 l6">
                   <div class="input-field">
-                    <%= f.select :gender , options_for_select([["Gender"],"Male" , "Female"]) ,id:"gender" , :required => true %>
+                    <label for="gender">Gender</label>
+                    <%= f.select :gender , options_for_select([[""],"Male" , "Female"]) ,id:"gender" , :required => true %>
                   </div>  
                 </div>
                 <%= f.text_field :status , type: 'hidden' , value: 'enrolled' %>
@@ -192,46 +193,12 @@
 
 </div>
 
-
-<script type="text/javascript">
+<script>
+  function appendData(section,year_level) {
+    $('#section-field').val(section);
+    $('#level').val(year_level);
+  }
   $(document).ready(function() {
-    <% @sections7.each do |section| %>
-      $('#btn-section<%= section.id %>').on('click' ,function(){
-        $('#section-field').val('<%= section.section %>');
-        $('#level').val(<%= section.yearlvl %>)
-      });
-    <% end %>
-    <% @sections8.each do |section| %>
-      $('#btn-section<%= section.id %>').on('click' ,function(){
-        $('#section-field').val('<%= section.section %>');
-        $('#level').val(<%= section.yearlvl %>)
-      });
-    <% end %>
-    <% @sections9.each do |section| %>
-      $('#btn-section<%= section.id %>').on('click' ,function(){
-        $('#section-field').val('<%= section.section %>');
-        $('#level').val(<%= section.yearlvl %>)
-      });
-    <% end %>
-    <% @sections10.each do |section| %>
-      $('#btn-section<%= section.id %>').on('click' ,function(){
-        $('#section-field').val('<%= section.section %>');
-        $('#level').val(<%= section.yearlvl %>)
-      });
-    <% end %>
-    <% @sections11.each do |section| %>
-      $('#btn-section<%= section.id %>').on('click' ,function(){
-        $('#section-field').val('<%= section.section %>');
-        $('#level').val(<%= section.yearlvl %>)
-      });
-    <% end %>
-    <% @sections12.each do |section| %>
-      $('#btn-section<%= section.id %>').on('click' ,function(){
-        $('#section-field').val('<%= section.section %>');
-        $('#level').val(<%= section.yearlvl %>)
-      });
-    <% end %>
-
     $('#firstname').change(function() {
       var Fname = $('#firstname').val();
       var SFname = Fname.substring(0,4)
